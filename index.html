@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+
+ <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body class="bg-white dark:bg-gray-700">
+    <header class="sticky top-0 z-50 shadow-md bg-white/90 dark:bg-gray-700/90">
+        <nav>
+        <div class="flex justify-between items-center mx-auto max-w-screen-xl p-4 ">
+            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="img/logo dio.png" class="h-20" alt="Flowbite Logo" />
+                <div class="name">
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap text-teal-500 dark:text-white">DEXA <br> </span>
+                    <span class="self-center text-2xs whitespace-nowrap text-teal-500 dark:text-white"> invitation  </span>
+                </div>
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center bg-white text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:bg-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-700 md:dark:bg-gray-700 dark:border-gray-700">
+                <li>
+                <a href="#Home" class="block py-2 px-3 text-white bg-teal-500 rounded-sm md:bg-transparent md:text-teal-500 md:p-3 dark:text-white md:dark:text-teal-500" aria-current="page">Home</a>
+                </li>
+                <li>
+                <a href="#Katalog" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-teal-500 md:p-3 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Catalogue</a>
+                </li>
+                <li>
+                <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-teal-500 md:p-3 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+        </nav>
+    </header>
+    <main class=" dark:bg-gray-700">
+        <section id="Home" class="Home">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-8 md:p-12 items-center min-h-screen">
+    
+                <div class="md:col-span-1 lg:col-span-1 flex items-center justify-center" > 
+                    <img src="img/hp.png" alt="Undangan Digital di HP" class="w-full max-w-sm h-auto object-cover">
+                </div>
+
+                <div class="hidden lg:block lg:col-span-1" > </div>
+    
+                <div class="md:col-span-1 lg:col-span-2 flex flex-col items-start self-stretch"> 
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif text-gray-800 dark:text-white leading-tight">
+                        Undangan
+                    </h1>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif text-teal-500 leading-tight mb-4"> 
+                        Digital
+                    </h1>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif text-gray-800 dark:text-white leading-tight">
+                        Interaktif
+                    </h1>
+                    <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-lg mt-8 mb-auto">
+                        Buat undanganmu lebih menarik dan tidak itu-itu saja
+                    </p>
+                    <div class="md:col-span-1 lg:col-span-1 flex flex-col items-center self-stretch h-10"> </div>
+                    <div class="md:col-span-1 lg:col-span-3 flex flex-col  self-stretch"> 
+                        <div class="flex items-center"> 
+                            <button class="bg-teal-500 border border-gray-400 text-white dark:text-white dark:border-gray-400 font-medium py-3 px-8 rounded-lg transition duration-300 hover:bg-gray-100 hover:text-teal-500 dark:hover:bg-white dark:hover:text-teal-500">
+                                Lihat Katalog
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="catalogue" class="catalogue">
+            <div class="container">
+                <div class="card">
+                    <div class="imgBx">
+                        <img src="img/produk1.png" alt="">
+                    </div>
+                    <div class="contentBx">
+                        <h2>Nike Shoes</h2>
+                        <div class="size">
+                            <h3> size :</h3>
+                            <span>7</span>
+                            <span>8</span>
+                            <span>9</span>
+                            <span>10</span>
+                        </div>
+                        <div class="color">
+                            <h3> color :</h3>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <a href="#">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Contact" class="Contact">
+            <footer>
+
+                <div class="containerFooter">
+                    <small>&copy;2025 dexa-invitation.com. All Rights Reserved.</small>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+ 
+            </footer>
+        </section>
+
+    </main>
+
+    <!-- <footer>
+        <p>&copy; 2025 Dio Deska. All rights reserved.</p>
+    </footer> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
