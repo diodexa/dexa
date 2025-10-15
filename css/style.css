@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
+:root {
+    --warna: #00BBA7 ;
+    --font: white;
+    --antifont: black;
+    --section : #CBFBF1;
+}
 
 *{
     margin: 0;
@@ -9,178 +15,166 @@
     
 }
 
-.container {
-    position: relative;
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
-.container .card {
+button[data-collapse-toggle][aria-expanded="true"] + #navbar-default a {
+  color: white !important;
+}
+
+/* Juga jaga tampilan hover/active */
+button[data-collapse-toggle][aria-expanded="true"] + #navbar-default a:hover {
+  color: var(--warna) !important;
+}
+
+/* fallback: kalau nav punya class block (Flowbite menambah class 'block') */
+
+
+.nav-active {
+  color: var(--warna) !important;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-default {
+  color: black !important; 
+  transition: color 0.3s ease;
+}
+
+#navbar-default.block a.nav-active {
+  color: var(--warna) !important; /* teal */
+}
+
+#catalogue {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10%;
+}
+
+.card {
     position: relative;
-    width: 320px;
-    height: 450px;
-    background: #232323;
+    width: 600px;
+    height: 400px;
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+    flex-grow: 1;
+}
+
+.card .circle  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
 }
 
-.container .card::before {
+.card .circle::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #9bdc28;
-    clip-path: circle(150px at 80% 20%);
-    transition: 0.5s ease-in-out;
-}
-
-.container .card:hover::before {
-    clip-path: circle(300px at 80% -20%);
-
-}
-
-.container .card::after {
-    content: 'Nike';
-    position: absolute;
-    top: 30%;
-    left: -20%;
-    font-size: 12em;
-    font-weight: 800;
-    font-style: italic;
-    color: rgba(255,255,255,0.04);
-}
-
-.container .card .imgBx {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10000;
-    width: 100%;
-    height: 220px;
+    background: var(--warna);
+    clip-path: circle(120px at center);
     transition: 0.5s;
 }
 
-.container .card:hover .imgBx  {
-    top: 0;
-    transform: translateY(0);
+.card:hover .circle::before {
+    clip-path: circle(400px at center);
+    background: var(--font);
+    border: 2px solid var(--warna);
 }
 
-.container .card .imgBx img {
+.card img {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-25deg);
-    width: 250px;
+    transform: translate(-50%,-50%);
+    height: 300px;
+    pointer-events: none;
+    transition: 0.5s;
 }
 
-.container .card .contentBx {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    text-align: center;
-    transition: 1s;
-    z-index: 10;
+.card:hover img {
+    left: 82%;
+    height: 500px;
 }
 
-.container .card:hover .contentBx {
-    height: 210px;
-}
 
-.container .card .contentBx h2 {
+
+.card .content {
     position: relative;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #fff;
-}
-
-.container .card .contentBx .size, 
-.container .card .contentBx .color {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 20px;
+    width: 50%;
+    left: 20%;
+    padding: 20px 20px 20px 40px;
     transition: 0.5s;
     opacity: 0;
     visibility: hidden;
 }
 
-.container .card:hover .contentBx .size, 
-.container .card:hover .contentBx .color {
-    opacity: 1;
+.card:hover .content {
+    left: 0;
+    opacity:1;
     visibility: visible;
 }
 
-.container .card .contentBx .size h3,
-.container .card .contentBx .color h3 {
-    color: #fff;
-    font-weight: 300;
-    font-size: 14px;
+.card .content h2 {
+    color: var(--warna);
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-right: 10px;
-}
-.container .card .contentBx .size span {
-    width: 26px;
-    height: 26px;
-    text-align: center;
-    line-height: 26px;
-    font-size: 14px;
-    display: inline-block;
-    color: #111;
-    background: #fff;
-    margin: 0 5px;
-    transition: 0.5s;
-    border-radius: 4px;
-    cursor: pointer;
+    font-size: 2em;
+    line-height: 1em;
+    margin-bottom: 5px;
 }
 
-.container .card .contentBx .size span:hover {
-    background: #9bdc28;
+.card .content h3 {
+    color: var(--warna);
 }
 
-.container .card .contentBx .color span {
-    width: 20px;
-    height: 20px;
-    background-color: #ff0;
-    margin: 0 px;
-    cursor: pointer;
+.card .content h3 {
+    text-align: right;
+    font-size: larger;
 }
 
-.container .card .contentBx .color span:nth-child(2) {
-    background: #9bdc28;
-}
-.container .card .contentBx .color span:nth-child(3) {
-    background: #03a9f4;
-}
-.container .card .contentBx .color span:nth-child(4) {
-    background: #e91e62;
+.card .content h4,
+.card .content li {
+    list-style-type: disc;
+    color: var(--antifont);
+    line-height: 1.5em;
+    font-weight: 300;
+    
 }
 
-.container .card .contentBx a {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #fff;
-    border-radius: 4px;
+.card .content a {
+    position: relative;
+    color: var(--font);
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--warna);
     margin-top: 10px;
+    display: inline-block;
     text-decoration: none;
-    font-weight: 600;
-    color: #111;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: 0.5s;
+    font-weight: 700;
 }
 
-.container .card:hover .contentBx a {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.5s;
+.card .content .button {
+    display: flex;
+    width: 100%;
+    gap: 5%;
 }
+
+
+
 
 footer { 
   padding: 0.5rem; 
   width: 100%; 
-  background-color:#cfdedb; 
+  background-color:var(--section); 
   bottom: 0; 
   right: 0; 
   text-align: center; 
@@ -197,12 +191,58 @@ footer small {
 }
 
 footer a { 
-    display: flex; 
+    display: inline-block; 
     color: black; 
     text-decoration: none; 
-    font-size: 1rem;
+    font-size: 1.4rem;
 }
 
 footer a:hover { 
   color: white; 
 } 
+
+@media (max-width: 991px) {
+    
+.card {
+    width: auto;
+    max-width: 350px;
+    align-items: flex-start;
+    margin: 10px;
+}
+
+.card:hover  {
+    height: 600px;
+}
+
+.card .content {
+    width: 100%;
+    left: 0;
+    padding: 40px;
+}
+
+
+.card:hover img {
+    top: 75%;
+    left: 50%;
+    height: 320px;
+}
+
+.card .content h4,
+.card .content li {
+    font-size: small;
+    
+}
+
+}
+
+@media (max-width: 991px) {
+
+.card .content {
+    padding: 20px;
+}
+
+.card:hover img {
+    top: 82%;
+
+}
+}
