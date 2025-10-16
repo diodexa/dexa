@@ -7,7 +7,7 @@ function resetNav() {
     link.classList.remove("nav-active");
     link.classList.add("nav-default");
   });
-}
+};
 
 // Scrollspy logic
 const sections = document.querySelectorAll("section[id]");
