@@ -1,0 +1,347 @@
+<html>
+    <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="css/whatsapp.css">
+<link rel="stylesheet" href="countdown/circle.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script
+      src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.1/dist/dotlottie-wc.js"
+      type="module"></script>
+
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
+  <link rel="icon" href="img/LogoIcon.ico" type="image/x-icon">
+
+
+
+
+</head>
+
+<body>
+  <section class="join" id="join">
+    <!-- <div class="boxJoin">
+      <img src="img/Fotogrup.webp" alt="FotoGrup">
+      
+      <div class="fotoJoin">
+        <img src="img/Saitama.png" alt="" >
+        <img src="img/fotoprofill.png" alt="" >
+        <h3>+30</h3>
+      </div>
+      <p style="margin-top: 7%;">Romeo, Juliet,Tung-tungSahur dan lainnya sudah bergabung</p>
+      <button class="btn" id="btnJoin"> Yuk Gabung</button>
+    </div> -->
+    <sl-card class="card-overview">
+  <img
+    slot="image"
+    src="img/Fotogrup.webp"
+    alt="A kitten sits patiently between a terracotta pot and decorative grasses."
+  />
+
+  <h2>Grup-grupan</h2><br />
+  <p> Romeo, Juliet dan 105 lainnya sudah bergabung dengan grup ini </p><br />
+  <div class="avatar-group">
+<sl-avatar
+  image="https://images.unsplash.com/photo-1490150028299-bf57d78394e0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=256&h=256&q=80&crop=right"
+  label="Avatar 1 of 4"
+></sl-avatar>
+
+<sl-avatar
+  image="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=256&h=256&crop=left&q=80"
+  label="Avatar 2 of 4"
+></sl-avatar>
+
+<sl-avatar
+  image="https://images.unsplash.com/photo-1456439663599-95b042d50252?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=256&h=256&crop=left&q=80"
+  label="Avatar 3 of 4"
+></sl-avatar>
+
+<sl-avatar
+  image="http://localhost/Buku/GrupChat/img/105.png"
+  label="Avatar 4 of 4"
+> </sl-avatar>
+
+
+  <div slot="footer">
+  <br>
+    <button class="btn" id="btnJoin"> Yuk Gabung</button>
+    
+  </div>
+</sl-card>
+
+
+<style>
+  .avatar-group sl-avatar:not(:first-of-type) {
+    margin-left: -1rem;
+  }
+
+  .avatar-group sl-avatar::part(base) {
+    border: solid 2px var(--sl-color-neutral-0);
+  }
+</style>
+
+  </section>
+
+<section class="header" id="header">
+  <div class="WrapHeader">
+    <a data-fancybox="gallery1" href="img/Fotogrup.webp">
+      <img src="img/Fotogrup.webp" />
+    </a>
+    <!-- <a data-fancybox="gallery-unik" href="img/FotoGrup.png">
+      <img src="img/FotoGrup.png" alt="FotoGrup">
+    </a> -->
+    <div class="header-info" >
+    <h1> Ini nama Group</h1>
+    <p> Nama1, Nama2, Nama3, Nama4, Nama5,  ....</p>
+    </div>
+    <div id="audio-container">
+        <audio id="song" autoplay loop>
+          <source src="audio/CHRISTINA PERRI - YOU ARE MY SUNSHINE [Lyric Video] [4Oc6PTtcthA].mp3" type="audio/mp3">
+        </audio>
+        <div class="audio-icon-wrapper"  >
+          <i class="fa-regular fa-circle-pause"></i>
+        </div>
+        <div class="audio-icon-wrapper" style="display: none;" >
+          <i class="fa-solid fa-circle-play"></i>
+        </div>
+      </div>
+  </div>
+</section>
+
+
+
+<section id="Home" >   
+  <p class="lead"> Anda Telah Bergabung</p>
+  <ul class="chat">
+    <li>
+      <div class="chat-image" style="background-image: url(img/Saitama.png);"></div>
+      <div class="balon-chat">
+        <h3> Ketua Grup</h3>
+        <div class="Nama-chat" id="Sambutan">
+          <p> ini kata Sambutan<br> .</p>
+          <p> </p>
+          <span class="waktu"> <br> <br>10:55</span>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="chat-image" style="background-image: url(img/Saitama.png);"></div>
+      <div class="balon-chat">
+        <h3> Ketua Grup</h3>
+        <div class="Nama-chat">
+          <p>Oke langsung aja ya  </p>
+          <p>. </p> 
+          <span class="waktu">  10:56</span>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="chat-image" style="background-image: url(img/Saitama.png);"></div>
+      <div class="balon-chat">
+        <h3> Ketua Grup</h3>
+        <div class="Nama-chat">
+          <p>Assalaumalaikum Wr Wb, </p> 
+          <p>Pengunguman, diberitahuan salah satu warga kita </p>
+          <p class="nama">Romeo <br>& <br> Juliet </p>
+          <p>Insya Allah akan melaksanakan pernikahan </p>
+          <p> </p>
+          <span class="waktu"> 10:57</span>
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="chat-image" style="background-image: url(img/fotoprofill.png);"></div>
+      <div class="balon-chat">
+        <h3 style="color: rgb(17, 152, 21);"> Tetangga</h3>
+        <div class="Nama-chat">
+          <p> Alhamdullilah, </p> 
+          <p style="margin-right: 10px">Kapan dan dimana nikahnya nih Ketua? </p>
+            <p> </p>
+          <span class="waktu"> 11:00</span>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="chat-image" style="background-image: url(img/Saitama.png);"></div>
+      <div class="balon-chat">
+        <h3> Ketua Geng</h3>
+        <div class="Nama-chat">
+          <p class="tanggal" > Catet Tanggalnya ya ! <br>  22 Desember 2025 </p> 
+          <div class="simply-countdown-circle"> </div>
+          <button onclick="window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=Nama+Acara&dates=20251222T090000Z/20251222T100000Z&details=nikahan&location=Lokasi+Acara','_blank')" style="font-size: 1.2rem;" class="saveTheDate">
+          Add to  Calendar
+        </button>
+          <br> <br>
+          <span class="waktu"> 11:05</span>
+        </div>
+      </div>
+    </li>
+    
+    <li>
+      <div class="chat-image" style="background-image: url(img/Saitama.png);"></div>
+      <div class="balon-chat">
+        <h3> Ketua Geng</h3>
+        <div class="Nama-chat">
+          <p> Untuk tempatnya disini </p>  <br>
+          <a href="https://maps.app.goo.gl/DohHogo1m4JNMSch7" target="_blank"> <img src="img/Map.png" alt="map" style="width: 100%;"></a>
+          <br><br>
+          <a href="https://maps.app.goo.gl/DohHogo1m4JNMSch7" target="_blank" class="map">https://maps.app.goo.gl/8a2CDcvhmmbGEAoa9 </a>
+          <p class="Alamat"> Alamat : Graha Batununggal Indah <br>  Jl. Batununggal Indah IX No.2, Mengger, 
+            <br> Bandung Kidul, Kota Bandung, Jawa Barat 40267</p>
+            <br>
+          <span class="waktu"> 11:05</span>
+        </div>
+      </div>
+    </li>
+    
+    
+    <li>
+      <div class="chat-image" style="background-image: url(img/Saitama.png);"></div>
+      <div class="balon-chat">
+        <h3> Ketua Geng</h3>
+        <p> ini foto mempelai kita  </p> <br>
+        <div class="gallery-grid">
+          <a data-fancybox="gallery" href="img/galeryfoto/1.png">
+            <img src="img/galeryfoto/thumbnail/1.png" alt="foto 1">
+          </a>
+          <a data-fancybox="gallery" href="img/galeryfoto/2.png">
+            <img src="img/galeryfoto/thumbnail/2.png" alt="foto 2">
+          </a>
+          <a data-fancybox="gallery" href="img/galeryfoto/3.png">
+            <img src="img/galeryfoto/thumbnail/3.png" alt="foto 3">
+          </a>
+          <a data-fancybox="gallery" href="img/galeryfoto/4.png" class="gallery-overlay" data-more="+4">
+            <img src="img/galeryfoto/thumbnail/4.png" alt="foto 4">
+          </a>
+          <a data-fancybox="gallery" href="img/galeryfoto/5.png" style="display: none;">
+            <img src="img/galeryfoto/thumbnail/5.png" alt="foto 5">
+          </a>
+          <a data-fancybox="gallery" href="img/galeryfoto/6.png" style="display: none;">
+            <img src="img/galeryfoto/thumbnail/6.png" alt="foto 6">
+          </a>
+          <a data-fancybox="gallery" href="img/galeryfoto/7.png" style="display: none;">
+            <img src="img/galeryfoto/thumbnail/7.png" alt="foto 7">
+          </a>
+          <a data-fancybox="gallery" href="img/galeryfoto/8.png" style="display: none;">
+            <img src="img/galeryfoto/thumbnail/8.png" alt="foto 8">
+          </a>
+        </div>
+        <br>
+        <span class="waktu"> <br> 11:10</span>
+      </div>
+    </li>
+
+    <li>
+      <div class="chat-image" style="background-image: url(img/Saitama.png);"></div>
+      <div class="balon-chat">
+        <h3> Ketua Grup</h3>
+        <div class="Nama-chat">
+          <p> Untuk iurannya bisa langsung kirim kesini ya</p>
+            <sl-card class="card-header transparent-card" style="width: 100%;">
+              <div slot="header">
+                <img src="img/Logo BCA.webp"  id="LogoBCA" alt="">
+                
+              </div>
+              Bank BCA <br>
+              Atas nama Romeo
+              <br>
+              <button id="clipboardBCA"> Copy nomor rekening</button>
+            </sl-card>
+            <sl-card class="card-header transparent-card" style="width: 100%;">
+              <div slot="header">
+                <img src="img/Logo BNI.webp" alt="" id="LogoBNI">
+                
+              </div>
+              Bank BNI <br>
+              Atas nama Juliet
+              <br>
+              <button id="clipboardBNI"> Copy nomor rekening</button>
+            </sl-card>
+            <sl-card class="card-header transparent-card" style="width: 100%;" >
+              <div slot="header">
+                <i class="fa-solid fa-gift" style="font-size: 5rem;"></i>
+                
+              </div>
+              kirim Kado
+              <br>
+              <button id="clipboardAlamat"> Copy alamat rumah</button>
+            </sl-card>
+          <span class="waktu"> 10:57</span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="chat-image" style="background-image: url(img/Saitama.png);"></div>
+      <div class="balon-chat">
+        <h3> Ketua Grup</h3>
+        <div class="Nama-chat">
+          <p>Yang mau kasih ucapan bisa langsung kesini ya </p> 
+          <p> </p>
+          <span class="waktu"> 10:57</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+    
+</section>
+            
+              
+
+
+<section id="TulisPesan">
+  <div class="WarpTulisPesan" >
+    <input type="hidden" name="id" value="whatsapp" id="idInput">
+    <textarea  id="NamaKamu" placeholder="Nama Kamu" class="input-nama"></textarea>
+    <textarea id="InputPesan" placeholder="Tulis Pesan kamu" class="input-pesan"> </textarea>
+    <i class="fa-regular fa-font-awesome" id="stickerButton"></i>
+    <button class="kirim-button" id="TombolKirim">Kirim</button>
+    <div id="stickerList" class="sticker-list">
+      <img src="img/galeryfoto/sticker/1.webp" alt="sticker 1" class="sticker">
+      <img src="img/galeryfoto/sticker/2.webp" alt="sticker 2" class="sticker">
+      <img src="img/galeryfoto/sticker/3.webp" alt="sticker 3" class="sticker">
+      <img src="img/galeryfoto/sticker/4.webp" alt="sticker 3" class="sticker">
+      <img src="img/galeryfoto/sticker/5.png" alt="sticker 3" class="sticker">
+    </div>
+
+    <div class="sticker-overlay" id="stickerOverlay">
+      <div class="loader"></div>
+      <p>Mengirim stiker...</p>
+    </div>
+  </div>
+</section>
+
+
+
+    
+
+ 
+<script type="module">
+import simplyCountdown from './countdown/simplyCountdown.js';
+  simplyCountdown('.simply-countdown-circle',{
+      year: 2025, // Target year (required)
+      month: 12, // Target month [1-12] (required)
+      day: 22, // Target day [1-31] (required)
+      hours: 8, // Target hour [0-23], default: 0
+      
+  });
+      
+</script>
+
+ <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>Fancybox.bind('[data-fancybox="gallery"]') </script>
+    <script>Fancybox.bind('[data-fancybox="gallery1"]') </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.5/dist/index.bundle.min.js"></script>
+<script src="Script/Whatsapp.js" defer></script>
+</body>
+
+</html>

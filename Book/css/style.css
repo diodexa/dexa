@@ -1,0 +1,1425 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Akaya+Kanadaka&family=Corinthia:wght@400;700&family=GFS+Didot&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Solway:wght@300;400;500;700;800&display=swap');
+* {
+  box-sizing: border-box;
+}
+:root {
+  --Kertas-count: 14;
+  --Kertas-scroll: 23;
+  --garis-buku: rgba(10, 153, 189, 0.4);
+  --spine: #c8c208;
+  --cover: #72b0ac;
+  /* --bg: url(../img/latar.webp); */
+  --insert: #d9d9d9;
+  --Kertas: #e6e6e6;
+  --warna: rgb(181, 163, 140);
+  --font: #000000;
+  --antifont:white;
+  --latar-warna: linear-gradient(rgba(222, 184, 135, 0.3252), rgba(222, 184, 135, 0.325));
+
+}
+
+body {
+  width: 100vw; 
+  height: calc(((var(--Kertas-count) + 2) * var(--Kertas-scroll)) * 1vh); 
+
+  overflow-x: hidden;
+}
+
+input, textarea {
+  -webkit-user-select: text;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+
+
+.background img {
+  width: 150%;
+  height: 120%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#join {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('../img/galeryfoto/1.webp');
+  background-size: cover;
+  background-position: center;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: roboto;
+  
+}
+
+
+
+#join.slide-up {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+#join::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(42, 38, 38, 0.3); /* overlay hitam transparan */
+  z-index: 1;
+}
+
+
+#join .boxJoin {
+  position: relative;
+  z-index: 2;
+  bottom: 10%;
+  color: var(--antifont);
+  font-size: 2rem;
+  text-align: center;
+}
+
+
+
+
+#join h1{
+  font-family: Corinthia;
+  font-size: 4rem;
+  color: white;
+}
+
+#join h2 {
+  font-family: Aclonica;
+  color: white;
+  font-size: 2rem;
+  font-weight: 100;
+}
+#join h3 {
+  font-family: Aclonica;
+  color: white;
+  font-size: 2rem;
+  font-weight: 100;
+}
+
+#join h4 {
+  font-size: 2rem;
+  color: white;
+}
+
+
+.btn {
+  display: inline-block;
+  padding: 5% !important;
+  width: 100%;
+  background: var(--warna);
+  color: var(--antifont) !important;
+  border: none; 
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  color:  var(--warna) !important;
+  background: white;
+}
+/* ----------------------------------------------------------------------- */
+.Kertas {
+  height: 1000px;
+  width: 500px;
+  position: relative;
+  transform-style: preserve-3d;
+
+}
+.Kertas .Kertas__number {
+  position: absolute;
+  color: #808080;
+  bottom: 1rem;
+  font-size: 1vmin;
+}
+.Kertas__half--front .Kertas__number {
+  right: 1rem;
+  
+}
+.Kertas__half--back .Kertas__number {
+  left: 1rem;
+}
+.Kertas__half {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* -webkit-clip-path: inset(0 0.5% 0 0.5%);
+  clip-path: inset(0 0.5% 0 0.5%); */
+}
+.Kertas__half--front {
+  --rotation: 0;
+  --coefficient: 0;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  /* border-radius: 0 5% 5% 0; */
+}
+.Kertas__half--back {
+  --rotation: 180;
+  --coefficient: 2;
+  position: relative;
+  overflow: hidden;  transform: rotateY(calc(var(--rotation) * 1deg)) translate3d(0, 0, calc((0.5 * var(--coefficient)) * 1px));
+
+  /* border-radius: 5% 0 0 5%; */
+  
+}
+
+
+
+
+
+
+.video-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Agar tidak terdistorsi */
+  position: absolute; /* Supaya overlay bisa di atasnya */
+  top: 0;
+  left: 0;
+  animation: autoShowAnimation both;
+  animation-timeline: view(90% 5%); 
+}
+
+.overlay {
+  position: absolute;
+  z-index: 2; /* overlay di atas video */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  background: var(--latar-warna); 
+  font-weight: 300;
+}
+
+.overlay h2 {
+  font-size: 2rem;
+}
+
+.overlay p {
+  font-size: 1.7rem;
+  width: 80%;
+}
+
+
+
+
+.buku {
+  height: 1000px;
+  position: fixed;
+  width: 480px;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%) scale(0.35) !important;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  
+}
+.buku__insert {
+  content: '';
+  position: absolute;
+  height: 94%;
+  width: 94%;
+  
+  /* background: var(--insert); */
+  top: 50%;
+  right: -1rem;
+  transform: translate(0, -50%);
+  border-radius: 5% 0 0 5%;
+}
+.buku__spine {
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background: var(--spine);
+  transform-origin: 0 50%;
+  width: 0;
+  transform: translate3d(0, 0, -13px) scaleX(1) rotateY(0deg);
+}
+.buku__Kertas {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 100%;
+  width: 100%;
+  z-index: calc(((var(--Kertas-count) + 2) - var(--Kertas-index)) * 2);
+  transform-origin: 0% 50%;
+}
+.buku__cover {
+  /* border-radius: 0 5% 5% 0; */
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  background-color: var(--warna);
+  /* background: linear-gradient(to bottom, var(--cover) 30%, #f1d58a 50%); */
+ 
+}
+.buku__cover--front {
+  transform-origin: 0 50%;
+  
+}
+.buku__cover--front .Kertas__half--back {
+  background: var(--warna);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* border-right: 1rem solid var(--spine); */
+}
+.buku__cover--back {
+  transform-origin: 0% 50%;
+}
+
+.buku__cover--back .buku__insert {
+  left: 0;
+  border-radius: 0 5% 5% 0;
+}
+.buku__Kertas:not(.buku__cover) {
+  background: white;
+  background-size: cover;
+}
+
+.sampul {
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(circle at center, rgb(255, 255, 255) 0%, rgb(215, 215, 211) 90%, rgb(255, 255, 255) 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:150%;
+  z-index: 1;
+}
+
+.sampul h5 {
+  position: absolute;
+  font-family:GFS Didot;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 100;
+  color: var(--font);
+  top: -1%;
+  left: 13%;
+  letter-spacing: 15px;
+}
+.sampul h2 {
+  position: absolute;
+  font-family:Playfair Display SC;
+  font-weight: 400;
+  letter-spacing: -5px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 4rem;
+  color: var(--warna);
+  -webkit-text-stroke: 0.5px var(--font);
+  top: 6%;
+  transform: scaleY(2);
+  z-index: 2;
+}
+
+
+.containerSampul {
+  z-index: 3;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(to top, --warna 20%, transparent);
+  
+}
+
+.containerSampul .hover {
+  z-index: 3;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+  background: linear-gradient(to top, rgba(41, 40, 40, 0.7) 20%, transparent);
+}
+
+.containerSampul h5 {
+  position: absolute;
+  font-family:GFS Didot;
+  margin-bottom: 0;
+  font-size: 2rem;
+  font-weight: 100;
+  color: var(--warna);
+  top: 70%;
+  left: 15%;
+  letter-spacing: 15px;
+  z-index: 3;
+  transform: scaleY(2);
+}
+
+.containerSampul img {
+  width: 150%;
+  height: auto;
+  position: absolute;
+  top: -10%;
+  right: -15%;
+  z-index: 3;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: drop-shadow(15px 10px 10px rgba(0,0,0,0.6));
+}
+
+
+
+.halaman1 .wrapperHalaman h4 {
+  white-space: normal;   
+  word-wrap: break-word; 
+  width: 90%;       
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-align: center;
+  line-height: 2.3;
+  color: var(--antifont);
+  margin-top: 30%;
+}
+
+
+.halaman1 .wrapperHalaman h2 {
+  font-size: 3rem;
+  color: var(--font);
+}
+
+.halaman1 {
+  background-image: var(--latar-warna),url(../img/galeryfoto/bghalaman1.webp);
+  background-size:cover;
+  background-position: 50%;
+}
+
+.halaman1 .wrapperHalaman {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+
+ 
+.halaman5{
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.halaman2 {
+  width: 100%;
+  height: 100%;
+  background: url(../img/galeryfoto/Wanita.webp);
+  background-size: cover;
+}
+
+.wrapperHalaman  {
+  justify-content: flex-start;
+}
+
+.halaman2 .containerProfilKiri,
+.halaman5 .containerProfilKanan {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  }
+
+/* .halaman2 img,
+.halaman5 img{
+  object-fit: cover;
+  width: 100%;
+  
+} */
+
+.halaman3 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: Raleway;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  color: #ffffff;
+  background: var(--latar-warna), url(../img/galeryfoto/Wanita2.webp);
+  background-size: cover;
+
+  
+}
+
+.halaman3 h2 {
+  position: absolute;
+  font-size: 4rem;
+  font-weight: 300;
+  left: 5%;
+  bottom: 41%;
+  
+
+}
+
+.halaman3 h3 {
+  position: absolute;
+  font-size: 3.5rem;
+  font-weight: 300;
+  left: 5%;
+  bottom: 17%;
+
+}
+
+.halaman3 h4 {
+  position: absolute;
+  font-size: 3rem;
+  font-weight: 200;
+  left: 5%;
+  bottom: 35%;
+}
+
+.halaman3 i {
+  position: absolute;
+  font-size: 2.5rem;
+  left: 50%;
+  bottom: 2%;
+  color: #ffffff;
+  
+}
+
+
+.halaman4 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: Raleway;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: right;
+  background-color: #444;
+  color: var(--antifont);
+  background: var(--latar-warna),url(../img/galeryfoto/Pria2.webp);
+  background-size: cover;
+}
+
+.halaman4 h2 {
+  position: absolute;
+  font-size: 4rem;
+  font-weight: 300;
+  right: 5%;
+  bottom: 41%;
+ 
+}
+
+.halaman4 h3 {
+  position: absolute;
+  font-size: 3.5rem;
+  font-weight: 300;
+  right: 5%;
+  bottom: 17%;
+  
+}
+
+.halaman4 h4 {
+  position: absolute;
+  font-size: 3rem;
+  font-weight: 200;
+  right: 5%;
+  bottom: 35%;
+ 
+}
+
+.halaman4 i {
+  position: absolute;
+  font-size: 2.5rem;
+  color: var(--antifont);
+  right: 40%;
+  bottom: 2%;
+}
+
+.halaman5 {
+  width: 100%;
+  height: 100%;
+  background: url('../img/galeryfoto/Pria.webp');
+  background-size: cover;
+}
+
+.halaman6 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.halaman6 h2 {
+  position: absolute;
+  font-family: roboto;
+  font-size: 5rem;
+  top: 10%;
+  left: 6%;
+  margin: 0;
+  line-height: 5rem;
+  mix-blend-mode: difference;
+  color: var(--warna);
+}
+
+.halaman6 .containerProfilKiri {
+  box-shadow: inset 180px 0 0 0 var(--warna);
+  width: 100%;
+  height: 100%;
+}
+
+
+.halaman6 .containerProfilKiri h3 {
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  margin-right: 1rem;
+  text-align: right;
+  font-family:roboto;
+  font-size: 3rem;
+  font-weight: 200;
+  color: rgb(0, 0, 0);
+}
+
+.halaman6 .simply-countdown-losange {
+  position: absolute;
+  top: 40%;
+  left: 8%;
+  color: black;
+}
+
+.halaman6 button {
+  position: absolute;
+  padding: 1.2rem 1rem;
+  margin-left: 3%;
+  bottom: 8%;
+  background:white;
+  color: black;
+  border-radius: 10px; 
+  border: 1px solid rgb(129, 127, 127);
+  font-size: 1.1rem
+}
+
+.halaman6 .wrapper {
+  position: absolute;
+  width: 64%;
+  height: 100%;
+  top: 0;
+  left: 30%;
+  margin-left: 2.5rem;
+  display: flex;
+  justify-content: center; /* tengah horizontal */
+  align-items: center; 
+  
+}
+
+.halaman6 .acara {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, auto); /* 2 kolom */
+  grid-template-rows: repeat(2, auto);    /* 2 baris */
+  gap: 1rem 1rem; /* jarak antar baris & kolom */
+  text-align: center;
+  bottom: -5%;
+}
+.halaman6 .acara::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 47%;
+  width: 1px;
+  height: 8rem;
+  background: black;
+  margin: 0;
+}
+
+.halaman6 .acara h4,
+.halaman6 .acara h5 {
+  margin: 0; 
+  font-family: Akaya Kanadaka;
+  font-weight: 300;
+  font-size: 1.5rem;
+  text-align: center;
+
+}
+.halaman6 .lokasi {
+  position: absolute;
+  text-align: justify;
+  bottom: 8%;
+  width: 85%;
+  left: 5%;
+
+}
+.halaman6 .lokasi h4,
+.halaman6 .lokasi h5 {
+  
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-family: roboto;
+}
+
+.simply-countdown-losange .simply-seconds-section {
+  display: none !important;
+}
+
+
+.halaman6 .btn-custom {
+  padding: 1rem ;
+  background-color: var(--warna); 
+  color: var(--font);
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 400;
+  transition: background 0.3s ease;
+  font-family: roboto;
+  text-align: center;
+  border: 1px solid rgb(129, 127, 127);
+}
+
+.halaman7 .wrapperHalaman {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  
+}
+.halaman7 .containerProfilKanan {
+  position: absolute;
+  display: flex;
+  align-items: start;
+  border: 10px solid var(--warna);
+  margin: 2rem;
+  height: 93%;
+  width: 93%;
+ 
+}
+
+.halaman7 .galery-items .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50%;
+
+}
+
+.halaman7 .galery-items:hover .image img {
+  transform: none;
+}
+
+
+
+/* .halaman6 .wrapper h4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2rem;
+} */
+/* //////////////////////////////// */
+.halaman8, 
+.halaman9 {
+  position: relative;
+   width: 100%;
+   height: 100%;
+   background-color: var(--warna);
+}
+
+
+.halaman8 h2 {
+  position: absolute;
+  font-family: roboto;
+  font-size: 9rem;
+  font-weight: 100;
+  margin: 5% 0;
+  top: 0;
+  right: 0;
+  color: var(--antifont);
+}
+
+.halaman9 h2 {
+  position: absolute;
+  font-family: roboto;
+  font-size: 8rem;
+  font-weight: 200;
+  margin: 0;
+  top: 4%;
+  right: 1%;
+  color: var(--antifont);
+  letter-spacing: 10px;
+
+}
+.halaman9 h3 {
+  position: absolute;
+  font-family: roboto;
+  font-size: 5rem;
+  font-weight: 200;
+  margin:  0;
+  top: 7%;
+  left: 5%;
+
+}
+
+#card1::part(base) {
+    background-color: rgba(255, 255, 255, 0.27);
+    color: rgb(0, 0, 0);
+}
+
+#card2::part(base) {
+    display: flex; 
+    flex-direction: column-reverse;
+    background-color:rgba(0, 0, 0, 0.27);
+    color: var(--font);
+}
+#card3::part(base) {
+    background-color: rgba(255, 255, 255, 0.27);
+    color: rgb(0, 0, 0);
+}
+
+#card4::part(base) {
+    display: flex; 
+    flex-direction: column-reverse;
+    background-color: rgba(0, 0, 0, 0.27);
+    color: var(--font);
+}
+
+.card-image {
+  position: absolute;
+  max-width: 48%;
+  font-family: roboto;
+  justify-items: center;
+}
+
+
+
+.card-image img {
+  width: 100%;
+  margin: 0 auto;         
+}
+
+.card-image h4 , 
+.card-image p {
+  margin: 0;
+  font-size: 1.5rem;
+  font-family: roboto;
+  
+}
+
+.halaman10, 
+.halaman11 {
+  background-color: var(--warna);
+  width: 100%;
+}
+
+.halaman10 .wrapperHalaman,
+.halaman11 .wrapperHalaman {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  text-align: center; 
+  padding: 1rem;  
+  margin-top: 0%;
+}
+
+.halaman10 .containerProfilKiri, 
+.halaman11 .containerProfilKiri {
+  position: absolute;
+  display: flex;
+  align-items: start;
+  width: 100%;
+  
+}
+
+.halaman10 .gallery-grid,
+.halaman11 .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 2 kolom */
+  grid-gap: 6px;
+  grid-auto-rows: 90px 100px;
+  justify-content: center;
+  grid-auto-flow: dense;
+  
+}
+
+.halaman10 .galery-items,
+.halaman11 .galery-items {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  
+  
+}
+
+.halaman10 .galery-items .image,
+.halaman11 .galery-items .image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  
+}
+
+.galery-items .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  transition: .5s ease-in-out ;
+  
+}
+
+.galery-items:hover .image img {
+  transform: scale(1.5);
+}
+
+.w-1 { 
+  grid-column: span 1;
+}
+
+.w-2 {
+  grid-column: span 2;
+}
+.w-3 {
+  grid-column: span 3;
+}
+.w-4 {
+  grid-column: span 4;
+}
+.w-5 {
+  grid-column: span 5;
+}
+
+
+.h-1 {
+  grid-row: span 1;
+}
+.h-2 {
+  grid-row: span 2;
+}
+.h-3 {
+  grid-row: span 3;
+}
+.h-4 {
+  grid-row: span 4;
+}
+.h-5 {
+  grid-row: span 5;
+}
+
+#galery {
+  position: absolute;
+  width: 95%;
+  margin: 5%;
+}
+
+.halaman10 h2 {
+  position: absolute;
+  bottom: 0;
+  left: 8%;
+  font-size: 3rem;
+  font-weight: 300;
+  font-family: Raleway;
+  color: var(--font);
+}
+
+
+
+#LogoBNI,
+#LogoBCA {
+  width: 50%;
+}
+
+
+
+.halaman12{
+  background: var(--latar-warna),url(../img/galeryfoto/background-gift.webp);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.halaman13 {
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/galeryfoto/potrait1.webp');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.halaman13 .containerProfilKanan {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(to top, black 20%, transparent);
+}
+
+.halaman13 h3 {
+  position: absolute;
+  color: var(--warna);
+  font-family: roboto;
+  font-weight: 300;
+  text-align: center;
+  font-size: 2rem;
+  bottom: 10%;
+}
+
+.halaman14 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: var(--latar-warna), url(../img/galeryfoto/background-rsvp.webp);
+  background-size: cover;
+  scroll-padding-bottom: 300px;
+  
+}
+
+.halaman12 h2 {
+  margin-left: 0;
+  font-family: roboto;
+  font-size: 4rem;
+  font-weight: 200;
+  text-align: left;
+  margin-left: 8%;
+  color: var(--antifont);
+}
+
+.halaman12 h3 {
+  position: absolute;
+  margin-left: 0;
+  font-family: roboto;
+  font-size: 3rem;
+  font-weight: 200;
+  right: 10%;
+  top: 2%;
+  color: var(--antifont);
+}
+
+
+.halaman12 button:hover {
+  background-color: white; 
+  color: black;            
+  transform: scale(1.05);  
+  transition: all 0.01s ease;
+}
+
+.transparent-card::part(base) {
+  background-color: rgba(245, 240, 240, 0.473);
+  font-size: 2rem;
+  align-items: center;
+  text-align: center;
+  color: var(--font);
+}
+
+.card-header [slot="header"] img {
+    margin-left: 20%;
+    margin-bottom: 0;
+}
+
+.card-header [slot="header"] img {
+    display: block; 
+}
+
+.halaman12 button {
+  font-size: 2rem;
+  padding: 1rem ;
+  background-color: var(--warna);
+ color: var(--font);
+}
+
+
+
+.halaman14 h2 {
+  margin-left: 0;
+  font-family: roboto;
+  font-size: 4rem;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 10%;
+  color: var(--antifont);
+}
+
+.halaman14 #form-rsvp {
+  width: 100%;
+
+}
+.halaman14  #inputNama {
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 8px;
+  padding: 2%;
+  
+}
+.halaman14 #inputPesan  {
+  height: 6rem;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 4%;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 3%;
+}
+.halaman14 #buttonsubmit {
+  width: 80%;
+  height: 4%;
+  margin-left: 10% ;
+  font-size: 2rem;
+  background-color: var(--warna);
+  color: var(--font);
+  border-radius: 8px;
+  border: 1px solid black;
+  box-shadow: 0 2px 0 0 rgb(87, 87, 87);;
+}
+
+.halaman14 #inputNama,
+.halaman14 #inputPesan {
+  font-size: 2rem;
+  
+}
+
+.halaman14 .wrapperKomentar {
+    position: relative;
+    width: 80%;
+    height: 50%; 
+    left: 10%;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+.halaman14 #comments {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    bottom: 50px; 
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.halaman14 #form-rsvp input[type="radio"] {
+    transform: scale(2); 
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    margin: 2rem 0.5rem 2rem 5rem;
+    vertical-align: middle;
+}
+
+
+.halaman14 #form-rsvp label {
+  font-size: 1.5rem;
+  margin-left: 0;
+  color: var(--antifont);
+  margin-bottom: 0;
+}
+
+
+/* ini nama  */
+.halaman14 .comment-item b {
+    color: var(--antifont); 
+    margin-top: 0;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+/* ini pesan */
+.halaman14 .comment-item {
+    padding:  0;
+    color: var(--antifont) !important;
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 200;
+    margin-left: 5%;
+    
+  }
+  .halaman14  .comment-item:last-child {
+    border-bottom: none;
+    color: var(--antifont);
+  }
+    
+    
+.halaman14 .kehadiran-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  margin-left: 10px;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  color: var(--font);
+  background-color: white; 
+}
+  
+.halaman14 .kehadiran-badge.hadir {
+  background-color: var(--warna);
+}
+.halaman14 #pagination-controls {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    bottom: 3%; 
+    height: 50px; 
+    text-align: center; 
+    color: var(--antifont);
+    justify-content: space-between;
+  }
+  
+.halaman14 #pagination-controls button {
+  background-color: transparent; 
+  color: var(--antifont) !important; 
+  border: none;
+  margin: 1%;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  background: var(--warna);
+}
+
+#pagination-controls span {
+    margin-top: 2%;
+    font-weight: bold;
+    font-size: 1.5rem; 
+}
+
+
+
+
+.halaman15 {
+  text-align: center;
+  background: var(--warna);
+  color: var(--font);
+}
+
+.halaman15 h3{
+  font-family: Roboto;
+  font-size: 3.5rem;
+  margin-bottom: 3%;
+  margin-top: 2%;
+  
+}
+
+.halaman15 h4 {
+  font-family: roboto;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-top: 0;
+  margin: 4%;
+}
+
+.halaman15 h2 {
+  font-family: Corinthia;
+  font-size: 4.5rem;
+  margin: 0;
+}
+
+.halaman15 .galery-container {
+
+    width: 20rem;  
+    height: 25rem; 
+    margin: 18% auto 0 auto; 
+}
+
+.halaman15 .galery-items .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    /* PASTIKAN INI ADA */
+    border-radius: 50px; 
+}
+#lastpage {
+  width: 100%;
+  height: 100%;
+  background-color: var(--warna);
+}
+#logo {
+  position: absolute;
+  left: 27%;
+  bottom: 40%;
+  width: 50%;
+ 
+}
+
+#brand {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  bottom: 35%;
+  left: 17%;
+  animation: autoShowAnimation both;
+  animation-timeline: view(90% 5%); 
+}
+
+a {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+.audio-icon-wrapper {
+  position: fixed;
+  font-size: 2rem;
+  right: 15px;
+  bottom: 15%;
+  color: #ffffff;
+  filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+  user-select: pointer;
+  animation: rotating 4s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+}
+dotlottie-wc {
+  position: fixed;
+  width: 30% !important;
+  height: 20% !important;
+  transform: translateX(50%);
+  right: 50%;
+  bottom: 5%;
+
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.212); /* bisa diganti kalau mau warna */
+  padding: 10px 0;
+  z-index: 9999;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container small {
+  color: #000;
+  font-size: 80%;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-icons a {
+  color: #000;
+  font-size: 80%;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #b08a5c;
+}
+
+
+
+@keyframes autoShowAnimation {
+  from {
+    transform: translateY(200px) scale(0.3);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes rotating {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+@media screen and (min-width: 1024px) {
+
+  .background img {
+  width: 100%;
+  height: auto;
+}
+
+dotlottie-wc {
+  display: none;
+
+}
+
+
+  .buku {
+      width: 500px !important; 
+      height: 1000px !important; 
+      top: 10% !important; 
+      left: 45% !important;
+      transform: translateY(-19.5%) scale(0.6) !important;
+      transform-origin: center center;
+  }
+
+  footer .container {
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  footer small {
+
+    font-size: 1rem;
+    margin: 0;
+
+  }
+
+  footer a {
+    display: none;
+  }
+
+  .audio-icon-wrapper {
+    right: 50px;
+    bottom: 20%;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  
+}

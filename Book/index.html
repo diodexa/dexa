@@ -1,0 +1,575 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+
+  <title>Magz</title>
+
+    <!-- <link rel="canonical" href="https://codepen.io/jh3y/pen/ExPVzBY">
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css"> -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="img/LogoIcon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="countdown/scripts/losange.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.css"/>
+ <script
+  src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.1/dist/dotlottie-wc.js"
+  type="module"></script>
+
+  
+</head>
+
+<body translate="no">
+  <div class="background">
+    <img src="img/latar.webp" alt="">
+  </div>
+  <section class="join" id="join">
+    <div class="boxJoin">
+      <h2>Wedding Invitation</h2>
+      <h1>Romeo & Juliet </h1>
+      <h2>22 . 12 . 2025 <br> </h2>
+      <h3> dear : <br></h3> 
+      <h4 id="Tamu"> Tamu undangan </h4>
+      <button class="btn" id="btnJoin" style="padding: 2rem;"> Buka Undangan</button>
+    </div>
+  </section>
+
+<div id="rsvpModal" class="modal">
+  <div class="modal-content">
+    <span id="btnCloseRSVP" class="close">&times;</span>
+    <form id="form-rsvp-ios">
+      <input type="text" name="nama" placeholder="Nama" required>
+      <textarea name="ucapan" placeholder="Ucapan" required></textarea>
+      <div class="radio-group">
+        <label><input type="radio" name="kehadiran" value="Hadir" required> Hadir</label>
+        <label><input type="radio" name="kehadiran" value="Tidak Hadir"> Tidak Hadir</label>
+      </div>
+      <button type="submit">Kirim</button>
+    </form>
+  </div>
+</div>
+
+<div class="buku" style="translate: none; rotate: none; scale: none; transform: translate(-50%, -50%) translate3d(0px, 0px, 0px) scale(0.9583, 0.9583);">
+  <!-- <div class="buku__spine"></div> -->
+<!-- cover -->
+  <div class="Kertas buku__Kertas buku__cover buku__cover--front" style="--Kertas-index: 1; translate: none; rotate: none; scale: none; transform: translate(0%, -50%) translate3d(0px, 0px, 13px);">
+    <div class="Kertas__half Kertas__half--front">
+      <div class="sampul">
+        <h5> The Wedding of</h5>
+        <h2>Romeo & Juliet</h2>  
+          
+        <div class="containerSampul">
+          <img src="img/galeryfoto/2-bg.webp" alt=""> 
+          <div class="hover">
+        </div>
+        <h5>22 . 12 . 25</h5>
+        </div>       
+      </div>
+    </div>
+    <div class="Kertas__half Kertas__half--back">
+       <video autoplay muted loop playsinline class="video-cover" >
+          <source src="img/galeryfoto/video.mp4" type="video/mp4">
+          Browser kamu tidak mendukung video.
+      </video>
+      
+      <div class="overlay">
+        <h2>Assalamualaikum Wr. Wb.</h2>
+        <p>Dengan memohon Rahmat & Ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan putra-putri kami</p>
+      </div>
+      <div class="buku__insert"></div>
+    </div>
+  </div>
+
+  <!-- Halaman 1 -->
+  <div class="Kertas buku__Kertas" style="--Kertas-index: 2; translate: none; rotate: none; scale: none; transform: translate(0%, -50%) translate3d(0px, 0px, -1px);">
+    <div class="Kertas__half Kertas__half--front"> 
+      <div class="halaman1">
+      <div class="wrapperHalaman"> 
+        <h4>“Dan diantara tanda-tanda kekuasaanNya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikanNya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir.” <br>(Qs. Ar. Rum (30) : 21)</h4>
+ 
+      </div>
+      <div class="Kertas__number">1</div>
+    </div>
+    </div>
+    
+    <div class="Kertas__half Kertas__half--back"> 
+      <div class="halaman2">
+       
+        <div class="Kertas__number">2</div> 
+      </div>
+    </div>
+    </div>
+    <div class="Kertas buku__Kertas" style="--Kertas-index: 3; translate: none; rotate: none; scale: none; transform: translate(0%, -50%) translate3d(0px, 0px, -2px);">
+      <div class="Kertas__half Kertas__half--front"> 
+        <div class="halaman3">
+          <h2> Juliet .Spd </h2>
+          <h4> Putri dari <br></h4>
+          <h3>Bapak Juliet <br> & <br> Ibu Juliet</h3>
+          <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i> </a>
+          
+        <div class="Kertas__number">3</div>
+      </div>
+    </div>
+    <div class="Kertas__half Kertas__half--back">
+      <div class="halaman4">
+      <h2> Romeo Ahmad </h2>
+      <h4> Putra dari <br></h4>
+      <h3>Bapak Romeo <br> & <br> Ibu Romeo</h3>
+      <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i> </a>
+      <div class="Kertas__number">4</div>
+    </div>
+  </div>
+  </div>
+  <div class="Kertas buku__Kertas" style="--Kertas-index: 4; translate: none; rotate: none; scale: none; transform: translate(0%, -50%) translate3d(0px, 0px, -3px);">
+    <div class="Kertas__half Kertas__half--front">
+      <div class="halaman5">
+      <!-- <div class="wrapperHalaman">
+        <div class="containerProfilKanan">
+          <img src="img/galeryfoto/kiri2.png" alt="foto dio" >
+        </div>
+      </div> -->
+      <div class="Kertas__number">5</div>
+      
+    </div>
+    </div>
+
+    <div class="Kertas__half Kertas__half--back">
+      <div class="halaman6">
+        <h2> SAVE THE DATE</h2>
+        <div class="containerProfilKiri">
+        <h3>22 Desember 2025</h3>
+        <br> <br>
+        <div class="simply-countdown-losange" > </div>
+        <button onclick="window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=Nama+Acara&dates=20251222T090000Z/20251222T100000Z&details=nikahan&location=Lokasi+Acara','_blank')" style="font-size: 1rem;">
+          Add to  Calendar
+        </button>
+      <div class="wrapper">
+        <div class="acara">
+          <h4>Akad</h4> 
+          <h4>Resepsi</h4> 
+          <h5>08:00-10:00 WIB</h5>
+          <h5>11:00-14:00 WIB</h5>
+        </div>
+        <div class="lokasi">
+          <h4>Lokasi : Graha Batununggal Indah <br>  Jl. Batununggal Indah IX No.2, Mengger, Kec. Bandung Kidul, Kota Bandung, Jawa Barat 40267</h4>
+          <a href="https://maps.app.goo.gl/PDZndoQHXvPNtjK47" target="_blank" class="btn-custom">Klik google map</a>
+        </div>
+      </div>
+     
+        <!-- <sl-card class="card-header transparent-card">
+          <div slot="header" class="header">
+            Akad
+          </div>
+          <div class="wrapper-card">
+          <i class="fa-regular fa-calendar-days"></i> <br>
+          <p>Tanggal 22 Desember 2025 <br> pukul : 08:00  </p>
+          </div>
+        </sl-card>
+        
+        <sl-card class="card-header transparent-card">
+          <div slot="header" class="header">
+            Resepsi
+          </div>
+          <div class="wrapper-card">
+          <i class="fa-regular fa-calendar-days"></i> <br>
+          <p>Tanggal 22 Desember 2025 <br> pukul : 11:00  </p>
+          </div>
+          <div class="wrapper-card">
+          <i class="fa-solid fa-map-marker-alt"></i> <br>
+          <p> Graha Batununggal Indah <br>  Jl. Batununggal Indah IX No.2, Mengger, Kec. Bandung Kidul, Kota Bandung, Jawa Barat 40267</p>
+        </div>
+      </sl-card> -->
+      </div>
+      <div class="Kertas__number">6</div>
+    </div>
+  </div>
+  </div>
+
+  <div class="Kertas buku__Kertas" style="--Kertas-index: 5; translate: none; rotate: none; scale: none; transform: translate(0%, -50%) translate3d(0px, 0px, -4px);">
+    <div class="Kertas__half Kertas__half--front">
+      <div class="halaman7">
+      <div class="wrapperHalaman">
+        <div class="containerProfilKanan">
+          
+           <div class="galery-container h-4">
+            <div class="galery-items">
+              <div class="image">
+                  <img src="img/galeryfoto/akhir.webp" alt="foto 1" >
+              </div>
+            </div>
+          </div>
+
+          <div class="galery-container h-4">
+            <div class="galery-items">
+              <div class="image">
+              </div>
+            </div>
+          </div>
+
+       
+          
+        </div>
+      </div>
+      <div class="Kertas__number">7</div>
+    </div>
+    </div>
+
+    <div class="Kertas__half Kertas__half--back">
+      <div class="halaman8">
+      <div class="wrapperHalaman">
+        <h2>STORY</h2>
+        <div class="containerProfilKiri">
+        </div>
+        <sl-card class="card-image" id="card1" style="top: 20%; left: 5%;">
+          <img src="img/galeryfoto/1.webp"
+            slot="image"
+            alt="A kitten walks towards camera on top of pallet."
+          />
+          <h4> Phase 1</h4>
+          <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolorem voluptates necessitatibus. <br><br> </p>
+        </sl-card>
+        <sl-card class="card-image" id="card2" style="top: 30%; left: 52%; ">
+          <h4> Phase 2</h4>
+          <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis, consequatur? </p>
+          <img src="img/galeryfoto/2.webp"
+            slot="image"
+            alt="A kitten walks towards camera on top of pallet."
+          />
+        </sl-card>
+        
+      </div>
+      <div class="Kertas__number">8</div>
+    </div>
+  </div>
+  </div>
+
+  <div class="Kertas buku__Kertas" style="--Kertas-index: 6; translate: none; rotate: none; scale: none; transform: translate(0%, -50%) translate3d(0px, 0px, -5px);">
+    <div class="Kertas__half Kertas__half--front">
+      <div class="halaman9">
+      <div class="wrapperHalaman">
+        <div class="containerProfilKanan">
+          <h3>OF <br></h3> 
+          <h2>LOVE</h2>
+        </div>
+        <sl-card class="card-image" id="card3" style="top: 20%; left: 0;">
+          <img src="img/galeryfoto/3.webp"
+            slot="image"
+            alt="A kitten walks towards camera on top of pallet."
+          />
+          <h4> Phase 3</h4>
+          <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias tenetur animi fugit quisquam, omnis nihil mollitia rem sint eius fuga! <br><br><br> </p>
+        </sl-card>
+        <sl-card class="card-image" id="card4" style="top: 35%; right: 5%;">
+          <img src="img/galeryfoto/4.webp"
+            slot="image"
+            alt=""/>
+
+          <h4> Phase 4</h4>
+          <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias tenetur animi fugit quisquam, omnis nihil mollitia rem sint eius fuga! <br> </p>
+        </sl-card>
+      </div>
+      <div class="Kertas__number">9</div>
+    </div>
+    </div>
+
+    <div class="Kertas__half Kertas__half--back">
+      <div class="halaman10">
+        <h2>Memory <br>of Love</h2>
+      <div class="wrapperHalaman">
+        <div class="containerProfilKiri">
+          
+        </div>
+        <div class="gallery-grid" id="galery">
+          <div class="galery-container w-4 h-5">
+            <div class="galery-items">
+              <div class="image">
+                <a data-fancybox="gallery" href="img/galeryfoto/1.webp">
+                  <img src="img/galeryfoto/1.webp" alt="foto 1">
+                </a>
+              </div>
+            </div>
+          </div>
+          
+            <div class="galery-container w-2 h-3">
+            <div class="galery-items">
+              <div class="image">
+                <a data-fancybox="gallery" href="img/galeryfoto/2.webp">
+                  <img src="img/galeryfoto/2.webp" alt="foto 1">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="galery-container w-2 h-2">
+            <div class="galery-items">
+              <div class="image">
+                <a data-fancybox="gallery" href="img/galeryfoto/3.webp">
+                  <img src="img/galeryfoto/3.webp" alt="foto 1">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="galery-container w-2 h-2">
+            <div class="galery-items">
+              <div class="image">
+                <a data-fancybox="gallery" href="img/galeryfoto/4.webp">
+                  <img src="img/galeryfoto/4.webp" alt="foto 1">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          </div>
+        </div>
+        <div class="Kertas__number">10</div>
+      </div>
+    </div>
+  </div>
+
+    <div class="Kertas buku__Kertas" style="--Kertas-index: 7; translate: none; rotate: none; scale: none; transform: translate(0%, -50%) translate3d(0px, 0px, -6px);">
+      <div class="Kertas__half Kertas__half--front">
+        <div class="halaman11">
+        <div class="wrapperHalaman">
+          <div class="containerProfilKanan">
+          </div>
+          <div class="gallery-grid" id="galery" style="margin-left: 5%;">
+            <div class="galery-container w-2 h-5">
+              <div class="galery-items">
+                <div class="image">
+                  <a data-fancybox="gallery" href="img/galeryfoto/5.webp">
+                    <img src="img/galeryfoto/5.webp" alt="foto 1">
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+              <div class="galery-container w-2 h-4">
+              <div class="galery-items">
+                <div class="image">
+                  <a data-fancybox="gallery" href="img/galeryfoto/6.webp">
+                    <img src="img/galeryfoto/6.webp" alt="foto 1">
+                  </a>
+                </div>
+              </div>
+            </div>
+      
+            <div class="galery-container w-2 h-5">
+              <div class="galery-items">
+                <div class="image">
+                  <a data-fancybox="gallery" href="img/galeryfoto/7.webp">
+                    <img src="img/galeryfoto/7.webp" alt="foto 1">
+                  </a>
+                </div>
+              </div>
+            </div>
+      
+            <div class="galery-container w-2 h-4">
+              <div class="galery-items">
+                <div class="image">
+                  <a data-fancybox="gallery" href="img/galeryfoto/8.webp">
+                    <img src="img/galeryfoto/8.webp" alt="foto 1">
+                  </a>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      <div class="Kertas__number">11</div>
+    </div>
+    </div>
+
+    <div class="Kertas__half Kertas__half--back">
+      <div class="halaman12">
+        <div class="wrapperHalaman">
+        <div class="containerProfilKanan">
+          
+
+        
+        <h2> WEDDING</h2>
+    <h3> GIFT</h3>
+    <sl-card class="card-header transparent-card">
+      <div slot="header">
+        <img src="img/Logo BCA.webp"  id="LogoBCA" alt="">
+        
+      </div>
+      Bank BCA <br>
+      Atas nama Dio Deska
+      <br>
+      <button id="clipboardBCA"> Copy nomor rekening</button>
+    </sl-card>
+    <sl-card class="card-header transparent-card" style="width: 100%;">
+      <div slot="header">
+        <img src="img/Logo BNI.webp" alt="" id="LogoBNI">
+        
+      </div>
+      Bank BNI <br>
+      Atas nama Haryati
+      <br>
+      <button id="clipboardBNI"> Copy nomor rekening</button>
+    </sl-card>
+    <sl-card class="card-header transparent-card" style="width: 100%;" >
+      <div slot="header">
+        <i class="fa-solid fa-gift" style="font-size: 5rem;"></i>
+        
+      </div>
+      kirim Kado
+      <br>
+      <button id="clipboardAlamat"> Copy alamat rumah</button>
+    </sl-card>
+    
+    </div>
+      </div>
+    <div class="Kertas__number">12</div>
+  </div>
+</div>
+</div>
+
+<div class="Kertas buku__Kertas" style="--Kertas-index: 8; transform: translate(0%, -50%) translate3d(0px, 0px, -7px);">
+  <div class="Kertas__half Kertas__half--front">
+    <div class="halaman13">
+      <div class="wrapperHalaman">
+        <div class="containerProfilKanan">
+          <h3>“Akhirnya, yang ditunggu bukan waktu, tapi kamu.”</h3>
+        </div>
+      </div>
+     
+
+    <div class="Kertas__number">13</div>
+  </div>
+</div>
+
+    <div class="Kertas__half Kertas__half--back">
+      <div class="halaman14">
+      
+
+     <h2>RSVP</h2>
+    
+    <form id="form-rsvp">
+      <input type="hidden" name="id" value="andi-sarah">
+
+      <input type="text" name="Nama" placeholder="Isi Nama" required id="inputNama"><br>
+      <textarea name="Ucapan" placeholder="Doa & Ucapan" required id="inputPesan"></textarea><br>
+      <label><input type="radio" name="Kehadiran" value="Hadir" required> Hadir</label>
+      <label><input type="radio" name="Kehadiran" value="Tidak Hadir"> Tidak Hadir</label><br>
+      <button type="submit" id="buttonsubmit">Kirim</button>
+    </form>
+    <div class="wrapperKomentar">
+      <div id="comments"></div>
+      <div id="pagination-controls"></div>
+    </div>
+      
+      <div class="Kertas__number">14</div>
+    </div>
+  </div>
+  </div>
+
+  <div class="Kertas buku__Kertas buku__cover buku__cover--back" style="--Kertas-index: 9; translate: none; rotate: none; scale: none; transform: translate(0%, -50%) ">
+     <div class="Kertas__half Kertas__half--front"> 
+    <div class="halaman15">
+      <div class="wrapperHalaman">
+        <div class="containerProfilKiri">
+          
+           <div class="galery-container h-4">
+            <div class="galery-items">
+              <div class="image">
+                  <img src="img/galeryfoto/9.webp" alt="foto 1" >
+              </div>
+            </div>
+          </div>
+        </div>
+          <h3> Terima kasih <br> </h3>
+          <h4>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir dan memberikan doa restunya untuk pernikahan kami. <br> Atas doa & restunya, kami ucapkan terima kasih.</h4>
+          <h2>Romeo & Juliet</h2>
+      </div>
+      </div>
+     </div>
+     
+      <div class="Kertas__half Kertas__half--back"> 
+      <div class="lastpage">
+         <div class="wrapperHalaman" id="lastpage">
+          <img src="img/logo dio.webp" alt="" id="logo">
+          <h3 id="brand">dexa-invitation.com</h3>
+        </div>
+      
+      </div>
+    </div>
+
+    
+  </div>
+
+  
+ 
+</div>
+
+  <div id="audio-container">
+    <audio id="song" autoplay loop>
+      <source src="audio/village of Dali.mp3" type="audio/mp3">
+    </audio>
+    <div class="audio-icon-wrapper"  >
+      <i class="fa-regular fa-circle-pause"></i>
+    </div>
+    <div class="audio-icon-wrapper" style="display: none;" >
+      <i class="fa-solid fa-circle-play"></i>
+    </div>
+  </div>
+  <dotlottie-wc
+  src="https://lottie.host/c3434fe4-be06-430d-af70-68a9aa4675eb/IV7aTlv0fN.lottie"
+  style="width: 300px;height: 300px"
+  autoplay
+  loop
+></dotlottie-wc>
+<footer>
+  <div class="footer-container">
+    <small>&copy;2025 dexa-invitation.com. All Rights Reserved.</small>
+    <div class="social-icons">
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+  </div>
+</footer>
+<script type="module">
+import simplyCountdown from './countdown/simplyCountdown.js';
+  simplyCountdown('.simply-countdown-losange',{
+      year: 2025, // Target year (required)
+      month: 12, // Target month [1-12] (required)
+      day: 22, // Target day [1-31] (required)
+      hours: 8, // Target hour [0-23], default: 0
+      words: {
+      days: {
+        root: 'hari',
+        lambda: (root, n) => root
+      },
+      hours: {
+        root: 'jam',
+        lambda: (root, n) => root
+      },
+      minutes: {
+        root: 'menit',
+        lambda: (root, n) => root
+      },
+      seconds: {
+        root: 'detik',
+        lambda: (root, n) => root
+      }
+    }
+  }); 
+  </script>
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.umd.js"></script>
+<script>
+  Fancybox.bind('[data-fancybox="gallery"]', {
+    //
+  });    
+</script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

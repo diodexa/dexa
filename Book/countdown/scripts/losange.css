@@ -1,0 +1,89 @@
+/**
+* Project : simply-countdown
+* File : simplyCountdown.theme.losange
+* Author : Vincent Loy <vincent.loy1@gmail.com>
+*/
+
+.simply-countdown-losange {
+  overflow: visible;
+  display: flex;
+  
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  font-family: "Inter", sans-serif;
+}
+
+.simply-countdown-losange > .simply-section {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-45deg);
+  background: white;
+  /* border: 1px solid black; */
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.simply-countdown-losange > .simply-section > div {
+  transform: rotate(45deg);
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.simply-countdown-losange > .simply-section .simply-amount,
+.simply-countdown-losange > .simply-section .simply-word {
+  display: block;
+  text-align: center;
+}
+
+.simply-countdown-losange > .simply-section .simply-amount {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: black;
+}
+
+.simply-countdown-losange > .simply-section .simply-word {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.simply-countdown-losange .simply-seconds-section {
+  display: none ;
+}
+
+@media (min-width: 640px) {
+  .simply-countdown-losange > .simply-section {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .simply-countdown-losange > .simply-section .simply-amount {
+    font-size: 1.5rem;
+  }
+
+  .simply-countdown-losange > .simply-section .simply-word {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .simply-countdown-losange > .simply-section {
+    width: 90px;
+    height: 90px;
+  }
+
+  .simply-countdown-losange > .simply-section .simply-amount {
+    font-size: 1.75rem;
+  }
+
+  .simply-countdown-losange > .simply-section .simply-word {
+    font-size: 0.75rem;
+  }
+}

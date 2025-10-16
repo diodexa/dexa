@@ -1,0 +1,830 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Akaya+Kanadaka&family=Corinthia:wght@400;700&family=GFS+Didot&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Solway:wght@300;400;500;700;800&display=swap');
+
+
+:root {
+    --button : #04b19d;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Roboto;
+}
+
+
+
+#join{
+    background: var(--button);
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    justify-content: center;
+    text-align: center;
+}
+
+.join .card-overview {
+    width: 80%;
+    height: 100%;
+    position: relative;
+    top: 35vh;
+    transform: translateY(-30%);
+    font-family: Poppins;
+}
+
+
+
+
+.card-overview h2 {
+    margin-top: 1rem;
+    font-size: 3rem;
+}
+
+.card-overview p {
+    font-size: 1.5rem;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.join .avatar-group sl-avatar {
+  --size: 4.5rem; /* kecil */
+  
+}
+
+.join small {
+  font-size: 1.5rem;
+  margin-left: 70%;
+
+}
+
+
+.join .btn {
+  display: inline-block;
+  padding: 12px 24px;
+  width: 100%;
+  margin-top: 5%;
+  background: var(--button);
+  color: #fff !important;
+  border: none; 
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  color:  var(--button) !important;
+  background: white;
+}
+
+#header {
+    
+    position: fixed; 
+    width: 100%;
+    z-index: 999;
+    caret-color: transparent;
+    flex: 1;
+    flex-shrink: 0;
+}
+
+.WrapHeader {
+    width: 100%;
+    top: 0;
+    background-color: var(--button);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+.WrapHeader a, 
+.header-info,
+.audio-container {
+    flex-grow: 1;
+    justify-content: center;
+    text-align: center;
+}
+
+#header img {
+    max-width: 100%;
+    width: 35% ; 
+    object-fit: cover;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+    animation: bounceAnime 1s infinite ease-in-out;
+}
+
+.WrapHeader a {
+    width: 20%;
+}
+
+.header-info {
+    width: 60%;
+    transform: translateX(-20%);
+}
+
+#header h1 {
+    
+    font-size: 2rem;
+    text-align: center;
+    color: #ffffff;
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+     
+}
+
+#header p {
+     text-align: center;
+     
+}
+
+.audio-icon-wrapper {
+    width: 20%;
+    font-size: 5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0;
+    margin-top: 7%;
+    margin-right: 1rem;
+    animation: rotating 4s linear infinite;
+    color: #ffffff;
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+    user-select: none;
+}
+
+
+
+
+
+#Home {
+    position: absolute;
+    top: 18.7vh;     /* tinggi header */
+    bottom: 9.2vh;  /* tinggi TulisPesan */
+    left: 0;
+    right: 0;
+    overflow-y: auto; /* hanya Home yang bisa scroll */
+    padding: 1rem;
+    background: url(../img/background-whatsapp1.jpg);
+    background-attachment: fixed; /* supaya scroll bar ikut geser */
+    background-size: contain;
+    }
+
+#Home .container {
+    flex: 1; 
+    
+}
+
+.lead{
+    position: absolute;
+    background-color: var(--button);
+    color: rgb(255, 255, 255);
+    border-radius: 0.8rem;
+    width: fit-content;
+    padding: 10px 10px;
+    font-size: 10px;
+    left: 50%;
+    top: 10%;
+    margin-bottom: 10%;
+    transform: translate(-50%);
+}
+
+
+.chat {
+    padding: 1.4rem 0;
+    margin-top: 25%;
+    position: relative;
+    font-family: "lucida";
+
+}
+
+.nama {
+    font-weight: bold; 
+    font-size: 2rem !important;
+    text-align: center;
+    color: #0f0e0e;
+    text-shadow: 0 0.5  #0f0e0e;
+}
+
+.tanggal {
+    font-weight: bold; 
+    font-size: 2rem !important;
+}
+
+.chat li {
+    position: relative;
+    margin-bottom: 0.5rem;
+    list-style: none;
+}
+
+.chat li::before,
+.chat li::after {
+    content: '';
+    display: table;
+}
+
+.chat li::after {
+    clear: both;
+}
+
+.chat li .chat-image {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 7%;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    background-size: cover;
+    background-position: center;
+    margin-top: 0.5%;
+    filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));
+    
+}
+
+.chat li .balon-chat {
+    max-width: 60%;
+    float: left;
+    background-color: #9fefe6;
+    padding: 0.7rem;
+    border-radius: 10px;
+    position: relative;
+    margin-left: 11%; 
+    margin-top: 0.5%;    
+    text-align: left;
+    font-size: large;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
+    word-break: break-all;
+}
+
+.chat h3{
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: blueviolet;
+    
+}
+.chat p {
+    margin: 1px;
+    font-size: 1rem;
+    white-space: normal;      
+    word-wrap: break-word;    
+    overflow-wrap: anywhere;   
+}
+
+
+
+.waktu {
+    right : 3%;
+    position: absolute;
+    bottom: 2%;
+    font-size:0.7rem;
+    color: #0f0e0e;
+
+}
+
+.simply-countdown-circle {
+    padding-bottom: 1rem;
+    padding-top: 2rem;
+    margin-bottom: 5%;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+  gap: 6px;
+  justify-content: center;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 250px;       
+  object-fit: cover;
+  border-radius: 8px;
+}
+.gallery-grid video {
+  width: 140%;
+  height: auto;     
+  object-fit: cover;
+  margin: 0;
+}
+
+
+.gallery-overlay {
+  position: relative;
+  display: block;
+}
+
+.gallery-overlay::after {
+  content: attr(data-more);
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  opacity: 0;                
+  transition: opacity 0.2s;
+}
+
+.gallery-overlay[data-more]::after {
+  opacity: 1;                
+}
+
+
+
+#TulisPesan {
+    position: fixed;
+    background-color: var(--button);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;        
+    box-sizing: border-box;
+
+}
+
+
+.saveTheDate {
+    position: absolute;
+    padding: 1rem 1rem;
+    background:var(--button);
+    color: white;
+    border-radius: 10px; 
+    border: 1px solid rgb(129, 127, 127);
+    width: 70%;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.saveTheDate:hover {
+    background: white;
+    color: var(--button);
+}
+
+#LogoBNI,
+#LogoBCA {
+  width: 50%;
+}
+
+.transparent-card::part(base) {
+  background-color: rgba(245, 240, 240, 0);
+  font-size: 1.5rem;
+  align-items: center;
+  text-align: center;
+
+}
+
+.card-header [slot="header"] img {
+    margin-left: 20%;
+    margin-bottom: 0;
+}
+
+.card-header [slot="header"] img {
+    display: block; 
+}
+
+.card-header button {
+  font-size: 1rem;
+  padding: 1rem ;
+  background-color: var(--button);
+  color: white;
+}
+
+.halaman12 button:hover {
+  background-color: white; 
+  color: black;            
+  transform: scale(1.05);  
+  transition: all 0.01s ease;
+}
+
+.card-header [slot="header"] img {
+    margin-left: 20%;
+    margin-bottom: 0;
+}
+
+.card-header [slot="header"] img {
+    display: block; 
+}
+
+
+
+
+.WarpTulisPesan {
+    align-items: flex-end;
+    gap: 8px;
+    bottom: 0;
+    display: flex;
+}
+
+.input-nama {
+  flex: 0 0 20%;
+  margin: 0.3rem;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  padding-top: 15px;
+  font-size: 1rem;
+  line-height: 1;
+  resize: none;      
+  overflow-y: hidden; 
+  min-height: 30px;   
+  max-height: 120px;     
+}
+.input-pesan {
+  flex: 1;
+  margin: 0.3rem;
+  width: 60%;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  padding-top: 15px;
+  padding-right: 10%;
+  font-size: 1rem;
+  line-height: 1;
+  resize: none;      
+  overflow-y: hidden; 
+  min-height: 30px;   
+  max-height: 120px; 
+  position: relative;
+}
+
+.kirim-button{
+    flex: 0 0 auto;
+    background-color: #9fefe6;
+    width: 15%;
+    border-radius: 0.8rem;
+    padding: 15px 12px;
+}
+
+#stickerButton {
+    position: absolute;
+    color: #ccc;
+    font-size: 250% ;
+    right: 22%;
+    bottom: 30%;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#stickerButton:hover {
+  color: #25D366; /* warna WhatsApp hijau */
+}
+
+/* Popup sticker list */
+.sticker-list {
+  position: absolute;
+  bottom: 60px; /* muncul di atas textarea */
+  right: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 8px;
+  display: none;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 90%;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 100;
+}
+
+.sticker-list img {
+  width: 40%;
+
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.stiker-chat {
+  width: 120px;      /* ubah sesuai selera: 60px, 80px, dll */
+  height: auto;     /* biar proporsional */
+  border-radius: 10px;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.sticker-overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 9999;
+  border-radius: 10px;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.sticker-overlay.show {
+  display: flex;
+  opacity: 1;
+}
+
+.loader {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+
+
+
+.chat li {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.chat li.active, 
+li.pesan-dari-server {
+  opacity: 1;
+ 
+}
+
+
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounceAnime {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px); 
+  }
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* phone */
+@media screen and (max-width:576px) {
+
+html{
+    font-size: 55%;
+}
+
+#header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    }
+
+.header-info {
+    transform:none;
+}
+
+#header img {
+ 
+    width: 100% ; 
+    transform: scale(0.9) !important;
+
+}
+
+#header h1 {
+    font-size: 2.5rem;
+    
+}
+.audio-icon-wrapper{
+    font-size: 5rem;
+}
+
+#Home {
+    bottom: 7vh;
+    top: 11vh;
+} 
+
+.lead {
+    padding: 4px 5px;
+}
+.chat li .chat-image {
+    width: 40px;
+    height: 40px;
+    left: 10%;
+    margin-top: 1%;
+}
+.chat li .balon-chat {
+    max-width: 50%;
+    min-width: 20%;
+    margin-left: 20%; 
+    border-radius: 8px;
+    font-size: large!important;
+    margin-bottom: 1%;
+}
+.chat p {
+    font-size: 1.4rem;
+    margin: 0;
+}
+.chat h3{
+    font-size: 1.5rem;
+    margin-top: 0;
+   
+}
+.tanggal {
+    font-size: 1.7rem !important;
+}
+
+.simply-countdown-circle {
+    padding: 0.5rem;
+    gap: 0rem !important;
+    flex: 0 0 auto;
+}
+.simply-countdown-circle .simply-amount
+ {
+    font-size: 2rem !important; 
+}
+.simply-countdown-circle .simply-seconds-section {
+  display: none !important;
+}
+.simply-countdown-circle > .simply-section {
+    width: 50px !important;
+    height: 50px !important;
+}
+.waktu {
+    font-size: 50%;
+    margin-left: 30%;
+    bottom: 2%;
+}
+.map {
+    font-size: 80%;
+}
+
+.gallery-grid img {
+  height: 150px;       
+
+}
+
+.gallery-overlay::after {
+    height: 150px;
+}
+
+
+
+
+.input-nama {
+  width: 20%;
+  height: 60%;
+  border-radius: 1rem;
+  border: none;
+  padding-right: 0;
+  font-size: 1rem;
+}
+.input-pesan {
+  width: 50%;
+  border-radius: 1rem;
+  height: 60%;
+  border: none;
+}
+.kirim-button{
+    width: 15%;
+    height: 60%;
+    border-radius: 1rem;
+    border: none;
+    color: black;
+}
+
+}
+/* tablet  */
+@media screen and  (min-width: 768px) and (max-width: 1023px) {
+html{
+    font-size: 75%;
+}
+
+#Home {
+    top: 5%;     
+    bottom: 5.5vh;
+    background-size: cover;
+} 
+
+.chat li .chat-image {
+    width: 50px;
+    height: 50px;
+    margin-top: 1%;
+}
+
+.chat li .balon-chat {
+
+    margin-left: 14%; 
+    margin-top: 1% ;
+}
+
+.input-nama {
+  padding: 6px 12px;
+  padding-top: 15px;  
+}
+.input-pesan {
+  padding: 6px 12px;
+  padding-top: 13px;
+
+}
+
+
+} 
+/* laptop */
+@media screen and  (min-width: 1024px) {
+html{
+    font-size: 100%;
+    
+}
+
+.join .card-overview {
+    width: 23%;
+    position: relative;
+    top: 35%;
+    
+}
+
+#join img {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+
+.join .card-overview h2 {
+    font-size: 2rem;
+    margin: 0;
+ 
+}
+
+.join p {
+    font-size: 1rem;
+
+}
+
+.join .avatar-group sl-avatar {
+  --size: 3rem; /* kecil */
+}
+
+.join small {
+    font-size: 1rem;
+}
+
+
+.join .btn {
+  display: inline-block;
+  padding: 12px 24px;
+  width: 100%;
+
+  background: var(--button);
+  color: #fff !important;
+  border: none; 
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  color:  var(--button) !important;
+  background: white;
+}
+
+#stickerButton {
+    right: 17%;
+}
+
+.stiker-chat {
+  width: 300px; 
+}
+
+.sticker-list img {
+  width: 10%;
+
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+}
+
+@supports (-webkit-touch-callout: none) {
+  input,
+textarea {
+  font-size: 16px; /* cegah zoom */
+
+  transform-origin: left center;
+}
+}
