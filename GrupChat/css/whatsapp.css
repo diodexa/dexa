@@ -102,30 +102,34 @@ body, html {
     display: flex;
 }
 
+
+
 .WrapHeader a, 
 .header-info,
 .audio-container {
-    flex-grow: 1;
+   
     justify-content: center;
     text-align: center;
+    align-items: center;
 }
 
 #header img {
-    max-width: 100%;
-    width: 35% ; 
+    
+    width: 45% ; 
     object-fit: cover;
     border-radius: 50%;
     filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
-    animation: bounceAnime 1s infinite ease-in-out;
+  
 }
 
 .WrapHeader a {
     width: 20%;
+    animation: bounceAnime 1s infinite ease-in-out;
 }
 
 .header-info {
     width: 60%;
-    transform: translateX(-20%);
+
 }
 
 #header h1 {
@@ -143,7 +147,6 @@ body, html {
 }
 
 .audio-icon-wrapper {
-    width: 20%;
     font-size: 5rem;
     cursor: pointer;
     display: flex;
@@ -164,7 +167,7 @@ body, html {
 
 #Home {
     position: absolute;
-    top: 18.7vh;     /* tinggi header */
+    top: 13.7vh;     /* tinggi header */
     bottom: 9.2vh;  /* tinggi TulisPesan */
     left: 0;
     right: 0;
@@ -248,7 +251,8 @@ body, html {
 
 .chat li .balon-chat {
     max-width: 60%;
-    float: left;
+    display: inline-block;
+   
     background-color: #9fefe6;
     padding: 0.7rem;
     border-radius: 10px;
@@ -397,12 +401,6 @@ body, html {
 }
 
 
-
-.card-header [slot="header"] img {
-    margin-left: 20%;
-    margin-bottom: 0;
-    display: block; 
-}
 
 
 
@@ -561,7 +559,7 @@ li.pesan-dari-server {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(5px); 
+    transform: translateY(10px); 
   }
 }
 
@@ -609,7 +607,7 @@ html{
  
     width: 100% ; 
     transform: scale(0.9) !important;
-
+    
 }
 
 #header h1 {
@@ -617,7 +615,7 @@ html{
     
 }
 .audio-icon-wrapper{
-    font-size: 5rem;
+    font-size: 4.5rem;
 }
 
 #Home {
@@ -745,7 +743,9 @@ html{
 }
 
 
-
+.audio-icon-wrapper{
+    font-size: 5rem;
+}
 
 
 
@@ -786,15 +786,17 @@ html{
     
 }
 
+
+
 .join .card-overview {
     width: 23%;
     position: relative;
-    top: 35%;
+    top: 10%;
     
 }
 
 #join img {
-    width: 100%;
+    width: 70%;
     margin-bottom: 0;
 }
 
@@ -852,6 +854,20 @@ html{
   border-radius: 8px;
   transition: transform 0.2s;
 }
+
+
+
+.chat li .balon-chat {
+  width: fit-content !important;
+  max-width: 40% !important;
+}
+
+/* .chat li .balon-chat sl-card {
+  width: auto !important;
+  display: inline-block !important;
+  vertical-align: top;
+} */
+
 
 }
 
