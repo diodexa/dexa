@@ -27,15 +27,18 @@ body, html {
 }
 
 .join .card-overview {
-    width: 80%;
-    height: 100%;
+    width: 50vw;
+
     position: relative;
-    top: 35vh;
-    transform: translateY(-30%);
+    top: 10vh;
     font-family: Poppins;
 }
 
-
+.join .card-overview img {
+  width: 70%;
+  margin-left: 50%;
+  transform: translate(-50%);
+}
 
 
 .card-overview h2 {
@@ -169,7 +172,7 @@ body, html {
     padding: 1rem;
     background: url(../img/background-whatsapp1.jpg);
     background-attachment: fixed; /* supaya scroll bar ikut geser */
-    background-size: contain;
+    background-size: cover;
     }
 
 #Home .container {
@@ -373,21 +376,18 @@ body, html {
 }
 
 .transparent-card::part(base) {
-  background-color: rgba(245, 240, 240, 0);
+  background-color: transparent;
   font-size: 1.5rem;
   align-items: center;
   text-align: center;
-
 }
 
 .card-header [slot="header"] img {
     margin-left: 20%;
     margin-bottom: 0;
-}
-
-.card-header [slot="header"] img {
     display: block; 
 }
+
 
 .card-header button {
   font-size: 1rem;
@@ -396,21 +396,15 @@ body, html {
   color: white;
 }
 
-.halaman12 button:hover {
-  background-color: white; 
-  color: black;            
-  transform: scale(1.05);  
-  transition: all 0.01s ease;
-}
+
 
 .card-header [slot="header"] img {
     margin-left: 20%;
     margin-bottom: 0;
-}
-
-.card-header [slot="header"] img {
     display: block; 
 }
+
+
 
 
 
@@ -580,13 +574,26 @@ li.pesan-dari-server {
     }
 }
 
+@media screen and (max-width:468px) {
+
+  .join .card-overview {
+    width: 70vw;
+    top: 10vh;
+}
+
+
+
+}
+
 
 /* phone */
-@media screen and (max-width:576px) {
+@media screen and (max-width:768px) {
 
 html{
     font-size: 55%;
 }
+
+
 
 #header {
     flex-direction: row;
@@ -711,8 +718,36 @@ html{
 /* tablet  */
 @media screen and  (min-width: 768px) and (max-width: 1023px) {
 html{
-    font-size: 75%;
+    font-size: 85%;
 }
+
+.join .card-overview {
+    width: 23%;
+    font-size: smaller;
+}
+
+
+
+
+.join .card-overview h2 {
+    font-size: 1.5rem;
+    margin: 0;
+ 
+}
+
+.join p {
+    font-size: 1rem;
+
+}
+
+.join .avatar-group sl-avatar {
+  --size: 3rem; /* kecil */
+}
+
+
+
+
+
 
 #Home {
     top: 5%;     

@@ -43,7 +43,8 @@ input, textarea {
 }
 #join {
   position: fixed;
-  top: 0; left: 0;
+  top: 0; 
+  left: 0;
   width: 100vw;
   height: 100vh;
   background: url('../img/galeryfoto/1.webp');
@@ -1258,6 +1259,10 @@ input, textarea {
   height: 100%;
   background-color: var(--warna);
 }
+
+#lastpage.galery-items:hover .image img {
+  transform: none;
+}
 #logo {
   position: absolute;
   left: 27%;
@@ -1371,7 +1376,16 @@ footer {
     }
 }
 
-
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .buku {
+      width: 500px !important; 
+      height: 1000px !important; 
+      top: 6% !important; 
+      left: 45% !important;
+      transform: translateY(-19.5%) scale(0.6) !important;
+      transform-origin: center center;
+  }
+}
 
 
 @media screen and (min-width: 1024px) {
@@ -1423,3 +1437,4 @@ dotlottie-wc {
 @supports (-webkit-touch-callout: none) {
   
 }
+

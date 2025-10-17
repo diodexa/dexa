@@ -66,7 +66,7 @@ window.addEventListener("load", () => {
 const urlParams = new URLSearchParams(window.location.search);
 const nama = urlParams.get('to') || '';
 const sambutanText = document.querySelector('#Sambutan');
-sambutanText.innerHTML = `<p>Hai, selamat bergabung ya ${nama} <br> ini bukan grup whatsapp beneran kok.</p>
+sambutanText.innerHTML = `<p>Hai, selamat bergabung ya ${nama} <br> ini bukan grup whatsapp beneran kok.</p> <br>
 <span class="waktu">10:55</span>`;
 
 //imagehover
