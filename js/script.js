@@ -42,17 +42,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuLinks = navMenu.querySelectorAll('a');
 
   // sync colors when toggle clicked (Flowbite sets aria-expanded automatically)
-  toggleBtn.addEventListener('click', () => {
-    // small timeout to let Flowbite update aria-expanded / classes first
-    setTimeout(() => {
-      const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-      if (expanded) {
-        menuLinks.forEach(a => a.classList.add('text-white'));
-      } else {
-        menuLinks.forEach(a => a.classList.remove('text-white'));
-      }
-    }, 10);
-  });
+  // toggleBtn.addEventListener('click', () => {
+  //   // small timeout to let Flowbite update aria-expanded / classes first
+  //   setTimeout(() => {
+  //     const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+  //     if (expanded) {
+  //       menuLinks.forEach(a => a.classList.add('text-white'));
+  //     } else {
+  //       menuLinks.forEach(a => a.classList.remove('text-white'));
+  //     }
+  //   }, 10);
+  // });
 
   // close when clicking a link inside menu (mobile)
   menuLinks.forEach(link => {

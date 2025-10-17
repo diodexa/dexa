@@ -141,6 +141,10 @@ function hideStickerOverlay() {
 }
   // === Tombol Kirim Pesan ===
   tombolKirim.addEventListener("click", async () => {
+    const inputNama = document.getElementById("NamaKamu");
+    const textarea = document.getElementById("InputPesan");
+
+
     if (sedangKirimStiker) return; // 🔒 jangan kirim kalau sedang kirim stiker
 
     const nama = document.getElementById("NamaKamu").value.trim();
@@ -160,7 +164,9 @@ function hideStickerOverlay() {
     }
 
     tombolKirim.disabled = true;
-    tombolKirim.textContent = "Mengirim...";
+    inputNama.disabled = true;
+    textarea.disabled = true;
+    tombolKirim.textContent = "Mengirim";
 
     const formData = new FormData();
     formData.append("id", id);
@@ -177,6 +183,8 @@ function hideStickerOverlay() {
       alert("Gagal mengirim pesan 😢");
     } finally {
       tombolKirim.disabled = false;
+      inputNama.disabled = false;
+      textarea.disabled = false;
       tombolKirim.textContent = "Kirim";
     }
   });
@@ -197,16 +205,27 @@ function hideStickerOverlay() {
   document.querySelectorAll(".sticker").forEach((img) => {
   img.addEventListener("click", async (e) => {
     e.preventDefault();
-    const nama = document.getElementById("NamaKamu").value.trim();
-    if (!nama) {
-      document.activeElement.blur(); // 👈 ini yang bikin keyboard nutup
-      setTimeout(() =>alert("Isi dulu namamu sebelum mengirim stiker 😄"), 100);
 
+    const inputNama = document.getElementById("NamaKamu");
+    const textarea = document.getElementById("InputPesan");
+    const tombolKirim = document.getElementById("TombolKirim");
+    const stickerButton = document.getElementById("stickerButton");
+
+    const nama = inputNama.value.trim();
+    if (!nama) {
+      document.activeElement.blur();
+      setTimeout(() => alert("Isi dulu namamu sebelum mengirim stiker 😄"), 100);
       return;
     }
 
     sedangKirimStiker = true;
-    showStickerOverlay(); // tampilkan overlay
+    showStickerOverlay();
+
+    // 🔒 Disable semua input saat kirim stiker
+    inputNama.disabled = true;
+    textarea.disabled = true;
+    tombolKirim.disabled = true;
+    stickerButton.disabled = true;
 
     const id = document.getElementById("idInput").value || "whatsapp";
     const stikerUrl = img.src;
@@ -224,12 +243,19 @@ function hideStickerOverlay() {
       console.error("Gagal kirim stiker:", err);
       alert("Gagal mengirim stiker 😢");
     } finally {
-        hideStickerOverlay(); // sembunyikan overlay
-        stickerList.style.display = "none"; // sembunyikan sticker list lagi
-        sedangKirimStiker = false;
-      }
+      hideStickerOverlay();
+      stickerList.style.display = "none";
+      sedangKirimStiker = false;
+
+      // 🔓 Aktifkan kembali semua input
+      inputNama.disabled = false;
+      textarea.disabled = false;
+      tombolKirim.disabled = false;
+      stickerButton.disabled = false;
+    }
   });
 });
+
 });
 
 // === Fungsi ambil pesan dari server ===

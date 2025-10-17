@@ -20,14 +20,7 @@ html {
   overflow-x: hidden;
 }
 
-button[data-collapse-toggle][aria-expanded="true"] + #navbar-default a {
-  color: white !important;
-}
 
-/* Juga jaga tampilan hover/active */
-button[data-collapse-toggle][aria-expanded="true"] + #navbar-default a:hover {
-  color: var(--warna) !important;
-}
 
 /* fallback: kalau nav punya class block (Flowbite menambah class 'block') */
 
@@ -38,10 +31,7 @@ button[data-collapse-toggle][aria-expanded="true"] + #navbar-default a:hover {
   transition: color 0.3s ease;
 }
 
-.nav-default {
-  color: black !important; 
-  transition: color 0.3s ease;
-}
+
 
 #navbar-default.block a.nav-active {
   color: var(--warna) !important; /* teal */
