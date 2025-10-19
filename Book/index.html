@@ -3,6 +3,9 @@
   
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+<meta name="description" content="Undangan digital interaktif dari Dexa Invitation. Simpel, elegan, dan cepat diakses.">
+
+
 
 
   <title>Magz</title>
@@ -11,15 +14,12 @@
   
   <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css"> -->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" href="img/LogoIcon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="countdown/scripts/losange.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.css"/>
- <script
-  src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.1/dist/dotlottie-wc.js"
-  type="module"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+  <link rel="icon" href="img/LogoIcon.ico" type="image/x-icon" >
+  <link rel="stylesheet" href="countdown/scripts/losange.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.css" media="print" onload="this.media='all'">
+
 
   
 </head>
@@ -64,7 +64,7 @@
         <h2>Romeo & Juliet</h2>  
           
         <div class="containerSampul">
-          <img src="img/galeryfoto/2-bg.webp" alt=""> 
+          <img src="img/galeryfoto/2-bg.webp"  alt=""> 
           <div class="hover">
         </div>
         <h5>22 . 12 . 25</h5>
@@ -128,11 +128,6 @@
   <div class="Kertas buku__Kertas" style="--Kertas-index: 4; translate: none; rotate: none; scale: none; transform: translate(0%, -50%) translate3d(0px, 0px, -3px);">
     <div class="Kertas__half Kertas__half--front">
       <div class="halaman5">
-      <!-- <div class="wrapperHalaman">
-        <div class="containerProfilKanan">
-          <img src="img/galeryfoto/kiri2.png" alt="foto dio" >
-        </div>
-      </div> -->
       <div class="Kertas__number">5</div>
       
     </div>
@@ -160,30 +155,7 @@
           <a href="https://maps.app.goo.gl/PDZndoQHXvPNtjK47" target="_blank" class="btn-custom">Klik google map</a>
         </div>
       </div>
-     
-        <!-- <sl-card class="card-header transparent-card">
-          <div slot="header" class="header">
-            Akad
-          </div>
-          <div class="wrapper-card">
-          <i class="fa-regular fa-calendar-days"></i> <br>
-          <p>Tanggal 22 Desember 2025 <br> pukul : 08:00  </p>
-          </div>
-        </sl-card>
-        
-        <sl-card class="card-header transparent-card">
-          <div slot="header" class="header">
-            Resepsi
-          </div>
-          <div class="wrapper-card">
-          <i class="fa-regular fa-calendar-days"></i> <br>
-          <p>Tanggal 22 Desember 2025 <br> pukul : 11:00  </p>
-          </div>
-          <div class="wrapper-card">
-          <i class="fa-solid fa-map-marker-alt"></i> <br>
-          <p> Graha Batununggal Indah <br>  Jl. Batununggal Indah IX No.2, Mengger, Kec. Bandung Kidul, Kota Bandung, Jawa Barat 40267</p>
-        </div>
-      </sl-card> -->
+    
       </div>
       <div class="Kertas__number">6</div>
     </div>
@@ -199,7 +171,7 @@
            <div class="galery-container h-4">
             <div class="galery-items">
               <div class="image">
-                  <img src="img/galeryfoto/akhir.webp" alt="foto 1" >
+                  <img src="img/galeryfoto/akhir.webp" loading="lazy"  alt="foto 1" >
               </div>
             </div>
           </div>
@@ -226,7 +198,7 @@
         <div class="containerProfilKiri">
         </div>
         <sl-card class="card-image" id="card1" style="top: 20%; left: 5%;">
-          <img src="img/galeryfoto/1.webp"
+          <img src="img/galeryfoto/1.webp" loading="lazy" 
             slot="image"
             alt="A kitten walks towards camera on top of pallet."
           />
@@ -236,7 +208,7 @@
         <sl-card class="card-image" id="card2" style="top: 30%; left: 52%; ">
           <h4> Phase 2</h4>
           <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis, consequatur? </p>
-          <img src="img/galeryfoto/2.webp"
+          <img src="img/galeryfoto/2.webp" loading="lazy" 
             slot="image"
             alt="A kitten walks towards camera on top of pallet."
           />
@@ -257,7 +229,7 @@
           <h2>LOVE</h2>
         </div>
         <sl-card class="card-image" id="card3" style="top: 20%; left: 0;">
-          <img src="img/galeryfoto/3.webp"
+          <img src="img/galeryfoto/3.webp" loading="lazy" 
             slot="image"
             alt="A kitten walks towards camera on top of pallet."
           />
@@ -289,7 +261,7 @@
             <div class="galery-items">
               <div class="image">
                 <a data-fancybox="gallery" href="img/galeryfoto/1.webp">
-                  <img src="img/galeryfoto/1.webp" alt="foto 1">
+                  <img src="img/galeryfoto/1.webp"  alt="foto 1" loading="lazy" >
                 </a>
               </div>
             </div>
@@ -299,7 +271,7 @@
             <div class="galery-items">
               <div class="image">
                 <a data-fancybox="gallery" href="img/galeryfoto/2.webp">
-                  <img src="img/galeryfoto/2.webp" alt="foto 1">
+                  <img src="img/galeryfoto/2.webp" alt="foto 1" loading="lazy" >
                 </a>
               </div>
             </div>
@@ -309,7 +281,7 @@
             <div class="galery-items">
               <div class="image">
                 <a data-fancybox="gallery" href="img/galeryfoto/3.webp">
-                  <img src="img/galeryfoto/3.webp" alt="foto 1">
+                  <img src="img/galeryfoto/3.webp" alt="foto 1" loading="lazy" >
                 </a>
               </div>
             </div>
@@ -319,7 +291,7 @@
             <div class="galery-items">
               <div class="image">
                 <a data-fancybox="gallery" href="img/galeryfoto/4.webp">
-                  <img src="img/galeryfoto/4.webp" alt="foto 1">
+                  <img src="img/galeryfoto/4.webp" alt="foto 1" loading="lazy" >
                 </a>
               </div>
             </div>
@@ -343,7 +315,7 @@
               <div class="galery-items">
                 <div class="image">
                   <a data-fancybox="gallery" href="img/galeryfoto/5.webp">
-                    <img src="img/galeryfoto/5.webp" alt="foto 1">
+                    <img src="img/galeryfoto/5.webp" alt="foto 1" loading="lazy" >
                   </a>
                 </div>
               </div>
@@ -353,7 +325,7 @@
               <div class="galery-items">
                 <div class="image">
                   <a data-fancybox="gallery" href="img/galeryfoto/6.webp">
-                    <img src="img/galeryfoto/6.webp" alt="foto 1">
+                    <img src="img/galeryfoto/6.webp" alt="foto 1" loading="lazy" >
                   </a>
                 </div>
               </div>
@@ -363,7 +335,7 @@
               <div class="galery-items">
                 <div class="image">
                   <a data-fancybox="gallery" href="img/galeryfoto/7.webp">
-                    <img src="img/galeryfoto/7.webp" alt="foto 1">
+                    <img src="img/galeryfoto/7.webp" alt="foto 1" loading="lazy" >
                   </a>
                 </div>
               </div>
@@ -373,7 +345,7 @@
               <div class="galery-items">
                 <div class="image">
                   <a data-fancybox="gallery" href="img/galeryfoto/8.webp">
-                    <img src="img/galeryfoto/8.webp" alt="foto 1">
+                    <img src="img/galeryfoto/8.webp" alt="foto 1" loading="lazy" >
                   </a>
                 </div>
               </div>
@@ -396,7 +368,7 @@
     <h3> GIFT</h3>
     <sl-card class="card-header transparent-card">
       <div slot="header">
-        <img src="img/Logo BCA.webp"  id="LogoBCA" alt="">
+        <img src="img/Logo BCA.webp"  id="LogoBCA" loading="lazy"  alt="">
         
       </div>
       Bank BCA <br>
@@ -406,7 +378,7 @@
     </sl-card>
     <sl-card class="card-header transparent-card" style="width: 100%;">
       <div slot="header">
-        <img src="img/Logo BNI.webp" alt="" id="LogoBNI">
+        <img src="img/Logo BNI.webp" loading="lazy"  alt="" id="LogoBNI">
         
       </div>
       Bank BNI <br>
@@ -479,7 +451,7 @@
            <div class="galery-container h-4">
             <div class="galery-items">
               <div class="image">
-                  <img src="img/galeryfoto/9.webp" alt="foto 1" >
+                  <img src="img/galeryfoto/9.webp" loading="lazy" alt="foto 1" >
               </div>
             </div>
           </div>
@@ -529,8 +501,8 @@
   <div class="footer-container">
     <small>&copy;2025 dexa-invitation.com. All Rights Reserved.</small>
     <div class="social-icons">
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/dexa_invitation/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://api.whatsapp.com/send/?phone=6285155001718" target="_blank"> <i class="fa-brands fa-whatsapp"></i> </a>
     </div>
   </div>
 </footer>
@@ -561,15 +533,18 @@ import simplyCountdown from './countdown/simplyCountdown.js';
     }
   }); 
   </script>
-<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.umd.js"></script>
+  
+<script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script defer  src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script defer  type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
+<script defer src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.1/dist/dotlottie-wc.js"type="module"></script>
+<script  defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.umd.js"></script>
 <script>
   Fancybox.bind('[data-fancybox="gallery"]', {
     //
   });    
 </script>
-<script src="js/script.js"></script>
+<script defer  src="js/script.js"></script>
 
 </body>
 </html>

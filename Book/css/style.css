@@ -452,12 +452,6 @@ input, textarea {
   overflow: hidden;
   }
 
-/* .halaman2 img,
-.halaman5 img{
-  object-fit: cover;
-  width: 100%;
-  
-} */
 
 .halaman3 {
   position: relative;
@@ -972,7 +966,7 @@ input, textarea {
   background-image: url('../img/galeryfoto/potrait1.webp');
   background-size: cover;
   background-position: center;
-  position: relative;
+  
 }
 
 .halaman13 .containerProfilKanan {
