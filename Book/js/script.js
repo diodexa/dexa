@@ -21,13 +21,6 @@ window.addEventListener('scroll', () => {
 });
 
 
-to('.logo', {
-  scrollTrigger: {
-    scrub: true,
-    start: () => 13.5 * (window.innerHeight * 0.25),
-    end: () => 14 * (window.innerHeight * 0.25) },
-
-  opacity: 1 });
 
 
 const KertasS = [...document.querySelectorAll('.buku__Kertas')];
