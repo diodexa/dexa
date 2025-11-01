@@ -137,20 +137,29 @@ const btnJoin = document.getElementById("btnJoin");
 const joinSection = document.getElementById("join");
 const video = document.querySelector('.video-cover');
 document.getElementById("btnJoin").addEventListener("click", () => {
-  if (video) {
-    video.play().catch(err => {
-      console.log('Video gagal play otomatis:', err);
-    });
-  }
+  // if (video) {
+  //   video.play().catch(err => {
+  //     console.log('Video gagal play otomatis:', err);
+  //   });
+  // }
   
-  joinSection.classList.add("hidden");
+  gsap.to(joinSection, {
+    duration: 1,
+    y:-100,
+    opacity: 0,
+ 
+    onComplete: () => {
+      joinSection.classList.add("hidden"); 
+      
+    }
+  });
 
   // Baru bener-bener hilang setelah 1 detik
   setTimeout(() => {
     joinSection.style.display = "none";
   }, 5000);
   playAudio();
-  Join()
+  // Join()
 
   window.scrollTo({
     top: 0,

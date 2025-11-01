@@ -11,7 +11,7 @@
   /* --bg: url(../img/latar.webp); */
   --insert: #d9d9d9;
   --Kertas: #e6e6e6;
-  --warna: rgb(181, 163, 140);
+  --warna: rgb(180, 155, 121);
   --font: #000000;
   --antifont:white;
   --latar-warna: linear-gradient(rgba(222, 184, 135, 0.3252), rgba(222, 184, 135, 0.325));
@@ -214,6 +214,12 @@ input, textarea {
   font-weight: 300;
 }
 
+#logoNikah {
+  position: absolute;
+  top: 0;
+  width: 80%;
+}
+
 .overlay h2 {
   font-size: 2rem;
 }
@@ -314,7 +320,7 @@ input, textarea {
   background: radial-gradient(circle at center, rgb(255, 255, 255) 0%, rgb(215, 215, 211) 90%, rgb(255, 255, 255) 100%);
   background-position: center;
   background-repeat: no-repeat;
-  background-size:150%;
+  background-size:100%;
   z-index: 1;
 }
 
@@ -333,7 +339,7 @@ input, textarea {
   position: absolute;
   font-family:Playfair Display SC;
   font-weight: 400;
-  letter-spacing: -5px;
+  /* letter-spacing: 10px; */
   margin-top: 0;
   margin-bottom: 0;
   font-size: 4rem;
@@ -373,19 +379,19 @@ input, textarea {
   color: var(--warna);
   top: 70%;
   left: 15%;
-  letter-spacing: 15px;
+  /* letter-spacing: -10px; */
   z-index: 3;
   transform: scaleY(2);
 }
 
 .containerSampul img {
-  width: 150%;
+  width: 140%;
   height: auto;
   position: absolute;
-  top: -10%;
-  right: -15%;
+  bottom: 0;
+  left: 50%;
   z-index: 3;
-  border-radius: 50%;
+  transform: translate(-50%);
   object-fit: cover;
   filter: drop-shadow(15px 10px 10px rgba(0,0,0,0.6));
 }
@@ -401,14 +407,14 @@ input, textarea {
   text-align: center;
   line-height: 2.3;
   color: var(--antifont);
-  margin-top: 30%;
+  margin-top: 80%;
 }
 
 
-.halaman1 .wrapperHalaman h2 {
+/* .halaman1 .wrapperHalaman h2 {
   font-size: 3rem;
   color: var(--font);
-}
+} */
 
 .halaman1 {
   background-image: var(--latar-warna),url(../img/galeryfoto/bghalaman1.webp);
@@ -437,6 +443,13 @@ input, textarea {
   height: 100%;
   background: url(../img/galeryfoto/Wanita.webp);
   background-size: cover;
+  background-position: 40% 0;
+}
+
+.halaman2 {
+  text-align: center;
+  font-size: 4rem;
+  font-family: corinthia;
 }
 
 .wrapperHalaman  {
@@ -460,20 +473,20 @@ input, textarea {
   font-family: Raleway;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: left;
-  color: #ffffff;
-  background: var(--latar-warna), url(../img/galeryfoto/Wanita2.webp);
-  background-size: cover;
 
-  
+  text-align: left;
+  color: var(--font);
+  background: /*var(--latar-warna), */url(../img/galeryfoto/wanita.webp);
+  background-size: cover;
+  background-position: 96% 0;
+  gap: 5px;
 }
 
 .halaman3 h2 {
   position: absolute;
   font-size: 4rem;
   font-weight: 300;
-  left: 5%;
+  left: 20%;
   bottom: 41%;
   
 
@@ -481,19 +494,20 @@ input, textarea {
 
 .halaman3 h3 {
   position: absolute;
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 300;
   left: 5%;
-  bottom: 17%;
-
+  bottom: 6%;
+  text-align: center !important;
 }
 
 .halaman3 h4 {
   position: absolute;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 200;
-  left: 5%;
-  bottom: 35%;
+  left: 30%;
+  bottom: 30%;
+  
 }
 
 .halaman3 i {
@@ -516,9 +530,10 @@ input, textarea {
   align-items: center;
   text-align: right;
   background-color: #444;
-  color: var(--antifont);
-  background: var(--latar-warna),url(../img/galeryfoto/Pria2.webp);
+  color: var(--font);
+  background: /*var(--latar-warna),*/url(../img/galeryfoto/pria.webp);
   background-size: cover;
+  background-position: 4% 0;
 }
 
 .halaman4 h2 {
@@ -532,11 +547,11 @@ input, textarea {
 
 .halaman4 h3 {
   position: absolute;
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 300;
   right: 5%;
-  bottom: 17%;
-  
+  bottom: 10%;
+  text-align: center;
 }
 
 .halaman4 h4 {
@@ -544,7 +559,7 @@ input, textarea {
   font-size: 3rem;
   font-weight: 200;
   right: 5%;
-  bottom: 35%;
+  bottom: 30%;
  
 }
 
@@ -559,8 +574,19 @@ input, textarea {
 .halaman5 {
   width: 100%;
   height: 100%;
-  background: url('../img/galeryfoto/Pria.webp');
+  background: url('../img/galeryfoto/pria.webp');
   background-size: cover;
+  background-position: 60% ;
+  text-align:center;
+  font-size: 3.8rem;
+  font-family: corinthia;
+ 
+}
+
+.halaman5 h1 {
+  position: absolute;
+  top: -5%;
+  left: 15%;
 }
 
 .halaman6 {
@@ -613,7 +639,7 @@ input, textarea {
   margin-left: 3%;
   bottom: 8%;
   background:white;
-  color: black;
+  color: var(--font);
   border-radius: 10px; 
   border: 1px solid rgb(129, 127, 127);
   font-size: 1.1rem
@@ -686,7 +712,7 @@ input, textarea {
 .halaman6 .btn-custom {
   padding: 1rem ;
   background-color: var(--warna); 
-  color: var(--font);
+  color: var(--antifont);
   border-radius: 6px;
   text-decoration: none;
   font-size: 1.5rem;
@@ -789,23 +815,23 @@ input, textarea {
     display: flex; 
     flex-direction: column-reverse;
     background-color:rgba(0, 0, 0, 0.27);
-    color: var(--font);
+    color: var(--antifont);
 }
 #card3::part(base) {
     background-color: rgba(255, 255, 255, 0.27);
-    color: rgb(0, 0, 0);
+    color: var(--font);
 }
 
 #card4::part(base) {
     display: flex; 
     flex-direction: column-reverse;
     background-color: rgba(0, 0, 0, 0.27);
-    color: var(--font);
+    color: var(--antifont);
 }
 
 .card-image {
   position: absolute;
-  max-width: 48%;
+  max-width: 44%;
   font-family: roboto;
   justify-items: center;
 }
@@ -857,7 +883,7 @@ input, textarea {
 .halaman11 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 2 kolom */
-  grid-gap: 6px;
+  grid-gap: 10px;
   grid-auto-rows: 90px 100px;
   justify-content: center;
   grid-auto-flow: dense;
@@ -936,12 +962,12 @@ input, textarea {
 
 .halaman10 h2 {
   position: absolute;
-  bottom: 0;
+  bottom: -2%;
   left: 8%;
   font-size: 3rem;
   font-weight: 300;
   font-family: Raleway;
-  color: var(--font);
+  color: var(--antifont);
 }
 
 
@@ -958,12 +984,13 @@ input, textarea {
   background-size: cover;
   width: 100%;
   height: 100%;
+  
 }
 
 .halaman13 {
   width: 100%;
   height: 100%;
-  background-image: url('../img/galeryfoto/potrait1.webp');
+  background-image: url('../img/galeryfoto/8.webp');
   background-size: cover;
   background-position: center;
   
@@ -979,7 +1006,7 @@ input, textarea {
 
 .halaman13 h3 {
   position: absolute;
-  color: var(--warna);
+  color: var(--antifont);
   font-family: roboto;
   font-weight: 300;
   text-align: center;
@@ -1047,7 +1074,8 @@ input, textarea {
   font-size: 2rem;
   padding: 1rem ;
   background-color: var(--warna);
- color: var(--font);
+  color: var(--antifont);
+  border-radius: 10px;
 }
 
 
@@ -1088,7 +1116,7 @@ input, textarea {
   margin-left: 10% ;
   font-size: 2rem;
   background-color: var(--warna);
-  color: var(--font);
+  color: var(--antifont);
   border-radius: 8px;
   border: 1px solid black;
   box-shadow: 0 2px 0 0 rgb(87, 87, 87);;
@@ -1208,7 +1236,7 @@ input, textarea {
 .halaman15 {
   text-align: center;
   background: var(--warna);
-  color: var(--font);
+  color: var(--antifont);
 }
 
 .halaman15 h3{
