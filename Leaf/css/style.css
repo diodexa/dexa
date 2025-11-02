@@ -1239,8 +1239,9 @@ margin-bottom: 10%;
 }
 
 #flipdown {
-  width: 600px;
-  margin-left: 5%;
+  width: 800px !important;
+  margin-left: 10% !important;
+  transform: scale(0.5) !important;
 }
 
 }
