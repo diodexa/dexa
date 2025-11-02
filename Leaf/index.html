@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flipdown/dist/flipdown.css">
+    <script src="https://cdn.jsdelivr.net/npm/flipdown/dist/flipdown.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="img/LogoIcon.ico" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.css"/>
+    <script
+    src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.1/dist/dotlottie-wc.js"
+    type="module"></script>
+    <title>zoom</title>
+</head>
+<body>
+  <div id="preloader">
+    <div class="loader">
+      <img src="img/logo dio.webp" alt="logo" class="loading-logo">
+      <p>Memuat undangan...</p>
+    </div>
+  </div>
+
+<section class="join" id="join">
+    <div class="boxJoin">
+      <h2>Wedding Invitation</h2>
+      <h1>Melani & Andhika </h1>
+      <h2>04 . 01 . 2026 <br> </h2>
+      <h3> dear : <br></h3> 
+      <h4 id="Tamu"> Tamu undangan </h4>
+      <button class="btn" id="btnJoin" style="padding: 2rem;"> Buka Undangan</button>
+    </div>
+  </section>
+
+  <div id="audio-container">
+    <audio id="song" autoplay loop>
+      <source src="audio/audio.mp3" type="audio/mp3">
+    </audio>
+    <div class="audio-icon-wrapper"  >
+      <i class="fa-regular fa-circle-pause"></i>
+    </div>
+    <div class="audio-icon-wrapper" style="display: none;" >
+      <i class="fa-solid fa-circle-play"></i>
+    </div>
+  </div>
+
+  <!-- <img src="img/Logo Manten.webp" alt="" id="logoManten"> -->
+   
+
+  <div class="bottom-nav">
+  <a href="#mempelai" class="nav-item">
+    <i class="fas fa-heart"></i>
+    <span><br>Mempelai</span>
+  </a>
+  <a href="#savetheDate" class="nav-item">
+    <i class="fas fa-calendar-alt"></i>
+    <span> <br>Jadwal</span>
+  </a>
+  <a href="#utama" class="nav-item">
+    <i class="fas fa-home"></i>
+  </a>
+  <a href="#galery" class="nav-item">
+    <i class="fas fa-th"></i>
+    <span><br>Galery</span>
+  </a>
+  <a href="#rsvp" class="nav-item">
+    <i class="fas fa-pencil"></i>
+    <Span><br>Ucapan</Span>
+  </a>
+</div>
+
+<div class="blank1"></div>
+<div class="main">
+  <div class="judul1">
+  <div class="judul ">
+    <img src="img/ornamen/frame.png" alt="" id="frame">
+    <h1> Melani <br>& <br> Andhika</h1>
+    <h2>04.01.2026</h2>
+  </div>
+  </div>
+  <dotlottie-wc
+  src="https://lottie.host/c0f26b4a-ef16-4d7b-8d0e-220290db6ace/FyoFJN4RjX.lottie"
+  autoplay
+  loop
+></dotlottie-wc>
+  <img src="img/backgroundd.webp" alt="" id="background">
+  <section class="page">
+    <div class="falling-leaves">
+      <img src="img/ornamen/daun1.png" class="leaf" />
+      <img src="img/ornamen/daun2.png" class="leaf" />
+      <img src="img/ornamen/daun1.png" class="leaf" />
+      <img src="img/ornamen/daun2.png" class="leaf" />
+   </div>
+            <div class="caption" id="text1">
+              <img src="img/ornamen/frame2.png" alt=""" id="frame2">
+                <h2>Assalamualaikum Wr. Wb.</h2>
+                <p>Dengan memohon Rahmat & Ridho Allah SWT, <br> kami bermaksud mengundang Bapak/Ibu/Saudara/i <br>untuk menghadiri acara pernikahan putra-putri kami</p>
+            </div>
+            <img id="gambar1" src="img/1.png" alt="">
+       
+        <div class="caption" id="text2">
+          <!-- <img src="img/ornamen/frame5.webp" alt="" id="frame3"> -->
+            <span><br> <br><br><br>“Dan diantara tanda-tanda kekuasaanNya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikanNya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berpikir.” <br>(Qs. Ar. Rum (30) : 21)</span>
+        </div>
+        <img id="gambar2" src= "img/2.png"  alt="">
+        <section id="mempelai">
+          <h1 id="bride">Bride</h1>
+          <div class="caption" id="text3">
+            <img src="img/ornamen/frame4.webp" alt="" id="frame4">
+          <h2> Melani Fitri S.kom</h2>
+          <h5> Putri dari <br></h5>
+          <h4>Bapak Asep Saefulloh <br> & <br> Ibu Marsiah</h4>
+          <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i> @Melani </a>
+        </div>
+        <img id="gambar3" src="img/wanita1.png" alt="">
+
+         <h1 id="groom">Groom</h1>
+         <div class="caption" id="text4">
+           <img src="img/ornamen/frame4.webp" alt="" id="frame4">
+            <h2> Andhika Ahmad S.pd </h2>
+            <h5> Putra dari <br></h5>
+            <h4>Bapak Kurniawansyah <br> & <br> Ibu Siti Nur Indah</h4>
+            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i> @Andhika </a>
+        </div>
+        <img id="gambar4" src="img/pria1.png" alt="">
+      </section>
+
+      <section id="savetheDate">
+        <div class="caption" id="text5">
+          <h2> Save The Date </h2>
+          <div id="flipdown" class="flipdown"></div>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Nama+Acara&dates=20251222T090000Z/20251222T100000Z&details=nikahan&location=Lokasi+Acara'" target="_blank" class="btn-custom">Add to calendar</a>
+          
+          
+          <div class="WaktuAkad">
+            <h2> Minggu <br> 04 Januari 2026 </h2>
+            <div class="akad">
+              <h3> Akad</h3>
+              <h3> 08:00 - 10:00 WIB</h3>   
+            </div>
+            <div class="resepsi">
+              <h3> Resepsi</h3>
+              <h3> 11:00 - 14:00 WIB</h3> 
+            </div>
+          </div>
+          <div class="lokasi">
+            <p> Lokasi : Graha Batununggal Indah <br>  Jl. Batununggal Indah IX No.2, Mengger, Kec. Bandung Kidul, <br>Kota Bandung, Jawa Barat 40267 </p>
+            <a href="https://maps.app.goo.gl/PDZndoQHXvPNtjK47" target="_blank" class="btn-custom Map">Klik google map</a>
+            <img src="img/ornamen/bunga1.png" alt="" id="frame-jadwal">
+         
+          </div>
+          <img src="img/ornamen/bunga1.png" alt="" id="frame-jadwal2">
+        </div>
+              <img id="gambar5" src="img/5.png" alt="">
+        </section>
+        
+        <section id="lovestory">
+        <div class="caption" id="text6">
+            <h2>Love Story</h2>
+            <h4>Phase 1</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iste repudiandae quas.</p>
+            <h4>Phase 2</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iste repudiandae quas.</p>
+            <h4>Phase 3</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iste repudiandae quas.</p>
+            <h4>Phase 4</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iste repudiandae quas.</p>
+        </div>
+        <img id="gambar6" src="img/6.png" alt="">
+        </section>
+        <section id="galery">
+        <div class="caption" id="text7">
+          <h2 id="tulisan"> Galery foto</h2>
+        <div class="gallery-grid" >
+          <div class="galery-container w-2 h-2">
+            <div class="galery-items">
+              <div class="image">
+                <a data-fancybox="gallery" href="img/galeryfoto/1.webp">
+                  <img src="img/galeryfoto/1.webp" alt="foto 1" class="kiri">
+                </a>
+              </div>
+            </div>
+          </div>
+       
+        <div class="galery-container w-2 h-3">
+            <div class="galery-items">
+              <div class="image">
+                <a data-fancybox="gallery" href="img/galeryfoto/2.webp">
+                  <img src="img/galeryfoto/2.webp" alt="foto 2" class="kanan">
+                </a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="galery-container w-2 h-2">
+            <div class="galery-items">
+              <div class="image">
+                <a data-fancybox="gallery" href="img/galeryfoto/3.webp">
+                  <img src="img/galeryfoto/3.webp" alt="foto 3" class="kiri">
+                </a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="galery-container w-2 h-2">
+            <div class="galery-items">
+              <div class="image">
+                <a data-fancybox="gallery" href="img/galeryfoto/4.webp">
+                  <img src="img/galeryfoto/4.webp" alt="foto 4" class="kanan">
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="galery-container w-2 h-3">
+            <div class="galery-items">
+              <div class="image">
+                <a data-fancybox="gallery" href="img/galeryfoto/5.webp">
+                  <img src="img/galeryfoto/5.webp" alt="foto 5" class="kiri">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="galery-container w-2 h-5">
+            <div class="galery-items">
+              <div class="image">
+                <a data-fancybox="gallery" href="img/galeryfoto/6.webp">
+                  <img src="img/galeryfoto/6.webp" alt="foto 6" class="kanan">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="galery-container w-2 h-3">
+            <div class="galery-items">
+              <div class="image">
+                <a data-fancybox="gallery" href="img/galeryfoto/7.webp">
+                  <img src="img/galeryfoto/7.webp" alt="foto 7" class="kiri" >
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="galery-container w-4 h-5">
+            <div class="galery-items">
+              <div class="image">
+                <a data-fancybox="gallery" href="img/galeryfoto/video.mp4">
+                  <video muted playsinline autoplay loop src="img/galeryfoto/video.mp4"></video>
+                </a>
+              </div>
+            </div>
+          </div>
+
+           </div>
+        </div>
+        </section>
+    </section>
+    <section class="rsvp">
+      <img src="img/ornamen/bunga2.png" alt="" id="bunga2">
+      <!-- <img src="img/ornamen/bunga2.png" alt="" id="bunga3"> -->
+      <h2>Doa dan Ucapan</h2>
+      <form id="form-rsvp">
+        <input type="hidden" name="id" value="wehweh-blehbleh">
+
+        <input type="text" name="Nama" placeholder="Isi Nama" required id="inputNama"><br>
+        <textarea name="Ucapan" placeholder="Doa & Ucapan" required id="inputPesan"></textarea><br>
+      
+        <label><input type="radio" name="Kehadiran" value="Hadir" required> Hadir</label>
+        <label><input type="radio" name="Kehadiran" value="Tidak Hadir"> Tidak Hadir</label><br>
+    
+        <button type="submit" id="buttonsubmit">Kirim</button>
+      </form>
+      <div class="wrapperKomentar">
+        <div id="comments"></div>
+        <div id="pagination-controls"></div>
+      </div>
+       <img src="img/ornamen/bunga2.png" alt="" id="bunga3">
+    </section>
+
+    <section class="wedding-gift">
+      <h2> Wedding Gift</h2>
+
+      <sl-card class="card-header transparent-card">
+        <div slot="header">
+          <img src="img/Logo BCA.webp"  id="LogoBCA" alt="">
+          
+        </div>
+        Bank BCA <br>
+        Atas Andhika Ahmad 
+        <br>
+        <button id="clipboardBCA"> Copy nomor rekening</button>
+      </sl-card>
+      <sl-card class="card-header transparent-card" style="width: 100%;">
+        <div slot="header">
+          <img src="img/Logo BNI.webp" alt="" id="LogoBNI">
+          
+        </div>
+        Bank BNI <br>
+        Atas nama Melani Fitri
+        <br>
+        <button id="clipboardBNI"> Copy nomor rekening</button>
+      </sl-card>
+      <sl-card class="card-header transparent-card" style="width: 100%;" >
+        <div slot="header">
+          <i class="fa-solid fa-gift" style="font-size: 3rem;" ></i>
+          
+        </div>
+        kirim Kado
+        <br>
+        <button id="clipboardAlamat"> Copy alamat rumah</button>
+      </sl-card>
+    </section>
+  
+    <section class="closing">
+      <div class="container">
+        <img src="img/ornamen/bunga2.png" alt="" id="bungaclosing" >
+        <div id="hero-slider">
+          <div class="slide"><img src="img/galeryfoto/2.webp" alt=""></div>
+          <div class="slide"><img src="img/galeryfoto/3.webp" alt=""></div>
+          <div class="slide"><img src="img/galeryfoto/4.webp" alt=""></div>
+        </div>
+
+         <h3> Terima kasih <br> </h3>
+          <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir dan memberikan doa restunya untuk pernikahan kami. <br> Atas doa & restunya, kami ucapkan terima kasih.</p>
+          <h2>Melani & Andhika</h2>
+      </div>
+      </section>
+      <footer>
+        <div class="footer-container">
+          <small>&copy;2025 <a href="https://dexa-invitation.com" target="_blank">dexa-invitation.com.</a>  All Rights Reserved.</small>
+          <div class="social-icons">
+            <a href="https://instagram.com/dexa_invitation//" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/6285155001718" target="_blank"><i class="fa-brands fa-whatsapp"></i> </a>
+          </div>
+        </div>
+      </footer>
+    
+
+    </div>
+<div class="blank2"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+    Fancybox.bind('[data-fancybox="gallery"]', {
+    });    
+    </script>
+
+    <script>
+    new FlipDown((new Date("2026-01-04T08:00:00").getTime() / 1000)).start();
+    </script>
+
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

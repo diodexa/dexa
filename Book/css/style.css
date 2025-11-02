@@ -1521,6 +1521,15 @@ dotlottie-wc {
       transform-origin: center center;
   }
 
+  .halaman3 {
+ 
+  background-position: 100% 0;
+
+}
+.halaman4 {
+  background-position: 0;
+}
+
   footer .container {
     font-size: 2rem;
     margin: 0;

@@ -1,0 +1,1334 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Akaya+Kanadaka&family=Corinthia:wght@400;700&family=GFS+Didot&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Solway:wght@300;400;500;700;800&display=swap');
+
+
+:root {
+  --warna : #829f82;
+  --antifont : #809671;
+  --font : #FAF6F0;
+  --warna-transparent : #d6fac353;
+}
+
+/* [style*="opacity: 0"] {
+  pointer-events: none !important;
+} */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+
+}
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f7f6f2; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 99999;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  pointer-events: none;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-logo {
+  width: 150px;
+  
+  opacity: 0;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+.loader p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+/* ====================================================================== */
+#join {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('../img/galeryfoto/1.webp');
+  background-size: cover;
+  background-position: center;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: roboto;
+  
+}
+
+
+
+
+
+#join::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(42, 38, 38, 0.3); 
+  z-index: 1;
+}
+
+
+#join .boxJoin {
+  position: relative;
+  z-index: 2;
+  bottom: 10%;
+  color: var(--antifont);
+  font-size: 2rem;
+  text-align: center;
+}
+
+
+
+
+#join h1{
+  font-family: Corinthia;
+  font-size: 3rem;
+  color: white;
+}
+
+#join h2 {
+  font-family: Aclonica;
+  color: white;
+  font-size: 2rem;
+  font-weight: 100;
+}
+#join h3 {
+  font-family: Aclonica;
+  color: white;
+  font-size: 2rem;
+  font-weight: 100;
+}
+
+#join h4 {
+  font-size: 2rem;
+  color: white;
+}
+#join.hidden {
+ 
+  pointer-events: none;
+  z-index: -1;
+  display: none;
+}
+
+/* * {
+  border: 1px solid red;
+} */
+.btn {
+  display: inline-block;
+  padding: 5% !important;
+  width: 100%;
+  background: var(--warna);
+  color: var(--font) ;
+  border: none; 
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  color:  var(--warna) !important;
+  background: white;
+}
+/* ====================================================================== */
+
+
+
+.blank2,
+.blank1 {
+  width: 35%;            
+  position: fixed;        
+  top: 0;
+  bottom: 0;
+  background-color: gray;
+  z-index: 9999;
+  display: none;
+}
+
+.blank1 {
+  order: 1;
+  left: 0;
+  
+}
+
+.blank2 {
+  order: 3;
+  right: 0;
+}
+
+.main { 
+  position: relative;
+  width: 100%;
+  order: 2;
+  /* background: url(../img/background.jpg);
+  background-size: contain;
+  background-attachment: fixed;
+  background-position: 48.5%; */
+}
+
+
+
+#background {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  
+}
+
+/* ==================================================================== */
+
+
+/* ================================================================ */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  max-width: 400px;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+}
+
+.nav-item {
+  color: burlywood; /* warna emas seperti di contoh */
+  text-decoration: none;
+  font-size: 1.2rem;
+  flex: 1;
+  text-align: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+  scroll-behavior: smooth;
+  text-shadow: 0 0 2px  black;
+  
+}
+
+.nav-item:hover {
+  color: var(--font);
+  transform: scale(1.1);
+
+}
+
+
+
+.nav-item span {
+  font-size: 0.8rem ;
+  color: var(--font);
+  text-shadow: 0 0 5px  black;
+}
+
+/* ========================================================================= */
+
+
+.judul {
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  left: 15%;
+  align-items: center;
+  color: var(--antifont);
+  transform-origin: center;
+}
+
+.judul1 {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.judul h1 {
+  font-family: Corinthia;
+  font-size: 3rem;
+  margin-top: 50%;
+}
+
+.judul h2 {
+  font-family: Poppins;
+  font-weight: 300;
+  font-size: 2rem;
+  margin-top: 45%;
+  letter-spacing: 10px;
+}
+
+#frame {
+  position: absolute;
+  
+ bottom: 30%;
+  width: 100%;
+ transform: translate(-50%) scale(1.2);
+  
+}
+
+.page {
+  position: relative;
+  overflow: hidden;
+}
+
+.page img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  /* opacity: 0; */
+  pointer-events: none;
+  transform-origin: bottom center;
+}
+
+.caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--antifont);
+  opacity: 0;
+  justify-content: center;
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 4rem);
+  transform-origin: bottom center;
+  box-shadow: 10px;
+  pointer-events: none;
+  /* text-shadow: 1px 0 1px  rgb(0, 0, 0); */
+  font-family: Roboto;
+
+}
+
+.caption a {
+  position: relative;
+  /* pointer-events: auto; */
+  color: var(--antifont);
+
+}
+
+
+
+#text1 {
+  width: 80%;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%);
+}
+
+#text1 #frame2 {
+  width: 120%;
+  margin-top: -25% ;  
+}
+#text2 {
+  width: 100%;
+  top: 0;
+  
+  padding-top: 45%;
+  padding-bottom: 70%;
+ 
+  left: 50%;
+  transform: translate(-50%);
+  background: url(../img/ornamen/frame6.webp);
+  background-size: cover;
+  
+}
+
+#text2 p {
+  position: absolute;
+  top: 15%;
+  
+  
+}
+
+/* #text2 #frame3 {
+  position: absolute;
+  width: 130%;
+  transform: rotate(90deg) scaleY(1.2);
+  transform-origin: center;
+  opacity: 0.7;
+  left: -5%;
+  top: -75%;
+} */
+#text3 {
+  width: 50%;
+  left: 40%;
+  top: 8%;
+  /* background: var(--warna-transparent); */
+  padding: 15% 0 10% 0;
+  border-radius: 10% 40% 40% 0;
+  line-height: 0.8;
+}
+
+#text3 #frame4 {
+  width: 190%;
+  position: absolute;
+  left: 52%;
+  top: -10%;
+  /* background: var(--warna-transparent); */
+ 
+ 
+}
+
+#bride,#groom {
+  position: absolute;
+  font-family: Corinthia;
+  color: var(--antifont);
+  font-weight: 300;
+  font-size: 4rem;
+ 
+  padding: 0 5% ;
+
+  opacity: 0;
+
+}
+
+#groom {
+  left: 15%;
+  top: -2%;
+  /* transform: translate(-50%); */
+
+}
+
+#bride {
+  right: 0;
+  top: -2%;
+  transform: translate(-50%);
+ 
+}
+
+#text4 {
+  width: 50%;
+  left: 10%;
+  top: 10%;
+  /* background: var(--warna-transparent); */
+  padding: 15% 0 10% 0;
+  line-height: 0.8;
+}
+
+
+
+
+
+#text4 #frame4 {
+  width: 200%;
+  position: absolute;
+  left: 50%;
+  top: -10%;
+  /* background: var(--warna-transparent); */
+ 
+ 
+}
+
+#text5 {
+  width: 100%;
+  top: 0;
+  display: grid;
+  justify-items: center;
+ 
+
+}
+#text5 h2 {
+  z-index: 1;
+}
+
+#savetheDate #frame-jadwal {
+  z-index: 0;
+ opacity: 0.7;
+ width: 50%;
+ left: 10%;
+}
+
+#frame-jadwal2 {
+  position: absolute;
+  width: 70%;
+  bottom: 0 !important;
+
+  transform: translateX(-30%) scale(-1);
+  z-index: 0;
+ 
+}
+
+
+
+
+
+#text5 #flipdown {
+  transform: scale(0.8);
+  display: inline-block;
+  width: auto;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+
+
+
+
+#text5 .btn-custom {
+  padding: 0.5rem ;
+  background-color: var(--antifont); 
+  color: var(--font);
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 400;
+  font-family: roboto;
+  text-align: center;
+  margin-top: 3%;
+  /* text-shadow: 0 0 5px  var(--antifont); */
+  border: 1px solid rgb(129, 127, 127);
+  z-index: 1;
+}
+
+#text5 .btn-custom:hover {
+  background: var(--font);
+  color: var(--warna);
+  text-shadow: none;
+}
+
+
+
+#text5 .WaktuAkad {
+  display: flex;
+  margin-top: 0.5rem;
+  gap: 1rem;
+  font-size: 0.8rem;
+  align-items: center;
+  margin: 2%;
+}
+
+
+
+#text5 .akad,
+#text5 .resepsi {
+  top: 0;
+}
+
+#text5 .lokasi {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20%;
+}
+
+#text5 .Map {
+  position: absolute;
+  bottom: 6%;
+  right: 50%;
+  transform: translate(50%);
+}
+#text6 {
+  top: 0;
+  left: 0;
+  width: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  /* background-color: #acb29728; */
+  background: url(../img/ornamen/bunga4.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#text6 h4,
+#text6 p {
+  margin: 0.5rem ;
+  font-size: clamp(1rem, 2vw, 4rem);
+ 
+}
+
+
+#text7{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center; 
+  /* padding: 1rem;   */
+  margin-top: 0%;
+  position: relative;
+  opacity: 1;
+}
+
+
+
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 2 kolom */
+  grid-gap: 6px;
+  grid-auto-rows: 90px 100px;
+  justify-content: center;
+  grid-auto-flow: dense;
+  width: 100%;
+  height: 100%;
+  
+}
+
+
+
+.galery-items{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+
+.galery-items .image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  
+
+}
+.galery-items .image a {
+ display: block;
+ width: 100%;
+ height: 100%;
+ z-index: 1;
+ /* pointer-events: none; */
+}
+.galery-items .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  transition: .5s ease-in-out ;
+  display: block;
+
+}
+
+
+
+
+
+.w-1 { 
+  grid-column: span 1;
+}
+
+.w-2 {
+  grid-column: span 2;
+}
+.w-3 {
+  grid-column: span 3;
+}
+.w-4 {
+  grid-column: span 4;
+}
+.w-5 {
+  grid-column: span 5;
+}
+
+
+.h-1 {
+  grid-row: span 1;
+}
+.h-2 {
+  grid-row: span 2;
+}
+.h-3 {
+  grid-row: span 3;
+}
+.h-4 {
+  grid-row: span 4;
+}
+.h-5 {
+  grid-row: span 5;
+}
+
+
+
+.rsvp {
+  width: 100%;
+  
+  position: relative;
+  scroll-padding-bottom: 300px;
+  margin-bottom: 40%;
+  margin-top: 50%;
+}
+
+.rsvp #bunga2 {
+  position: absolute;
+  width: 100%;
+  top: -30%;
+  left: 0;
+  z-index: -1;
+  /* transform: scale(2); */
+}
+.rsvp #bunga3 {
+  position: absolute;
+  width: 100%;
+  bottom: -25%;
+  left: 0;
+  transform: scaleY(-1);
+}
+
+.rsvp h2 {
+  margin-left: 0;
+  font-family: Roboto;
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 10%;
+  color: var(--antifont);
+}
+
+.rsvp #form-rsvp {
+  width: 100%;
+  height: 100%;
+}
+.rsvp  #inputNama {
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 8px;
+  padding: 2%;
+  font-size: 1rem !important;
+  
+}
+.rsvp #inputPesan  {
+  height: 6rem;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 4%;
+
+  border-radius: 8px;
+  padding: 2%;
+  
+}
+.rsvp input[type="radio"] {
+  transform: scale(1.5); 
+  margin: 1rem 0.5rem 2rem 4rem;
+}
+
+
+.rsvp #form-rsvp label {
+  font-size: 1rem;
+  margin-left: 0;
+  color: black;
+  margin-bottom: 0;
+}
+
+.rsvp #buttonsubmit {
+  width: 84%;
+  height: 4%;
+  margin-left: 10% ;
+  font-size: 1rem;
+  background-color: var(--antifont);
+  color: var(--font);
+  border-radius: 8px;
+
+}
+
+.rsvp #buttonsubmit:hover {
+  background: var(--font);
+  color: var(--warna);
+  text-shadow: none;
+}
+
+.rsvp .wrapperKomentar {
+    position: relative;
+    width: 80%;
+    min-height: 50vh; 
+    left: 10%;
+    border: 2px solid var(--warna);
+    margin-top: 10%;
+}
+
+.rsvp #comments {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  bottom: 50px; 
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+
+
+
+
+
+/* ini nama  */
+.rsvp .comment-item b {
+    color: black; 
+    margin-top: 0;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* ini pesan */
+.rsvp .comment-item {
+  padding:  0;
+  color: black !important;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 200;
+  margin-left: 5%;
+  
+}
+.rsvp  .comment-item:last-child {
+  border-bottom: none;
+  color: black;
+}
+    
+    
+.rsvp .kehadiran-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  margin-left: 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  color: var(--font);
+  background-color: var(--antifont); 
+}
+  
+.rsvp .kehadiran-badge.hadir {
+  background-color: white;
+  color: var(--antifont);
+}
+.rsvp #pagination-controls {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    bottom: 1%;
+    height: 50px; 
+    text-align: center; 
+
+    justify-content: space-between;
+  }
+  
+.rsvp #pagination-controls button {
+  background-color: transparent; 
+  color: var(--font); 
+  border: none;
+  margin: 1%;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-size: 1rem;
+  background: var(--antifont);
+  border: 1px solid black;
+
+}
+
+#pagination-controls span {
+    margin-top: 2%;
+    font-weight: bold;
+    font-size: 1.5rem; 
+}
+
+#pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--warna);   
+}
+
+#pagination-controls button:hover {
+  background: var(--font);
+  color: var(--warna);
+  border: 1px solid var(--warna);
+  text-shadow: none;
+}
+
+.wedding-gift {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--warna) 60%, var(--warna-transparent));
+  text-align: center;
+  margin-bottom: 25%;
+  font-family: Roboto;
+  color: var(--font);
+}
+
+.wedding-gift h2 {
+  
+   font-family: corinthia;
+   font-size: 3rem;
+}
+
+
+.transparent-card::part(base) {
+  background-color: var(--warna-transparent);
+  font-size: 1rem;
+  align-items: center;
+  text-align: center;
+}
+
+.card-header [slot="header"] img {
+  margin-left: 20%;
+  margin-bottom: 0;
+  display: block; 
+  pointer-events: none;
+}
+
+.wedding-gift button {
+  font-size: 0.7rem;
+  padding: 0.5rem ;
+  background-color: var(--font);
+  color: var(--antifont);
+  /* text-shadow: 0 0 5px var(--antifont); */
+  border-radius: 10px;
+}
+
+.wedding-gift button:hover {
+  background: var(--warna);
+  color: var(--font);
+  /* text-shadow: none; */
+}
+
+
+#LogoBNI,
+#LogoBCA {
+  width: 50%;
+}
+
+.closing {
+  position: relative;
+  border: none;
+}
+.closing .container {
+  background: var(--warna);
+  color: var(--font);
+  text-align: center;
+}
+
+#bungaclosing {
+  /* transform: translate(); */
+
+  width: 100%;
+  top: -15%;
+  left: 0;
+  position: absolute;
+  filter:sepia(30%);
+  /* animation: sway-left 2s ease-in-out infinite; */
+  transform: rotate(180deg);
+}
+
+
+.closing h3{
+  font-family: Roboto;
+  font-size: 2rem;
+  margin-bottom: 3%;
+}
+
+
+
+.closing p {
+  font-family: roboto;
+  font-size: 1rem;
+  font-weight: 300;
+  
+}
+
+.closing h2 {
+  font-family: Corinthia;
+  font-size: 3rem;
+  margin: 0;
+  padding-bottom: 10%;
+}
+
+
+
+#hero-slider {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  
+}
+
+#hero-slider::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background:  linear-gradient(to bottom, transparent 30%, var(--warna));
+  z-index: 10;
+  text-decoration: none;
+}
+
+
+#hero-slider .slide {
+  position: absolute;
+  
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+  object-fit:contain;
+
+  transform-origin: center;
+  opacity: 0;
+  animation: zoomfade 12s infinite;
+  border: none;
+}
+
+#hero-slider .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+ 
+}
+
+#hero-slider .slide:nth-child(1) { animation-delay: 0s; -webkit-animation-delay: 0s; }
+#hero-slider .slide:nth-child(2) { animation-delay: 2s; -webkit-animation-delay: 4s; }
+#hero-slider .slide:nth-child(3) { animation-delay: 6s; -webkit-animation-delay: 8s; }
+
+
+footer {
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 100px 0;
+  position: relative;
+  background: var(--warna);
+  padding-top: 40px;
+  text-align: center;
+
+}
+
+
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex-wrap: nowrap;
+  font-family: roboto;
+ 
+}
+
+
+.footer-container small {
+  color: var(--font);
+  font-size: 80%;
+  top: 0;
+}
+.footer-container small a {
+  color: var(--font);
+  text-decoration: none;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+}
+
+.social-icons a {
+  color: black;
+  font-size: 80%;
+
+  background-color: var(--font);
+  width: 5%;
+  padding: 2%;
+  border-radius: 50%;
+
+}
+
+small a:hover,
+.social-icons a:hover {
+  color: var(--antifont);
+}
+
+
+.audio-icon-wrapper {
+  position: fixed;
+  font-size: 2rem;
+  right: 15px;
+  bottom: 15%;
+  color: var(--warna);
+  mix-blend-mode: difference;
+  filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+  user-select: pointer;
+  animation: rotating 4s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  
+}
+dotlottie-wc {
+  position: absolute;
+  width: 20%;
+  height: 10% ;
+  right: 50%;
+  transform: translateX(50%);
+  top: 4%;
+  opacity: 0.5;
+  z-index: 10;
+}
+
+
+.falling-leaves {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+
+}
+
+.leaf {
+  position: absolute;
+  top: -10%; /* mulai dari atas layar */
+  width: 20px !important;
+  opacity: 0.8;
+  animation: fall 10s linear infinite;
+}
+
+/* keyframe jatuh */
+@keyframes fall {
+  0% {
+    transform: translateY(-15%) translateX(-60%) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) translateX(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+/* Efek goyang kiri-kanan */
+@keyframes sway {
+  0% { transform: translateX(0px) rotate(0deg); }
+  100% { transform: translateX(50px) rotate(45deg); }
+}
+
+/* Variasi posisi & delay daun */
+.leaf:nth-child(1) { left: 10%; animation-delay: 0s; }
+.leaf:nth-child(2) { left: 40%; animation-delay: 2s; animation-duration: 12s; }
+.leaf:nth-child(3) { left: 70%; animation-delay: 4s; animation-duration: 14s; }
+.leaf:nth-child(4) { left: 100%; animation-delay: 6s; animation-duration: 10s; }
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rotateIn {
+  from { transform: scale(0.2) rotate(-45deg); opacity: 0; }
+  to { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes zoomfade {
+  0%, 15% {
+    opacity: 0;
+    transform: scale(0.9);
+   
+  }
+  15%, 70% {
+    opacity: 1;
+    transform: scale(1);
+
+   
+  }
+  70%, 100% {
+    transform: scale(1.4);
+    }
+
+  }
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.3; transform: rotate(360deg); }
+  50% { opacity: 1; transform: rotate(0);  }
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+@media (min-width: 1024px) {
+
+  #join {
+    background-size: contain;
+  }
+
+  .blank1,
+  .blank2 {
+    display : flex;
+  }
+
+  .main {
+    width: 480px;
+    
+    
+    margin-left: 35%;
+    margin-right: 35%;
+    
+  }
+  .blank1 {
+  order: 1;
+  left: 0;
+  
+}
+
+
+
+  .blank2 {
+    order: 3;
+    right: 0;
+  }
+
+  .caption {
+     font-size: clamp(1rem, 1vw, 2rem);
+  }
+
+  #text5 .WaktuAkad {
+    font-size: 0.9rem;
+    margin: 0 20% ;
+
+}
+
+#text5 .lokasi {
+font-size: 1rem;
+margin-bottom: 10%;
+}
+
+
+
+  #text6 h4,
+  #text6 p {
+    margin: 0.5rem ;
+    font-size: 1rem;
+}
+
+#flipdown {
+  width: 600px;
+  margin-left: 5%;
+}
+
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+.caption {
+    font-size: clamp(2.5rem, 1vw, 4rem);
+}
+
+.page img {
+    width: 80%;
+}
+
+
+
+
+#groom {
+  font-size: 3rem !important;
+}
+
+#bride {
+  right: 50%;
+  font-size: 3rem !important;
+}
+
+#text2 #frame3 {
+  opacity: 0;
+}
+
+#text5 .WaktuAkad {
+font-size: 1.5rem;
+
+}
+
+
+#text5 .lokasi {
+  font-size: 1.5rem;
+  margin-bottom: 10%;
+}
+
+#flipdown {
+  transform: scale(1);
+
+}
+
+#text5 .btn-custom {
+
+  font-size: 1.2rem;
+
+}
+
+.rsvp #bunga3 {
+
+  bottom: -30%;
+
+}
+
+
+
+
+#text6 h4,
+#text6 p {
+  margin: 0.5rem ;
+  font-size: clamp(1.5rem, 2vw, 4rem);
+}
+
+
+
+
+.rsvp #form-rsvp label {
+  font-size: 1rem;
+  margin-left: 20%;
+  color: black;
+  margin-bottom: 0;
+}
+
+
+
+
+
+#LogoBCA {
+  width: 20%;
+  margin-left: 40%;
+}
+
+#LogoBNI {
+  width: 35%;
+  margin-left: 35%;
+}
+
+}
