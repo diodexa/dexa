@@ -114,15 +114,20 @@ html {
 /* === FITUR HARGA === */
 #FiturHarga {
   color: var(--antifont);
-  
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 4rem 2rem;
 }
 
 #FiturHarga .card {
   flex-direction: column;
+  border-radius: 0;
 }
 
 #FiturHarga .card h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   color: var(--warna);
 }
 
