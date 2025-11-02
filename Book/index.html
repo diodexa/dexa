@@ -1,4 +1,5 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+  <head>
   <meta charset="UTF-8">
   
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -25,6 +26,14 @@
 </head>
 
 <body translate="no">
+
+  <div id="preloader">
+    <div class="loader">
+      <img src="img/logo dio.webp" alt="logo" class="loading-logo">
+      <p>Memuat undangan...</p>
+    </div>
+  </div>
+
   <div class="background">
     <img src="img/latar.webp" alt="">
   </div>
@@ -39,20 +48,7 @@
     </div>
   </section>
 
-<div id="rsvpModal" class="modal">
-  <div class="modal-content">
-    <span id="btnCloseRSVP" class="close">&times;</span>
-    <form id="form-rsvp-ios">
-      <input type="text" name="nama" placeholder="Nama" required>
-      <textarea name="ucapan" placeholder="Ucapan" required></textarea>
-      <div class="radio-group">
-        <label><input type="radio" name="kehadiran" value="Hadir" required> Hadir</label>
-        <label><input type="radio" name="kehadiran" value="Tidak Hadir"> Tidak Hadir</label>
-      </div>
-      <button type="submit">Kirim</button>
-    </form>
-  </div>
-</div>
+
 
 <div class="buku" style="translate: none; rotate: none; scale: none; transform: translate(-50%, -50%) translate3d(0px, 0px, 0px) scale(0.9583, 0.9583);">
   <!-- <div class="buku__spine"></div> -->
@@ -78,9 +74,9 @@
           Browser kamu tidak mendukung video.
       </video> -->
       
-      <img src="img/galeryfoto/logo VK.png" alt="" id="logoNikah">
       <div class="overlay">
-        <h2>Salam Sejahtera</h2>
+        <img src="img/galeryfoto/logo VK.png" alt="" id="logoNikah">
+      <h2>Salam Sejahtera</h2>
         <p>Dengan segala kerendahan hati
           dan dengan ungkapan syukur atas karunia Tuhan, kami mengundang Bapak/ Ibu/ Saudara/i untuk menghadiri acara pernikahan putra & putri kami</p>
       </div>
@@ -175,7 +171,7 @@
       <div class="wrapperHalaman">
         <div class="containerProfilKanan">
           
-           <div class="galery-container h-4">
+           <div class="galery-container h-5">
             <div class="galery-items">
               <div class="image">
                   <img src="img/galeryfoto/6.webp" loading="lazy"  alt="foto 1" >

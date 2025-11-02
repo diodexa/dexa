@@ -200,6 +200,14 @@ const nama = urlParams.get('to') || 'Tamu Undangan';
 const sambutanText = document.querySelector('#Tamu');
 sambutanText.innerHTML = `${nama}`.replace(/,$/,',') ;
 
+// ===========================loader===================================
+
+ window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    preloader.classList.add("hidden");
+ });
+
+
 // =========================Form==================================
 
 
