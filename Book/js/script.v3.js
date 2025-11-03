@@ -211,24 +211,6 @@ sambutanText.innerHTML = `${nama}`.replace(/,$/,',') ;
 // =========================text keyboard==================================
 
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   const textarea = document.getElementById("inputPesan");
-
-//   // Deteksi kalau user pakai iOS
-//   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-
-//   if (isIOS && textarea) {
-//     textarea.addEventListener("focus", () => {
-//       setTimeout(() => {
-//         window.scrollTo({
-//           top: 1130, // posisi Y target kamu
-//           behavior: "smooth"
-//         });
-//       }, 300); // delay kecil biar keyboard muncul dulu
-//     });
-//   }
-// });
-
 // =========================Form==================================
 
 document.addEventListener("DOMContentLoaded", async function() {
