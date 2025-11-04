@@ -851,7 +851,8 @@ textarea {
     position: absolute;
     max-width: 44%;
     font-family: roboto;
-    justify-items: center
+    justify-items: center;
+    height: auto;
 }
 
 #brand,
@@ -861,7 +862,8 @@ textarea {
 
 .card-image img {
     width: 100%;
-    margin: 0 auto
+    margin: 0 auto;
+    height: auto
 }
 
 .card-image h4,
