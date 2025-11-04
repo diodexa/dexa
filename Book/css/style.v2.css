@@ -39,32 +39,6 @@ body {
     box-sizing: border-box
 }
 
-@font-face {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-solid-900.woff2") format("woff2"),
-       url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-solid-900.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Font Awesome 6 Brands";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-brands-400.woff2") format("woff2"),
-       url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-brands-400.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-regular-400.woff2") format("woff2"),
-       url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-regular-400.woff") format("woff");
-}
 
 
 :root {
@@ -86,6 +60,7 @@ body {
 
 input,
 textarea {
+    -webkit-user-select: text;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation
 }
@@ -942,11 +917,10 @@ textarea {
     object-position: 50% 50%;
     transition: .5s ease-in-out;
     aspect-ratio: 3/4;
-    will-change: transform
 }
 
 .galery-items:hover .image img {
-    transform: scale(1.5);
+    transform: scale(1.5)
 }
 
 .w-1 {
@@ -1316,7 +1290,7 @@ a {
     right: 15px;
     bottom: 15%;
     color: #fff;
-   
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, .5));
     user-select: pointer;
     animation: 4s linear infinite rotating;
     display: flex;
