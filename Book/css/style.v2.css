@@ -60,7 +60,6 @@ body {
 
 input,
 textarea {
-    -webkit-user-select: text;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation
 }
