@@ -213,7 +213,7 @@ tl.to(
 tl.fromTo(
   gambar3,
   { y:"50%",x:"-150%", scale:1.5},
-  { x:"-20%", opacity:1, scale:1.2,duration:1},
+  { x:"-30%", opacity:1, scale:1.2,duration:1},
   "<" 
 );
 

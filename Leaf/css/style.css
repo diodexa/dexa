@@ -1083,11 +1083,10 @@ small a:hover,
 }
 dotlottie-wc {
   position: absolute;
-  width: 20%;
-  height: 10% ;
+  width: 50%;
   right: 50%;
   transform: translateX(50%);
-  top: 4%;
+  top: 8%;
   opacity: 0.5;
   z-index: 10;
 }
