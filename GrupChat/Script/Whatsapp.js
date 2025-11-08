@@ -66,7 +66,7 @@ window.addEventListener("load", () => {
 const urlParams = new URLSearchParams(window.location.search);
 const nama = urlParams.get('to') || '';
 const sambutanText = document.querySelector('#Sambutan');
-sambutanText.innerHTML = `<p>Hai, selamat bergabung ya ${nama} <br> ini bukan grup whatsapp beneran kok.</p> <br>
+sambutanText.innerHTML = `<p>Hai, selamat bergabung ya ${nama} <br> ini bukan grup whatsapp kok.</p> <br>
 <span class="waktu">10:55</span>`;
 
 //imagehover
@@ -107,16 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const stickerButton = document.getElementById("stickerButton");
   const stickerList = document.getElementById("stickerList");
 
-  function showStickerOverlay() {
-  const overlay = document.getElementById("stickerOverlay");
-  const stickerList = document.getElementById("stickerList");
-  const rect = stickerList.getBoundingClientRect();
-
-
-  overlay.style.display = "flex"; 
-
-  overlay.classList.add("show");
-}
 
 function showStickerOverlay() {
   const overlay = document.getElementById("stickerOverlay");
@@ -309,26 +299,49 @@ async function loadPesan() {
       const dateObj = item.Date || item.date ? new Date(item.Date || item.date) : new Date();
 
       let pesanContent;
-      if (pesan.match(/^https?:\/\/.*\.(png|jpg|jpeg|gif|webp)$/i)) {
-        pesanContent = `<img src="${pesan}" alt="stiker" class="stiker-chat">`;
-      } else {
-        pesanContent = `<p>${escapeHtml(pesan)}</p>`;
-      }
+      let isSticker = false;
+        if (pesan.match(/^https?:\/\/.*\.(png|jpg|jpeg|gif|webp)$/i)) {
+          isSticker = true;
+          pesanContent = `<img src="${pesan}" alt="stiker" class="stiker-chat">`;
+        } else {
+          pesanContent = `<p>${escapeHtml(pesan)}</p>`;
+        }
 
-      li.innerHTML = `
-        <div class="chat-image" style="background-image: url('img/Puri-puri.png');"></div>
-        <div class="balon-chat">
-          <h3 style="color:${colors[Math.floor(Math.random()*colors.length)]};">${escapeHtml(nama)}</h3>
-          <div class="Nama-chat">
-            ${pesanContent}
-            <br>
-            <span class="waktu"> ${dateObj.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', hour12:false})}</span>
-          </div>
-        </div>
-      `;
+        
+
+      if (isSticker) {
+  // 🔹 Struktur untuk stiker (tanpa balon)
+          htmlContent = `
+            <div class="chat-image" style="background-image: url('img/Logo Dio.webp'); background-size: 150%;"></div>
+            <div class="balon-chat-transparant">
+              <h3 style="color:${colors[Math.floor(Math.random() * colors.length)]};">${escapeHtml(nama)}</h3>
+              <img src="${pesan}" alt="stiker" class="stiker-chat">
+              <span class="waktu">${dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
+            </div>
+          `;
+        } else {
+          // 🔹 Struktur untuk teks (masih pakai balon)
+          htmlContent = `
+            <div class="chat-image" style="background-image: url('img/Logo Dio.webp'); background-size: 150%;"></div>
+            <div class="balon-chat">
+              <h3 style="color:${colors[Math.floor(Math.random() * colors.length)]};">${escapeHtml(nama)}</h3>
+              <div class="Nama-chat">
+                <p>${escapeHtml(pesan)}</p>
+                <br>
+                <span class="waktu">${dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
+              </div>
+            </div>
+          `;
+        }
+
+        li.innerHTML = htmlContent;
 
       chatList.appendChild(li);
     });
+
+    initFancyboxProfile();
+
+
 
     chatList.scrollTop = chatList.scrollHeight;
   } catch (err) {
@@ -339,6 +352,22 @@ async function loadPesan() {
 }
 
 
+function initFancyboxProfile() {
+  const fotoPP = document.querySelectorAll('.chat-image');
+
+  fotoPP.forEach(pp => {
+    if (pp.dataset.bound) return; // biar gak dobel event
+    pp.dataset.bound = true;
+
+    pp.addEventListener('click', () => {  
+      const bg = pp.style.backgroundImage;
+      if (!bg || bg === 'none') return;
+
+      const src = bg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+      Fancybox.show([{ src, type: 'image', caption: 'Foto Profil' }]);
+    });
+  });
+}
 
 
 
@@ -403,6 +432,27 @@ copyButtons.forEach(({ id, text }) => {
     });
   }
 });
+
+
+
+// const fotoPP = document.querySelectorAll('.chat-image');
+
+// fotoPP.forEach(pp => {
+//   pp.addEventListener('click', () => {  
+//     const bg = pp.style.backgroundImage;
+//     if (!bg) return;
+
+//     const src = bg.slice(5, -2); // ambil URL dari background-image: url("...")
+
+//     Fancybox.show([
+//       {
+//         src: src,
+//         type: 'image',
+//         caption: 'Foto Profil',
+//       }
+//     ]); // cuma 1 gambar
+//   });
+// });
 
 
 // === Animasi chat ===
