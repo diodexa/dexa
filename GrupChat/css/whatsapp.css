@@ -79,6 +79,7 @@ body, html {
   border-radius: 8px;
   font-weight: bold;
   transition: background 0.3s;
+  
 }
 
 .btn:hover {
@@ -103,60 +104,57 @@ body, html {
     color: #ffffff;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     display: flex;
 }
 
 
 
 .WrapHeader a, 
-.header-info,
 .audio-container {
-   
-    justify-content: center;
-    text-align: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 5%;
 }
 
 #header img {
-    
-    width: 45% ; 
+    width: 10vw ; 
     object-fit: cover;
     border-radius: 50%;
     filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
-  
+    border: 3px solid var(--button);
+    
 }
 
 .WrapHeader a {
-    width: 20%;
+    width: 10vw;
+    margin-left: 1rem;
+    border-radius: 50%;
     animation: bounceAnime 1s infinite ease-in-out;
+   
 }
 
 .header-info {
     width: 60%;
-
+    justify-items: center;
+    align-items: center;
 }
 
-#header h1 {
-    
-    font-size: 2rem;
+#header h2, 
+#header p  {
     text-align: center;
     color: #ffffff;
     filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
      
 }
 
-#header p {
-     text-align: center;
-     
-}
+
 
 .audio-icon-wrapper {
-    font-size: 5rem;
+    font-size: 9vw;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     line-height: 0;
     margin-top: 7%;
     margin-right: 1rem;
@@ -164,6 +162,7 @@ body, html {
     color: #ffffff;
     filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
     user-select: none;
+    border-radius: 50%;
 }
 
 
@@ -209,6 +208,7 @@ body, html {
     top: 10%;
     margin-bottom: 10%;
     transform: translate(-50%);
+    border: 1px solid var(--button);
 }
 
 
@@ -251,8 +251,8 @@ body, html {
 }
 
 .chat li .chat-image {
-    width: 70px;
-    height: 70px;
+    width: 8vw;
+    height: 8vw;
     position: absolute;
     left: 7%;
     border-radius: 50%;
@@ -260,7 +260,7 @@ body, html {
     background-size: cover;
     background-position: center;
     margin-top: 0.5%;
-    border: 3px solid var(--chat);
+    border: 2px solid var(--chat);
     filter: drop-shadow(0 0 5px rgb(0, 0, 0));
     
 }
@@ -401,11 +401,13 @@ body, html {
     left: 50%;
     transform: translate(-50%);
     margin-bottom: 5%;
+
 }
 
 .saveTheDate:hover {
     background: white;
     color: var(--button);
+    
 }
 
 #LogoBNI,
@@ -433,12 +435,13 @@ body, html {
   background-color: var(--button);
   color: white;
   border-radius: 10px;
+
 }
 
 
 
 .WarpTulisPesan {
-    align-items: flex-end;
+    /* align-items: flex-end; */
     gap: 8px;
     bottom: 0;
     display: flex;
@@ -448,7 +451,6 @@ body, html {
   flex: 0 0 20%;
   margin: 0.3rem;
   border-radius: 20px;
-  border: 1px solid #ccc;
   padding: 6px 12px;
   padding-top: 15px;
   font-size: 1rem;
@@ -456,14 +458,14 @@ body, html {
   resize: none;      
   overflow-y: hidden; 
   min-height: 30px;   
-  max-height: 120px;     
+  max-height: 120px;   
+ 
 }
 .input-pesan {
   flex: 1;
   margin: 0.3rem;
   width: 60%;
   border-radius: 20px;
-  border: 1px solid #ccc;
   padding: 6px 12px;
   padding-top: 15px;
   padding-right: 10%;
@@ -474,7 +476,16 @@ body, html {
   min-height: 30px;   
   max-height: 120px; 
   position: relative;
+  
 }
+
+
+
+textarea:focus {
+    outline: 3px solid var(--button);
+}
+
+
 
 .kirim-button{
     flex: 0 0 auto;
@@ -482,7 +493,14 @@ body, html {
     width: 15%;
     border-radius: 0.8rem;
     padding: 15px 12px;
-    color: white;
+    color: white !important;
+    border: 2px solid white !important;
+}
+
+.kirim-button:hover {
+    background-color: white;
+    color: var(--button) ;
+    
 }
 
 #stickerButton {
@@ -490,7 +508,7 @@ body, html {
     color: #ccc;
     font-size: 250% ;
     right: 22%;
-    bottom: 30%;
+    bottom: 35%;
     cursor: pointer;
     transition: 0.2s;
 }
@@ -642,24 +660,22 @@ html{
     justify-content: space-between;
     }
 
-.header-info {
-    transform:none;
-}
 
-#header img {
+
+/* #header img {
  
     width: 100% ; 
     transform: scale(0.9) !important;
     
-}
+} */
 
-#header h1 {
+/* #header h1 {
     font-size: 2.5rem;
     
-}
-.audio-icon-wrapper{
+} */
+/* .audio-icon-wrapper{
     font-size: 4.5rem;
-}
+} */
 
 #Home {
     bottom: 7vh;
@@ -670,8 +686,7 @@ html{
     padding: 4px 5px;
 }
 .chat li .chat-image {
-    width: 40px;
-    height: 40px;
+
     left: 10%;
     margin-top: 1%;
 }
@@ -789,9 +804,9 @@ html{
 }
 
 
-.audio-icon-wrapper{
+/* .audio-icon-wrapper{
     font-size: 5rem;
-}
+} */
 
 
 
@@ -802,8 +817,7 @@ html{
 } 
 
 .chat li .chat-image {
-    width: 50px;
-    height: 50px;
+
     margin-top: 1%;
 }
 

@@ -312,7 +312,7 @@ async function loadPesan() {
       if (isSticker) {
   // 🔹 Struktur untuk stiker (tanpa balon)
           htmlContent = `
-            <div class="chat-image" style="background-image: url('img/Logo Dio.webp'); background-size: 150%;"></div>
+            <div class="chat-image" style="background-image: url('img/logoDexa.webp'); background-size: 150%;"></div>
             <div class="balon-chat-transparant">
               <h3 style="color:${colors[Math.floor(Math.random() * colors.length)]};">${escapeHtml(nama)}</h3>
               <img src="${pesan}" alt="stiker" class="stiker-chat">
@@ -322,7 +322,7 @@ async function loadPesan() {
         } else {
           // 🔹 Struktur untuk teks (masih pakai balon)
           htmlContent = `
-            <div class="chat-image" style="background-image: url('img/Logo Dio.webp'); background-size: 150%;"></div>
+            <div class="chat-image" style="background-image: url('img/logoDexa.webp'); background-size: 150%;"></div>
             <div class="balon-chat">
               <h3 style="color:${colors[Math.floor(Math.random() * colors.length)]};">${escapeHtml(nama)}</h3>
               <div class="Nama-chat">
