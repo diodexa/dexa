@@ -116,7 +116,7 @@ body, html {
   justify-content: center;
   text-align: center;
   align-items: center;
-  margin-bottom: 5%;
+
 }
 
 #header img {
@@ -132,9 +132,9 @@ body, html {
     width: 10vw;
     margin-left: 1rem;
     border-radius: 50%;
-    animation: bounceAnime 1s infinite ease-in-out;
-   
+    animation: bounceAnime 2s infinite;
 }
+
 
 .header-info {
     width: 60%;
@@ -171,21 +171,14 @@ body, html {
 
 #Home {
     position: absolute;
-    top: 13.7vh;     /* tinggi header */
+    top: 10.7vh;     
     bottom: 9.2vh;  /* tinggi TulisPesan */
     left: 0;
     right: 0;
     overflow-y: auto;
     padding: 1rem;
-    /* background: url(../img/background-whatsapp1.jpg); */
-    background-attachment: fixed; 
-    background-size: cover;
     }
 
-#Home .container {
-    flex: 1; 
-    
-}
 
 .background img {
   width: 100%;
@@ -653,33 +646,9 @@ html{
 }
 
 
-
-#header {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    }
-
-
-
-/* #header img {
- 
-    width: 100% ; 
-    transform: scale(0.9) !important;
-    
-} */
-
-/* #header h1 {
-    font-size: 2.5rem;
-    
-} */
-/* .audio-icon-wrapper{
-    font-size: 4.5rem;
-} */
-
 #Home {
-    bottom: 7vh;
-    top: 11vh;
+    bottom: 6vh;
+    top: 7vh;
 } 
 
 .lead {
@@ -811,7 +780,7 @@ html{
 
 
 #Home {
-    top: 5%;     
+     
     bottom: 5.5vh;
     background-size: cover;
 } 
