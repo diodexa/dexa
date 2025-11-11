@@ -103,8 +103,7 @@ body, html {
     background-color: var(--warna);
     color: #ffffff;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     display: flex;
 }
 
@@ -140,15 +139,12 @@ body, html {
     width: 60%;
     justify-items: center;
     align-items: center;
-}
-
-#header h2, 
-#header p  {
-    text-align: center;
+    text-align: left;
     color: #ffffff;
     filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
-     
 }
+
+
 
 
 
@@ -900,11 +896,3 @@ html{
 
 }
 
-@supports (-webkit-touch-callout: none) {
-  input,
-textarea {
-  font-size: 16px; /* cegah zoom */
-
-  transform-origin: left center;
-}
-}
