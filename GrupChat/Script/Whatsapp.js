@@ -236,8 +236,6 @@ function hideStickerOverlay() {
       hideStickerOverlay();
       stickerList.style.display = "none";
       sedangKirimStiker = false;
-
-      // 🔓 Aktifkan kembali semua input
       inputNama.disabled = false;
       textarea.disabled = false;
       tombolKirim.disabled = false;

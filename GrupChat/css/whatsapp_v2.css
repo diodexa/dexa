@@ -18,7 +18,9 @@ body, html {
   font-family: 'Roboto', sans-serif;
 }
 
-
+* {
+  border : 1px solid red
+}
 
 #join{
     background: var(--warna);
@@ -104,6 +106,7 @@ body, html {
     color: #ffffff;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     display: flex;
 }
 
@@ -139,7 +142,7 @@ body, html {
     width: 60%;
     justify-items: center;
     align-items: center;
-    text-align: left;
+    text-align: center;
     color: #ffffff;
     filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
 }
