@@ -1,3 +1,7 @@
+import { clipboard } from "./components/ClipboardRek.js";
+import { imageHover } from "./components/imageHover.js";
+import { NamaTamu } from "./components/Paramps.js";
+
 document.title = 'Group Chat';
 
 const audioiconwrapper = document.querySelector('.audio-icon-wrapper');
@@ -45,14 +49,32 @@ document.getElementById("btnJoin").addEventListener("click", () => {
   document.getElementById("join").style.display = "none";
   localStorage.setItem("opened", "true");
   playAudio();
-  
+
+  // mulai animasi chat
+  setTimeout(() => {
+    mulaiAnimasiChat();
+  }, 1000); // ubah 2000 jadi 3000 kalau mau delay 3 detik, dst.
 });
 
-function Join() {
-  const Halaman = document.getElementById("join");
-  if (Halaman) Halaman.style.display = "none";
-  console.log("set opened = true");
+function mulaiAnimasiChat() {
+  const listItems = document.querySelectorAll("li");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        listItems.forEach((li, index) => {
+          li.style.transitionDelay = `${index * 1}s`; // bisa atur kecepatan
+          li.classList.add("active");
+        });
+
+        localStorage.setItem("animasiChat", "done");
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  listItems.forEach(li => observer.observe(li));
 }
+
 
 window.addEventListener("load", () => {
   console.log("opened status =", localStorage.getItem("opened"));
@@ -62,36 +84,12 @@ window.addEventListener("load", () => {
   // }
 });
 
-// === Nama tamu ===
-const urlParams = new URLSearchParams(window.location.search);
-const nama = urlParams.get('to') || '';
-const sambutanText = document.querySelector('#Sambutan');
-sambutanText.innerHTML = `<p>Hai, selamat bergabung ya ${nama} <br> ini bukan grup whatsapp kok.</p> <br>
-<span class="waktu">10:55</span>`;
 
-//imagehover
+NamaTamu();
+imageHover();
+clipboard();
 
-document.addEventListener("DOMContentLoaded", () => {
-  const galleryItems = document.querySelectorAll(
-    '.row [data-gallery="Mygallery"]'
-  );
 
-  if (galleryItems.length > 4) {
-    const moreCount = galleryItems.length - 4;
-
-    // Sembunyikan semua item setelah index ke-3
-    galleryItems.forEach((a, i) => {
-      if (i > 3) {
-        a.closest(".col").classList.add("d-none");
-      }
-    });
-
-    // Ambil item ke-4 (index 3)
-    const lastItem = galleryItems[3];
-    lastItem.classList.add("gallery-overlay");
-    lastItem.dataset.more = `+${moreCount}`;
-  }
-});
 // === API ===
 const API_URL = "https://script.google.com/macros/s/AKfycbwOuD7vpBuFzsfTqgvbqewxx0cCW2kvN9jYebSfJnK_AORiu2NinKdoo2PqTQqzKcLo/exec";
 let sedangKirimStiker = false;
@@ -101,6 +99,7 @@ let sedangKirimStiker = false;
 document.addEventListener("DOMContentLoaded", () => {
   
   loadPesan();
+  console.log("Load pesan dipanggil");
 
   const textarea = document.getElementById("InputPesan");
   const tombolKirim = document.getElementById("TombolKirim");
@@ -178,6 +177,8 @@ function hideStickerOverlay() {
       tombolKirim.textContent = "Kirim";
     }
   });
+
+  
 
   // === Tampilkan daftar stiker ===
   stickerButton.addEventListener("click", (e) => {
@@ -306,7 +307,7 @@ async function loadPesan() {
         }
 
         
-
+        let htmlContent = "";
       if (isSticker) {
   // 🔹 Struktur untuk stiker (tanpa balon)
           htmlContent = `
@@ -368,126 +369,3 @@ function initFancyboxProfile() {
 }
 
 
-
-
-
-// copy rekening
-const copyButtons = [
-  { id: "clipboardBCA", text: "321773737373" },
-  { id: "clipboardBNI", text: "123455678990" },
-  { id: "clipboardAlamat", text: "jalanjalanjalan" },
-];
-
-
-async function safeCopy(text) {
-  try {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      await navigator.clipboard.writeText(text);
-    } else {
-
-      const tempInput = document.createElement("textarea");
-      tempInput.value = text;
-      tempInput.style.position = "fixed";
-      tempInput.style.top = "-1000px";
-      document.body.appendChild(tempInput);
-      tempInput.focus();
-      tempInput.select();
-      document.execCommand("copy");
-      document.body.removeChild(tempInput);
-    }
-
-    const popup = document.createElement("div");
-    popup.textContent = "✅ Disalin ke clipboard!";
-    popup.style.position = "fixed";
-    popup.style.bottom = "15%";
-    popup.style.left = "50%";
-    popup.style.transform = "translateX(-50%)";
-    popup.style.background = "rgba(0,0,0,0.8)";
-    popup.style.color = "#fff";
-    popup.style.padding = "2%";
-    popup.style.whiteSpace = "nowrap";
-    popup.style.borderRadius = "12px";
-    popup.style.fontSize = "50%";
-    popup.style.zIndex = "9999";
-    popup.style.transition = "opacity 1s ease";
-    document.body.appendChild(popup);
-    setTimeout(() => popup.style.opacity = "0", 1000);
-    setTimeout(() => popup.remove(), 1500);
-
-  } catch (err) {
-    console.error("❌ Gagal menyalin:", err);
-    alert("Gagal menyalin. Silakan salin manual.");
-  }
-}
-
-
-copyButtons.forEach(({ id, text }) => {
-  const btn = document.getElementById(id);
-  if (btn) {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      safeCopy(text);
-    });
-  }
-});
-
-
-
-// const fotoPP = document.querySelectorAll('.chat-image');
-
-// fotoPP.forEach(pp => {
-//   pp.addEventListener('click', () => {  
-//     const bg = pp.style.backgroundImage;
-//     if (!bg) return;
-
-//     const src = bg.slice(5, -2); // ambil URL dari background-image: url("...")
-
-//     Fancybox.show([
-//       {
-//         src: src,
-//         type: 'image',
-//         caption: 'Foto Profil',
-//       }
-//     ]); // cuma 1 gambar
-//   });
-// });
-
-
-// === Animasi chat ===
-function mulaiAnimasiChat() {
-  const listItems = document.querySelectorAll("li");
-
-  // Kalau sebelumnya sudah animasi, langsung tampilkan semua
-  // if (localStorage.getItem("animasiChat") === "done") {
-  //   listItems.forEach(li => li.classList.add("active"));
-  //   return;
-  // }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        listItems.forEach((li, index) => {
-          li.style.transitionDelay = `${index * 1}s`; // bisa atur kecepatan
-          li.classList.add("active");
-        });
-
-        localStorage.setItem("animasiChat", "done");
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.5 });
-
-  listItems.forEach(li => observer.observe(li));
-}
-
-// Jalankan animasi hanya setelah klik tombol Join
-document.getElementById("btnJoin").addEventListener("click", () => {
-  document.getElementById("join").style.display = "none";
-  localStorage.setItem("opened", "true");
-  playAudio();
-
-  // mulai animasi chat
-  setTimeout(() => {
-    mulaiAnimasiChat();
-  }, 1000); // ubah 2000 jadi 3000 kalau mau delay 3 detik, dst.
-});
