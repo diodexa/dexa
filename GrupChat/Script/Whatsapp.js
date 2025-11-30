@@ -1,93 +1,20 @@
+import { mulaiAnimasiChat } from "./components/AnimasiFadeUpBalon.js";
 import { clipboard } from "./components/ClipboardRek.js";
-import { imageHover } from "./components/imageHover.js";
+import { escapeHtml } from "./components/escapeHTML.js";
+import { imageHover } from "./components/ImageHover.js";
+import { ButtonJoin } from "./components/JoinButton.js";
 import { NamaTamu } from "./components/Paramps.js";
+import { AudioIcon, playAudio } from "./components/PlayAudio.js";
 
 document.title = 'Group Chat';
 
-const audioiconwrapper = document.querySelector('.audio-icon-wrapper');
-const audioIcon = audioiconwrapper.querySelector('i');
-const song = document.querySelector('#song');
-let isPlaying = false;
-
-function playAudio() {
-  song.volume = 0.1;
-  song.play();
-  isPlaying = true;
-  audioIcon.classList.remove('fa-circle-play');
-  audioIcon.classList.add('fa-circle-pause');
-}
-
-audioiconwrapper.onclick = function () {
-  if (isPlaying) {
-    song.pause();
-    audioIcon.classList.remove('fa-circle-pause');
-    audioIcon.classList.add('fa-circle-play');
-  } else {
-    song.play();
-    audioIcon.classList.remove('fa-circle-play');
-    audioIcon.classList.add('fa-circle-pause');
-  }
-  isPlaying = !isPlaying;
-};
-
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) {
-    song.pause();
-    isPlaying = false; // reset status
-    audioIcon.classList.remove('fa-circle-pause');
-    audioIcon.classList.add('fa-circle-play');
-  }
-});
-
-window.addEventListener("beforeunload", () => {
-  song.pause();
-  song.currentTime = 0;
-  isPlaying = false;
-});
-
-document.getElementById("btnJoin").addEventListener("click", () => {
-  document.getElementById("join").style.display = "none";
-  localStorage.setItem("opened", "true");
-  playAudio();
-
-  // mulai animasi chat
-  setTimeout(() => {
-    mulaiAnimasiChat();
-  }, 1000); // ubah 2000 jadi 3000 kalau mau delay 3 detik, dst.
-});
-
-function mulaiAnimasiChat() {
-  const listItems = document.querySelectorAll("li");
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        listItems.forEach((li, index) => {
-          li.style.transitionDelay = `${index * 1}s`; // bisa atur kecepatan
-          li.classList.add("active");
-        });
-
-        localStorage.setItem("animasiChat", "done");
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.5 });
-
-  listItems.forEach(li => observer.observe(li));
-}
-
-
-window.addEventListener("load", () => {
-  console.log("opened status =", localStorage.getItem("opened"));
-  // if (localStorage.getItem("opened")) {
-  //   const Halaman = document.getElementById("join");
-  //   if (Halaman) Halaman.style.setProperty("display", "none");
-  // }
-});
-
 
 NamaTamu();
+ButtonJoin();
+AudioIcon();
 imageHover();
 clipboard();
+
 
 
 // === API ===
@@ -99,7 +26,6 @@ let sedangKirimStiker = false;
 document.addEventListener("DOMContentLoaded", () => {
   
   loadPesan();
-  console.log("Load pesan dipanggil");
 
   const textarea = document.getElementById("InputPesan");
   const tombolKirim = document.getElementById("TombolKirim");
@@ -250,12 +176,122 @@ function hideStickerOverlay() {
 // === Fungsi ambil pesan dari server ===
 let isLoadingPesan = false;
 
+
+
 async function loadPesan() {
   if (isLoadingPesan) return;
   isLoadingPesan = true;
 
   const id = "whatsapp";
   const url = `${API_URL}?id=${encodeURIComponent(id)}`;
+  const DataArray = await fetch(url);
+  const DataArrayText= await DataArray.text();
+  const arr = JSON.parse(DataArrayText);
+
+  
+  const nama = arr.map(item=> item.Nama );
+  const pesanObj = arr.map(item=> item.Pesan );
+  const dateObj = arr.map(item => {
+  if (!item.Date) return "--:--";
+
+  const [_, time] = item.Date.split("T");
+  const [hour, minute] = time.split(":");
+
+  return `${hour}:${minute}`;
+});
+
+const colors = ["#ac038dff","#3a86d2ff","#0aa54bff","#b57706ff","#640811ff","#167f9cff","#839534ff","#5352ed"];
+arr.forEach((item)=> {
+
+
+  const li =  document.createElement("li");
+  const pesanText = item.Pesan;
+
+  let pesanContent = "";
+  let isSticker = false;
+  let htmlContent = "";
+    if (/^https?:\/\/.*\.(png|jpg|jpeg|gif|webp)$/i.test(pesanText)) {
+      isSticker = true;
+      pesanContent = `<img src="${pesanText}" alt="stiker" class="stiker-chat">`;
+    } else {
+      pesanContent = `<p>${escapeHtml(pesanText)}</p>`;
+    }
+
+    if (isSticker) {
+      htmlContent = `
+        <div class="chat-image" style="background-image: url('img/logoDexa.webp'); background-size: 150%;"></div>
+        <div class="balon-chat-transparant">
+          <h3 style="color:${colors[Math.floor(Math.random() * colors.length)]};">${escapeHtml(item.nama)}</h3>
+          <img src="${pesanText}" alt="stiker" class="stiker-chat">
+          <span class="waktu">${item.dateObj}</span>
+        </div>
+      `;
+    } else {
+      htmlContent = `
+        <div class="chat-image" style="background-image: url('img/logoDexa.webp'); background-size: 150%;"></div>
+        <div class="balon-chat">
+          <h3 style="color:${colors[Math.floor(Math.random() * colors.length)]};">${escapeHtml(item.nama)}</h3>
+          <div class="Nama-chat">
+            <p>${escapeHtml(pesanText)}</p>
+            <br>
+            <span class="waktu">${item.dateObj}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    li.innerHTML = htmlContent;
+});
+
+
+  
+   
+
+  //     const nama = item.Nama ;
+  //     const pesan = item.Pesan || item.pesan || "";
+  //     const dateObj = item.Date || item.date ? new Date(item.Date || item.date) : new Date();
+
+  //     let pesanContent;
+  //     let isSticker = false;
+  //       if (pesan.match(/^https?:\/\/.*\.(png|jpg|jpeg|gif|webp)$/i)) {
+  //         isSticker = true;
+  //         pesanContent = `<img src="${pesan}" alt="stiker" class="stiker-chat">`;
+  //       } else {
+  //         pesanContent = `<p>${escapeHtml(pesan)}</p>`;
+  //       }
+
+        
+  //       let htmlContent = "";
+  //     if (isSticker) {
+  // //  Struktur untuk stiker (tanpa balon)
+  //         htmlContent = `
+  //           <div class="chat-image" style="background-image: url('img/logoDexa.webp'); background-size: 150%;"></div>
+  //           <div class="balon-chat-transparant">
+  //             <h3 style="color:${colors[Math.floor(Math.random() * colors.length)]};">${escapeHtml(nama)}</h3>
+  //             <img src="${pesan}" alt="stiker" class="stiker-chat">
+  //             <span class="waktu">${dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
+  //           </div>
+  //         `;
+  //       } else {
+  //         // 🔹 Struktur untuk teks (masih pakai balon)
+  //         htmlContent = `
+  //           <div class="chat-image" style="background-image: url('img/logoDexa.webp'); background-size: 150%;"></div>
+  //           <div class="balon-chat">
+  //             <h3 style="color:${colors[Math.floor(Math.random() * colors.length)]};">${escapeHtml(nama)}</h3>
+  //             <div class="Nama-chat">
+  //               <p>${escapeHtml(pesan)}</p>
+  //               <br>
+  //               <span class="waktu">${dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
+  //             </div>
+  //           </div>
+  //         `;
+  //       }
+
+  //       li.innerHTML = htmlContent;
+
+  //     chatList.appendChild(li);
+
+  
 
   try {
     const res = await fetch(url);
@@ -289,54 +325,54 @@ async function loadPesan() {
 
     const colors = ["#ac038dff","#3a86d2ff","#0aa54bff","#b57706ff","#640811ff","#167f9cff","#839534ff","#5352ed"];
 
-    arr.forEach(item => {
-      const li = document.createElement("li");
-      li.classList.add("active", "pesan-dari-server");
+  //   arr.forEach(item => {
+  //     const li = document.createElement("li");
+  //     li.classList.add("active", "pesan-dari-server");
 
-      const nama = item.Nama || item.nama || item.Name || "Anonim";
-      const pesan = item.Pesan || item.pesan || "";
-      const dateObj = item.Date || item.date ? new Date(item.Date || item.date) : new Date();
+  //     const nama = item.Nama || item.nama || item.Name || "Anonim";
+  //     const pesan = item.Pesan || item.pesan || "";
+  //     const dateObj = item.Date || item.date ? new Date(item.Date || item.date) : new Date();
 
-      let pesanContent;
-      let isSticker = false;
-        if (pesan.match(/^https?:\/\/.*\.(png|jpg|jpeg|gif|webp)$/i)) {
-          isSticker = true;
-          pesanContent = `<img src="${pesan}" alt="stiker" class="stiker-chat">`;
-        } else {
-          pesanContent = `<p>${escapeHtml(pesan)}</p>`;
-        }
+  //     let pesanContent;
+  //     let isSticker = false;
+  //       if (pesan.match(/^https?:\/\/.*\.(png|jpg|jpeg|gif|webp)$/i)) {
+  //         isSticker = true;
+  //         pesanContent = `<img src="${pesan}" alt="stiker" class="stiker-chat">`;
+  //       } else {
+  //         pesanContent = `<p>${escapeHtml(pesan)}</p>`;
+  //       }
 
         
-        let htmlContent = "";
-      if (isSticker) {
-  // 🔹 Struktur untuk stiker (tanpa balon)
-          htmlContent = `
-            <div class="chat-image" style="background-image: url('img/logoDexa.webp'); background-size: 150%;"></div>
-            <div class="balon-chat-transparant">
-              <h3 style="color:${colors[Math.floor(Math.random() * colors.length)]};">${escapeHtml(nama)}</h3>
-              <img src="${pesan}" alt="stiker" class="stiker-chat">
-              <span class="waktu">${dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
-            </div>
-          `;
-        } else {
-          // 🔹 Struktur untuk teks (masih pakai balon)
-          htmlContent = `
-            <div class="chat-image" style="background-image: url('img/logoDexa.webp'); background-size: 150%;"></div>
-            <div class="balon-chat">
-              <h3 style="color:${colors[Math.floor(Math.random() * colors.length)]};">${escapeHtml(nama)}</h3>
-              <div class="Nama-chat">
-                <p>${escapeHtml(pesan)}</p>
-                <br>
-                <span class="waktu">${dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
-              </div>
-            </div>
-          `;
-        }
+  //       let htmlContent = "";
+  //     if (isSticker) {
+  // //  Struktur untuk stiker (tanpa balon)
+  //         htmlContent = `
+  //           <div class="chat-image" style="background-image: url('img/logoDexa.webp'); background-size: 150%;"></div>
+  //           <div class="balon-chat-transparant">
+  //             <h3 style="color:${colors[Math.floor(Math.random() * colors.length)]};">${escapeHtml(nama)}</h3>
+  //             <img src="${pesan}" alt="stiker" class="stiker-chat">
+  //             <span class="waktu">${dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
+  //           </div>
+  //         `;
+  //       } else {
+  //         // 🔹 Struktur untuk teks (masih pakai balon)
+  //         htmlContent = `
+  //           <div class="chat-image" style="background-image: url('img/logoDexa.webp'); background-size: 150%;"></div>
+  //           <div class="balon-chat">
+  //             <h3 style="color:${colors[Math.floor(Math.random() * colors.length)]};">${escapeHtml(nama)}</h3>
+  //             <div class="Nama-chat">
+  //               <p>${escapeHtml(pesan)}</p>
+  //               <br>
+  //               <span class="waktu">${dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
+  //             </div>
+  //           </div>
+  //         `;
+  //       }
 
-        li.innerHTML = htmlContent;
+  //       li.innerHTML = htmlContent;
 
-      chatList.appendChild(li);
-    });
+  //     chatList.appendChild(li);
+  //   });
 
     initFancyboxProfile();
 
