@@ -436,12 +436,12 @@ body, html {
     display: flex;
 }
 
+
+
 .input-nama {
   flex: 0 0 20%;
-  margin: 0.3rem;
   border-radius: 20px;
-  padding: 6px 12px;
-  padding-top: 15px;
+  padding: 15px 12px 12px 12px;
   font-size: 1rem;
   line-height: 1;
   resize: none;      
@@ -450,22 +450,30 @@ body, html {
   max-height: 120px;   
  
 }
-.input-pesan {
+
+.wrapperInputPesan{
   flex: 1;
-  margin: 0.3rem;
-  width: 60%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex; 
+}
+
+
+.input-pesan {
+  flex: 1;  
+  width: 100%;
+  height: 100%;
+  position: relative;
   border-radius: 20px;
-  padding: 6px 12px;
-  padding-top: 15px;
-  padding-right: 10%;
   font-size: 1rem;
   line-height: 1;
-  resize: none;      
-  overflow-y: hidden; 
-  min-height: 30px;   
-  max-height: 120px; 
-  position: relative;
-  
+  resize: none;
+  overflow-y: hidden;
+  display: block;
+  box-sizing: border-box;
+  padding: 15px 12px 12px 12px;
+  justify-content: center;
 }
 
 
@@ -497,8 +505,8 @@ textarea:focus {
     position: absolute;
     color: #ccc;
     font-size: 250% ;
-    right: 22%;
-    bottom: 35%;
+    right: 0;
+    padding: 2%;
     cursor: pointer;
     transition: 0.2s;
 }
