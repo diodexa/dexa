@@ -507,6 +507,7 @@ textarea:focus {
     font-size: 250% ;
     right: 0;
     padding: 2%;
+    margin: 2%;
     cursor: pointer;
     transition: 0.2s;
 }
@@ -820,6 +821,7 @@ html{
 
 
 
+
 .join .card-overview {
     width: 23%;
     position: relative;
@@ -857,7 +859,6 @@ html{
   display: inline-block;
   padding: 12px 24px;
   width: 100%;
-
   background: var(--button);
   color: #fff !important;
   border: none; 
@@ -872,7 +873,8 @@ html{
 }
 
 #stickerButton {
-    right: 17%;
+    margin: 1%;
+    padding: 0;
 }
 
 .stiker-chat {
