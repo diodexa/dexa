@@ -6,10 +6,6 @@ import { playAudio } from "./PlayAudio.js";
 export const ButtonJoin = () => {
   const joinBtn = document.getElementById("btnJoin");
 
-  if (!joinBtn) {
-    console.warn("btnJoin button not found");
-    return;
-  }
 
   joinBtn.addEventListener("click", () => {
     document.getElementById("join").style.display = "none";
