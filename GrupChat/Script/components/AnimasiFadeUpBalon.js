@@ -1,16 +1,23 @@
-
-
 export function mulaiAnimasiChat() {
-  const listItems = document.querySelectorAll("li");
-  const observer = new IntersectionObserver((entries) => {
+  const chatList = document.querySelector('.chat');
+  const listItems = document.querySelectorAll('li');
+
+  if (localStorage.getItem('animasiChat') === 'done') {
+    return; // ❌ tidak aktifkan animasi
+  }
+
+  // ✅ Aktifkan mode animasi
+  chatList.classList.add('animate-chat');
+
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         listItems.forEach((li, index) => {
-          li.style.transitionDelay = `${index * 1}s`; 
-          li.classList.add("active");
+          li.style.transitionDelay = `${index * 0.5}s`;
+          li.classList.add('active');
         });
 
-        localStorage.setItem("animasiChat", "done");
+        localStorage.setItem('animasiChat', 'done');
         observer.disconnect();
       }
     });

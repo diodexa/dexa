@@ -4,7 +4,7 @@ import { formatTimeWhatsApp } from "./TimeUtils.js";
 
 
 
-let isLoadingPesan = false;
+
 export async function loadPesan() {
   const data = await getMessages();
   if (!data) return;
@@ -19,6 +19,7 @@ export async function loadPesan() {
 
 
     const li =  document.createElement("li");
+    // li.classList.add("active");
     const namaText = item.Nama;
     const pesanText = item.Pesan;
     const time = formatTimeWhatsApp(item.Date);
@@ -62,7 +63,7 @@ export async function loadPesan() {
 
     li.innerHTML = htmlContent;
     chatList.appendChild(li);
-    console.log (li)
+    console.log(li.innerHTML)
 });
 
   initFancyboxProfile()

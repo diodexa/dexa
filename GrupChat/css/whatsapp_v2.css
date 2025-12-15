@@ -582,18 +582,35 @@ textarea:focus {
 
 
 
-.chat li {
+/* HANYA SAAT ANIMASI AKTIF */
+.animate-chat li {
   opacity: 0;
+  transform: translateY(20px);
+}
+
+.animate-chat li.active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s ease;
+}
+
+.chat li {
+ opacity: 0;
   transform: translateY(20px);
   transition: all 0.5s ease;
 }
 
-.chat li.active, 
-li.pesan-dari-server {
+body.join-active .chat li {
   opacity: 1;
- 
+  transform: translateY(20px);
 }
 
+/* join sudah hilang → animasi */
+body.join-active .chat li.active {
+  opacity: 0;
+  transform: translateY(0);
+  transition: all 0.4s ease;
+}
 
 
 @keyframes spin {
