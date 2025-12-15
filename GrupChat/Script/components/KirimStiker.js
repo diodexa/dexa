@@ -1,59 +1,57 @@
+import { API_URL } from "./API.js";
+import { loadPesan } from "./LoadPesan.js";
+import { hideStickerOverlay, showStickerOverlay } from "./modalStiker.js";
+
+let listenerAttached = false;
 
 export const KirimStiker = () => {
+  if (listenerAttached) return;
+  listenerAttached = true;
 
-    let sedangKirimStiker = false;
-    document.querySelectorAll(".sticker").forEach((img) => {
-      img.addEventListener("click", async (e) => {
-        e.preventDefault();
-    
-        const inputNama = document.getElementById("NamaKamu");
-        const textarea = document.getElementById("InputPesan");
-        const tombolKirim = document.getElementById("TombolKirim");
-        const stickerButton = document.getElementById("stickerButton");
-    
-        const nama = inputNama.value.trim();
-        if (!nama) {
-          document.activeElement.blur();
-          setTimeout(() => alert("Isi dulu namamu sebelum mengirim stiker 😄"), 100);
-          return;
-        }
-    
-        sedangKirimStiker = true;
-        showStickerOverlay();
-    
-        // 🔒 Disable semua input saat kirim stiker
-        inputNama.disabled = true;
-        textarea.disabled = true;
-        tombolKirim.disabled = true;
-        stickerButton.disabled = true;
-    
-        
-    
-        const id = document.getElementById("idInput").value || "whatsapp";
-        const stikerUrl = img.src;
-    
+  document.querySelectorAll(".sticker").forEach((img) => {
+    img.addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      if (img.dataset.sending === "1") return;
+      img.dataset.sending = "1";
+
+      const inputNama = document.getElementById("NamaKamu");
+      const textarea = document.getElementById("InputPesan");
+      const tombolKirim = document.getElementById("TombolKirim");
+      const stickerButton = document.getElementById("stickerButton");
+
+      const nama = inputNama.value.trim();
+      if (!nama) {
+        alert("Isi dulu namamu 😄");
+        img.dataset.sending = "0";
+        return;
+      }
+
+      showStickerOverlay();
+
+      inputNama.disabled =
+      textarea.disabled =
+      tombolKirim.disabled =
+      stickerButton.disabled = true;
+
+      try {
         const formData = new FormData();
-        formData.append("id", id);
+        formData.append("id", document.getElementById("idInput").value || "whatsapp");
         formData.append("Nama", nama);
-        formData.append("Pesan", stikerUrl);
-    
-        try {
-          const res = await fetch(API_URL, { method: "POST", body: formData });
-          console.log("Stiker terkirim:", await res.text());
-          await loadPesan();
-        } catch (err) {
-          console.error("Gagal kirim stiker:", err);
-          alert("Gagal mengirim stiker 😢");
-        } finally {
-          hideStickerOverlay();
-          stickerList.style.display = "none";
-          sedangKirimStiker = false;
-          inputNama.disabled = false;
-          textarea.disabled = false;
-          tombolKirim.disabled = false;
-          stickerButton.disabled = false;
-        }
-      });
+        formData.append("Pesan", img.src);
+
+        await fetch(API_URL, { method: "POST", body: formData });
+        await loadPesan();
+      } catch (err) {
+        console.error(err);
+      } finally {
+        inputNama.disabled = 
+        textarea.disabled =
+        tombolKirim.disabled =
+        stickerButton.disabled = false;
+        img.dataset.sending = "0";
+        hideStickerOverlay();
+      }
     });
-    return sedangKirimStiker
-}
+  });
+};

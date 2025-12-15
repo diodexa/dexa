@@ -15,6 +15,7 @@ document.title = 'Group Chat';
 NamaTamu();
 ButtonJoin();
 loadPesan();
+console.log("loadpesan main");
 AudioIcon();
 imageHover();
 clipboard();

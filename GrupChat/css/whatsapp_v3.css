@@ -19,6 +19,7 @@ body, html {
 }
 
 
+
 #join{
     background: var(--warna);
     width: 100%;
@@ -119,7 +120,7 @@ body, html {
 }
 
 #header img {
-    width: 10vw ; 
+    width: 10dvw ; 
     object-fit: cover;
     border-radius: 50%;
     filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
@@ -128,7 +129,7 @@ body, html {
 }
 
 .WrapHeader a {
-    width: 10vw;
+    width: 10dvw;
     margin-left: 1rem;
     border-radius: 50%;
     animation: bounceAnime 2s infinite;
@@ -287,6 +288,7 @@ body, html {
     background-color: var(--chat);
     border-radius: 10px;
     padding: 2px;
+    margin: 2px;
 }
 .chat p {
     margin: 1px;
@@ -535,7 +537,7 @@ textarea:focus {
 }
 
 .sticker-list img {
-  width: 40%;
+  width: 20%;
 
   cursor: pointer;
   border-radius: 8px;
@@ -561,7 +563,7 @@ textarea:focus {
   flex-direction: column;
   z-index: 9999;
   border-radius: 10px;
-  transition: opacity 0.3s ease;
+  transition: opacity 1s ease;
   opacity: 0;
 }
 
@@ -698,7 +700,7 @@ html{
 }
 .chat h3{
     font-size: 1.5rem;
-    margin-top: 0;
+    margin: 0 !important;
 }
 .tanggal {
     font-size: 1.7rem !important;
@@ -815,6 +817,7 @@ html{
 
     margin-left: 14%; 
     margin-top: 1% ;
+    min-width: 20%;
 }
 
 .input-nama {
@@ -826,7 +829,15 @@ html{
   padding-top: 13px;
 
 }
+.sticker-list img {
+  width: 15%;
 
+}
+
+#stickerButton {
+    margin: 2%;
+    padding: 0;
+}
 
 } 
 /* laptop */
@@ -909,8 +920,8 @@ html{
 
 
 .chat li .balon-chat {
-  width: fit-content !important;
-  max-width: 40% !important;
+  max-width: 40% ;
+  min-width: 20%;
 }
 
 /* .chat li .balon-chat sl-card {

@@ -18,13 +18,14 @@ export const TampilStiker = () => {
 }
 
 export function hideStickerOverlay() {
-  const overlay = document.getElementById("stickerOverlay");
+  const overlay = document.querySelector(".sticker-overlay");
   overlay.classList.remove("show");
   setTimeout(() => overlay.style.display = "none", 300);
 }
 
 export function showStickerOverlay() {
-  const overlay = document.getElementById("stickerOverlay");
+  console.log("hideStickerOverlay DIPANGGIL");
+  const overlay = document.querySelector(".sticker-overlay");
   const stickerList = document.getElementById("stickerList");
   const rect = stickerList.getBoundingClientRect(); // posisi relative ke viewport
 

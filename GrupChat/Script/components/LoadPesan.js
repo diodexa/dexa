@@ -6,20 +6,23 @@ import { formatTimeWhatsApp } from "./TimeUtils.js";
 
 
 export async function loadPesan() {
+  console.count("loadPesan dipanggil");
   const data = await getMessages();
   if (!data) return;
 
   
-  const chatList = document.querySelector(".chat");
+  const chatServer = document.getElementById("chat-server");
+chatServer.innerHTML = ""; // ✅ hanya hapus pesan server
 
-  
+
 
 
   data.forEach((item)=> {
 
 
     const li =  document.createElement("li");
-    // li.classList.add("active");
+    li.classList.add("pesan-dari-server");
+  
     const namaText = item.Nama;
     const pesanText = item.Pesan;
     const time = formatTimeWhatsApp(item.Date);
@@ -37,7 +40,7 @@ export async function loadPesan() {
     pesanContent = `<p>${escapeHtml(pesanText)}</p>`;
     }
 
-    console.log (time)
+   
     if (isSticker) {
     htmlContent = `
         <div class="chat-image" style="background-image: url('img/logoDexa.webp'); background-size: 150%;"></div>
@@ -62,8 +65,8 @@ export async function loadPesan() {
     }
 
     li.innerHTML = htmlContent;
-    chatList.appendChild(li);
-    console.log(li.innerHTML)
+    chatServer.appendChild(li);
+
 });
 
   initFancyboxProfile()
