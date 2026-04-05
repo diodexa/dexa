@@ -1,6 +1,5 @@
 export const Navbar = ()=> {
     return (
-        <div>
             <div className="flex justify-between items-center w-screen-xl p-4 ">
                 <a href="https://dexa-invitation.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="/logo-dio.webp" className="max-h-25 w-auto object-contain"  />
@@ -29,6 +28,6 @@ export const Navbar = ()=> {
                     </ul>
                 </div>
             </div>
-        </div>
+        
     )
 }
