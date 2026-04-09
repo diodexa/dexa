@@ -5,15 +5,15 @@ interface Project {
 }
 
 const projects: Project[] = [
-  { title: "Invitation website model flip book", 
+  { title: "Flip book", 
     img: "/buku.webp", 
     demoUrl: "https://dexa-invitation.com/Book/index.html" },
 
-  { title: "Invitation website", 
-    img: "/ProjectLeaf.png", 
+  { title: "Leaf", 
+    img: "/leaf.png", 
     demoUrl: "https://dexa-invitation.com/Leaf/index.html" },
 
-  { title: "Invitation website model group Chat", 
+  { title: "Group Chat", 
     img: "/grupchat.webp", 
     demoUrl: "https://dexa-invitation.com/GrupChat/index.html" },
 

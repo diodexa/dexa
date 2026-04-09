@@ -1,6 +1,6 @@
 export const Navbar = ()=> {
     return (
-            <div className="flex justify-between items-center w-screen-xl p-4 ">
+            <div className="flex justify-between items-center w-screen-xl p-4 border-b-1 border-gray-300">
                 <a href="https://dexa-invitation.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="/logo-dio.webp" className="max-h-25 w-auto object-contain"  />
                     <div className="flex flex-col">
@@ -17,13 +17,13 @@ export const Navbar = ()=> {
                 <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                     <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-700 md:dark:bg-gray-700 dark:border-gray-700">
                         <li>
-                        <a href="#Home" className="block py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-teal-500 md:p-3 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700  md:dark:hover:bg-transparent" aria-current="page">Home</a>
+                        <a href="#Home" className="block py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#2973B2] md:p-3 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700  md:dark:hover:bg-transparent" aria-current="page">Home</a>
                         </li>
                         <li>
-                        <a href="#catalogue" className="block py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-teal-500 md:p-3 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700  md:dark:hover:bg-transparent ">Catalogue</a>
+                        <a href="#catalogue" className="block py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#2973B2] md:p-3 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700  md:dark:hover:bg-transparent ">Catalogue</a>
                         </li>
                         <li>
-                        <a href="#Contact" className="block py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-teal-500 md:p-3 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700 dark:hover:text-teal-500 md:dark:hover:bg-transparent nav-default">Contact</a>
+                        <a href="#Contact" className="block py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#2973B2] md:p-3 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700 dark:hover:text-teal-500 md:dark:hover:bg-transparent nav-default">Contact</a>
                         </li>
                     </ul>
                 </div>
