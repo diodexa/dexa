@@ -7,7 +7,7 @@ export const Catalogue = ()=> {
     const [modalUrl, setModalUrl] = useState<string | null>(null);
    
     return (
-        <div>
+        <div className="text-[#08060d]">
             <h1>Katalog</h1>
             <div className="flex flex-wrap gap-4">
                 {projects.map((contoh,index)=>(
@@ -15,7 +15,7 @@ export const Catalogue = ()=> {
                         <p className="text-teal-600 text-xl">{contoh.title} </p>
                         <img src={contoh.img} alt={contoh.title} className="grow-1" />
                         <div className="grid gap-2">
-                            <button onClick={()=>setModalUrl(contoh.demoUrl)} className="bg-[#48A6A7] text-white p-2 rounded-4xl"> open demo </button>
+                            <button onClick={()=>setModalUrl(contoh.demoUrl)} className="bg-[#48A6A7] text-white p-2 rounded-4xl"> Open Demo </button>
                             <button className="bg-[#48A6A7] text-white p-2 rounded-4xl">Order</button>
                             
                         </div>

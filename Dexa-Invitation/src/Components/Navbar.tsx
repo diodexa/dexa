@@ -1,6 +1,6 @@
 export const Navbar = ()=> {
     return (
-            <div className="flex justify-between items-center w-screen-xl p-4 border-b-1 border-gray-300">
+            <div className="fixed flex justify-between items-center w-full p-4 border-b-1 border-gray-300 bg-[#F2EFE7] ">
                 <a href="https://dexa-invitation.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="/logo-dio.webp" className="max-h-25 w-auto object-contain"  />
                     <div className="flex flex-col">
@@ -8,7 +8,7 @@ export const Navbar = ()=> {
                         <span className="self-center text-2xs whitespace-nowrap text-teal-500 dark:text-white"> invitation  </span>
                     </div>
                 </a>
-                <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center bg-white text-sm  dark:text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:bg-gray-700 dark:hover:bg-gray-700 " aria-controls="navbar-default" aria-expanded="false">
+                <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm  dark:text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:bg-gray-700 dark:hover:bg-gray-700 " aria-controls="navbar-default" aria-expanded="false">
                     <span className="sr-only">Open main menu</span>
                     <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
