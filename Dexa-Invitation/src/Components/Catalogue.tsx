@@ -7,16 +7,16 @@ export const Catalogue = ()=> {
     const [modalUrl, setModalUrl] = useState<string | null>(null);
    
     return (
-        <div className="text-[#08060d]">
+        <div className=" p-4" id="catalogue">
             <h1>Katalog</h1>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 ">
                 {projects.map((contoh,index)=>(
-                    <div key={index} className="border-1 border-gray-400 p-2 min-w-3xs flex flex-col flex-1 rounded-xl" >
-                        <p className="text-teal-600 text-xl">{contoh.title} </p>
+                    <div key={index} className="border-1 border-white p-2 min-w-3xs flex flex-col flex-1 rounded-xl bg-[#48A6A7]" >
+                        <p className="text-white text-xl">{contoh.title} </p>
                         <img src={contoh.img} alt={contoh.title} className="grow-1" />
                         <div className="grid gap-2">
-                            <button onClick={()=>setModalUrl(contoh.demoUrl)} className="bg-[#48A6A7] text-white p-2 rounded-4xl"> Open Demo </button>
-                            <button className="bg-[#48A6A7] text-white p-2 rounded-4xl">Order</button>
+                            <button onClick={()=>setModalUrl(contoh.demoUrl)} className="bg-[#F2EFE7] text-[#08060d] p-2 rounded-4xl cursor-pointer hover:bg-[#48A6A7] hover:text-white border-1 border-white"> Open Demo </button>
+                            <button className="bg-[#F2EFE7] text-[#08060d] p-2 rounded-4xl cursor-pointer hover:bg-[#48A6A7] hover:text-white border-1 border-white">Order</button>
                             
                         </div>
                     </div>

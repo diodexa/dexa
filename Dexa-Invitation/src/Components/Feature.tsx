@@ -9,7 +9,7 @@ export const Feature = ()=> {
 
             {/* <div className="hidden lg:block lg:col-span-1" > </div> */}
 
-            <div className="md:col-span-1 lg:col-span-1 flex flex-col items-start self-stretch"> 
+            <div className="md:col-span-1 lg:col-span-1 flex flex-col items-start self-stretch mt-4"> 
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-gray-800 dark:text-white leading-tight text-left">
                     Fitur Eksklusif untuk Momen Spesialmu
                 </h1>

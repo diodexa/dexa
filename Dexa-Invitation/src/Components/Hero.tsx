@@ -1,4 +1,8 @@
 export const Hero = ()=> {
+    function handleKatalog () {
+        document.getElementById('catalogue')?.scrollIntoView({behavior:'smooth'})
+    }
+
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 items-center  p-8 md:p-12 gap-8 text-[#08060d]">
     
@@ -18,7 +22,7 @@ export const Hero = ()=> {
                 <div className="md:col-span-1 lg:col-span-1 flex flex-col items-center self-stretch h-10"> </div>
                 <div className="md:col-span-1 lg:col-span-3 flex flex-col  self-stretch"> 
                     <div className="flex items-center"> 
-                        <button className="bg-[#48A6A7] border border-gray-400 text-white dark:text-white dark:border-gray-400 font-medium py-3 px-8 rounded-lg transition duration-300 hover:bg-gray-100 hover:text-teal-500 dark:hover:bg-white dark:hover:text-teal-500 cursor-pointer" >
+                        <button className="bg-[#48A6A7] border border-gray-400 text-white dark:text-white dark:border-gray-400 font-medium py-3 px-8 rounded-lg transition duration-300 hover:bg-gray-100 hover:text-teal-500 dark:hover:bg-white dark:hover:text-teal-500 cursor-pointer" onClick={()=>handleKatalog()}>
                             Lihat Katalog
                         </button>
                     </div>

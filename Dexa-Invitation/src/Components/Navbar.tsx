@@ -1,4 +1,10 @@
-export const Navbar = ()=> {
+export const Navbar = (activeSection)=> {
+    const menu = [
+        {name: "Home", id: "home"},
+        {name: "Fitur", id: "fitur"},
+        {name: "Katalog", id: "katalog"},
+        {name: "FAQ", id: "faq"},
+    ]
     return (
             <div className="fixed flex justify-between items-center w-full p-4 border-b-1 border-gray-300 bg-[#F2EFE7] ">
                 <a href="https://dexa-invitation.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -16,15 +22,12 @@ export const Navbar = ()=> {
                 </button>
                 <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                     <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-700 md:dark:bg-gray-700 dark:border-gray-700">
-                        <li>
-                        <a href="#Home" className="block py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#2973B2] md:p-3 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700  md:dark:hover:bg-transparent" aria-current="page">Home</a>
-                        </li>
-                        <li>
-                        <a href="#catalogue" className="block py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#2973B2] md:p-3 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700  md:dark:hover:bg-transparent ">Catalogue</a>
-                        </li>
-                        <li>
-                        <a href="#Contact" className="block py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#2973B2] md:p-3 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700 dark:hover:text-teal-500 md:dark:hover:bg-transparent nav-default">Contact</a>
-                        </li>
+                        {menu.map((item)=>(
+                            <li key={item.id}>
+                                <a href={`#${item.id}`}
+                                className={`block py-2 px-3 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#2973B2] md:p-3 dark:text-white md:dark:hover:text-teal-500 dark:hover:bg-gray-700  md:dark:hover:bg-transparent ${activeSection === item.id ? "text-[#2973B2]" : "text-black"} `}> {item.name} </a>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
