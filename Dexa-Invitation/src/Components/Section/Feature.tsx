@@ -1,7 +1,7 @@
 
 export const Feature = ()=> {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center  p-8 md:p-12 gap-8">
+        <div id="fitur" className="grid grid-cols-1 md:grid-cols-2 items-center  p-8 md:p-12 gap-8">
     
             <div className="flex justify-center " > 
                 <img src="/feature.png" alt="Undangan Digital di HP" className="w-1/2 max-w-xs md:max-w-sm lg:max-w-md h-auto"/>

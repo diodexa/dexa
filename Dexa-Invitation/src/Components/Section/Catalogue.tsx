@@ -1,5 +1,5 @@
 import { useState } from "react";
-import projects from "../Products/Product"
+import projects from "../../Products/Product"
 import Modal from "./Modal";
 
 
@@ -7,7 +7,7 @@ export const Catalogue = ()=> {
     const [modalUrl, setModalUrl] = useState<string | null>(null);
    
     return (
-        <div className=" p-4" id="catalogue">
+        <div className=" p-4" id="katalog">
             <h1>Katalog</h1>
             <div className="flex flex-wrap gap-4 ">
                 {projects.map((contoh,index)=>(
