@@ -1,6 +1,8 @@
 import { useState } from "react";
-import projects from "../../Products/Product"
-import Modal from "./Modal";
+import projects from "../../Products/Product";
+import Modal from "../Modal";
+
+
 
 
 export const Catalogue = ()=> {

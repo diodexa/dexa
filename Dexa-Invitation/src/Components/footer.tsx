@@ -1,6 +1,6 @@
 
 
-
+//HOME dexa-invitiation
 export const Footer = ()=> {
     return(
         <div className="bg-[#48A6A7] text-white h-20">
