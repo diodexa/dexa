@@ -29,64 +29,123 @@ const generateLink = (base: string, name: string, id: string) =>
 const generateWA = (phone: string, message: string) =>
   `https://wa.me/${normalizePhone(phone)}?text=${encodeURIComponent(message)}`
 
+const getFirstName = (fullName: string) => {
+  if (fullName.includes(".")) {
+    return fullName.split(".")[0].trim()
+  }
+
+  return fullName.trim().split(" ")[0]
+}
+
 const messageTemplates = {
-  islam: (name: string, link: string, pasangan: string, tanggal: string) => `
-Assalamu'alaikum ${name}
+  islam: (name: string, pria: string, wanita: string, link: string) => {
+    const priaDepan = getFirstName(pria)
+    const wanitaDepan = getFirstName(wanita)
+    return (
+`
+Kepada Yth
+Bapak/Ibu/Saudara/i
+*${name}*
 
-Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Anda untuk hadir dalam acara pernikahan kami.
+‎السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ 
 
-${pasangan}
-${tanggal}
 
-Silakan buka undangan:
+Bismillahirahmanirrahim.
+
+Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, untuk menghadiri acara resepsi pernikahan kami:
+
+${wanita}
+&
+${pria}
+
+Berikut link untuk info lengkap dari acara kami:
+
 ${link}
 
-Wassalamu'alaikum Warahmatullahi Wabarakatuh
-`,
+Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i, berkenan untuk hadir dan memberikan doa restu.
 
-  kristen: (name: string, link: string, pasangan: string, tanggal: string) => `
+‎وَالسَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ
+
+Kami yang berbahagia:
+Kel. Kedua mempelai,
+${wanitaDepan} & ${priaDepan}
+`
+    )
+  },
+  
+
+  kristen: (name: string, pria: string, wanita: string, link: string) => {
+    const priaDepan = getFirstName(pria)
+    const wanitaDepan = getFirstName(wanita)
+    return (
+
+`
 Shalom ${name}
 
 Dengan penuh sukacita, kami mengundang Anda untuk menghadiri acara pernikahan kami.
 
-${pasangan}
-${tanggal}
+${wanita}
+    &
+${pria}
 
-Silakan buka undangan:
+Berikut link untuk info lengkap dari acara kami:
 ${link}
 
-Tuhan memberkati
-`,
+Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i, berkenan untuk hadir dan memberikan doa restu.
 
-  umum: (name: string, link: string, pasangan: string, tanggal: string) => `
+Tuhan memberkati
+
+Kami yang berbahagia:
+Kel. Kedua mempelai,
+${wanitaDepan} & ${priaDepan}
+
+`
+    )
+  },
+    
+
+  umum: (name: string, pria: string, wanita: string, link: string) => {
+    const priaDepan = getFirstName(pria)
+    const wanitaDepan = getFirstName(wanita)
+    return (
+
+`
 Halo ${name}
 
 Kami mengundang Anda ke acara pernikahan kami
 
-${pasangan}
-${tanggal}
+${wanita}
+&
+${pria}
 
-Silakan buka undangan:
+Berikut link untuk info lengkap dari acara kami:
 ${link}
 
 Merupakan suatu kehormatan bagi kami jika Anda berkenan hadir
+
+Kami yang berbahagia:
+Kel. Kedua mempelai,
+${wanitaDepan} & ${priaDepan}
 `
+    )
+  }
 }
 
 export const GuestWA = () => {
   const [guests, setGuests] = useState<Guest[]>([])
   const [copiedId, setCopiedId] = useState<string | null>(null)
 
-  // 🔥 manual input
-  const [manualName, setManualName] = useState("")
-  const [manualLink, setManualLink] = useState("")
-  const [manualMessage, setManualMessage] = useState("")
-  const [copiedManual, setCopiedManual] = useState(false)
-
-  const [namaPasangan, setNamaPasangan] = useState("")
-  const [tanggalNikah, setTanggalNikah] = useState("")
+  const [namaPria, setNamaPria] = useState("Pengantin Pria")
+  const [namaWanita, setNamaWanita] = useState("Pengantin Wanita")
   const [templateType, setTemplateType] = useState<"islam" | "kristen" | "umum">("umum")
-  const [baseLink, setBaseLink] = useState("https://dexa-invitation.com/Leaf")
+  const [baseLink, setBaseLink] = useState("")
+
+  // 🔥 manual input
+  const [manualName, setManualName] = useState("nama")
+  const [manualLink, setManualLink] = useState("dexa-invitation.com")
+  const [copiedManual, setCopiedManual] = useState(false)
+  const [manualMessage, setManualMessage] = useState("")
+
 
 
   const [messageMap, setMessageMap] = useState<Record<string, string>>({})
@@ -107,7 +166,14 @@ export const GuestWA = () => {
       const sheet = workbook.Sheets[workbook.SheetNames[0]]
       const json = XLSX.utils.sheet_to_json(sheet)
 
-      setGuests(json as Guest[])
+      const mapped = json.map((item: any) => ({
+        id: String(item.No), // 🔥 ambil dari Excel "No"
+        name: item.name,
+        phone: item.phone,
+      }))
+
+      setGuests(mapped)
+
     }
 
     reader.readAsBinaryString(file)
@@ -115,68 +181,87 @@ export const GuestWA = () => {
 
     // 🔥 generate manual
     const handleGenerateManual = () => {
-    if (!manualName) return
+      if (!manualName) return
 
-    const id = Date.now().toString()
-    const link = generateLink(baseLink, manualName, id)
-    const message = messageTemplates[templateType](manualName,link,namaPasangan,tanggalNikah)
+      const id = Date.now().toString()
+      const link = generateLink(baseLink, manualName, id)
 
-    setManualLink(link)
-    setManualMessage(message)
+      setManualLink(link)
     }
     
     useEffect(() => {
       setMessageMap({})
     }, [templateType])
 
-  return (
-    <div style={{ padding: "2rem" }}>
-      <h2>Undangan WhatsApp</h2>
+    useEffect(() => {
+      if (!manualName) return
 
-      {/* 🔥 Upload Excel */}
-      <input type="file" accept=".xlsx, .xls" onChange={handleFile} />
+      const link = generateLink(baseLink, manualName, (manualName +"01"))
+
+      const message = messageTemplates[templateType](manualName,namaPria,namaWanita,link)
+
+      setManualMessage(message)
+    }, [manualName, namaPria, namaWanita, templateType, baseLink])
+
+  return (
+    <div className="w-full mx-auto p-4">
+      <div className="flex">
+        <img src="/logo-dio.webp" className="max-h-25 w-auto object-contain"  />
+            <div className="flex flex-row">
+                <span className="self-center text-xl font-semibold whitespace-nowrap text-teal-500 dark:text-white">DEXA </span>
+                <span className="self-center text-2xs whitespace-nowrap text-teal-500 dark:text-white"> invitation  </span>
+            </div>
+      </div>
+      <h2>Blast Page</h2>
       <div className="flex flex-col gap-2 mb-4">
-        <label>Link Undangan kamu</label>
         <input
           type="text"
-          placeholder="Link undangan (base URL)"
+          placeholder="URL undangan"
           value={baseLink}
           onChange={(e) => setBaseLink(e.target.value)}
-          className="border p-2"
+          className="border p-2 text-center bg-white"
         />
-        <label>Nama Pasangan</label>
-        <input
-          type="text"
-          placeholder="Nama pasangan"
-          value={namaPasangan}
-          onChange={(e) => setNamaPasangan(e.target.value)}
-          className="border p-2"
-          />
-
-        <label>Tanggal Pernikahan</label>
-        <input
-          type="text"
-          placeholder="Tanggal pernikahan"
-          value={tanggalNikah}
-          onChange={(e) => setTanggalNikah(e.target.value)}
-          className="border p-2"
-        />
-
-      </div>
+        <div className="flex gap-1 justify-center flex-col md:flex-row p-2 ">
+          <div className="flex flex-col flex-1">
+            <input
+              type="text"
+              placeholder="Calon Pengantin Wanita"
+              value={namaWanita}
+              onChange={(e) => setNamaWanita(e.target.value)}
+              className="border p-2 bg-white"
+              />
+          </div>
+          <div className="flex flex-col flex-1">
+            <input
+              type="text"
+              placeholder="Calon Pengantin Pria"
+              value={namaPria}
+              onChange={(e) => setNamaPria(e.target.value)}
+              className="border p-2 bg-white"
+            />
+            </div>
+          </div>
 
       <select
         value={templateType}
         onChange={(e) => setTemplateType(e.target.value as any)}
+        className="border-1 border-solid bg-white  text-center"
       >
         <option value="umum">Umum</option>
         <option value="islam">Islam</option>
         <option value="kristen">Kristen</option>
       </select>
 
+      <div className="border-1 border-solid items-center justify-center m-5 ">
+        <input type="file" accept=".xlsx, .xls" onChange={handleFile} className="p-10" />
+      </div>
+      </div>
+
+
       {/* 🔥 AUTO FROM EXCEL */}
       {guests.map(g => {
         const link = generateLink(baseLink, g.name, g.id)
-        const defaultMessage = messageTemplates[templateType](g.name,link,namaPasangan,tanggalNikah)
+        const defaultMessage = messageTemplates[templateType](g.name,namaPria,namaWanita,link)
         const message = messageMap[g.id] ?? defaultMessage
         const wa = generateWA(g.phone, message)
 
@@ -184,7 +269,7 @@ export const GuestWA = () => {
           <div key={g.id} className= {`flex flex-row p-2 ${checkedMap[g.id] ? "bg-green-700 text-white" : "bg-white"}`}>
             <p className="basis-1/4"><strong>{g.name}</strong></p>
 
-            <textarea value={message} rows={4} onChange={(e) =>setMessageMap(prev => ({...prev,[g.id]: e.target.value}))} className="basis-3/4 w-full resize-none border-1 border-solid" /> 
+            <textarea value={message} rows={4} onChange={(e) =>setMessageMap(prev => ({...prev,[g.id]: e.target.value}))} className="basis-3/4 w-full resize-none border-1 border-solid pl-2" /> 
             
           
 
@@ -231,25 +316,25 @@ export const GuestWA = () => {
       <hr style={{ margin: "2rem 0" }} />
 
       {/* 🔥 MANUAL GENERATOR */}
-      <h3>Generate Link Manual</h3>
+      <h3>Untuk Grup/Kirim manual</h3>
 
-      <input
-        type="text"
-        placeholder="Nama tamu"
-        value={manualName}
-        onChange={(e) => setManualName(e.target.value)}
-      />
+      <div className="flex flex-col gap-1">
 
- 
+        <input
+          type="text"
+          placeholder="Nama Grup"
+          value={manualName}
+          onChange={(e) => setManualName(e.target.value)}
+          className="border-1 border-solid bg-white text-center py-1"
+        />
 
-      <br /><br />
-
-      <button onClick={handleGenerateManual}>
-        Generate
-      </button>
+        <button onClick={handleGenerateManual} className="bg-teal-600 text-white hover:bg-white hover:text-black py-2">
+          Generate
+        </button>
+      </div>
 
       {manualLink && (
-        <div  className="mt-[1rem] p-2 bg-white flex flex-col ">
+        <div  className="mt-[1rem] p-2 bg-white flex flex-col gap-1">
           <p><strong>Pesan</strong></p>
           <textarea value={manualMessage} onChange={(e) => setManualMessage(e.target.value)} rows={6} className=" w-full  resize-none border-1 border-solid" />
           <button
@@ -259,7 +344,7 @@ export const GuestWA = () => {
 
               setTimeout(() => setCopiedManual(false), 1000)
             }}
-            className="relative border-1 border-solid"
+            className="relative border-1 border-solid bg-teal-600 text-white hover:bg-white hover:text-black"
           >
             {copiedManual && (
               <span className="bg-black text-white text-xs absolute right-1/2 -translate-y-1/2 -top-6 px-2 py-1 rounded">
@@ -271,7 +356,6 @@ export const GuestWA = () => {
           </button>
 
           <span className="bg-black text-white text-xs absolute right-0 -top-6 px-2 py-1 rounded transition"> copied! </span>
-          <br /><br />
         </div>
       )}
     </div>
