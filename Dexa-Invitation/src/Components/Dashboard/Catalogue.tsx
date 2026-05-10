@@ -1,6 +1,6 @@
 import { useState } from "react";
 import projects from "../../Products/Product";
-import Modal from "../Modal";
+import Modal from "../UI/Modal";
 
 
 

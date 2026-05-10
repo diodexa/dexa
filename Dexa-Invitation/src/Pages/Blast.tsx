@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import * as XLSX from "xlsx"
-import { GuestSearch } from "../Components/Section/Search"
-import { GuestPagination } from "../Components/Section/Pagination"
+import { GuestSearch } from "../Components/Dashboard/Search"
+import { GuestPagination } from "../Components/Dashboard/Pagination"
 
 type Guest = {
   id: string

@@ -14,7 +14,7 @@ export const Navbar = ({activeSection} : Navbarprops)=> {
     const toggleMenu = () => setisOpen(!isOpen);
 
     return (
-            <div className="fixed flex justify-between items-center w-full p-4 border-b-1 border-gray-300 bg-[#F2EFE7] ">
+            <div className="fixed flex justify-between items-center w-full p-4 border-b-1 border-gray-300 bg-[#F2EFE7] dark:bg-gray-700 ">
                 <a href="https://dexa-invitation.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="/logo-dio.webp" className="max-h-25 w-auto object-contain"  />
                     <div className="flex flex-col">

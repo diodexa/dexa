@@ -1,11 +1,11 @@
-import { Footer } from '../Components/footer';
-import { Navbar } from '../Components/Navbar';
-import { Catalogue } from '../Components/Section/Catalogue';
-import { FAQ } from '../Components/Section/FAQs';
-import { Feature } from '../Components/Section/Feature';
-import { Hero } from '../Components/Section/Hero';
-import { NamaTamu } from '../Components/Section/NamaTamu';
-import { WhatsappButton } from '../Components/WhatsappButton';
+import { Footer } from '../Components/Dashboard/footer';
+import { Navbar } from '../Components/Dashboard/Navbar';
+import { Catalogue } from '../Components/Dashboard/Catalogue';
+import { FAQ } from '../Components/Dashboard/FAQs';
+import { Feature } from '../Components/Dashboard/Feature';
+import { Hero } from '../Components/Dashboard/Hero';
+import { NamaTamu } from '../Components/Dashboard/NamaTamu';
+import { WhatsappButton } from '../Components/Blastes/WhatsappButton';
 import { useEffect, useState } from 'react'
 
 function DexaInvitation() {
