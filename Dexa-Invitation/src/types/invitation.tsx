@@ -17,9 +17,13 @@ export type Invitation = {
   music?: string;
 
   theme?: {
-    primaryColor?: string;
-    secondaryColor?: string;
+    PrimaryColor?: string;
+    SecondaryColor?: string;
+
     backgroundColor?: string;
+    ContrasBackgroundColor?:string;
+    ContrasBackgroundColorSecond?:string;
+
     backgroundImage?:string;
 
     headingFont?: string;

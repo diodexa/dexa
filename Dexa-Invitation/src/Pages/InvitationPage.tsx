@@ -14,12 +14,10 @@ console.log(invitations);
 
   if (!invitation) {
     return (
-      <div>
-        <img
-          src="/logo-dio.webp"alt="Logo"className="w-[150px] animate-spin"
-        />
+      <div className="flex flex-col items-center justify-center mt-8">
+        <img src="/logo-dio.webp"alt="Logo"className="w-[200px] animate-bounce"/>
 
-        <h1>Oupsss !! Invitation Not Found</h1>
+        <h2>Oupsss !! Invitation Not Found</h2>
       </div>
     );
   }

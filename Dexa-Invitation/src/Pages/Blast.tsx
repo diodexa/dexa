@@ -26,8 +26,8 @@ const normalizePhone = (phone: any) => {
   return cleaned
 }
 
-const generateLink = (base: string, name: string, id: string) =>
-  `${base}/?to=${encodeURIComponent(name)}&id=${id}`
+const generateLink = (base: string, guest: string) =>
+  `${base}/${encodeURIComponent(guest)}`
 
 const generateWA = (phone: string, message: string) =>
   `https://wa.me/${normalizePhone(phone)}?text=${encodeURIComponent(message)}`
@@ -149,7 +149,7 @@ export const GuestWA = () => {
 
 
   //  manual input
-  const [manualName, setManualName] = useState("nama")
+  const [manualName, setManualName] = useState("")
   const [manualLink, setManualLink] = useState("dexa-invitation.com")
   const [copiedManual, setCopiedManual] = useState(false)
   const [manualMessage, setManualMessage] = useState("")
@@ -212,8 +212,7 @@ export const GuestWA = () => {
     const handleGenerateManual = () => {
       if (!manualName) return
 
-      const id = Date.now().toString()
-      const link = generateLink(baseLink, manualName, id)
+      const link = generateLink(baseLink, manualName)
       
       setManualLink(link)
     }
@@ -276,7 +275,7 @@ export const GuestWA = () => {
     useEffect(() => {
       if (!manualName) return
 
-      const link = generateLink(baseLink, manualName, (manualName +"01"))
+      const link = generateLink(baseLink, manualName)
 
       const message = messageTemplates[templateType](manualName,namaPria,namaWanita,link)
 
@@ -418,7 +417,7 @@ export const GuestWA = () => {
         <tbody>
         {/*AUTO FROM EXCEL */}
         {paginatedGuests.map(g => {
-          const link = generateLink(baseLink, g.name, g.id)
+          const link = generateLink(baseLink, g.name)
           const defaultMessage = messageTemplates[templateType](g.name,namaPria,namaWanita,link)
           const message = messageMap[g.id] ?? defaultMessage
           const wa = generateWA(g.phone, message)

@@ -5,6 +5,7 @@ import Hero from "./Sections/Hero";
 
 
 
+
 interface Props {
   data: Invitation;
   guest: string;
@@ -12,13 +13,16 @@ interface Props {
 
 const FlipBook = ({ data, guest }: Props) => {
   return (
-    <>
-      <Hero data={data} guest={guest}  />
+    <div className="min-h-screen bg-gray flex justify-center">
+      <div className="relative w-full max-w-[430px] bg-white">
 
-      <Couple data={data} />
+        <Hero data={data} guest={guest}  />
 
-      <Gallery data={data} />
-    </>
+        <Couple data={data} />
+
+        <Gallery data={data} />
+      </div>
+    </div>
   );
 };
 

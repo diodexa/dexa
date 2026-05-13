@@ -6,14 +6,14 @@ export const ContohDio: Invitation = {
   template: "FlipBook",
 
   bride: "Clara",
-  groom: "Dio",
+  groom: "Daniel",
 
   date: "12 Januari 2027",
   time: "10:00 WIB",
 
   location: "Bandung Convention Center",
 
-  coverImage: "/images/dio/cover.jpg",
+  coverImage: "/Gallery/ContohDio/4.webp",
 
   gallery: [
     "/images/dio/gallery-1.jpg",
@@ -22,4 +22,14 @@ export const ContohDio: Invitation = {
   ],
 
   music: "/music/romantic.mp3",
+  theme : {
+    bodyFont: "#9f604d",
+    headingFont: "#F7F7F7",
+
+    backgroundColor: "#EFD9BC",
+    ContrasBackgroundColor:"#000000"
+
+    
+  }
+  
 };

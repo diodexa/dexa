@@ -10,10 +10,10 @@ export const Feature = ()=> {
             {/* <div className="hidden lg:block lg:col-span-1" > </div> */}
 
             <div className="md:col-span-1 lg:col-span-1 flex flex-col items-start self-stretch mt-4"> 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-gray-800 dark:text-white leading-tight text-left">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-gray-800  leading-tight text-left">
                     Fitur Eksklusif untuk Momen Spesialmu
                 </h1>
-                <p className="text-justify md:text-lg text-gray-600 dark:text-gray-300 max-w-lg mt-8 mb-auto">
+                <p className="text-justify md:text-lg text-gray-600  max-w-lg mt-8 mb-auto">
                     Hanya dengan <span className="text-[#48A6A7] text-xl">IDR 99K</span> Semua yang kamu butuhkan untuk membuat undangan digital yang elegan dan berkesan
                 </p>
                 <div className="md:col-span-1 lg:col-span-1 flex flex-col items-center self-stretch h-10"> </div>
