@@ -8,6 +8,7 @@ import Paper from "./Components/Papper";
 import Halaman1 from "./Sections/Halaman1";
 import Halaman2 from "./Sections/Halaman2";
 import "../FlipBook/FlipBook.css"
+import Hero from "./Sections/Hero";
 
 
 
@@ -16,7 +17,7 @@ interface Props {
   guest: string;
 }
 
-const FlipBook = ({ data, guest }: Props) => {
+const FlipBook = ({ data,guest }: Props) => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -36,12 +37,7 @@ const FlipBook = ({ data, guest }: Props) => {
   // =========================
   const papers = [
     {
-      front: (
-        <CoverFront
-          data={data}
-          guest={guest}
-        />
-      ),
+      front: <CoverFront data={data}/>,
       back: <CoverBack />,
     },
 
@@ -70,31 +66,36 @@ const FlipBook = ({ data, guest }: Props) => {
     );
   };
 
-  return (
-    <div className="flipbook-wrapper">
+  return ( 
+    <div className="min-h-screen flex justify-center bg-gray-900">
+      <div className="w-full max-w-sm  bg-white overflow-hidden relative">
+        <Hero data={data} guest={guest}/>
+        <div className="flipbook-wrapper">
 
-      {/* tinggi scroll otomatis */}
-      <div
-        className="flipbook-scroll"
-        style={{
-          height: `${totalPages * 200}vh`,
-        }}
-      >
+          {/* tinggi scroll otomatis */}
+          <div
+            className="flipbook-scroll"
+            style={{
+              height: `${totalPages * 200}vh`,
+            }}
+          >
 
-        <div className="buku">
+            <div className="buku">
 
-          {papers.map((paper, index) => (
-            <Paper
-              key={index}
-              index={index}
-              totalPages={totalPages}
-              rotate={getRotate(index)}
-            >
-              {paper.front}
-              {paper.back}
-            </Paper>
-          ))}
+              {papers.map((paper, index) => (
+                <Paper
+                key={index}
+                index={index}
+                  totalPages={totalPages}
+                  rotate={getRotate(index)}
+                  >
+                  {paper.front}
+                  {paper.back}
+                </Paper>
+              ))}
 
+            </div>
+          </div>
         </div>
       </div>
     </div>
