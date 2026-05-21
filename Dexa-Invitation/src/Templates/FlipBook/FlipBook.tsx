@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type { Invitation } from "../../types/invitation";
 
-import CoverFront from "./Components/CoverFront";
-import CoverBack from "./Components/CoverBack";
+import CoverFront from "./Sections/CoverFront";
+import CoverBack from "./Sections/CoverBack";
 import Paper from "./Components/Papper";
 import Halaman1 from "./Sections/Halaman1";
 import Halaman2 from "./Sections/Halaman2";
@@ -18,19 +18,37 @@ interface Props {
 }
 
 const FlipBook = ({ data,guest }: Props) => {
-  const [scrollY, setScrollY] = useState(0);
+  const [scrollX, setScrollX] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const pageDistance = 800;
 
   useEffect(() => {
+    const container = scrollRef.current;
+
+    if (!container) return;
+
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      setScrollX(container.scrollLeft);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    container.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      container.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollX(window.scrollX);
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   // =========================
   // LIST SEMUA PAPER
@@ -58,27 +76,39 @@ const FlipBook = ({ data,guest }: Props) => {
   // =========================
   const getRotate = (index: number) => {
     // tiap paper mulai setelah scroll tertentu
-    const start = index * 800;
+    const start = index * pageDistance;
+    
 
     return Math.min(
-      Math.max((scrollY - start) / 4, 0),
+      Math.max((scrollX - start) / 4, 0),
       180
     );
   };
 
+  const totalWidth = 2 *totalPages *  pageDistance ;
+
+ 
+
   return ( 
-    <div className="min-h-screen flex justify-center bg-gray-900">
-      <div className="w-full max-w-sm  bg-white overflow-hidden relative">
+    <div className="min-h-screen flex justify-center bg-gray-600">
+      <div className="relative w-[390px] max-w-full bg-white overflow-x-auto">
         <Hero data={data} guest={guest}/>
         <div className="flipbook-wrapper">
 
           {/* tinggi scroll otomatis */}
           <div
-            className="flipbook-scroll"
+          ref={scrollRef}
+            className="flipbook-scroll overflow-x-scroll overflow-y-hidden"
             style={{
-              height: `${totalPages * 200}vh`,
+              height: "100vh",
             }}
           >
+            <div
+              style={{
+                width: `${totalWidth}px`,
+                height: "1px",
+              }}
+            />
 
             <div className="buku">
 

@@ -1,6 +1,6 @@
 const CoverBack = () => {
   return (
-    <div className="Kertas__half Kertas__half--back">
+    <div className="Kertas__half Kertas__half--back bg-gray-200">
 
       <div className="backContent">
 
