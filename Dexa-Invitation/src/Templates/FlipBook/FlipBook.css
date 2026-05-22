@@ -7,7 +7,8 @@
 
 .Judul {
     font-family: "Great Vibes", cursive;;
-    font-size: clamp(0.5rem, 8vw, 1.5rem);
+    font-size: 3rem;
+   
 }
 
 p, button {
@@ -52,7 +53,8 @@ p, button {
   left: calc(50% + 100px);
 
   width: 90%;
-  max-width: 200px;
+  max-width: 180px;
+  height: 55%;
 
   aspect-ratio: 2 / 3;
 
@@ -61,6 +63,8 @@ p, button {
   perspective: 2000px;
 
   transform-style: preserve-3d;
+  pointer-events: none;
+
 }
 
 .buku__Kertas {
@@ -90,10 +94,53 @@ p, button {
 
   overflow: hidden;
   backface-visibility: hidden;
+  border: 1px solid black;
+  
 }
 
+.Kertas__half--front {
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255,255,255,0.7),
+      transparent 60%
+    ),
+    linear-gradient(
+      135deg,
+      #d7dbe2,
+      #c8ced8
+    );
+}
 
 .Kertas__half--back {
   
   transform: rotateY(180deg);
 }
+
+.cover-card {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+}
+
+.cover-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 12px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--bg1),
+      var(--bg2)
+    );
+
+  border-radius:
+    999px 999px 0 0;
+
+  z-index: 0;
+}
+

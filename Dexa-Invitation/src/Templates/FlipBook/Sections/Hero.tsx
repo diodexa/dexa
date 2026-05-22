@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Invitation } from "../../../types/invitation";
+import type { Invitation } from "../../../types/invitationFlipBook";
 import "../FlipBook.css"
 
 interface Props {

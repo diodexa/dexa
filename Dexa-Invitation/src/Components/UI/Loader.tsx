@@ -2,16 +2,18 @@ interface LoaderProps {
   isLoading: boolean;
 }
 
-export const Loading =({isLoading}:LoaderProps)=> {
+export const Loading = ({ isLoading }: LoaderProps) => {
+  if (!isLoading) return null;
 
-    return(
-        <div className={isLoading?
-            "visible fixed inset-0 flex flex-col items-center justify-center bg-white/70 backdrop-blur z-50"
-            : "invisible"
-        }>
-            <img src="/logo-dio.webp" alt="Logo" className="w-[150px] animate-spin"/>
+  return (
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
+      <img
+        src="/logo-dio.webp"
+        alt="Logo"
+        className="w-[150px] animate-spin"
+      />
 
-            <p>Memuat undangan...</p>
-        </div>
-    )
-}
+      <p>Memuat undangan...</p>
+    </div>
+  );
+};

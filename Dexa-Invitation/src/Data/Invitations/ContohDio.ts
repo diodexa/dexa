@@ -1,4 +1,4 @@
-import type { Invitation } from "../../types/invitation";
+import type { Invitation } from "../../types/invitationFlipBook";
 
 export const ContohDio: Invitation = {
   slug: "Flipbook",
@@ -8,6 +8,7 @@ export const ContohDio: Invitation = {
   bride: "Clara",
   groom: "Daniel",
 
+  
   date: "12 Januari 2027",
   time: "10:00 WIB",
 
@@ -20,10 +21,18 @@ export const ContohDio: Invitation = {
     "/images/dio/gallery-2.jpg",
     "/images/dio/gallery-3.jpg",
   ],
+  
+  Salam: "Salam Sejahtera",
+  Sambutan : "Dengan segala kerendahan hati dan dengan ungkapan syukur atas karunia Tuhan, kami mengundang Bapak/ Ibu/ Saudara/i untuk menghadiri acara pernikahan putra & putri kami",
+  Ayat:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, minima! Dicta voluptas odio non!",
+  NamaSurat:"lorem3",
 
   music: "/music/romantic.mp3",
   theme : {
-    bodyFont: "#9f604d",
+    CoverFrontPrimaryColor : "#d9c108",
+    CoverFrontSecondaryColor : "#de7c1bfa",
+
+    bodyFont: "#463f00",
     headingFont: "#F7F7F7",
 
     backgroundColor: "#EFD9BC",

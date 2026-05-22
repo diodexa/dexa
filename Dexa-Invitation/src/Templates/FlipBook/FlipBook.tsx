@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import type { Invitation } from "../../types/invitation";
+import type { Invitation } from "../../types/invitationFlipBook";
 
 import CoverFront from "./Sections/CoverFront";
 import CoverBack from "./Sections/CoverBack";
@@ -9,6 +9,7 @@ import Halaman1 from "./Sections/Halaman1";
 import Halaman2 from "./Sections/Halaman2";
 import "../FlipBook/FlipBook.css"
 import Hero from "./Sections/Hero";
+import { Loading } from "../../Components/UI/Loader";
 
 
 
@@ -18,9 +19,10 @@ interface Props {
 }
 
 const FlipBook = ({ data,guest }: Props) => {
+  const [loading, setLoading] = useState(true);
   const [scrollX, setScrollX] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const pageDistance = 800;
+  const pageDistance = 700;
 
   useEffect(() => {
     const container = scrollRef.current;
@@ -38,17 +40,23 @@ const FlipBook = ({ data,guest }: Props) => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     setScrollX(window.scrollX);
-  //   };
+  useEffect(() => {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const container = scrollRef.current;
 
-  //   window.addEventListener("scroll", handleScroll);
+      if (!container) return;
 
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+      container.scrollLeft = 0;
+
+      setLoading(false);
+    });
+  });
+}, []);
+
+//scrollevent di book
+
+
 
   // =========================
   // LIST SEMUA PAPER
@@ -56,16 +64,16 @@ const FlipBook = ({ data,guest }: Props) => {
   const papers = [
     {
       front: <CoverFront data={data}/>,
-      back: <CoverBack />,
+      back: <CoverBack data={data} />,
     },
 
     {
-      front: <Halaman1 />,
+      front: <Halaman1 data={data}/>,
       back: <Halaman2 />,
     },
     {
-      front: <Halaman1 />,
-      back: <Halaman2 />,
+      front: <Halaman1 data={data} />,
+      back: <Halaman2  />,
     },
   ];
 
@@ -86,13 +94,12 @@ const FlipBook = ({ data,guest }: Props) => {
   };
 
   const totalWidth = 2 *totalPages *  pageDistance ;
-
- 
-
+  
   return ( 
     <div className="min-h-screen flex justify-center bg-gray-600">
-      <div className="relative w-[390px] max-w-full bg-white overflow-x-auto">
-        <Hero data={data} guest={guest}/>
+      <div className="relative w-[385px] max-w-full bg-white overflow-x-auto">
+      <Loading isLoading={loading} />
+        {/* <Hero data={data} guest={guest}/> */}
         <div className="flipbook-wrapper">
 
           {/* tinggi scroll otomatis */}

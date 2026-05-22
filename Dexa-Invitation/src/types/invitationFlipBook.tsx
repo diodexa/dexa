@@ -9,16 +9,21 @@ export type Invitation = {
   date: string;
   time: string;
   location: string;
-
+  
   coverImage: string;
-
+  
   gallery: string[];
+  
+  Salam?: string;
+  Sambutan? : string;
+  Ayat? : string;
+  NamaSurat? : string;
 
   music?: string;
 
   theme?: {
-    PrimaryColor?: string;
-    SecondaryColor?: string;
+    CoverFrontPrimaryColor?: string;
+    CoverFrontSecondaryColor?: string;
 
     backgroundColor?: string;
     ContrasBackgroundColor?:string;

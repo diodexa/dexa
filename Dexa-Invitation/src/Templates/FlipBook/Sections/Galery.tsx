@@ -1,4 +1,4 @@
-import type { Invitation } from "../../../types/invitation";
+import type { Invitation } from "../../../types/invitationFlipBook";
 
 interface Props {
   data: Invitation;
