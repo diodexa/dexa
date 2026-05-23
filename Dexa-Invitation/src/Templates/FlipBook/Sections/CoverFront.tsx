@@ -1,4 +1,5 @@
 import type { Invitation } from "../../../types/invitationFlipBook";
+import Countdown from "../Components/Countdown";
 
 interface Props {
   data: Invitation
@@ -6,24 +7,27 @@ interface Props {
 
 const CoverFront = ({data}: Props) => {
 
-  const brideInitial = data.bride.charAt(0);
-  const groomInitial = data.groom.charAt(0);
+  // const brideInitial = data.bride.charAt(0);
+  // const groomInitial = data.groom.charAt(0);
+  
 
   return (
-    <div className="Kertas__half Kertas__half--front bg-gray-300 cover-card" style={{
-    "--bg1": data.theme?.CoverFrontPrimaryColor,
-    "--bg2": data.theme?.CoverFrontSecondaryColor,} as React.CSSProperties}>
- 
-      <div className="absolute inset-2 flex flex-col items-center justify-center text-center" style={{color:data.theme?.bodyFont}}>
-        <h2 className="mt-10 text-lg"> INVITATION</h2>
-        <div className="flex-1 flex items-center justify-center">
-          <p className="Judul leading-none my-4"> 
-            <span className="block -translate-x-2 -rotate-6"> {brideInitial}</span> 
-            <span className="block translate-x-2 rotate-6">{groomInitial}</span> 
-          </p>
-        </div>
-        <p className="flex-none">{data.date}</p>
+    <div className="Kertas__half Kertas__half--front  Cover-wrapper " style={{
+    "--bg1": data.theme?.CoverFrontPrimaryColor} as React.CSSProperties} >
+      <img src={data.coverImage} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <div className="absolute inset-0 flex flex-col items-center justify-end z-2" style={{color:data.theme?.bodyFont}}>
+        <div className="text-center w-full relative">
+          <p className="text-[0.6rem] mb-1" >The Wedding</p>
         
+          <h1 className="font-cursive text-3xl m-0  flex flex-col leading-none">
+            <span>{data.bride}</span>
+            <span className="ml-3">{data.groom}</span>
+          </h1>
+        </div>
+        
+        <div className="w-full text-[0.5rem] mb-1 scale-75" style={{"--bg2": data.theme?.bodyFont} as React.CSSProperties}>
+          <Countdown date={data.date}  />
+        </div>
       </div>
 
    

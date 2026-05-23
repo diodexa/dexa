@@ -9,7 +9,7 @@ export const ContohDio: Invitation = {
   groom: "Daniel",
 
   
-  date: "12 Januari 2027",
+  date: "12-06-2029",
   time: "10:00 WIB",
 
   location: "Bandung Convention Center",
@@ -29,8 +29,8 @@ export const ContohDio: Invitation = {
 
   music: "/music/romantic.mp3",
   theme : {
-    CoverFrontPrimaryColor : "#d9c108",
-    CoverFrontSecondaryColor : "#de7c1bfa",
+    CoverFrontPrimaryColor : "#EED5B9",
+    CoverFrontSecondaryColor : "transparent",
 
     bodyFont: "#463f00",
     headingFont: "#F7F7F7",

@@ -6,14 +6,16 @@ interface Props {
 
 const Halaman1 = ({data}:Props) => {
   return (
-    <div className="Kertas__half Kertas__half--back  bg-gray-200 flex flex-col items-center justify-center">
-      <div className=" p-3">
-        <h2> <strong> {data.Salam} </strong></h2>
+    <div className="Kertas__half Kertas__half--front  bg-gray-200 flex flex-col items-center leading-3">
+      <div className="flex-3">
+        <div className=" p-3 text-left">
+          <h2> <strong> {data.Salam} </strong></h2>
+        </div>
+        <div className="text-left p-2">
+          <p>{data.Sambutan}</p>
+        </div>
       </div>
-      <div className="text-justify leading-3 p-2">
-        <p>{data.Sambutan}</p>
-      </div>
-      <div>
+      <div className="flex-2 ">
         <p>{data.Ayat}</p>
         <p>{data.NamaSurat}</p>
       </div>
