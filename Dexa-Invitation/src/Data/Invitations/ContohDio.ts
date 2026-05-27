@@ -15,6 +15,7 @@ export const ContohDio: Invitation = {
   location: "Bandung Convention Center",
 
   coverImage: "/Gallery/ContohDio/4.webp",
+  backcover : "/Gallery/ContohDio/5.webp",
 
   gallery: [
     "/images/dio/gallery-1.jpg",
@@ -22,7 +23,7 @@ export const ContohDio: Invitation = {
     "/images/dio/gallery-3.jpg",
   ],
   
-  Salam: "Salam Sejahtera",
+  Salam: "Assalamualaikum wr wb ",
   Sambutan : "Dengan segala kerendahan hati dan dengan ungkapan syukur atas karunia Tuhan, kami mengundang Bapak/ Ibu/ Saudara/i untuk menghadiri acara pernikahan putra & putri kami",
   Ayat:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, minima! Dicta voluptas odio non!",
   NamaSurat:"lorem3",
@@ -31,6 +32,8 @@ export const ContohDio: Invitation = {
   theme : {
     CoverFrontPrimaryColor : "#EED5B9",
     CoverFrontSecondaryColor : "transparent",
+
+    PrimaryColor: "#E6C8A1",
 
     bodyFont: "#463f00",
     headingFont: "#F7F7F7",

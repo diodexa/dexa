@@ -13,7 +13,7 @@ export const Hero = ()=> {
             {/* <div className="hidden lg:block lg:col-span-1" > </div> */}
 
             <div className="md:col-span-1 lg:col-span-1 flex flex-col items-start self-stretch"> 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-gray-800  leading-tight text-left">
+                <h1 className="text-5xl text-gray-800  leading-tight text-left">
                     Undangan <span className="text-[#48A6A7]">Digital</span>  Interaktif
                 </h1>
                 <p className="text-justify md:text-lg text-gray-600  max-w-lg mt-8 mb-auto">

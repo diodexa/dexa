@@ -11,6 +11,7 @@ export type Invitation = {
   location: string;
   
   coverImage: string;
+  backcover: string;
   
   gallery: string[];
   
@@ -22,6 +23,9 @@ export type Invitation = {
   music?: string;
 
   theme?: {
+    PrimaryColor? : string;
+    SecondaryColor? :string;
+
     CoverFrontPrimaryColor?: string;
     CoverFrontSecondaryColor?: string;
 

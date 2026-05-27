@@ -7,7 +7,7 @@ interface Props {
 const CoverBack = ({data}: Props) => {
   return (
     <div className="Kertas__half Kertas__half--back  bg-gray-200 flex flex-col items-center h-full justify-center">
-      <img src={data.coverImage} alt="" style={{objectFit:"cover"}}/>
+      <img src={data.backcover} alt="" className="object-cover h-full"/>
     </div>
   );
 };

@@ -11,18 +11,31 @@ import { useEffect, useState } from 'react'
 function DexaInvitation() {
   const [activeSection, setActiveSection] = useState("home");
 
-  useEffect(()=>{
-    const sections = document.querySelectorAll("div[id]"); 
-    const observer = new IntersectionObserver((enteries)=> {
-      enteries.forEach((entry)=>{
-        if(entry.isIntersecting){
-          setActiveSection(entry.target.id)
-        }
+  useEffect(() => {
+
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("div[id]");;
+      let currentSection = "";
+
+      sections.forEach((section) => {
+        const rect =section.getBoundingClientRect();
+         if (rect.top <= 200 &&rect.bottom >= 200) {
+          currentSection = section.id;}
+
       });
-    }, { threshold: 0.5 });
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  },[])
+      console.log(currentSection)
+
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>

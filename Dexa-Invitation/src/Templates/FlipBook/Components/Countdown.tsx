@@ -13,7 +13,6 @@ const Countdown = ({ date }: Props) => {
     minute:0
   });
 
-  console.log(date)
   useEffect(() => {
   if (!date) return;
 

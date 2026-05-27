@@ -1,7 +1,7 @@
 
 export const Feature = ()=> {
     return (
-        <div id="fitur" className="grid grid-cols-1 md:grid-cols-2 items-center  p-8 md:p-12 gap-8">
+        <div id="fitur" className="grid grid-cols-1 md:grid-cols-2 items-center  p-8 md:p-12 gap-8 ">
     
             <div className="flex justify-center " > 
                 <img src="/feature.png" alt="Undangan Digital di HP" className="w-1/2 max-w-xs md:max-w-sm lg:max-w-md h-auto"/>
@@ -10,7 +10,7 @@ export const Feature = ()=> {
             {/* <div className="hidden lg:block lg:col-span-1" > </div> */}
 
             <div className="md:col-span-1 lg:col-span-1 flex flex-col items-start self-stretch mt-4"> 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-gray-800  leading-tight text-left">
+                <h1 className="text-5xl  text-gray-800  leading-tight text-left">
                     Fitur Eksklusif untuk Momen Spesialmu
                 </h1>
                 <p className="text-justify md:text-lg text-gray-600  max-w-lg mt-8 mb-auto">

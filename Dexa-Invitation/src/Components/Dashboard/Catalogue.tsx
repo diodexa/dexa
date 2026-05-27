@@ -9,8 +9,8 @@ export const Catalogue = ()=> {
     const [modalUrl, setModalUrl] = useState<string | null>(null);
    
     return (
-        <div className=" p-4" id="katalog">
-            <h1>Katalog</h1>
+        <div id="Katalog" className=" p-4 ">
+            <h1 className="text-5xl  text-gray-800  leading-tight mb-4">Katalog</h1>
             <div className="flex flex-wrap gap-4 ">
                 {projects.map((contoh,index)=>(
                     <div key={index} className="border-1 border-white p-2 min-w-3xs flex flex-col flex-1 rounded-xl bg-[#48A6A7]" >
