@@ -4,7 +4,14 @@ export type Invitation = {
   template: string;
 
   Namabride: string;
+  NamabridePanggilan: string;
+  BapakpengantinWanita: string;
+  IbupengantinWanita: string;
+
   Namagroom: string;
+  NamagroomPanggilan: string;
+  BapakpengantinPria: string;
+  IbupengantinPria: string;
   
   FotoBride: string;
   FotoGroom: string;

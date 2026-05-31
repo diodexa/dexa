@@ -15,13 +15,13 @@ const CoverFront = ({data}: Props) => {
     <div className="Kertas__half Kertas__half--front  Cover-wrapper " style={{
     "--bg1": data.theme?.CoverFrontPrimaryColor} as React.CSSProperties} >
       <img src={data.coverImage} alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 flex flex-col items-center justify-end z-2" style={{color:data.theme?.bodyFont}}>
+      <div className="absolute inset-0 flex flex-col items-center justify-start z-2" style={{color:data.theme?.bodyFont}}>
+          <p className="tracking-widest text-[0.6rem] flex-1 " >The Wedding </p>
         <div className="text-center w-full relative">
-          <p className="text-[0.6rem] mb-1" >The Wedding</p>
         
-          <h1 className="font-cursive text-3xl m-0  flex flex-col leading-none">
-            <span>{data.Namabride}</span>
-            <span className="ml-3">{data.Namagroom}</span>
+          <h1 className="font-Signature text-3xl m-0  flex flex-col leading-none">
+            <span>{data.NamabridePanggilan}</span> &
+            <span className="ml-3">{data.NamagroomPanggilan}</span>
           </h1>
         </div>
         

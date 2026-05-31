@@ -5,14 +5,11 @@
 } */
 
 
-.font-cursive {
-    font-family: "Great Vibes", cursive;;
-   
-}
 
-p, button {
+
+/* button {
     font-family: "Poppins", sans-serif;
-}
+} */
 
 .text-glow {
   text-shadow:

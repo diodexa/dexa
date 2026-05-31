@@ -5,11 +5,14 @@ import type { Invitation } from "../../types/invitationFlipBook";
 import CoverFront from "./Sections/CoverFront";
 import CoverBack from "./Sections/CoverBack";
 import Paper from "./Components/Papper";
-import Halaman1 from "./Sections/Halaman1";
-import Halaman2 from "./Sections/Halaman2";
 import "../FlipBook/FlipBook.css"
 import Hero from "./Sections/Hero";
 import { Loading } from "../../Components/UI/Loader";
+import Halaman1 from "./Sections/Halaman1";
+import Halaman2 from "./Sections/Halaman2";
+import Halaman3 from "./Sections/Halaman3";
+import Halaman4 from "./Sections/Halaman4";
+import Halaman5 from "./Sections/Halaman5";
 
 
 
@@ -72,8 +75,12 @@ const FlipBook = ({ data,guest }: Props) => {
       back: <Halaman2 data={data}/>,
     },
     {
-      front: <Halaman1 data={data} />,
-      back: <Halaman2  data={data}/>,
+      front: <Halaman3 data={data} />,
+      back: <Halaman4  data={data}/>,
+    },
+    {
+      front: <Halaman5 data={data} />,
+      back: <Halaman4  data={data}/>,
     },
   ];
 

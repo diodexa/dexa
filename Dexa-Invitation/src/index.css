@@ -7,7 +7,7 @@
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
 
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -29,21 +29,57 @@
   }
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
+@font-face {
+  font-family: "TheWeddingSignature";
+  src: url("/Fonts/TheWeddingSignature-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "TheSignature";
+  src: url("/Fonts/Thesignature.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Bromello";
+  src: url("/Fonts/bromello-Regular.ttf") format("truetype");
+  font-feature-settings: "swsh";
+}
+@font-face {
+    font-family: "BetterChill";
+  src: url("/Fonts/BetterChill.otf") format("opentype");
+}
 
+@font-face {
+    font-family: "Colvetica";
+  src: url("/Fonts/CoolveticaRg.otf") format("opentype");
+}
+@font-face {
+    font-family: "ColveticaCond";
+  src: url("/Fonts/CoolveticaRgCond.otf") format("opentype");
+}
 
-  }
+.font-cursive {
+    font-family: "Great Vibes", cursive;;  
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-} */
+.font-WeddingSignature {
+  font-family: "TheWeddingSignature";
+  writing-mode:"";
+}
+.font-Signature {
+  font-family: "TheSignature";
+}
+.font-BetterChill {
+  font-family: "BetterChill";
+}
+.font-Bromello {
+  font-family: "Bromello";
+}
+.font-Colvetica{
+  font-family: "Colvetica";
+}
+.font-ColveticaCond{
+  font-family: "ColveticaCond";
+}
+
 
 #root {
 

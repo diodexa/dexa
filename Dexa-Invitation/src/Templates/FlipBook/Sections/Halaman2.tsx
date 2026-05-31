@@ -6,8 +6,12 @@ interface Props {
 
 const Halaman2  = ({data}:Props) =>  {
   return (
-    <div className="Kertas__half Kertas__half--back bg-yellow-200 flex flex-col items-center justify-center">
-      <img src={data.FotoBride} alt="Foto Pengantin Wanita" className="object-cover h-full"/>
+    <div className="Kertas__half Kertas__half--back  flex flex-col justify-start items-center"
+    style={{background: data.theme?.PrimaryColor, color: data.theme?.bodyFont}}>
+      <img src={data.FotoBride} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <div className="z-2 mt-5">
+        <h2 className="text-5xl font-BetterChill ">Bride</h2>
+      </div>
       
     </div>
   );

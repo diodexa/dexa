@@ -5,8 +5,15 @@ export const ContohDio: Invitation = {
 
   template: "FlipBook",
 
-  Namabride: "Clara",
-  Namagroom: "Daniel",
+  Namabride: "Clara Chintia Dewi S.E",
+  NamabridePanggilan : "Clara",
+  BapakpengantinWanita : "Bpk Samuel Cristian",
+  IbupengantinWanita : "Ibu Margaretha Sukma",
+
+  Namagroom: "Daniel Richard S.H",
+  NamagroomPanggilan : "Daniel",
+  BapakpengantinPria : "Bpk Marcus fredy",
+  IbupengantinPria : "Ibu Cristiany Vony",
 
   FotoBride: "/Gallery/ContohDio/wanita.webp",
   FotoGroom: "/Gallery/ContohDio/pria.webp",
