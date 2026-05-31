@@ -5,9 +5,11 @@ export const ContohDio: Invitation = {
 
   template: "FlipBook",
 
-  bride: "Clara",
-  groom: "Daniel",
+  Namabride: "Clara",
+  Namagroom: "Daniel",
 
+  FotoBride: "/Gallery/ContohDio/wanita.webp",
+  FotoGroom: "/Gallery/ContohDio/pria.webp",
   
   date: "12-06-2029",
   time: "10:00 WIB",
@@ -23,7 +25,7 @@ export const ContohDio: Invitation = {
     "/images/dio/gallery-3.jpg",
   ],
   
-  Salam: "Assalamualaikum wr wb ",
+  Salam: "Salam Sejahtera",
   Sambutan : "Dengan segala kerendahan hati dan dengan ungkapan syukur atas karunia Tuhan, kami mengundang Bapak/ Ibu/ Saudara/i untuk menghadiri acara pernikahan putra & putri kami",
   Ayat:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, minima! Dicta voluptas odio non!",
   NamaSurat:"lorem3",
@@ -33,10 +35,10 @@ export const ContohDio: Invitation = {
     CoverFrontPrimaryColor : "#EED5B9",
     CoverFrontSecondaryColor : "transparent",
 
-    PrimaryColor: "#E6C8A1",
+    PrimaryColor: "#EDDBC4",
 
-    bodyFont: "#463f00",
-    headingFont: "#F7F7F7",
+    bodyFont: "#056f41",
+    headingFont: "#880a0a",
 
     backgroundColor: "#EFD9BC",
     ContrasBackgroundColor:"#000000"

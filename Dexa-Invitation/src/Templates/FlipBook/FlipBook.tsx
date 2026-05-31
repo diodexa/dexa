@@ -69,11 +69,11 @@ const FlipBook = ({ data,guest }: Props) => {
 
     {
       front: <Halaman1 data={data}/>,
-      back: <Halaman2 />,
+      back: <Halaman2 data={data}/>,
     },
     {
       front: <Halaman1 data={data} />,
-      back: <Halaman2  />,
+      back: <Halaman2  data={data}/>,
     },
   ];
 

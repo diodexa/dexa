@@ -20,8 +20,8 @@ const CoverFront = ({data}: Props) => {
           <p className="text-[0.6rem] mb-1" >The Wedding</p>
         
           <h1 className="font-cursive text-3xl m-0  flex flex-col leading-none">
-            <span>{data.bride}</span>
-            <span className="ml-3">{data.groom}</span>
+            <span>{data.Namabride}</span>
+            <span className="ml-3">{data.Namagroom}</span>
           </h1>
         </div>
         

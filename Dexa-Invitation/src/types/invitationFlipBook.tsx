@@ -3,8 +3,12 @@ export type Invitation = {
 
   template: string;
 
-  bride: string;
-  groom: string;
+  Namabride: string;
+  Namagroom: string;
+  
+  FotoBride: string;
+  FotoGroom: string;
+   
 
   date: string;
   time: string;
