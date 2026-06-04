@@ -26,7 +26,7 @@ const Hero = ({ data, guest }: Props) => {
         <p className="flex-1">Wedding Invitation</p>
 
         <h1 className="text-3xl font-bold text-glow Judul" style={{ color: data.theme?.headingFont }}>
-          {data.bride} & {data.groom}
+          {data.NamabridePanggilan} & {data.NamagroomPanggilan}
         </h1>
 
         <p className="mt-2">{data.date}</p>

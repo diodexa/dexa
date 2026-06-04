@@ -7,6 +7,8 @@ export const ContohDio: Invitation = {
 
   Namabride: "Clara Chintia Dewi S.E",
   NamabridePanggilan : "Clara",
+  AkunTikTokWanita : "@Tetew",
+  AkunIGWanita: "@totow",
   BapakpengantinWanita : "Bpk Samuel Cristian",
   IbupengantinWanita : "Ibu Margaretha Sukma",
 
@@ -18,10 +20,14 @@ export const ContohDio: Invitation = {
   FotoBride: "/Gallery/ContohDio/wanita.webp",
   FotoGroom: "/Gallery/ContohDio/pria.webp",
   
-  date: "12-06-2029",
-  time: "10:00 WIB",
+  TanggalAkad : "12 Juni 2029",
+  JamAkad : "10:00 WIB",
+  TanggalResepsi: "12 Juni 2029",
+  JamResepsi : "10:00 WIB",
 
-  location: "Bandung Convention Center",
+  location: "Bandung Convention Center, Jl. Soekarno-Hatta No.354, Kb. Lega, Kec. Bojongloa Kidul, Kota Bandung, Jawa Barat 40235",
+  LinkGoogleMaps: "https://www.google.com/maps/place/Bandung+Convention+Centre/@-6.9488599,107.5985921,17z/data=!3m1!4b1!4m6!3m5!1s0x2e68e89569ffdb69:0x6c9a53530e0d0d8e!8m2!3d-6.9488599!4d107.5985921!16s%2Fg%2F1tf7j_39?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D",
+  GoogleMaps: "/Gallery/ContohDio/Maps.webp",
 
   coverImage: "/Gallery/ContohDio/4.webp",
   backcover : "/Gallery/ContohDio/5.webp",

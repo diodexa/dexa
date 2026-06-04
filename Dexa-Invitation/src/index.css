@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 :root {
   --text: hsl(267, 8%, 42%);
   --text-h: #08060d;
@@ -43,6 +44,14 @@
   font-feature-settings: "swsh";
 }
 @font-face {
+  font-family: "WeddingIcon";
+  src: url("/Fonts/Wedding.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Sephora&Hayden";
+  src: url("/Fonts/Sephora&Hayden.ttf") format("truetype");
+}
+@font-face {
     font-family: "BetterChill";
   src: url("/Fonts/BetterChill.otf") format("opentype");
 }
@@ -78,6 +87,12 @@
 }
 .font-ColveticaCond{
   font-family: "ColveticaCond";
+}
+.font-WeddingIcon{
+  font-family: "WeddingIcon";
+}
+.font-SephoraHayden{
+  font-family: "Sephora&Hayden";
 }
 
 

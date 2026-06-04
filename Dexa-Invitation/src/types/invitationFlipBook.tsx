@@ -5,11 +5,15 @@ export type Invitation = {
 
   Namabride: string;
   NamabridePanggilan: string;
+  AkunIGWanita? : string;
+  AkunTikTokWanita? : string;
   BapakpengantinWanita: string;
   IbupengantinWanita: string;
 
   Namagroom: string;
   NamagroomPanggilan: string;
+  AkunIGPria? : string;
+  AkunTikTokPria? : string;
   BapakpengantinPria: string;
   IbupengantinPria: string;
   
@@ -17,9 +21,13 @@ export type Invitation = {
   FotoGroom: string;
    
 
-  date: string;
-  time: string;
-  location: string;
+  TanggalAkad? : string,
+  JamAkad? : string,
+  TanggalResepsi?: string,
+  JamResepsi? : string,
+  location?: string,
+  LinkGoogleMaps: string,
+  GoogleMaps? : string,
   
   coverImage: string;
   backcover: string;
