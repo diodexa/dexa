@@ -5,9 +5,22 @@ interface Props {
 }
 
 const CoverBack = ({data}: Props) => {
+  const initialWanita = data.Namabride.charAt(0);
   return (
-    <div className="Kertas__half Kertas__half--back  bg-gray-200 flex flex-col items-center h-full justify-center">
-      <img src={data.backcover} alt="" className="object-cover h-full"/>
+    <div className="Kertas__half Kertas__half--back flex flex-col justify-center" style={{background: data.theme?.PrimaryColor, color: data.theme?.bodyFont}}>
+      {/* <img src={data.backcover} alt="" className="object-cover h-full"/> */}
+      <div className="flex w-full justify-end mb-10">
+        <h2 className=" font-SephoraHayden text-[4rem] mt-10 pr-2">{initialWanita}</h2>
+      </div>
+      <div className="flex-1 ">
+        <div className="w-full p-2 text-right break-words">
+          <h2 className={`leading-none uppercase  ${(data.Salam?.length ?? 0) > 20 ? "text-sm" : "text-lg"}`}> <strong> {data.Salam} </strong></h2>
+        </div>
+        <div className="text-right p-2 text-[0.6rem] font-light leading-4">
+          <p>{data.Sambutan}</p>
+        </div>
+      </div>
+      
     </div>
   );
 };

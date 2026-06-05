@@ -25,9 +25,11 @@ export type Invitation = {
   JamAkad? : string,
   TanggalResepsi?: string,
   JamResepsi? : string,
-  location?: string,
-  LinkGoogleMaps: string,
-  GoogleMaps? : string,
+  LokasiAkad?: string,
+  LokasiResepsi?: string,
+  LinkGoogleMapsAkad?: string,
+  LinkGoogleMapsResepsi?: string,
+  note?: string,
   
   coverImage: string;
   backcover: string;

@@ -100,11 +100,6 @@
       rgba(255,255,255,0.7),
       transparent 60%
     ),
-    linear-gradient(
-      135deg,
-      #d7dbe2,
-      #c8ced8
-    );
 }
 
 .Kertas__half--back {
