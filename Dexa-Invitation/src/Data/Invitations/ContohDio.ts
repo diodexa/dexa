@@ -37,15 +37,33 @@ export const ContohDio: Invitation = {
   backcover : "/Gallery/ContohDio/5.webp",
 
   gallery: [
-    "/images/dio/gallery-1.jpg",
-    "/images/dio/gallery-2.jpg",
-    "/images/dio/gallery-3.jpg",
+    "/Gallery/ContohDio/1.webp",
+    "/Gallery/ContohDio/2.webp",
+    "/Gallery/ContohDio/3.webp",
+    "/Gallery/ContohDio/4.webp",
+    "/Gallery/ContohDio/5.webp",
+    "/Gallery/ContohDio/6.webp",
+    "/Gallery/ContohDio/7.webp",
+    "/Gallery/ContohDio/8.webp",
   ],
   
-  Salam: "Salam Sejahtera",
+  Salam: "Assalamualaikum wr wb",
   Sambutan : "Dengan segala kerendahan hati dan dengan ungkapan syukur atas karunia Tuhan, kami mengundang Bapak/ Ibu/ Saudara/i untuk menghadiri acara pernikahan putra & putri kami",
-  Ayat:"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia",
-  NamaSurat:"Markus 10:9",
+  Ayat: '"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."',
+  NamaSurat : "Surah Ar-Rum : 21",
+  // Ayat:"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia",
+  // NamaSurat:"Markus 10:9",
+
+  Story : {
+    Head1 : "Tak Ada yang Kebetulan",
+    Story1 : "Oktober 2020, bertemu lewat aplikasi dating yang awalnya hanya mencari teman bercerita, namun tanpa disangka takdir berkata lain",
+    Head2 : "Pertemuan Pertama ",
+    Story2 : "5 Desember 2020, pertama kali bertemu di 150 Coffee Garden Bandung. Obrolan terasa hangat hingga akhirnya 20 Desember 2020 kami memutuskan untuk berjalan bersama.",
+    Head3 : "Belajar dan Bertumbuh",
+    Story3 : "Hampir 6 tahun bersama kami melewati banyak cerita dan tantangan yang membuat kami belajar untuk saling memahami dan tumbuh menjadi pribadi yang lebih baik.",
+    Head4 : "Final Chapter",
+    Story4 : "Seiring waktu, dengan visi dan keyakinan yang sama, kami memantapkan hati untuk melangkah ke jenjang yang lebih serius. Kami menutup bab pencarian ini Pada 12 Juni 2029. Let’s grow old together! ❤️",
+  },
 
   music: "/music/romantic.mp3",
   theme : {

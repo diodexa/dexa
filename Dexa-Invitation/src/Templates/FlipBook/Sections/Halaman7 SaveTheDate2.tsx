@@ -34,7 +34,7 @@ const Halaman7  = ({data}:Props) =>  {
                 ) :
                 (
                     <div className="w-full flex flex-col items-end">
-                        <p className="text-xs mb-4 text-right h-[7vw]">{data.LokasiResepsi}</p>
+                        <p className="text-xs mb-4 text-right md:h-[7vw]">{data.LokasiResepsi}</p>
                         <a href={data.LinkGoogleMapsResepsi} target="blank" className=" pointer-events-auto ">
                             <button className="border-1 text-xs flex p-1 items-center rounded-md hover:scale-110 transition" style={{background:data.theme?.bodyFont, color:data.theme?.PrimaryColor}}>
                                 <svg

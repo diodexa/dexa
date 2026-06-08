@@ -15,6 +15,8 @@ import Halaman4 from "./Sections/Halaman4 ProfilGroom";
 import Halaman5 from "./Sections/Halaman5 FotoGroom";
 import Halaman6 from "./Sections/Halaman6 SaveTheDate";
 import Halaman7 from "./Sections/Halaman7 SaveTheDate2";
+import Halaman8 from "./Sections/Halaman8 Story";
+import Halaman9 from "./Sections/Halaman9 Story2";
 
 
 
@@ -86,7 +88,11 @@ const FlipBook = ({ data,guest }: Props) => {
     },
     {
       front: <Halaman7 data={data} />,
-      back: <Halaman2  data={data}/>,
+      back: <Halaman8  data={data}/>,
+    },
+    {
+      front: <Halaman9 data={data} />,
+      back: <Halaman8  data={data}/>,
     },
   ];
 

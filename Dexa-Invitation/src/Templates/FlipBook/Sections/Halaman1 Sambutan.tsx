@@ -17,7 +17,7 @@ const Halaman1 = ({data}:Props) => {
         <div className="w-full p-2 text-left break-words">
           <p className={`leading-none font-light ${(data.Salam?.length ?? 0) > 20 ? "text-sm" : "text-lg"}`}> <strong> {data.NamaSurat} </strong></p>
         </div>
-        <div className={`text-left p-2 text-[0.6rem] font-light leading-4 ${(data.NamaSurat?.length ?? 0) > 14 ? "mt-0" : "mt-5"}`}>
+        <div className={`text-left p-2 text-[0.7rem]  leading-4 ${(data.NamaSurat?.length ?? 0) > 14 ? "mt-3" : "mt-5"}`}>
           <p>{data.Ayat}</p>
         </div>
               {/* <div className="text-left p-2 font-light leading-4 flex flex-col gap-4">

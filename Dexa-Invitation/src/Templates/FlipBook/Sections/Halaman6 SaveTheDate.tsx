@@ -24,7 +24,7 @@ const Halaman6  = ({data}:Props) =>  {
                 ) :
                 (
                     <div>
-                        <p className="text-xs mb-4 text-left h-[7vw]">{data.LokasiAkad}</p>
+                        <p className="text-xs mb-4 text-left md:h-[7vw]">{data.LokasiAkad}</p>
                         <a href={data.LinkGoogleMapsResepsi} target="blank" className=" pointer-events-auto">
                             <button className="border-1 text-xs flex items-center p-1 rounded-md hover:scale-110 transition" style={{background:data.theme?.bodyFont, color:data.theme?.PrimaryColor}}>
                                 <svg

@@ -41,6 +41,17 @@ export type Invitation = {
   Ayat? : string;
   NamaSurat? : string;
 
+  Story : {
+    Story1 : string,
+    Story2 : string,
+    Story3 : string,
+    Story4 : string,
+    Head1 : string,
+    Head2 : string,
+    Head3 : string,
+    Head4 : string,
+  }
+
   music?: string;
 
   theme?: {
