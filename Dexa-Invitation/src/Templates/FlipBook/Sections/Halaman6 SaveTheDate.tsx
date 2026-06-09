@@ -1,13 +1,19 @@
 import type { Invitation } from "../../../types/invitationFlipBook";
 
 interface Props {
-  data: Invitation
+  data: Invitation;
+  isActive: boolean;
 }
 
-const Halaman6  = ({data}:Props) =>  {
+const Halaman6  = ({data,isActive}:Props) =>  {
+    // console.log("Halaman6", isActive);
   return (
-    <div className="Kertas__half Kertas__half--back  flex w-full h-full"
+    <div className="Kertas__half Kertas__half--back  flex w-full h-full relative"
     style={{background: data.theme?.PrimaryColor, color: data.theme?.bodyFont}}>
+        {data.Papper?.Halaman6 ? (
+            <img src={data.Papper.Halaman6} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        ) : <>
+        
         <div className="flex flex-col items-end w-full h-full pt-5 pr-2">
             <h2 className="font-SephoraHayden text-[2rem] mb-5 ">Save T</h2>
             <div className="flex flex-col gap-1 items-start p-2">  
@@ -25,7 +31,7 @@ const Halaman6  = ({data}:Props) =>  {
                 (
                     <div>
                         <p className="text-xs mb-4 text-left md:h-[7vw]">{data.LokasiAkad}</p>
-                        <a href={data.LinkGoogleMapsResepsi} target="blank" className=" pointer-events-auto">
+                        <a href={data.LinkGoogleMapsResepsi} target="blank" style={{pointerEvents: isActive ? "auto" : "none"}}>
                             <button className="border-1 text-xs flex items-center p-1 rounded-md hover:scale-110 transition" style={{background:data.theme?.bodyFont, color:data.theme?.PrimaryColor}}>
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -42,6 +48,7 @@ const Halaman6  = ({data}:Props) =>  {
                 }
             </div>
         </div>
+        </>}
     </div>
   );
 };

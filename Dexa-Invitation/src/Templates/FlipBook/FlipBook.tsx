@@ -17,12 +17,14 @@ import Halaman6 from "./Sections/Halaman6 SaveTheDate";
 import Halaman7 from "./Sections/Halaman7 SaveTheDate2";
 import Halaman8 from "./Sections/Halaman8 Story";
 import Halaman9 from "./Sections/Halaman9 Story2";
+import Halaman10 from "./Sections/Halaman10 Galery";
 
 
 
 interface Props {
   data: Invitation;
   guest: string;
+  isActive: boolean;
 }
 
 const FlipBook = ({ data,guest }: Props) => {
@@ -61,11 +63,27 @@ const FlipBook = ({ data,guest }: Props) => {
   });
 }, []);
 
-//scrollevent di book
-
-
-
+// =========================
+// ROTATE TIAP PAPER
   // =========================
+  const getRotate = (index: number) => {
+    // tiap paper mulai setelah scroll tertentu
+    const start = index * pageDistance;
+    
+
+    return Math.min(
+      Math.max((scrollX - start) / 4, 0),
+      180
+    );
+  };
+
+  const halaman67Active =(getRotate(3) >= 148) && (getRotate(4)< 123) ;
+    
+    //scrollevent di book
+    
+
+    
+    // =========================
   // LIST SEMUA PAPER
   // =========================
   const papers = [
@@ -84,35 +102,23 @@ const FlipBook = ({ data,guest }: Props) => {
     },
     {
       front: <Halaman5 data={data} />,
-      back: <Halaman6  data={data}/>,
+      back: <Halaman6  data={data} isActive={halaman67Active}/>,
     },
     {
-      front: <Halaman7 data={data} />,
+      front: <Halaman7 data={data} isActive={halaman67Active} />,
       back: <Halaman8  data={data}/>,
     },
     {
       front: <Halaman9 data={data} />,
-      back: <Halaman8  data={data}/>,
+      back: <Halaman10  data={data}/>,
     },
   ];
 
+
   const totalPages = papers.length;
-
-  // =========================
-  // ROTATE TIAP PAPER
-  // =========================
-  const getRotate = (index: number) => {
-    // tiap paper mulai setelah scroll tertentu
-    const start = index * pageDistance;
-    
-
-    return Math.min(
-      Math.max((scrollX - start) / 4, 0),
-      180
-    );
-  };
-
   const totalWidth = 2 *totalPages *  pageDistance ;
+  
+ 
   
   return ( 
     <div className="min-h-screen flex justify-center bg-gray-600">

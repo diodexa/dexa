@@ -79,6 +79,9 @@ export const ContohDio: Invitation = {
     ContrasBackgroundColor:"#000000"
 
     
+  },
+  Papper : {
+    // Halaman9 : "/Gallery/ContohDio/1.webp"
   }
   
 };

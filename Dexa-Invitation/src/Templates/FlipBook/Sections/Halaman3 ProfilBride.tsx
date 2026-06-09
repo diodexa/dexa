@@ -6,8 +6,12 @@ interface Props {
 
 const Halaman3  = ({data}:Props) =>  {
   return (
-    <div className="Kertas__half Kertas__half--front  flex w-full h-full"
+    <div className="Kertas__half Kertas__half--front  flex w-full h-full relative"
     style={{background: data.theme?.PrimaryColor, color: data.theme?.bodyFont}}>
+        {data.Papper?.Halaman3 ? (
+            <img src={data.Papper.Halaman3} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        ) : 
+        <>
         <div className="relative w-15">
             <div className=" absolute left-0 top-1/2 -translate-y-1/2 w-fit py-2 bg-white/30 h-full " style={{color:data.theme?.headingFont}}>
                 <h2 className="text-3xl font-Colvetica" style={{writingMode: "sideways-lr", textOrientation: "mixed"}}>{data.Namabride}</h2>
@@ -59,6 +63,7 @@ const Halaman3  = ({data}:Props) =>  {
                 ) */}
             </div>
         </div>
+        </>}
       
       
     </div>

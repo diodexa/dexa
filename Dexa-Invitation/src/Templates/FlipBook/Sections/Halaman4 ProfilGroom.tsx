@@ -6,8 +6,12 @@ interface Props {
 
 const Halaman4  = ({data}:Props) =>  {
   return (
-    <div className="Kertas__half Kertas__half--back  flex w-full h-full"
+    <div className="Kertas__half Kertas__half--back  flex w-full h-full relative"
     style={{background: data.theme?.PrimaryColor, color: data.theme?.bodyFont}}>
+        {data.Papper?.Halaman4 ? (
+             <img src={data.Papper.Halaman4} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        ) : 
+        <>
         <div className=" w-full p-2 font-ColveticaCond leading-none text-left flex flex-col justify-center mb-5">
             <div className="flex-1 mt-15">
                 <p>Putra dari </p>
@@ -51,6 +55,7 @@ const Halaman4  = ({data}:Props) =>  {
                 <h2 className="text-3xl font-Colvetica" style={{writingMode: "sideways-lr", textOrientation: "mixed"}}>{data.Namagroom}</h2>
             </div>
         </div>
+        </>}
       
     </div>
   );

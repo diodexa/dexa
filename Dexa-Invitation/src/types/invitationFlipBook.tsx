@@ -70,4 +70,22 @@ export type Invitation = {
     headingFont?: string;
     bodyFont?: string;
   };
+
+  Papper? : {
+    CoverBack? : string ;
+    Halaman1? : string ;
+    Halaman2? : string ;
+    Halaman3? : string ;
+    Halaman4? : string ;
+    Halaman5? : string ;
+    Halaman6? : string ;
+    Halaman7? : string ;
+    Halaman8? : string ;
+    Halaman9? : string ;
+    Halaman10? : string ;
+    Halaman11? : string ;
+    Halaman12? : string ;
+    Halaman13? : string ;
+    Halaman14? : string ;
+  }
 };

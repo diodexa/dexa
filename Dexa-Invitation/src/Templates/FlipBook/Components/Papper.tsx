@@ -11,12 +11,14 @@ const Paper = ({
   rotate,
   totalPages,
 }: Props) => {
+  // console.log(index, rotate);
   return (
     <div
       className="buku__Kertas"
       style={{
         zIndex: rotate > 90 ? index : totalPages - index,
-        transform: `rotateY(${-rotate}deg)`,}}>
+        transform: `rotateY(${-rotate}deg)`,
+        }}>
       {children}
     </div>
   );
