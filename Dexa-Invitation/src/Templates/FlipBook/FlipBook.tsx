@@ -18,6 +18,9 @@ import Halaman7 from "./Sections/Halaman7 SaveTheDate2";
 import Halaman8 from "./Sections/Halaman8 Story";
 import Halaman9 from "./Sections/Halaman9 Story2";
 import Halaman10 from "./Sections/Halaman10 Galery";
+import ModalGallery from "./Components/ModalGalery";
+import Halaman11 from "./Sections/Halaman11 Galery2";
+import Halaman12 from "./Sections/Halaman12 Ucapan";
 
 
 
@@ -31,8 +34,14 @@ const FlipBook = ({ data,guest }: Props) => {
   const [loading, setLoading] = useState(true);
   const [scrollX, setScrollX] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [openGallery, setOpenGallery] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const pageDistance = 700;
-
+  
+  const handleOpenGallery = (index: number) => {
+    setSelectedIndex(index);
+    setOpenGallery(true);
+  };
   useEffect(() => {
     const container = scrollRef.current;
 
@@ -78,6 +87,7 @@ const FlipBook = ({ data,guest }: Props) => {
   };
 
   const halaman67Active =(getRotate(3) >= 148) && (getRotate(4)< 123) ;
+  const halaman1011Active =(getRotate(5) >= 148) && (getRotate(6)< 123) ;
     
     //scrollevent di book
     
@@ -110,7 +120,11 @@ const FlipBook = ({ data,guest }: Props) => {
     },
     {
       front: <Halaman9 data={data} />,
-      back: <Halaman10  data={data}/>,
+      back: <Halaman10  data={data} openGallery={handleOpenGallery} isActive={halaman1011Active}/>,
+    },
+    {
+      front: <Halaman11 data={data} openGallery={handleOpenGallery} isActive={halaman1011Active} />,
+      back: <Halaman12  data={data} isActive={halaman67Active}/>,
     },
   ];
 
@@ -124,6 +138,10 @@ const FlipBook = ({ data,guest }: Props) => {
     <div className="min-h-screen flex justify-center bg-gray-600">
       <div className="relative w-[385px] max-w-full bg-white overflow-x-auto">
       <Loading isLoading={loading} />
+      <ModalGallery isOpen={openGallery} images={data.gallery}
+        initialIndex={selectedIndex}
+        onClose={() => setOpenGallery(false)}
+      />
         {/* <Hero data={data} guest={guest}/> */}
         <div className="flipbook-wrapper">
 
@@ -143,6 +161,7 @@ const FlipBook = ({ data,guest }: Props) => {
             />
 
             <div className="buku">
+              
 
               {papers.map((paper, index) => (
                 <Paper
