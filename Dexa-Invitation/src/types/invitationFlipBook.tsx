@@ -9,6 +9,7 @@ export type Invitation = {
   AkunTikTokWanita? : string;
   BapakpengantinWanita: string;
   IbupengantinWanita: string;
+  FotoBride: string;
 
   Namagroom: string;
   NamagroomPanggilan: string;
@@ -16,19 +17,22 @@ export type Invitation = {
   AkunTikTokPria? : string;
   BapakpengantinPria: string;
   IbupengantinPria: string;
-  
-  FotoBride: string;
   FotoGroom: string;
+  
    
+  FormatWaktu : string,
 
   TanggalAkad? : string,
   JamAkad? : string,
+  TanggalAkadISO? : string,
+  LokasiAkad?: string,
+  LinkGoogleMapsAkad?: string,
+
   TanggalResepsi?: string,
   JamResepsi? : string,
-  LokasiAkad?: string,
   LokasiResepsi?: string,
-  LinkGoogleMapsAkad?: string,
   LinkGoogleMapsResepsi?: string,
+
   note?: string,
   
   coverImage: string;
@@ -55,20 +59,27 @@ export type Invitation = {
   music?: string;
 
   theme?: {
-    PrimaryColor? : string;
-    SecondaryColor? :string;
-
-    CoverFrontPrimaryColor?: string;
-    CoverFrontSecondaryColor?: string;
-
-    backgroundColor?: string;
-    ContrasBackgroundColor?:string;
-    ContrasBackgroundColorSecond?:string;
-
     backgroundImage?:string;
+    
+    warna1?: string;
+    warna2?: string;
+    warna3?: string;
+    contrasfont?: string;
+    ContrasBackgroundColor?:string;
 
-    headingFont?: string;
-    bodyFont?: string;
+  };
+
+  WeddingGift?: {
+    rekening?: {
+      bank?: string;
+      atasNama?: string;
+      nomorRekening?: string;
+    }[];
+   alamat: {
+    alamat: string;
+    penerima: string;
+    noHp: string;
+  };
   };
 
   Papper? : {
@@ -87,5 +98,7 @@ export type Invitation = {
     Halaman12? : string ;
     Halaman13? : string ;
     Halaman14? : string ;
+    Halaman15? : string ;
+    Halaman16? : string ;
   }
 };

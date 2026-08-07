@@ -8,7 +8,7 @@ interface Props {
 const Halaman9  = ({data}:Props) =>  {
   return (
     <div className="Kertas__half Kertas__half--front  flex w-full h-full relative"
-    style={{background: data.theme?.PrimaryColor, color: data.theme?.bodyFont}}>
+    style={{background: data.theme?.warna1, color: data.theme?.warna2}}>
       {data.Papper?.Halaman9 ? (
         <img src={data.Papper.Halaman9} alt="" className="absolute inset-0 w-full h-full object-cover" />
       ): <>

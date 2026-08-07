@@ -5,7 +5,7 @@ interface Props {
 }
 export const CardLeft =({Image,Head,Content}:Props)=> {
     return (
-        <div className="flex border p-1 w-full h-1/2">
+        <div className="flex border p-1 w-full h-1/2 mb-1">
             <div className="relative w-2/4 ">
                 <img src={Image} alt="Foto Story" className="w-1/3  absolute inset-0 w-full h-full object-cover object-center" />
             </div>

@@ -8,7 +8,7 @@ const Halaman1 = ({data}:Props) => {
   const intialPria = data.Namagroom.charAt(0);
   return (
     <div className="Kertas__half Kertas__half--front  flex flex-col justify-center relative" 
-    style={{background: data.theme?.PrimaryColor, color: data.theme?.bodyFont}}>
+    style={{background: data.theme?.warna1 , color: data.theme?.warna2}}>
       {data.Papper?.Halaman1 ? (
         <img src={data.Papper.Halaman1} alt="" className="object-cover w-full h-full absolute"/>
       ): (

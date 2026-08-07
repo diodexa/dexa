@@ -10,7 +10,7 @@ const Halaman11 = ({data,openGallery,isActive}:Props) =>  {
 
   return (
     <div className="Kertas__half Kertas__half--front  flex w-full h-full"
-    style={{background: data.theme?.PrimaryColor, color: data.theme?.bodyFont}}>
+    style={{background: data.theme?.warna1, color: data.theme?.warna2}}>
         <div className="grid grid-cols-6 grid-rows-6 gap-1 h-full w-full p-1" style={{pointerEvents: isActive ? "auto" : "none"}}>
             <div className="col-span-3 row-span-2 relative" >
                 <img src={data.gallery[3]} alt="" className="absolute w-full h-full object-cover object-center"

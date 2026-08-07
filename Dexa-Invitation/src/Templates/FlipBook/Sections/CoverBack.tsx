@@ -7,7 +7,7 @@ interface Props {
 const CoverBack = ({data}: Props) => {
   const initialWanita = data.Namabride.charAt(0);
   return (
-    <div className="Kertas__half Kertas__half--back flex flex-col justify-center relative" style={{background: data.theme?.PrimaryColor, color: data.theme?.bodyFont}}>
+    <div className="Kertas__half Kertas__half--back flex flex-col justify-center relative" style={{background: data.theme?.warna1, color: data.theme?.warna2}}>
       {data.Papper?.CoverBack ? (
         <img src={data.Papper.CoverBack} alt="" className="object-cover w-full h-full absolute"/>
       ): (

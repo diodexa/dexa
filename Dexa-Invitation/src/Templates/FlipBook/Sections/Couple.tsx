@@ -9,8 +9,8 @@ const Couple = ({ data }: Props) => {
     <section>
       <h2>Pasangan</h2>
 
-      <p>{data.groom}</p>
-      <p>{data.bride}</p>
+      <p>{data.Namagroom}</p>
+      <p>{data.Namabride}</p>
     </section>
   );
 };

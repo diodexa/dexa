@@ -7,23 +7,26 @@ export const ContohDio: Invitation = {
 
   Namabride: "Clara Chintia Dewi S.E",
   NamabridePanggilan : "Clara",
-  AkunTikTokWanita : "@Tetew",
-  AkunIGWanita: "@totow",
+  // AkunTikTokWanita : "Tetew",
+  // AkunIGWanita: "totow",
   BapakpengantinWanita : "Bpk Samuel Cristian",
   IbupengantinWanita : "Ibu Margaretha Sukma",
 
   Namagroom: "Daniel Richard S.H",
   NamagroomPanggilan : "Daniel",
+  AkunIGPria : "Tetew",
+  AkunTikTokPria: "totow",
   BapakpengantinPria : "Bpk Marcus fredy",
   IbupengantinPria : "Ibu Cristiany Vony",
 
   FotoBride: "/Gallery/ContohDio/wanita.webp",
   FotoGroom: "/Gallery/ContohDio/pria.webp",
   
-  TanggalAkad : "12 Juni 2029",
-  JamAkad : "10:00 WIB",
-  TanggalResepsi: "12 Juni 2029",
-  JamResepsi : "10:00 WIB",
+  FormatWaktu: "WIB",
+  
+  TanggalAkad: "12 Juni 2029",
+  TanggalAkadISO: "2029-06-12",
+  JamAkad: "10:00",
 
   LokasiAkad: " Jl. Soekarno-Hatta No.354, Kb. Lega, Kec. Bojongloa Kidul, Kota Bandung, Jawa Barat 40235",
   LokasiResepsi: "Jl. Soekarno-Hatta No.354, Kb. Lega, Kec. Bojongloa Kidul, Kota Bandung, Jawa Barat 40235",
@@ -46,6 +49,27 @@ export const ContohDio: Invitation = {
     "/Gallery/ContohDio/7.webp",
     "/Gallery/ContohDio/8.webp",
   ],
+
+  WeddingGift: {
+    rekening: [
+      {
+        bank: "shopeepay",
+        atasNama: "Daniel",
+        nomorRekening: "1234567890",
+      },
+      {
+        bank: "ovo",
+        atasNama: "Clara",
+        nomorRekening: "9876543210",
+      },
+    ],
+
+    alamat: {
+      penerima: "Dio Deska Permana",
+      noHp: "081234567890",
+      alamat: "Jl. Contoh No. 123, Bandung",
+    },
+  },
   
   Salam: "Assalamualaikum wr wb",
   Sambutan : "Dengan segala kerendahan hati dan dengan ungkapan syukur atas karunia Tuhan, kami mengundang Bapak/ Ibu/ Saudara/i untuk menghadiri acara pernikahan putra & putri kami",
@@ -67,15 +91,15 @@ export const ContohDio: Invitation = {
 
   music: "/music/romantic.mp3",
   theme : {
-    CoverFrontPrimaryColor : "#EED5B9",
-    CoverFrontSecondaryColor : "transparent",
 
-    PrimaryColor: "#EDDBC4",
 
-    bodyFont: "#056f41",
-    headingFont: "#880a0a",
+    // PrimaryColor: "#EDDBC4",
 
-    backgroundColor: "#EFD9BC",
+    warna1: "#EFD9BC",
+    warna2: "#056f41",
+    warna3: "#880a0a",
+    
+    contrasfont: "#f9f9f9",
     ContrasBackgroundColor:"#000000"
 
     

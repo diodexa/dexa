@@ -21,6 +21,10 @@ import Halaman10 from "./Sections/Halaman10 Galery";
 import ModalGallery from "./Components/ModalGalery";
 import Halaman11 from "./Sections/Halaman11 Galery2";
 import Halaman12 from "./Sections/Halaman12 Ucapan";
+import Halaman13 from "./Sections/Halaman13 UcapanDoa";
+import { fetchComments, type Comment } from "./Components/ChatService";
+import Halaman14 from "./Sections/Halaman14 WeddingGift";
+import Halaman15 from "./Sections/Halaman15 Closing";
 
 
 
@@ -37,11 +41,31 @@ const FlipBook = ({ data,guest }: Props) => {
   const [openGallery, setOpenGallery] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const pageDistance = 700;
+
+  const [comments, setComments] = useState<Comment[]>([]);
   
   const handleOpenGallery = (index: number) => {
     setSelectedIndex(index);
     setOpenGallery(true);
   };
+// =========================
+// post fetch ucapan
+  // =========================
+  
+  const idUndangan = `${data.template} ${data.NamabridePanggilan}-${data.NamagroomPanggilan}`;
+
+  const loadComments = async () => {
+    try {
+      const result = await fetchComments(idUndangan);
+      setComments(result);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {loadComments();}, [idUndangan]);
+
+  
   useEffect(() => {
     const container = scrollRef.current;
 
@@ -86,8 +110,12 @@ const FlipBook = ({ data,guest }: Props) => {
     );
   };
 
+  const halaman23Active =(getRotate(1) >= 70) && (getRotate(2)< 123) ;
+  const halaman34Active =(getRotate(2) >= 148) && (getRotate(3)< 123) ;
   const halaman67Active =(getRotate(3) >= 148) && (getRotate(4)< 123) ;
   const halaman1011Active =(getRotate(5) >= 148) && (getRotate(6)< 123) ;
+  const halaman1213Active =(getRotate(6) >= 148) && (getRotate(7)< 123) ;
+  const halaman1415Active =(getRotate(7) >= 148) && (getRotate(8)< 123) ;
     
     //scrollevent di book
     
@@ -107,8 +135,8 @@ const FlipBook = ({ data,guest }: Props) => {
       back: <Halaman2 data={data}/>,
     },
     {
-      front: <Halaman3 data={data} />,
-      back: <Halaman4  data={data}/>,
+      front: <Halaman3 data={data} isActive={halaman23Active} />,
+      back: <Halaman4  data={data} isActive={halaman34Active}/>,
     },
     {
       front: <Halaman5 data={data} />,
@@ -124,7 +152,15 @@ const FlipBook = ({ data,guest }: Props) => {
     },
     {
       front: <Halaman11 data={data} openGallery={handleOpenGallery} isActive={halaman1011Active} />,
-      back: <Halaman12  data={data} isActive={halaman67Active}/>,
+      back: <Halaman12  data={data} isActive={halaman1213Active} loadComments={loadComments}/>,
+    },
+    {
+      front: <Halaman13 data={data} isActive={halaman1213Active} comments={comments}  />,
+      back: <Halaman14  data={data} isActive={halaman1415Active} />,
+    },
+    {
+      front: <Halaman15 data={data}/>,
+      back: <Halaman8  data={data}  />,
     },
   ];
 
