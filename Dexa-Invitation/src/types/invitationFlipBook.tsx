@@ -82,6 +82,8 @@ export type Invitation = {
   };
   };
 
+  Closing? : string;
+
   Papper? : {
     CoverBack? : string ;
     Halaman1? : string ;

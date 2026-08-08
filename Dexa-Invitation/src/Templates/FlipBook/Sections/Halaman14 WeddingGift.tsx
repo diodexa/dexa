@@ -10,6 +10,7 @@ import logoGopay from "../../../../public/Icon/GoPay Logo.png";
 import logoOVO from "../../../../public/Icon/OVO Logo.png";
 import logoShopeePay from "../../../../public/Icon/ShopeePay Logo.png";
 import logoSeabank from "../../../../public/Icon/SeaBank Logo.png";
+import { useState } from "react";
 
 interface Props {
   data: Invitation;
@@ -29,6 +30,20 @@ const Halaman14 = ({ data, isActive }: Props) => {
     OVO: logoOVO,
     SHOPEEPAY: logoShopeePay,
   };
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async (nomorRekening: string) => {
+  try {
+    await navigator.clipboard.writeText(nomorRekening);
+    setCopied(true)
+
+  } catch (err) {
+    console.error("Gagal copy:", err);
+  }
+  finally {
+    setTimeout(()=> setCopied(false), 1500)
+  }
+};
 
   return (
     <div
@@ -48,15 +63,15 @@ const Halaman14 = ({ data, isActive }: Props) => {
                   key={index}>
                   {logo && (
                     <img src={logo} alt={rekening.bank} 
-                    className=" object-contain h-7 mb-2"/> )}
-                    <p className="text-sm"> Nomor Rekening </p>
+                    className=" object-contain h-7 my-2"/> )}
                     <div className="flex gap-1">
 
                     <p className="font-bold">{rekening.nomorRekening}</p>
 
-                    <button 
-                      onClick={() =>navigator.clipboard.writeText(rekening.nomorRekening ?? "")}>
-                      <i className="fa-regular fa-copy"></i>
+                    <button
+                      type="button"
+                      onClick={() => handleCopy(rekening.nomorRekening ?? "")}>
+                      <i className="fa-regular fa-copy" />
                     </button>
                     </div>
                     <p> a.n. {rekening.atasNama}</p>
@@ -66,31 +81,33 @@ const Halaman14 = ({ data, isActive }: Props) => {
             })}
 
             <div className="border rounded-lg p-1 mb-2 flex flex-col items-center text-xs">
-              <i className="fa-solid fa-gift text-3xl"></i>
+              <i className="fa-solid fa-gift text-4xl my-1"></i>
 
               <div>
                 {/* <p className="font-bold">
                   {data.WeddingGift?.alamat?.penerima}
-                </p> */}
+                  </p> */}
 
-                <p>
-                  {data.WeddingGift?.alamat?.alamat}
-                </p>
+                <p> {data.WeddingGift?.alamat?.alamat && data.WeddingGift.alamat.alamat.length > 40 ? data.WeddingGift.alamat.alamat.slice(0, 40) + "...": data.WeddingGift?.alamat?.alamat} </p>
              
                 <button className="border px-2 rounded py-1"
                 style={{background: data.theme?.warna2,color: data.theme?.contrasfont}}
-                  onClick={() =>navigator.clipboard.writeText(data.WeddingGift?.alamat.alamat ?? "")}>
+                onClick={() => handleCopy(data.WeddingGift?.alamat.alamat ?? "")}>
                   Copy alamat
                 </button>
 
                 {/* <p>
                   {data.WeddingGift?.alamat?.noHp}
-                </p> */}
+                  </p> */}
               </div>
             </div>
           </div>
         </div>
       )}
+      {copied && (
+      <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-[9999] bg-black/80 text-white rounded-lg text-sm">
+        ✓ Berhasil disalin
+      </div>)}
     </div>
   );
 };

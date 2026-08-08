@@ -67,7 +67,7 @@ export const ContohDio: Invitation = {
     alamat: {
       penerima: "Dio Deska Permana",
       noHp: "081234567890",
-      alamat: "Jl. Contoh No. 123, Bandung",
+      alamat: "Jl. Contoh No. 123, kelurahan bojong soang, kecamatan cikudapateuh, kota Bandung",
     },
   },
   
@@ -88,6 +88,9 @@ export const ContohDio: Invitation = {
     Head4 : "Final Chapter",
     Story4 : "Setelah 6 tahun lamanya, kami memantapkan hati untuk melangkah ke jenjang yang lebih serius. 12 Juni 2029. Let’s grow old together! ❤️",
   },
+
+  Closing : `Terima kasih telah menjadi bagian dari cerita dan kebahagiaan kami.
+With love, always.`,
 
   music: "/music/romantic.mp3",
   theme : {

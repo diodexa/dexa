@@ -50,7 +50,7 @@ const Halaman13 = ({data,isActive, comments}:Props) =>  {
             style={{background: index%2 ===0? `${data.theme?.warna1}20` : `${data.theme?.contrasfont}80`}}
             key={index}>
               <div className="flex justify-between border-b ">
-                <strong>{comment.nama.length > 15 ? 
+                <strong style={{color:data.theme?.warna3}}>{comment.nama.length > 15 ? 
                 comment.nama.slice (0,15) + "....." : comment.nama}</strong>
                 <p >{comment.kehadiran}</p>
               </div>
@@ -67,7 +67,8 @@ const Halaman13 = ({data,isActive, comments}:Props) =>  {
               setCurrentPage((p) => Math.max(1, p - 1))
             }
             disabled={currentPage === 1}
-            className="px-2 border rounded"
+            className="px-2 border rounded hover:scale-110"
+            style={{background: data.theme?.warna2, color:data.theme?.contrasfont}}
           >
             &lt;
           </button>
@@ -77,14 +78,11 @@ const Halaman13 = ({data,isActive, comments}:Props) =>  {
           </span>
 
           <button
-            onClick={() =>
-              setCurrentPage((p) =>
-                Math.min(totalPages, p + 1)
-              )
-            }
+            onClick={() => setCurrentPage((p) =>
+                Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
-            className="px-2 border rounded"
-          >
+            className="px-2 border rounded hover:scale-110"
+            style={{background: data.theme?.warna2, color:data.theme?.contrasfont}}>
             &gt;
           </button>
 

@@ -25,6 +25,7 @@ import Halaman13 from "./Sections/Halaman13 UcapanDoa";
 import { fetchComments, type Comment } from "./Components/ChatService";
 import Halaman14 from "./Sections/Halaman14 WeddingGift";
 import Halaman15 from "./Sections/Halaman15 Closing";
+import Halaman16 from "./Sections/Halaman16 Footer";
 
 
 
@@ -110,12 +111,14 @@ const FlipBook = ({ data,guest }: Props) => {
     );
   };
 
-  const halaman23Active =(getRotate(1) >= 70) && (getRotate(2)< 123) ;
-  const halaman34Active =(getRotate(2) >= 148) && (getRotate(3)< 123) ;
-  const halaman67Active =(getRotate(3) >= 148) && (getRotate(4)< 123) ;
-  const halaman1011Active =(getRotate(5) >= 148) && (getRotate(6)< 123) ;
-  const halaman1213Active =(getRotate(6) >= 148) && (getRotate(7)< 123) ;
-  const halaman1415Active =(getRotate(7) >= 148) && (getRotate(8)< 123) ;
+    const halaman23Active =(getRotate(1) >= 70) && (getRotate(2)< 123) ;
+    const halaman34Active =(getRotate(2) >= 148) && (getRotate(3)< 93) ;
+    const halaman67Active =(getRotate(3) >= 148) && (getRotate(4)< 93) ;
+    const halaman1011Active =(getRotate(5) >= 148) && (getRotate(6)< 93) ;
+    const halaman1213Active =(getRotate(6) >= 128) && (getRotate(7)< 93) ;
+    const halaman1415Active =(getRotate(7) >= 148) && (getRotate(8)< 93) ;
+
+    console.log(getRotate(7))
     
     //scrollevent di book
     
@@ -129,38 +132,45 @@ const FlipBook = ({ data,guest }: Props) => {
       front: <CoverFront data={data}/>,
       back: <CoverBack data={data} />,
     },
-
+    // 1
     {
       front: <Halaman1 data={data}/>,
       back: <Halaman2 data={data}/>,
     },
+    // 2
     {
       front: <Halaman3 data={data} isActive={halaman23Active} />,
       back: <Halaman4  data={data} isActive={halaman34Active}/>,
     },
+    // 3
     {
       front: <Halaman5 data={data} />,
       back: <Halaman6  data={data} isActive={halaman67Active}/>,
     },
+    // 4
     {
       front: <Halaman7 data={data} isActive={halaman67Active} />,
       back: <Halaman8  data={data}/>,
     },
+    // 5
     {
       front: <Halaman9 data={data} />,
       back: <Halaman10  data={data} openGallery={handleOpenGallery} isActive={halaman1011Active}/>,
     },
+    // 6
     {
       front: <Halaman11 data={data} openGallery={handleOpenGallery} isActive={halaman1011Active} />,
       back: <Halaman12  data={data} isActive={halaman1213Active} loadComments={loadComments}/>,
     },
+    // 7
     {
       front: <Halaman13 data={data} isActive={halaman1213Active} comments={comments}  />,
       back: <Halaman14  data={data} isActive={halaman1415Active} />,
     },
+    // 8
     {
       front: <Halaman15 data={data}/>,
-      back: <Halaman8  data={data}  />,
+      back: <Halaman16  data={data}  />,
     },
   ];
 

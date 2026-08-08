@@ -24,7 +24,7 @@ const Halaman10 = ({data,openGallery,isActive}:Props) =>  {
                 <img src={data.gallery[2]} alt="" className="absolute w-full h-full object-cover object-center"
                 onClick={() => openGallery(2)}/>
             </div>
-            <div className="col-span-3 row-span-2 col-start-1 row-start-5 place-self-center  text-3xl font-Colvetica" style={{color:data.theme?.warna3}}> 
+            <div className="col-span-3 row-span-2 col-start-1 row-start-5 place-self-center  text-3xl font-SephoraHayden" style={{color:data.theme?.warna3}}> 
                 <strong><h2 >Love <br/> <span style={{color:data.theme?.warna2}}>Galery</span></h2></strong></div>
             {/* <div className="col-span-3 row-span-1 relative" style={{pointerEvents: isActive ? "auto" : "none"}}>
                 <img src={data.gallery[4]} alt="" className="absolute w-full h-full object-cover object-center"

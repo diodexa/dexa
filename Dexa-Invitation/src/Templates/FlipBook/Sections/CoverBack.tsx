@@ -13,7 +13,8 @@ const CoverBack = ({data}: Props) => {
       ): (
         <>
           <div className="flex w-full justify-end mb-10">
-            <h2 className=" font-SephoraHayden text-[4rem] mt-10 pr-2">{initialWanita}</h2>
+            <h2 className=" font-SephoraHayden text-[4rem] mt-10 pr-2"
+            style={{color:data.theme?.warna3}}>{initialWanita}</h2>
           </div>
           <div className="flex-1 ">
             <div className="w-full p-2 text-right break-words">
