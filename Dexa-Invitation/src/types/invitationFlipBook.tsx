@@ -36,7 +36,7 @@ export type Invitation = {
   note?: string,
   
   coverImage: string;
-  backcover: string;
+  backcover?: string;
   
   gallery: string[];
   

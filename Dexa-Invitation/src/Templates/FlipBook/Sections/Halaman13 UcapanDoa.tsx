@@ -12,7 +12,7 @@ interface Props {
 const Halaman13 = ({data,isActive, comments}:Props) =>  {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const COMMENTS_PER_PAGE = 5;
+  const COMMENTS_PER_PAGE = 4;
   const totalPages = Math.ceil(comments.length / COMMENTS_PER_PAGE);
 
   const startIndex = (currentPage - 1) * COMMENTS_PER_PAGE;
@@ -23,45 +23,51 @@ const Halaman13 = ({data,isActive, comments}:Props) =>  {
   // tanggal 
   // ============
   const formatDate = (date: string) => {
-  return new Date(date).toLocaleString("id-ID", {
-    day: "2-digit",
-    month: "short",
-    hour: "2-digit",
-    minute: "2-digit",
-  
-  });
-};
+    return new Date(date).toLocaleString("id-ID", {
+      day: "2-digit",
+      month: "short",
+      hour: "2-digit",
+      minute: "2-digit",
+    
+    });
+  };
+
+  const formatUcapan = (text: string) => {
+    return text
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  };
 
   return (
-    <div className="Kertas__half Kertas__half--front  flex w-full h-full"
+    <div className="Kertas__half Kertas__half--front  flex w-full h-full lg:text-[0.6rem]"
     style={{background: data.theme?.warna1, color: data.theme?.warna2}}>
       {data.Papper?.Halaman13 ? (
         <img src={data.Papper.Halaman13} alt="" className="absolute inset-0 w-full h-full object-cover" />): 
       <>
-      <div className="flex flex-col items-center justify-between w-full h-full " style={{pointerEvents: isActive ? "auto" : "none"}}>
-        <div className="flex flex-col h-full w-full p-1"
+      <div className="flex flex-col items-center w-full h-full  " style={{pointerEvents: isActive ? "auto" : "none"}}>
+        <div className="flex-1 min-h-0 w-full overflow-hidden p-1 flex flex-col gap-1"
           style={{ pointerEvents: isActive ? "auto" : "none" }}>
 
 
           {comments.length === 0 ? (
             <p>Belum ada ucapan.</p>) : (
             currentComments.map((comment, index) => (
-            <div className=" flex flex-col border text-left text-xs gap-1 p-px "
+            <div className=" border  text-left text-xs lg:text-[0.6rem] p-px "
             style={{background: index%2 ===0? `${data.theme?.warna1}20` : `${data.theme?.contrasfont}80`}}
             key={index}>
-              <div className="flex justify-between border-b ">
-                <strong style={{color:data.theme?.warna3}}>{comment.nama.length > 15 ? 
-                comment.nama.slice (0,15) + "....." : comment.nama}</strong>
-                <p >{comment.kehadiran}</p>
+              
+              <div className="flex items-center border-b px-px ">
+                <strong style={{color:data.theme?.warna3}} className="flex-1 truncate py-1">{comment.nama}</strong>
+                <p className="shrink-0 whitespace-nowrap ml-1">{comment.kehadiran}</p>
               </div>
-              <p className="mt-1 text-wrap break-all ">{comment.ucapan}</p>
-              <p className="text-right text-[0.5rem]">{formatDate(comment.date)}</p>
+              <p className="my-1 px-px whitespace-pre-line break-all line-clamp-4">{formatUcapan(comment.ucapan)}</p>
+              <p className="text-right text-[0.5rem] lg:text-[0.4rem] ">{formatDate(comment.date)}</p>
             </div>
             ))
           )}
 
         </div>
-        <div className="flex justify-center items-center gap-2 mb-1 ">
+        <div className="flex justify-center items-center gap-2 mb-1 shrink-0">
           <button
             onClick={() =>
               setCurrentPage((p) => Math.max(1, p - 1))

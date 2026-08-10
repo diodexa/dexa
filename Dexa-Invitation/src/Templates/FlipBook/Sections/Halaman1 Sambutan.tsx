@@ -7,7 +7,7 @@ interface Props {
 const Halaman1 = ({data}:Props) => {
   const intialPria = data.Namagroom.charAt(0);
   return (
-    <div className="Kertas__half Kertas__half--front  flex flex-col justify-center relative" 
+    <div className="Kertas__half Kertas__half--front  flex flex-col justify-center relative " 
     style={{background: data.theme?.warna1 , color: data.theme?.warna2}}>
       {data.Papper?.Halaman1 ? (
         <img src={data.Papper.Halaman1} alt="" className="object-cover w-full h-full absolute"/>
@@ -21,7 +21,7 @@ const Halaman1 = ({data}:Props) => {
           <div className="w-full p-2 text-left break-words">
             <p className={`leading-none font-light ${(data.Salam?.length ?? 0) > 20 ? "text-sm" : "text-lg"}`}> <strong> {data.NamaSurat} </strong></p>
           </div>
-          <div className={`text-left p-2 text-[0.7rem]  leading-4 ${(data.NamaSurat?.length ?? 0) > 14 ? "mt-3" : "mt-5"}`}>
+          <div className={`text-left p-2 text-[0.7rem] lg:text-[0.5rem]  leading-4 ${(data.NamaSurat?.length ?? 0) > 14 ? "mt-3" : "mt-5"}`}>
             <p>{data.Ayat}</p>
           </div>
                 {/* <div className="text-left p-2 font-light leading-4 flex flex-col gap-4">

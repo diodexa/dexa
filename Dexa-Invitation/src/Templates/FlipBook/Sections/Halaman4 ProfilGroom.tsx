@@ -13,7 +13,7 @@ const Halaman4  = ({data, isActive}:Props) =>  {
              <img src={data.Papper.Halaman4} alt="" className="absolute inset-0 w-full h-full object-cover" />
         ) : 
         <>
-        <div className=" w-full p-2 font-ColveticaCond  text-left flex flex-col justify-center mb-5">
+        <div className=" w-full p-2 font-ColveticaCond tracking-[0.1rem]  text-left flex flex-col justify-center mb-5">
             <div className="flex-1 mt-15">
                 <p>Putra dari </p>
                 <p>{data.BapakpengantinPria} </p>

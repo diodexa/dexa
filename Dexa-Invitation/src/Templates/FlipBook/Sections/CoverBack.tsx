@@ -20,7 +20,7 @@ const CoverBack = ({data}: Props) => {
             <div className="w-full p-2 text-right break-words">
               <h2 className={`leading-none uppercase  ${(data.Salam?.length ?? 0) > 20 ? "text-sm" : "text-lg"}`}> <strong> {data.Salam} </strong></h2>
             </div>
-            <div className="text-right p-2 text-[0.7rem]  leading-4">
+            <div className="text-right p-2 text-[0.7rem] lg:text-[0.6rem]  leading-4">
               <p>{data.Sambutan}</p>
               <br />
               <p>Hormat kami,</p>

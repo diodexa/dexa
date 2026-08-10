@@ -16,10 +16,10 @@ const CoverFront = ({data}: Props) => {
     "--bg1": data.theme?.contrasfont} as React.CSSProperties} >
       <img src={data.coverImage} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 flex flex-col items-center justify-start z-2" style={{color:data.theme?.warna2}}>
-          <p className="tracking-widest text-[0.8rem] flex-1 " >The Wedding </p>
+          <p className="tracking-[0.2rem] text-[0.8rem] flex-1 " >The Wedding of </p>
         <div className="text-center w-full relative">
         
-          <h1 className="font-Signature text-3xl m-0  flex flex-col leading-none">
+          <h1 className="font-Signature text-3xl m-0 flex flex-col leading-none">
             <span>{data.NamabridePanggilan}</span> &
             <span>{data.NamagroomPanggilan}</span>
           </h1>

@@ -25,8 +25,7 @@ console.log(invitations);
   return (
     <FlipBook
       data={invitation}
-      guest={guestName}
-    />
+      guest={guestName}/>
   );
 };
 

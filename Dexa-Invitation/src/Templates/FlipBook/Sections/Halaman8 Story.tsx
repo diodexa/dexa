@@ -14,7 +14,7 @@ const Halaman8  = ({data}:Props) =>  {
       ): <>
       <div className="flex flex-col items-end w-full h-full pt-5">
           <h2 className="font-SephoraHayden text-[2rem] mb-5 ">Our</h2>
-          <div className="flex flex-col gap-1 items-start p-2">
+          <div className="flex flex-col gap-1 items-start p-2 ">
               <CardLeft 
               Image={data.gallery[4]} 
               Head={data.Story?.Head1} 

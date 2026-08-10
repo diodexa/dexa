@@ -52,7 +52,7 @@ const Halaman14 = ({ data, isActive }: Props) => {
       {data.Papper?.Halaman14 ? (
         <img src={data.Papper.Halaman14}alt=""className="absolute inset-0 w-full h-full object-cover"/>) : (
         <div className="flex flex-col items-center mt-2 w-full h-full" style={{pointerEvents: isActive ? "auto" : "none",}}>
-          <h2 className="text-2xl font-Colvetica"> Wedding Gift</h2>
+          <h2 className="text-2xl font-ColveticaCond tracking-[0.2rem] "> Wedding Gift</h2>
           <div className="w-full px-2 mt-2">
             {data.WeddingGift?.rekening?.map((rekening, index) => {
               const bank = rekening.bank?.toUpperCase() ?? "";
@@ -63,7 +63,8 @@ const Halaman14 = ({ data, isActive }: Props) => {
                   key={index}>
                   {logo && (
                     <img src={logo} alt={rekening.bank} 
-                    className=" object-contain h-7 my-2"/> )}
+                    style={{filter: `drop-shadow(0 0 2px white`}}
+                    className=" object-contain h-7 my-2 " /> )}
                     <div className="flex gap-1">
 
                     <p className="font-bold">{rekening.nomorRekening}</p>

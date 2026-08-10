@@ -1,35 +1,34 @@
 import type { Invitation } from "../../types/invitationFlipBook";
 
-export const ContohDio: Invitation = {
-  slug: "Flipbook",
+export const ContohBudi: Invitation = {
+  slug: "Haya-Dio",
 
   template: "FlipBook",
 
-  Namabride: "Clara Chintia Dewi S.E",
-  NamabridePanggilan : "Clara",
-  // AkunTikTokWanita : "Tetew",
-  // AkunIGWanita: "totow",
-  BapakpengantinWanita : "Bpk Samuel Cristian",
-  IbupengantinWanita : "Ibu Margaretha Sukma",
+  Namabride: "Haryati S.Kom",
+  NamabridePanggilan : "Haya",
+  AkunTikTokWanita : "HaryatiHaya",
+  AkunIGWanita: "Haya",
+  BapakpengantinWanita : "Bpk Harjono",
+  IbupengantinWanita : "Ibu Rojiah",
 
-  Namagroom: "Daniel Richard S.H",
-  NamagroomPanggilan : "Daniel",
-  AkunIGPria : "Tetew",
-  AkunTikTokPria: "totow",
-  BapakpengantinPria : "Bpk Marcus fredy",
-  IbupengantinPria : "Ibu Cristiany Vony",
+  Namagroom: "Dio Deska S.T",
+  NamagroomPanggilan : "Dio",
+  AkunIGPria : "diodeska",
+  BapakpengantinPria : "Bpk Sony Wirahma Soemantri",
+  IbupengantinPria : "Ibu Waode Nurbahana",
 
   FotoBride: "/Gallery/ContohDio/wanita.webp",
   FotoGroom: "/Gallery/ContohDio/pria.webp",
   
   FormatWaktu: "WIB",
   
-  TanggalAkad: "12 Juni 2029",
-  TanggalAkadISO: "2029-06-12",
-  JamAkad: "10:00",
+  TanggalAkad: "10 Desember 2029",
+  TanggalAkadISO: "2029-12-10",
+  JamAkad: "08:00",
 
-  LokasiAkad: " Jl. Soekarno-Hatta No.354, Kb. Lega, Kec. Bojongloa Kidul, Kota Bandung, Jawa Barat 40235",
-  LokasiResepsi: "Jl. Soekarno-Hatta No.354, Kb. Lega, Kec. Bojongloa Kidul, Kota Bandung, Jawa Barat 40235",
+  LokasiAkad: " Jl. Muara Gading Mas nomor 10, kel MGM, Kecamatan MGM, Kabupaten Lampung Selatan",
+  LokasiResepsi: "Jl. Muara Gading Mas nomor 10, kel MGM, Kecamatan MGM, Kabupaten Lampung Selatan",
   LinkGoogleMapsAkad: "https://www.google.com/maps/place/Bandung+Convention+Centre/@-6.9488599,107.5985921,17z/data=!3m1!4b1!4m6!3m5!1s0x2e68e89569ffdb69:0x6c9a53530e0d0d8e!8m2!3d-6.9488599!4d107.5985921!16s%2Fg%2F1tf7j_39?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D",
   LinkGoogleMapsResepsi: "https://www.google.com/maps/place/Bandung+Convention+Centre/@-6.9488599,107.5985921,17z/data=!3m1!4b1!4m6!3m5!1s0x2e68e89569ffdb69:0x6c9a53530e0d0d8e!8m2!3d-6.9488599!4d107.5985921!16s%2Fg%2F1tf7j_39?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D",
 
@@ -37,7 +36,7 @@ export const ContohDio: Invitation = {
   //  putih hitam untuk cewek` ,
 
   coverImage: "/Gallery/ContohDio/4.webp",
-
+  backcover : "/Gallery/ContohDio/5.webp",
 
   gallery: [
     "/Gallery/ContohDio/1.webp",
@@ -53,13 +52,13 @@ export const ContohDio: Invitation = {
   WeddingGift: {
     rekening: [
       {
-        bank: "shopeepay",
-        atasNama: "Daniel",
+        bank: "dana",
+        atasNama: "Dio",
         nomorRekening: "1234567890",
       },
       {
-        bank: "ovo",
-        atasNama: "Clara",
+        bank: "bca",
+        atasNama: "Haya",
         nomorRekening: "9876543210",
       },
     ],
@@ -98,11 +97,11 @@ With love, always.`,
 
     // PrimaryColor: "#EDDBC4",
 
-    warna1: "#EFD9BC",
-    warna2: "#056f41",
-    warna3: "#880a0a",
+    warna1: "#777ff4",
+    warna2: "#fafaf8",
+    warna3: "#ffff00",
     
-    contrasfont: "#f9f9f9",
+    contrasfont: "#777ff4",
     ContrasBackgroundColor:"#000000"
 
     

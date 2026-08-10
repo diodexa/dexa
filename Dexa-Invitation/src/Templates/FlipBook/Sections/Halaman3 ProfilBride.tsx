@@ -18,7 +18,7 @@ const Halaman3  = ({data,isActive}:Props) =>  {
                 <h2 className="text-3xl font-Colvetica" style={{writingMode: "sideways-lr", textOrientation: "mixed"}}>{data.Namabride}</h2>
             </div>
         </div>
-        <div className=" w-full p-2 font-ColveticaCond text-right flex flex-col items-start justify-center mb-5">
+        <div className=" w-full p-2 font-ColveticaCond tracking-[0.1rem] text-right flex flex-col items-end justify-center mb-5">
             <div className="flex-1 mt-15">
                 <p>Putri dari </p>
                 <p>{data.BapakpengantinWanita} </p>

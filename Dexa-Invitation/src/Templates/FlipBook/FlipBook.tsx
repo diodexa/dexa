@@ -32,10 +32,11 @@ import Halaman16 from "./Sections/Halaman16 Footer";
 interface Props {
   data: Invitation;
   guest: string;
-  isActive: boolean;
+  
 }
 
-const FlipBook = ({ data,guest }: Props) => {
+const FlipBook = ({ data,guest  }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [scrollX, setScrollX] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -118,7 +119,6 @@ const FlipBook = ({ data,guest }: Props) => {
     const halaman1213Active =(getRotate(6) >= 128) && (getRotate(7)< 93) ;
     const halaman1415Active =(getRotate(7) >= 148) && (getRotate(8)< 93) ;
 
-    console.log(getRotate(7))
     
     //scrollevent di book
     
@@ -188,25 +188,17 @@ const FlipBook = ({ data,guest }: Props) => {
         initialIndex={selectedIndex}
         onClose={() => setOpenGallery(false)}
       />
-        {/* <Hero data={data} guest={guest}/> */}
-        <div className="flipbook-wrapper">
+        <Hero data={data} guest={guest} setIsOpen={setIsOpen} isOpen={isOpen} />
+        <div className="flipbook-wrapper ">
 
           {/* tinggi scroll otomatis */}
           <div
           ref={scrollRef}
             className="flipbook-scroll overflow-x-scroll overflow-y-hidden"
-            style={{
-              height: "100vh",
-            }}
-          >
-            <div
-              style={{
-                width: `${totalWidth}px`,
-                height: "1px",
-              }}
-            />
+            style={{height: "100vh"}}>
+            <div style={{width: `${totalWidth}px`,height: "1px",}}/>
 
-            <div className="buku">
+            <div className={`buku transition-all duration-2000 ease-out ${isOpen? "scale-100 opacity-100": "scale-90 opacity-0"}`}>
               
 
               {papers.map((paper, index) => (

@@ -1,3 +1,4 @@
+import { Bold } from "lucide-react";
 import type { Invitation } from "../../../types/invitationFlipBook";
 
 interface Props {
@@ -34,9 +35,9 @@ const Halaman15 = ({ data }: Props) => {
       ))}
       <div className="absolute bottom-0 z-10 mb-2">
 
-          <p className="leading-none text-[0.7rem] px-[0.2rem] mb-2"> {data.Closing} </p>
+          <p className="leading-none text-[0.7rem] px-[0.2rem] mb-2 whitespace-pre-line"> {data.Closing} </p>
           <p className="text-2xl font-BetterChill"
-          style={{color:data.theme?.warna3}}>{data.NamabridePanggilan} & {data.NamagroomPanggilan}</p>
+          style={{color:data.theme?.warna3 , font:Bold}}>{data.NamabridePanggilan} & {data.NamagroomPanggilan}</p>
       </div>
     </div>
   );

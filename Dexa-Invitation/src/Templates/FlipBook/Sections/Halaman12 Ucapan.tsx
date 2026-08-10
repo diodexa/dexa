@@ -46,7 +46,7 @@ const Halaman12 = ({data,isActive, loadComments}:Props) =>  {
 
 
   return (
-    <div className="Kertas__half Kertas__half--back  flex w-full h-full"
+    <div className="Kertas__half Kertas__half--back  flex w-full h-full lg:text-[0.6rem]"
     style={{background: data.theme?.warna1, color: data.theme?.warna2}}>
       {data.Papper?.Halaman12 ? (
         <img src={data.Papper.Halaman12} alt="" className="absolute inset-0 w-full h-full object-cover" />
@@ -61,7 +61,7 @@ const Halaman12 = ({data,isActive, loadComments}:Props) =>  {
               onChange={(e) => setNama(e.target.value)} className="border text-center w-full mb-2 break-words"/>
               <textarea  required
               placeholder="isi pesan kamu" 
-              className="border  w-full p-1" 
+              className="border  w-full px-1" 
               value={ucapan}
               onChange={(e) => setUcapan(e.target.value)}/>
               <div className="flex w-full justify-end">
@@ -77,13 +77,13 @@ const Halaman12 = ({data,isActive, loadComments}:Props) =>  {
                   Hadir
                 </label>
 
-                <button className={`border p-2  rounded-lg ${loading? "opacity-50 cursor-not-allowed" : ""}`}
+                <button className={`border p-2 lg:p-1  rounded-lg ${loading? "opacity-50 cursor-not-allowed" : ""}`}
                 style={{background:data.theme?.warna2, color:data.theme?.contrasfont}}
                 type="submit" 
                 disabled={loading}> {loading ? "Mengirim..." : "Kirim Pesan"}</button>
               </div>
             </form>
-
+            
         </div>
         
       </>}
