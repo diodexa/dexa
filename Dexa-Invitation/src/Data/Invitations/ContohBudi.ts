@@ -1,25 +1,25 @@
-import type { Invitation } from "../../types/invitationFlipBook";
+import type { Invitation } from "../../types/invitationType";
 
 export const ContohBudi: Invitation = {
-  slug: "Haya-Dio",
+  slug: "Leaf",
 
-  template: "FlipBook",
+  template: "Leaf",
 
-  Namabride: "Haryati S.Kom",
-  NamabridePanggilan : "Haya",
-  AkunTikTokWanita : "HaryatiHaya",
-  AkunIGWanita: "Haya",
-  BapakpengantinWanita : "Bpk Harjono",
-  IbupengantinWanita : "Ibu Rojiah",
+  Namabride: "Riana Sulastri S.Kom",
+  NamabridePanggilan : "Riana",
+  AkunTikTokWanita : "Riana12",
+  AkunIGWanita: "Riana",
+  BapakpengantinWanita : "Bpk Heri",
+  IbupengantinWanita : "Ibu Sumi",
 
-  Namagroom: "Dio Deska S.T",
-  NamagroomPanggilan : "Dio",
+  Namagroom: "Jutawan Bangun Putra Raja Samudera",
+  NamagroomPanggilan : "Jutawan",
   AkunIGPria : "diodeska",
-  BapakpengantinPria : "Bpk Sony Wirahma Soemantri",
-  IbupengantinPria : "Ibu Waode Nurbahana",
+  BapakpengantinPria : "Bpk Mamat",
+  IbupengantinPria : "Ibu Rina",
 
-  FotoBride: "/Gallery/ContohDio/wanita.webp",
-  FotoGroom: "/Gallery/ContohDio/pria.webp",
+  FotoBride: "/Gallery/ContohLeaf/wanita1.png",
+  FotoGroom: "/Gallery/ContohLeaf/pria1.png",
   
   FormatWaktu: "WIB",
   
@@ -39,26 +39,29 @@ export const ContohBudi: Invitation = {
   backcover : "/Gallery/ContohDio/5.webp",
 
   gallery: [
-    "/Gallery/ContohDio/1.webp",
-    "/Gallery/ContohDio/2.webp",
-    "/Gallery/ContohDio/3.webp",
-    "/Gallery/ContohDio/4.webp",
-    "/Gallery/ContohDio/5.webp",
-    "/Gallery/ContohDio/6.webp",
-    "/Gallery/ContohDio/7.webp",
-    "/Gallery/ContohDio/8.webp",
+    "/Gallery/ContohLeaf/1.webp",
+    "/Gallery/ContohLeaf/2.webp",
+    "/Gallery/ContohLeaf/3.webp",
+    "/Gallery/ContohLeaf/4.webp",
+    "/Gallery/ContohLeaf/5.webp",
+    "/Gallery/ContohLeaf/6.webp",
+    "/Gallery/ContohLeaf/7.webp",
+   
+    
   ],
+
+  video : "/Gallery/ContohLeaf/video.mp4",
 
   WeddingGift: {
     rekening: [
       {
-        bank: "dana",
-        atasNama: "Dio",
+        bank: "shopeepay",
+        atasNama: "Jutawan",
         nomorRekening: "1234567890",
       },
       {
-        bank: "bca",
-        atasNama: "Haya",
+        bank: "bni",
+        atasNama: "Riana",
         nomorRekening: "9876543210",
       },
     ],
@@ -97,17 +100,21 @@ With love, always.`,
 
     // PrimaryColor: "#EDDBC4",
 
-    warna1: "#777ff4",
-    warna2: "#fafaf8",
-    warna3: "#ffff00",
+    warna1: "#05730e",
+    warna2: "#fbfb66",
+    warna3: "#ffffff",
     
-    contrasfont: "#777ff4",
-    ContrasBackgroundColor:"#000000"
+    contrasfont: "#050505",
+    ContrasBackgroundColor:"#ffffff"
 
     
   },
-  Papper : {
-    // Halaman9 : "/Gallery/ContohDio/1.webp"
+  Background : {
+    Background1 :"/Gallery/ContohLeaf/1.png",
+    Background2 :"/Gallery/ContohLeaf/2.png",
+    Background3 :"/Gallery/ContohLeaf/5.png",
+    Background4 :"/Gallery/ContohLeaf/6.png",
+    CoverBack :"/Gallery/ContohLeaf/background.webp",
   }
   
 };

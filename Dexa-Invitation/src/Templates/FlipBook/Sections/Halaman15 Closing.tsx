@@ -1,5 +1,5 @@
 import { Bold } from "lucide-react";
-import type { Invitation } from "../../../types/invitationFlipBook";
+import type { Invitation } from "../../../types/invitationType";
 
 interface Props {
   data: Invitation;

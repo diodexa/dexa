@@ -1,5 +1,5 @@
-import type { Invitation } from "../../../types/invitationFlipBook";
-import Countdown from "../Components/Countdown";
+import type { Invitation } from "../../../types/invitationType";
+import Countdown from "../../Components/Countdown";
 
 interface Props {
   data: Invitation

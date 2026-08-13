@@ -1,6 +1,6 @@
 import { useState } from "react";
-import type { Invitation } from "../../../types/invitationFlipBook";
-import { postComment } from "../Components/ChatService";
+import type { Invitation } from "../../../types/invitationType";
+import { postComment } from "../../Components/ChatService";
 
 interface Props {
   data: Invitation
@@ -48,8 +48,8 @@ const Halaman12 = ({data,isActive, loadComments}:Props) =>  {
   return (
     <div className="Kertas__half Kertas__half--back  flex w-full h-full lg:text-[0.6rem]"
     style={{background: data.theme?.warna1, color: data.theme?.warna2}}>
-      {data.Papper?.Halaman12 ? (
-        <img src={data.Papper.Halaman12} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      {data.Background?.Background12 ? (
+        <img src={data.Background?.Background12} alt="" className="absolute inset-0 w-full h-full object-cover" />
       ): <>
         <div className="flex flex-col justify-center mt-2 w-full  " style={{pointerEvents: isActive ? "auto" : "none"}}>
             <h2 className="font-Colvetica text-2xl">Ucapan & Doa</h2>

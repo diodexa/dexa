@@ -1,6 +1,6 @@
 import {  useState } from "react";
-import type { Invitation } from "../../../types/invitationFlipBook";
-import {  type Comment } from "../Components/ChatService";
+import type { Invitation } from "../../../types/invitationType";
+import {  type Comment } from "../../Components/ChatService";
 
 
 interface Props {
@@ -41,8 +41,8 @@ const Halaman13 = ({data,isActive, comments}:Props) =>  {
   return (
     <div className="Kertas__half Kertas__half--front  flex w-full h-full lg:text-[0.6rem]"
     style={{background: data.theme?.warna1, color: data.theme?.warna2}}>
-      {data.Papper?.Halaman13 ? (
-        <img src={data.Papper.Halaman13} alt="" className="absolute inset-0 w-full h-full object-cover" />): 
+      {data.Background?.Background13 ? (
+        <img src={data.Background.Background13} alt="" className="absolute inset-0 w-full h-full object-cover" />): 
       <>
       <div className="flex flex-col items-center w-full h-full  " style={{pointerEvents: isActive ? "auto" : "none"}}>
         <div className="flex-1 min-h-0 w-full overflow-hidden p-1 flex flex-col gap-1"

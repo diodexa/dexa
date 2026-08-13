@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-import type { Invitation } from "../../types/invitationFlipBook";
+import type { Invitation } from "../../types/invitationType";
 
 import CoverFront from "./Sections/CoverFront";
 import CoverBack from "./Sections/CoverBack";
-import Paper from "./Components/Papper";
+import Paper from "../Components/Papper";
 import "../FlipBook/FlipBook.css"
 import Hero from "./Sections/Hero";
 import { Loading } from "../../Components/UI/Loader";
@@ -18,11 +18,11 @@ import Halaman7 from "./Sections/Halaman7 SaveTheDate2";
 import Halaman8 from "./Sections/Halaman8 Story";
 import Halaman9 from "./Sections/Halaman9 Story2";
 import Halaman10 from "./Sections/Halaman10 Galery";
-import ModalGallery from "./Components/ModalGalery";
+import ModalGallery from "../Components/ModalGalery";
 import Halaman11 from "./Sections/Halaman11 Galery2";
 import Halaman12 from "./Sections/Halaman12 Ucapan";
 import Halaman13 from "./Sections/Halaman13 UcapanDoa";
-import { fetchComments, type Comment } from "./Components/ChatService";
+import { fetchComments, type Comment } from "../Components/ChatService";
 import Halaman14 from "./Sections/Halaman14 WeddingGift";
 import Halaman15 from "./Sections/Halaman15 Closing";
 import Halaman16 from "./Sections/Halaman16 Footer";
@@ -186,10 +186,10 @@ const FlipBook = ({ data,guest  }: Props) => {
       <Loading isLoading={loading} />
       <ModalGallery isOpen={openGallery} images={data.gallery}
         initialIndex={selectedIndex}
-        onClose={() => setOpenGallery(false)}
+        onClose={() => setOpenGallery(false)} 
       />
         <Hero data={data} guest={guest} setIsOpen={setIsOpen} isOpen={isOpen} />
-        <div className="flipbook-wrapper ">
+        <div>
 
           {/* tinggi scroll otomatis */}
           <div

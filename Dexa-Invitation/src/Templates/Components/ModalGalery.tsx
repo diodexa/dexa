@@ -38,7 +38,7 @@ useEffect(() => {
 
   return (
     <div
-      className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center"
+      className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center "
       onClick={onClose}
     >
       <div
@@ -88,7 +88,7 @@ useEffect(() => {
         </div>
 
         {/* Thumbnail */}
-        <div className="flex gap-1 mt-3 overflow-x-auto">
+        <div className="flex gap-1 mt-3 overflow-hidden">
           {images.map((img, index) => (
             <img
                 key={index}

@@ -58,6 +58,8 @@ export type Invitation = {
 
   music?: string;
 
+  video? : string;
+
   theme?: {
     backgroundImage?:string;
     
@@ -84,23 +86,24 @@ export type Invitation = {
 
   Closing? : string;
 
-  Papper? : {
+  Background? : {
     CoverBack? : string ;
-    Halaman1? : string ;
-    Halaman2? : string ;
-    Halaman3? : string ;
-    Halaman4? : string ;
-    Halaman5? : string ;
-    Halaman6? : string ;
-    Halaman7? : string ;
-    Halaman8? : string ;
-    Halaman9? : string ;
-    Halaman10? : string ;
-    Halaman11? : string ;
-    Halaman12? : string ;
-    Halaman13? : string ;
-    Halaman14? : string ;
-    Halaman15? : string ;
-    Halaman16? : string ;
+    Background1? : string ;
+    Background2? : string ;
+    Background3? : string ;
+    Background4? : string ;
+    Background5? : string ;
+    Background6? : string ;
+    Background7? : string ;
+    Background8? : string ;
+    Background9? : string ;
+    Background10? : string ;
+    Background11? : string ;
+    Background12? : string ;
+    Background13? : string ;
+    Background14? : string ;
+    Background15? : string ;
+    Background16? : string ;
   }
+  
 };

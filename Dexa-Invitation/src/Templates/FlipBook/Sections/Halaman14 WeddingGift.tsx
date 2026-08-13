@@ -1,4 +1,4 @@
-import type { Invitation } from "../../../types/invitationFlipBook";
+import type { Invitation } from "../../../types/invitationType";
 
 import logoBCA from "../../../../public/Icon/BCA Logo.png";
 import logoBNI from "../../../../public/Icon/BNI Logo.png";
@@ -49,8 +49,8 @@ const Halaman14 = ({ data, isActive }: Props) => {
     <div
       className="Kertas__half Kertas__half--back flex w-full h-full"
       style={{background: data.theme?.warna1,color: data.theme?.warna2,}}>
-      {data.Papper?.Halaman14 ? (
-        <img src={data.Papper.Halaman14}alt=""className="absolute inset-0 w-full h-full object-cover"/>) : (
+      {data.Background?.Background14 ? (
+        <img src={data.Background.Background14}alt=""className="absolute inset-0 w-full h-full object-cover"/>) : (
         <div className="flex flex-col items-center mt-2 w-full h-full" style={{pointerEvents: isActive ? "auto" : "none",}}>
           <h2 className="text-2xl font-ColveticaCond tracking-[0.2rem] "> Wedding Gift</h2>
           <div className="w-full px-2 mt-2">

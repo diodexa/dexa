@@ -1,4 +1,4 @@
-import type { Invitation } from "../../../types/invitationFlipBook";
+import type { Invitation } from "../../../types/invitationType";
 import "../FlipBook.css"
 
 interface Props {

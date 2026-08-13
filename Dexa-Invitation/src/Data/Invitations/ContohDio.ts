@@ -1,4 +1,4 @@
-import type { Invitation } from "../../types/invitationFlipBook";
+import type { Invitation } from "../../types/invitationType";
 
 export const ContohDio: Invitation = {
   slug: "Flipbook",
@@ -107,8 +107,8 @@ With love, always.`,
 
     
   },
-  Papper : {
-    // Halaman9 : "/Gallery/ContohDio/1.webp"
-  }
+  // Papper : {
+   
+  // }
   
 };

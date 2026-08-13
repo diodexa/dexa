@@ -1,4 +1,4 @@
-import type { Invitation } from "../../../types/invitationFlipBook";
+import type { Invitation } from "../../../types/invitationType";
 
 interface Props {
   data: Invitation
@@ -9,8 +9,8 @@ const Halaman1 = ({data}:Props) => {
   return (
     <div className="Kertas__half Kertas__half--front  flex flex-col justify-center relative " 
     style={{background: data.theme?.warna1 , color: data.theme?.warna2}}>
-      {data.Papper?.Halaman1 ? (
-        <img src={data.Papper.Halaman1} alt="" className="object-cover w-full h-full absolute"/>
+      {data.Background?.Background1 ? (
+        <img src={data.Background.Background1} alt="" className="object-cover w-full h-full absolute"/>
       ): (
         <>
         <div className="flex w-full justify-start mb-10">
