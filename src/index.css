@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+
+:root {
+  --text: hsl(267, 8%, 42%);
+  --text-h: #08060d;
+  --bg: #F2EFE7;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+
+  --bgcountdown :  rgba(255,255,255,0.15);
+  --minhcountdown : 40px;
+  --minwcountdown : 40px;
+
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@font-face {
+  font-family: "TheWeddingSignature";
+  src: url("/Fonts/TheWeddingSignature-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "TheSignature";
+  src: url("/Fonts/Thesignature.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Bromello";
+  src: url("/Fonts/bromello-Regular.ttf") format("truetype");
+  font-feature-settings: "swsh";
+}
+@font-face {
+  font-family: "WeddingIcon";
+  src: url("/Fonts/Wedding.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Sephora&Hayden";
+  src: url("/Fonts/Sephora&Hayden.ttf") format("truetype");
+}
+@font-face {
+    font-family: "BetterChill";
+  src: url("/Fonts/BetterChill.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Colvetica";
+  src: url("/Fonts/CoolveticaRg.otf") format("opentype");
+}
+@font-face {
+    font-family: "ColveticaCond";
+  src: url("/Fonts/CoolveticaRgCond.otf") format("opentype");
+}
+@font-face {
+    font-family: "LoveFlorida";
+  src: url("/Fonts/LoveFlorida-owgp4.otf") format("opentype");
+}
+@font-face {
+    font-family: "Perandory";
+  src: url("/Fonts/Perandory-Regular.otf") format("opentype");
+}
+
+.font-cursive {
+    font-family: "Great Vibes", cursive;;  
+}
+
+.font-WeddingSignature {
+  font-family: "TheWeddingSignature";
+  writing-mode:"";
+}
+.font-Signature {
+  font-family: "TheSignature";
+}
+.font-BetterChill {
+  font-family: "BetterChill";
+}
+.font-Bromello {
+  font-family: "Bromello";
+}
+.font-Colvetica{
+  font-family: "Colvetica";
+}
+.font-ColveticaCond{
+  font-family: "ColveticaCond";
+}
+.font-WeddingIcon{
+  font-family: "WeddingIcon";
+}
+.font-SephoraHayden{
+  font-family: "Sephora&Hayden";
+}
+.font-LoveFlorida{
+  font-family: "LoveFlorida";
+}
+.font-Perandory{
+  font-family: "Perandory";
+}
+
+
+#root {
+
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  
+  min-height: 100svh;
+
+
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  
+}
+
+.MunculKanan {
+  animation: MunculKanan linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+.MunculKiri {
+  animation: Munculkiri linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+.MunculAtas {
+  animation: MunculAtas linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+.MunculBawah {
+  animation: MunculBawah linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+.FadeinScale {
+  animation: FadeinScale linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+
+@keyframes Munculkiri {
+  from {
+    opacity: 0;
+    transform: translatex(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translatex(0);
+  }
+}
+  
+  @keyframes MunculKanan {
+    from {
+      opacity: 0;
+      transform: translatex(50px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translatex(0);
+    }
+  }
+  @keyframes MunculAtas {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes MunculBawah {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes FadeinScale {
+    from {
+      opacity: 0;
+      scale: 0.3;
+    }
+  
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+@keyframes zoomfade {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+}
+
+  10% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0%) translateX(-60%) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(150vh) translateX(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes slideRight {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateX(15px);
+    opacity: 1;
+  }
+}
+
