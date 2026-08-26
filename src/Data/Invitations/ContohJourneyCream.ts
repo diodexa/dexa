@@ -105,7 +105,7 @@ With love, always.`,
     warna2: "#FFD700",
     warna3: "#912028",
     
-    contrasfont: "#912028",
+    contrasfont: "#fcf0c8",
     ContrasBackgroundColor:"#050505",
 
     warnaButtonBackground : "#912028",

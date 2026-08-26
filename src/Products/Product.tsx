@@ -9,7 +9,7 @@ const projects: Project[] = [
     img: "/buku.webp", 
     demoUrl: "https://dexa-invitation.com/Book/index.html" },
 
-  { title: "Leaf", 
+  { title: "Jouney", 
     img: "/leaf.png", 
     demoUrl: "https://dexa-invitation.com/Leaf/index.html" },
 

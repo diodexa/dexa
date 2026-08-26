@@ -16,7 +16,6 @@ const InvitationPage = () => {
   );
 
   const invitation = invitations.find((item) => item.slug === slug);
-  console.log("SLUG URL:", slug);
   if (!invitation) {
     return (
       <div className="flex flex-col items-center justify-center h-screen">
