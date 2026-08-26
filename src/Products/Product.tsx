@@ -6,23 +6,23 @@ interface Project {
 
 const projects: Project[] = [
   { title: "Flip book", 
-    img: "/buku.webp", 
+    img: "/ProjectBook.webp", 
     demoUrl: "https://dexa-invitation.com/FlipBook" },
 
   { title: "Journey Leaf", 
-    img: "/leaf.png", 
+    img: "/ProjectLeaf.webp", 
     demoUrl: "https://dexa-invitation.com/JourneyLeaf" },
 
   { title: "JourneyCream", 
-    img: "/leaf.png", 
+    img: "/ProjectJourneyCream.webp", 
     demoUrl: "https://dexa-invitation.com/JourneyLeaf" },
 
   { title: "Group Chat", 
-    img: "/grupchat.webp", 
+    img: "/ProjectGroupChat.webp", 
     demoUrl: "https://dexa-invitation.com/GroupChat" },
     
   { title: "Monochrome", 
-    img: "/grupchat.webp", 
+    img: "/ProjectMonochrome.webp", 
     demoUrl: "https://dexa-invitation.com/Monochrome" },
 ];
 
