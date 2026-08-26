@@ -28,14 +28,14 @@ const p7 = progress(scrollY, 3000, 3500);
 const x = 200 - 200 * p4 + 20 * p5 - 30 * p6 + 30 *p7;
 const y = 50 - 50 * p4;
 const scale = 3 - 2 * p4 - 0.2 * p5 - 0.2 * p6 ;
-// const blur = 25 * p5 + 15 * p6;
+const blur = 25 * p5 + 15 * p6;
 const opacity = 1-  p7;
 
  const isActive = scrollY >= 1930 && scrollY < 2052;
 
   return (
     <div className={`absolute left-1/2 top-1/2 w-full  h-screen flex flex-col  ${isActive ? "pointer-events-auto z-50" : "pointer-events-none z-0"}`}
-    style={{transform: `translate(calc(-50% + ${x}%),calc(-50% + ${y}%)) scale(${scale})`,opacity,}}>
+    style={{transform: `translate(calc(-50% + ${x}%),calc(-50% + ${y}%)) scale(${scale})`,opacity,filter: `blur(${blur}px)`,}}>
       {/* frame + text */}
       <div className="relative w-full h-4/7 ">
 
