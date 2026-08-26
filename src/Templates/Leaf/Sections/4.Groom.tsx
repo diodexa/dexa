@@ -47,7 +47,7 @@ const opacity = 1-  p7;
         {/* text di atas frame */}
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pt-10 px-2 text-xl "
           style={{ opacity: p4 - p5, color: data.theme?.warna1}}>
-          <p className="font-cursive text-5xl  w-[300px]  break-words">{data.Namagroom}</p>
+          <p className="font-cursive text-4xl  w-[300px]  break-words">{data.Namagroom}</p>
           
         </div>
 

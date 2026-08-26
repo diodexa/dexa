@@ -34,7 +34,7 @@ const opacity = scrollY < 2000 ? p4 : 1 - p7;
  const isActive = scrollY >= 1930 && scrollY < 2052;
 
   return (
-    <div className={`absolute left-1/2 top-1/2 w-full  h-screen flex flex-col pointer-events-none  ${isActive ? "pointer-events-auto z-50" : "pointer-events-none z-0"}`}
+    <div className={`absolute left-1/2 top-1/2 w-full  h-screen flex flex-col pointer-events-none snappingScroll ${isActive ? "pointer-events-auto z-50" : "pointer-events-none z-0"}`}
     style={{transform: `translate(calc(-50% + ${x}%),calc(-50% + ${y}%)) scale(${scale})`,opacity,filter: `blur(${blur}px)`,}}>
       {/* frame + text */}
       <div className="relative w-full h-4/7">

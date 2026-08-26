@@ -27,8 +27,7 @@ const Opening = ({ data, scrollY, isOpen }: Props) => {
   const opacity = 1 - p;
 
   return (
-    <div
-      className={`absolute left-1/2 top-1/2 h-screen w-full flex flex-col items-center justify-center  pointer-events-none `}
+    <div className={`absolute left-1/2 top-1/2 h-screen w-full flex flex-col items-center justify-center  pointer-events-none snappingScroll `}
       style={{
         transform: `translate(-50%, -50%) scale(${scale}) `,opacity, filter: `blur(${blur}px)`,}}>
           <div>

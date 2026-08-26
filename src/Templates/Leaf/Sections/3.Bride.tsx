@@ -47,7 +47,7 @@ const Bride = ({ data, scrollY }: Props) => {
         {/* text di atas frame */}
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pt-10 px-2 text-xl"
           style={{ opacity: p3 - p4, color: data.theme?.warna1}}>
-          <p className="font-cursive text-5xl  w-[300px]  break-words">{data.Namabride}</p>
+          <p className="font-cursive text-4xl  w-[300px]  break-words">{data.Namabride}</p>
           
         </div>
 

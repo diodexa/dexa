@@ -37,8 +37,18 @@ const opacity = 1-  p7;
     style={{transform: `translate(
       calc(-50% + ${x}%),
       calc(-50% + ${y}%))scale(${scale})`,opacity,filter: `blur(${blur}px)`}}>
-        <h2 className="mt-5 text-5xl font-Bromello">Story of Love</h2>
-        <div className="flex-1 flex flex-col px-4 mt-2  items-center justify-center w-full gap-3 " style={{opacity:p6-p7}}>
+        <div className="text-center pt-5 shrink-0">
+
+          <p className="text-xs tracking-[0.35em] uppercase opacity-70">
+            Our Journey
+          </p>
+
+          <h2 className="text-5xl font-Bromello mt-1">
+            Story of Love
+          </h2>
+
+        </div>
+        <div className="flex-1 flex flex-col px-4 mt-3  items-center justify-center w-full gap-3 text-sm " style={{opacity:p6-p7}}>
           {data.Story?.map((Cerita,index)=>{
             return (
               <div key={index} className={` pl-1 rounded ${ index %2 ? "text-right" : "text-left"}`}

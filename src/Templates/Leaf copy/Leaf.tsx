@@ -84,10 +84,63 @@ const JourneyCream = ({ data,guest }: Props) => {
       });
     };
 
-// console.log(scrollY)
+// Scroll
+
+  useEffect(() => {
+    const container = scrollRef.current;
+
+    if (!container) return;
+    
+
+    let timeout: ReturnType<typeof setTimeout>;
+
+    const snapPoints = [
+      0,
+      500,
+      1000,
+      1500,
+      2000,
+      2500,
+      3000,
+      3500,
+      4000,
+    ];
+
+    const handleScrollEnd = () => {
+      const currentScroll = container.scrollTop;
+       if (currentScroll > 4000) {return }
+
+      const nearest = snapPoints.reduce((prev, curr) => {
+        return Math.abs(curr - currentScroll) <
+          Math.abs(prev - currentScroll)
+          ? curr
+          : prev;
+      });
+
+      container.scrollTo({
+        top: nearest,
+        behavior: "smooth",
+      });
+    };
+
+    const handleScroll = () => {
+      clearTimeout(timeout);
+
+      timeout = setTimeout(() => {
+        handleScrollEnd();
+      }, 150);
+    };
+
+    container.addEventListener("scroll", handleScroll);
+
+    return () => {
+      container.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeout);
+    };
+  }, []);
     return (
       <div ref={scrollRef}
-      className={`relative mx-auto h-screen w-[385px] max-w-full overflow-x-hidden overflow-y-auto `}
+      className={`relative mx-auto h-screen w-[385px] max-w-full overflow-x-hidden overflow-y-auto  `}
       style={{background: `${data.Background?.CoverBack}` ,color: data.theme?.warna1,}}>
       <Hero data={data} guest={guest} isOpen={isOpen} setIsOpen={setIsOpen}/>
       
@@ -104,11 +157,11 @@ const JourneyCream = ({ data,guest }: Props) => {
         </div>
       </div> */}
 
-      <div className="relative h-[4500px]">
+      <div className="relative h-[4500px]  ">
         
       
 
-        <div className="sticky top-0 h-screen overflow-hidden snap-y snap-mandatory">
+        <div className="sticky top-0 h-screen ">
           <Opening data={data} scrollY={scrollY} isOpen={isOpen}/>
           <Sambutan data={data} scrollY={scrollY} />
           <Ayat data={data} scrollY={scrollY} />
