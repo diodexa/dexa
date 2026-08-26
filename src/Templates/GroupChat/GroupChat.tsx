@@ -91,7 +91,7 @@ const GroupChat = ({ data , guest }: Props) => {
       <div className="flex-6 overflow-y-auto shrink-0 ">
         <ChatArea data={data} comments={comments} isOpen={isOpen} onOpenImage={handleOpenImage} openGallery={handleOpenChatGallery} onOpenVideo={handleOpenVideo} guest={guest}/>
       </div>
-      <div className="flex-0.5  shrink-0">
+      <div className="flex-none  shrink-0">
         <InputArea data={data} loadComments={loadComments} guest={guest}/>
       </div>
     </div>
