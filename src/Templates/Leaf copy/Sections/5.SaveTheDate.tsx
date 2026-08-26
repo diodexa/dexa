@@ -49,7 +49,7 @@ const SaveTheDate = ({ data, scrollY }: Props) => {
 
           <h2 className="text-6xl font-ColveticaCond">save the date</h2>
           
-          <div className="flex flex-col w-full text-left my-4  font-bold tracking-[0.1em] lg:text-sm ">
+          <div className="flex flex-col w-full text-left my-4  font-bold tracking-[0.1em] text-sm ">
             <p> Akad</p>
             <p>Tanggal {data.TanggalAkad}</p>
             <p>Pukul {data.JamAkad}</p>
@@ -74,7 +74,7 @@ const SaveTheDate = ({ data, scrollY }: Props) => {
 
           </div>
 
-          <div className="flex flex-col w-full  text-right  my-2  font-bold tracking-[0.1em]  items-end lg:text-sm text-shadow-2xs ">
+          <div className="flex flex-col w-full  text-right  my-2  font-bold tracking-[0.1em]  items-end text-sm text-shadow-2xs ">
 
             <p>Resepsi</p> 
             <p>Tanggal {data.TanggalResepsi}</p>
