@@ -14,6 +14,7 @@ import Opening from "./Sections/Opening";
 import AudioController from "../1.Components/Audio";
 import "./Monochrome.css";
 import WeddingGift from "./Sections/WeddingGift";
+import ModalGallery from "../1.Components/ModalGalery";
 
 
 interface Props {
@@ -23,21 +24,30 @@ interface Props {
 
 const Monochrome = ({ data, guest }: Props) => {
   const [isOpen,setIsOpen] = useState (false)
+  const [openGallery, setOpenGallery] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-   //comment 
-    const [comments, setComments] = useState<Comment[]>([]);
-    const idUndangan = `${data.template} ${data.NamabridePanggilan}-${data.NamagroomPanggilan}`;
-  
-  
-    const loadComments = async () => {
-        try {
-          const result = await fetchComments(idUndangan);
-          setComments(result);
-        } catch (err) {
-          console.error(err);
-        }
-      };
-      useEffect(() => {loadComments();}, [idUndangan]);
+  //comment 
+  const [comments, setComments] = useState<Comment[]>([]);
+  const idUndangan = `${data.template} ${data.NamabridePanggilan}-${data.NamagroomPanggilan}`;
+
+
+  const loadComments = async () => {
+      try {
+        const result = await fetchComments(idUndangan);
+        setComments(result);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    useEffect(() => {loadComments();}, [idUndangan]);
+
+    //Gallery 
+    const handleOpenGallery = (index: number) => {
+      setSelectedIndex(index);
+      setOpenGallery(true);
+    };
+
       
   return (
     <main className="w-full   bg-black text-white"
@@ -48,6 +58,12 @@ const Monochrome = ({ data, guest }: Props) => {
     >
       <Cover data={data} guest={guest} isOpen={isOpen} setIsOpen={setIsOpen} />
       <AudioController data={data} isOpen={isOpen}/>
+      <ModalGallery isOpen={openGallery} images={data.gallery ?? []}
+        initialIndex={selectedIndex}
+        onClose={() => setOpenGallery(false)} 
+      />
+
+
       <Opening data={data} isOpen={isOpen} />
 
       <Ayat data={data} />
@@ -60,7 +76,7 @@ const Monochrome = ({ data, guest }: Props) => {
 
       <Story data={data} />
 
-      <Gallery data={data} />
+      <Gallery data={data} openGallery={handleOpenGallery}/>
 
        <UcapanDoa
         data={data}

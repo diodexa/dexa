@@ -27,7 +27,7 @@ const Ayat = ({ data, scrollY }: Props) => {
   const x =200 -200 * p2 + 20 * p3 -30* p4 + 30 * p5  ;
   const y = 50 - 50 * p2;
   const scale = 3 - 2 * p2 - 0.2 * p3 - 0.2 * p4 ;
-  const blur = 30 * p3 + 10* p4;
+  // const blur = 30 * p3 + 10* p4;
   const opacity = 1- p5;
 
 
@@ -36,7 +36,7 @@ const Ayat = ({ data, scrollY }: Props) => {
     <div className="absolute left-1/2 top-1/2 w-full h-screen  flex flex-col pointer-events-none font-Colvetica text-lg" 
     style={{transform: `translate(
     calc(-50% + ${x}%),
-    calc(-50% + ${y}%))scale(${scale})`,opacity,filter: `blur(${blur}px)`}}>
+    calc(-50% + ${y}%))scale(${scale})`,opacity}}>
       
       {/* ornament */}
       <div className="relative w-full h-[243px]  ">

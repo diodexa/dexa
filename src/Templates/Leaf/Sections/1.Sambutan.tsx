@@ -29,14 +29,14 @@ const Sambutan = ({ data, scrollY }: Props) => {
   const x = 0 - 20 * p2 + 20 * p3 -20* p4;
   const y =  200 - 200 * p1
   const scale = 3 - 2 * p1 - 0.2 * p2 - 0.2 * p3;
-  const blur = 10 * p2 + 5 * p3 + 10 * p4;
+  // const blur = 10 * p2 + 5 * p3 + 10 * p4;
   const opacity =1 - p4;
 
 
 
   return (
     <div className="absolute left-1/2 top-1/2 w-full  h-screen flex flex-col pointer-events-none font-Colvetica text-xl" 
-    style={{transform: `translate(calc(-50% + ${x}%),calc(-50% + ${y}%)) scale(${scale})`,opacity ,filter: `blur(${blur}px)`,}}>
+    style={{transform: `translate(calc(-50% + ${x}%),calc(-50% + ${y}%)) scale(${scale})`,opacity }}>
       {/* ornament */}
       <div className="relative w-full h-2/7  flex-1">
         <div className="absolute left-0 top-0 h-full ">

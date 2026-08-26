@@ -28,7 +28,7 @@ const SaveTheDate = ({ data, scrollY }: Props) => {
     const x =-200 + 200 * p5  -20 * p6 + 30* p7 - 30  * p8;
     const y = 50 - 50 * p5;
     const scale = 3 - 2 * p5 - 0.2 * p6 - 0.2 * p7 ;
-    const blur = 30 * p6 + 15 * p7 ;
+    // const blur = 30 * p6 + 15 * p7 ;
 
     const opacity = 1 - p7;
     const isActive = scrollY >= 2482 && scrollY < 2572;
@@ -38,7 +38,7 @@ const SaveTheDate = ({ data, scrollY }: Props) => {
     <div className={`absolute left-1/2 top-1/2 w-full h-screen  flex flex-col ${isActive ? "pointer-events-auto z-50" : "pointer-events-none z-0"}`} 
     style={{transform: `translate(
       calc(-50% + ${x}%),
-      calc(-50% + ${y}%))scale(${scale})`,opacity,filter: `blur(${blur}px) `}}>
+      calc(-50% + ${y}%))scale(${scale})`,opacity}}>
         <div className="flex-1 flex flex-col px-2 mt-10  items-center justify-center " style={{opacity:p5-p6}}>
         
         <div className="absolute inset-0 flex justify-center ">

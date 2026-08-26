@@ -27,7 +27,7 @@ const Bride = ({ data, scrollY }: Props) => {
     const x =-200 + 200 * p3 - 20 * p4 + 30* p5 - 30 *p6;
     const y = 50 - 50 * p3;
     const scale = 3 - 2 * p3 - 0.2 * p4 - 0.2 * p5 ;
-    const blur = 20 * p4 + 10* p5;
+    // const blur = 20 * p4 + 10* p5;
     const opacity = 1 -  p6;
 
     const isActive = scrollY >= 1454 && scrollY < 1608;
@@ -35,7 +35,7 @@ const Bride = ({ data, scrollY }: Props) => {
   
    return (
     <div className={`absolute left-1/2 top-1/2 w-full  h-screen flex flex-col pointer-events-none  ${isActive ? "pointer-events-auto z-50" : "pointer-events-none z-0"}`}
-    style={{transform: `translate(calc(-50% + ${x}%),calc(-50% + ${y}%)) scale(${scale})`,opacity,filter: `blur(${blur}px)`,}}>
+    style={{transform: `translate(calc(-50% + ${x}%),calc(-50% + ${y}%)) scale(${scale})`,opacity,}}>
       {/* frame + text */}
       <div className="relative w-full h-4/7">
 
@@ -56,7 +56,7 @@ const Bride = ({ data, scrollY }: Props) => {
       <div className= " pointer-events-none h-3/7 relative w-full ">
         <img src={data.FotoBride} alt=""
           className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-full h-auto object-contain object-bottom"/>
-          <div className="text-left absolute bottom-25 left-2 w-1/4"
+          <div className="text-left absolute bottom-40 left-2 w-1/4"
           style={{opacity}}>
             <p>putri dari :</p>
             <p> {data.BapakpengantinWanita}<br />

@@ -140,7 +140,7 @@ With love, always.`,
     {
       label: "Galeri",
       icon: "fa-th",
-      scrollTo: 3800,
+      scrollTo: 3500,
       scrollEnd: 4844,
     },
     {

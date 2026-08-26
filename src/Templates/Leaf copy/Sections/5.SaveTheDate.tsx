@@ -101,8 +101,8 @@ const SaveTheDate = ({ data, scrollY }: Props) => {
         </div>
         </div>
 
-        <div className="pointer-events-none z-10  h-[350px]">
-          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 " style={{"--bg2": data.theme?.warna2 , "--bgcountdown": data.theme?.warna1,  "--minhcountdown": "60px",  "--minwcountdown": "60px", color:data.theme?.warna2, } as React.CSSProperties}>
+        <div className="pointer-events-none z-10  h-[350px] flex items-end justify-center pb-24">
+          <div style={{"--bg2": data.theme?.warna2 , "--bgcountdown": data.theme?.warna1,  "--minhcountdown": "60px",  "--minwcountdown": "60px", color:data.theme?.warna2, } as React.CSSProperties}>
             <Countdown date={`${data.TanggalAkadISO}T${data.JamAkad}:00`}/>
           </div>
         </div>

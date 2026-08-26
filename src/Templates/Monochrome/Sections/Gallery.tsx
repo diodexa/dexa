@@ -2,9 +2,10 @@ import type { Invitation } from "../../../types/invitationType";
 
 interface Props {
   data: Invitation;
+  openGallery: (index: number) => void;
 }
 
-const Gallery = ({ data }: Props) => {
+const Gallery = ({ data,openGallery }: Props) => {
   const images = data.gallery ?? [];
 
   return (
@@ -35,6 +36,7 @@ const Gallery = ({ data }: Props) => {
               <img src={image}
                 alt=""
                 className="w-full h-full object-cover  transition duration-700"
+                onClick={()=>openGallery(index)}
               />
             </div>
           ))}
