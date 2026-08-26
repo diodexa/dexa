@@ -20,7 +20,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
       >
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 z-50 text-white bg-red-600 dark:bg-green-600 px-3 py-1 rounded hover:bg-red-700 dark:hover:bg-green-700 transition"
+          className="absolute top-10 right-2 z-50 text-white bg-red-600 dark:bg-green-600 px-3 py-1 rounded hover:bg-red-700 dark:hover:bg-green-700 transition"
         >
           Close
         </button>

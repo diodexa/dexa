@@ -73,7 +73,7 @@ const InputArea = ({ data, loadComments, guest }: Props) => {
 
 
   return (
-    <section className="relative w-full" style={{
+    <section className="relative w-full pb-[env(safe-area-inset-bottom)]" style={{
         background: data.theme?.warna1}}>
 
       {/* ================= STICKER PICKER ================= */}

@@ -18,7 +18,7 @@ const projects: Project[] = [
     demoUrl: "https://dexa-invitation.com/JourneyLeaf" },
 
   { title: "Group Chat", 
-    img: "/ProjectGroupChat.webp", 
+    img: "/projectGroupChat.webp", 
     demoUrl: "https://dexa-invitation.com/GroupChat" },
     
   { title: "Monochrome", 
