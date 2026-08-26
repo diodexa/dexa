@@ -30,7 +30,7 @@ const Closing = ({ data }: Props) => {
 
         </div>
       ))}
-      <div className="absolute flex flex-col bottom-15 z-10 mb-5 w-full" >
+      <div className="absolute flex flex-col bottom-15 z-10 mb-10 w-full" >
 
           <p className="text-lg px-[0.2rem] mb-2 whitespace-pre-line"
           style={{color:data.theme?.contrasfont }}> {data.Closing} </p>
