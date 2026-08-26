@@ -25,7 +25,7 @@ const Closing = ({ data }: Props) => {
       <div className="absolute flex flex-col bottom-15 z-10 mb-5 w-full" >
 
           <p className="text-lg px-[0.2rem] mb-2 whitespace-pre-line"
-          style={{color:data.theme?.contrasfont }}> {data.Closing} </p>
+          style={{color:data.theme?.warna3 }}> {data.Closing} </p>
           <p className="text-6xl font-BetterChill break-words"
           style={{color:data.theme?.warna3 }}>{data.NamabridePanggilan} & {data.NamagroomPanggilan}</p>
       </div>

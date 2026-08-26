@@ -36,7 +36,7 @@ const InvitationPage = () => {
         <FlipBook data={invitation} guest={guestName}/>
       );
 
-    case "JouneyLeaf":
+    case "JourneyLeaf":
       return (<JourneyLeaf data={invitation} guest={guestName}/>
       );
       

@@ -14,7 +14,7 @@ const Opening = ({ data, isOpen }: Props) => {
     data.NamagroomPanggilan?.charAt(0).toUpperCase();
 
   return (
-    <section className="w-screen h-screen  flex items-center justify-center overflow-hidden"
+    <section className="w-full h-[120dvh]  flex items-center justify-center overflow-hidden"
     style={{color:data.theme?.warna2, background:data.theme?.warna1}}>
 
       <div className={` flex flex-col

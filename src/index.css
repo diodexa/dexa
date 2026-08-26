@@ -127,33 +127,33 @@
 body {
   margin: 0;
   box-sizing: border-box;
-  
+  overflow-x: clip;
 }
 
 .MunculKanan {
   animation: MunculKanan linear both;
   animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+  animation-range: entry 0% cover 50%;
 }
 .MunculKiri {
   animation: Munculkiri linear both;
   animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+  animation-range: entry 0% cover 50%;
 }
 .MunculAtas {
   animation: MunculAtas linear both;
   animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+  animation-range: entry 0% cover 50%;
 }
 .MunculBawah {
   animation: MunculBawah linear both;
   animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+  animation-range: entry 0% cover 50%;
 }
 .FadeinScale {
   animation: FadeinScale linear both;
   animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+  animation-range: entry 0% cover 50%;
 }
 
 

@@ -40,7 +40,7 @@ const Monochrome = ({ data, guest }: Props) => {
       useEffect(() => {loadComments();}, [idUndangan]);
       
   return (
-    <main className="w-full min-h-screen  bg-black text-white"
+    <main className="w-full   bg-black text-white"
       style={{
         backgroundColor: "#000",
         color: "#fff",
@@ -48,7 +48,6 @@ const Monochrome = ({ data, guest }: Props) => {
     >
       <Cover data={data} guest={guest} isOpen={isOpen} setIsOpen={setIsOpen} />
       <AudioController data={data} isOpen={isOpen}/>
-    
       <Opening data={data} isOpen={isOpen} />
 
       <Ayat data={data} />

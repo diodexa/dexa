@@ -7,16 +7,23 @@ interface Project {
 const projects: Project[] = [
   { title: "Flip book", 
     img: "/buku.webp", 
-    demoUrl: "https://dexa-invitation.com/Book/index.html" },
+    demoUrl: "https://dexa-invitation.com/FlipBook" },
 
-  { title: "Jouney", 
+  { title: "Journey Leaf", 
     img: "/leaf.png", 
-    demoUrl: "https://dexa-invitation.com/Leaf/index.html" },
+    demoUrl: "https://dexa-invitation.com/JourneyLeaf" },
+
+  { title: "JourneyCream", 
+    img: "/leaf.png", 
+    demoUrl: "https://dexa-invitation.com/JourneyLeaf" },
 
   { title: "Group Chat", 
     img: "/grupchat.webp", 
-    demoUrl: "https://dexa-invitation.com/GrupChat/index.html" },
-
+    demoUrl: "https://dexa-invitation.com/GroupChat" },
+    
+  { title: "Monochrome", 
+    img: "/grupchat.webp", 
+    demoUrl: "https://dexa-invitation.com/Monochrome" },
 ];
 
 export default projects;

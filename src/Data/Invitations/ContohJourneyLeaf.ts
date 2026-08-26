@@ -1,9 +1,9 @@
 import type { Invitation } from "../../types/invitationType";
 
 export const ContohJourneyLeaf: Invitation = {
-  slug: "JouneyLeaf",
+  slug: "JourneyLeaf",
 
-  template: "JouneyLeaf",
+  template: "JourneyLeaf",
 
   Namabride: "Riana Sulastri S.Kom",
   NamabridePanggilan : "Riana",
@@ -12,9 +12,9 @@ export const ContohJourneyLeaf: Invitation = {
   BapakpengantinWanita : "Bpk Heri",
   IbupengantinWanita : "Ibu Sumi",
 
-  Namagroom: "Jutawan Bangun Putra Raja Samudera",
-  NamagroomPanggilan : "Jutawan",
-  AkunIGPria : "diodeska",
+  Namagroom: "Indra Bangun Putra Raja Samudera",
+  NamagroomPanggilan : "Indra",
+  AkunIGPria : "Indra",
   BapakpengantinPria : "Bpk Mamat",
   IbupengantinPria : "Ibu Rina",
 
