@@ -85,10 +85,10 @@ const GroupChat = ({ data , guest }: Props) => {
         onOpenGallery={handleOpenChatGallery}
       />
     <div className="flex flex-col h-full relative">
-      <div className="flex-1 shrink-0">
+      <div className="flex-none shrink-0">
         <Header data={data} isOpen={isOpen} onOpenGroupInfo={() => setIsGroupInfoOpen(true)}/>
       </div>
-      <div className="flex-6 overflow-y-auto shrink-0 ">
+      <div className="flex-1 overflow-y-auto shrink-0 ">
         <ChatArea data={data} comments={comments} isOpen={isOpen} onOpenImage={handleOpenImage} openGallery={handleOpenChatGallery} onOpenVideo={handleOpenVideo} guest={guest}/>
       </div>
       <div className="flex-none  shrink-0">
