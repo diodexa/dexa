@@ -10,59 +10,37 @@ interface Props {
 
 const InputArea = ({ data, loadComments, guest }: Props) => {
   const idUndangan = `${data.template} ${data.NamabridePanggilan}-${data.NamagroomPanggilan}`;
-
   const [nama, setNama] = useState(guest || "");
   const [ucapan, setUcapan] = useState("");
-  const [kehadiran, setKehadiran] = useState("Hadir");
-
   const [loading, setLoading] = useState(false);
-
   const [selectedSticker, setSelectedSticker] = useState("");
   const [showStickers, setShowStickers] = useState(false);
-
-  // Sticker dari data Invitation
   const stickers = data.sticker ?? [];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Kalau bukan sticker, ucapan wajib diisi
     if (!nama.trim()) {
       alert("Isi nama dulu ya :)");
       return;
     }
-
     if (!ucapan.trim() && !selectedSticker) {
       alert("Isi pesan atau pilih sticker dulu ya :)");
       return;
     }
 
     const formData = new FormData();
-
     formData.append("id", idUndangan);
     formData.append("Nama", nama.trim());
-    formData.append("Kehadiran", kehadiran);
-
-    // HANYA kirim salah satu
-    if (selectedSticker) {
-      formData.append("Ucapan", selectedSticker);
-    } else {
-      formData.append("Ucapan", ucapan.trim());
-    }
-
+    formData.append("Ucapan", selectedSticker || ucapan.trim());
     setLoading(true);
 
     try {
       await postComment(formData);
       await loadComments();
-
-      // Reset
       setNama("");
       setUcapan("");
-      setKehadiran("Hadir");
       setSelectedSticker("");
       setShowStickers(false);
-
     } catch (err) {
       console.error(err);
       alert("Gagal mengirim. Coba ulangi ya");
@@ -71,85 +49,68 @@ const InputArea = ({ data, loadComments, guest }: Props) => {
     }
   };
 
-
   return (
-    <section className="relative w-full pb-[env(safe-area-inset-bottom)]" style={{
-        background: data.theme?.warna1}}>
-
-      {/* ================= STICKER PICKER ================= */}
-
+    <section className="relative w-full pb-[env(safe-area-inset-bottom)]" style={{ background: data.theme?.warna1 }}>
       {showStickers && (
-        <div className="absolute bottom-[60px] left-2 z-50 bg-white rounded-xl shadow-lg p-3" >
-          <div className="grid grid-cols-4 gap-2">
+        <div className="absolute bottom-[68px] left-2 right-2 z-50 rounded-2xl p-3 shadow-xl border"
+          style={{ background: data.theme?.contrasfont, borderColor: data.theme?.warna3 }}>
+          <div className="grid grid-cols-5 gap-2">
             {stickers.map((sticker, index) => (
               <button key={index} type="button"
-                onClick={() => { setSelectedSticker(sticker);setShowStickers(false);
-                  // Kalau pilih sticker, kosongkan text
-                  setUcapan("");}}
-                className=" rounded-lg hover:bg-gray-100 hover:scale-110 transition">
-                <img src={sticker} alt={`Sticker ${index + 1}`} className="w-full h-full object-contain"/>
+                onClick={() => {
+                  setSelectedSticker(sticker);
+                  setUcapan("");
+                  setShowStickers(false);
+                }}
+                className="aspect-square rounded-xl flex items-center justify-center transition hover:scale-110 active:scale-95">
+                <img src={sticker} alt={`Sticker ${index + 1}`} className="w-full h-full object-contain" />
               </button>
             ))}
-
           </div>
         </div>
       )}
 
-      {/* ================= FORM ================= */}
-
-      <form className="flex gap-2 p-2 h-[60px]"onSubmit={handleSubmit}>
-
-        {/* NAMA */}
-        <input required type="text" placeholder="Isi Nama"value={nama}
+      <form onSubmit={handleSubmit} className="flex items-center gap-2 p-2 min-h-[64px]">
+        <input required type="text" placeholder="Nama" value={nama} disabled={loading}
           onChange={(e) => setNama(e.target.value)}
-          className="border text-center w-1/4 break-words bg-white rounded-lg"/>
+          className="h-[46px] w-[27%] min-w-0 rounded-xl border px-2 text-center text-sm outline-none focus:ring-2 transition"
+          style={{ background: data.theme?.contrasfont, borderColor: data.theme?.warna3 }}
+        />
 
-        {/* INPUT PESAN */}
-        <div className="relative w-1/2">
+        <div className="relative flex-1 h-[46px]">
+          <textarea placeholder={selectedSticker ? "Sticker dipilih" : "Tulis ucapan..."}
+            disabled={loading || !!selectedSticker} value={ucapan}
+            onChange={(e) => setUcapan(e.target.value)}
+            className="w-full h-full resize-none rounded-xl border px-3 py-3 text-sm outline-none transition disabled:opacity-70"
+            style={{ background: data.theme?.contrasfont, borderColor: data.theme?.warna3 }}
+          />
 
-          <textarea placeholder={selectedSticker? "Sticker dipilih": "Isi pesan kamu"}  disabled={loading || !!selectedSticker}
-            className={`border w-full h-full pt-2 px-1 bg-white rounded-lg resize-none disabled:bg-gray-100 ${loading ? "pointer-events-none" : "pointer-events-auto"}`}
-            value={ucapan}
-            
-            onChange={(e) => setUcapan(e.target.value)}/>
-
-          {/* PREVIEW STICKER */}
           {selectedSticker && (
-            <div className="absolute inset-0 bg-white rounded-lg flex items-center justify-center">
-              <img src={selectedSticker} alt="Sticker"
-                className="h-12 w-12 object-contain"/>
-
-              {/* Hapus sticker */}
+            <div className="absolute inset-0 rounded-xl flex items-center justify-center"
+              style={{ background: data.theme?.contrasfont }}>
+              <img src={selectedSticker} alt="Sticker" className="h-10 w-10 object-contain" />
               <button type="button" onClick={() => setSelectedSticker("")}
-                className="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/60 text-white text-xs">
+                className="absolute top-1 right-1 w-5 h-5 rounded-full flex items-center justify-center text-xs"
+                style={{ background: data.theme?.warna2 }}>
                 ×
               </button>
-
             </div>
           )}
-
         </div>
 
-        {/* BUTTON STICKER + SEND */}
-        <div className="flex w-1/4 gap-1">
-
-          {/* STICKER */}
-          <button type="button" onClick={() => setShowStickers((prev) => !prev)}
-            className=" rounded-lg px-1 flex items-center justify-center"
-            style={{ color: data.theme?.contrasfont, }}>
-            <i className="fa-regular fa-face-smile text-2xl" />
+        <div className="flex items-center gap-1">
+          <button type="button" disabled={loading} onClick={() => setShowStickers((prev) => !prev)}
+            className="h-[46px] w-[42px] rounded-xl flex items-center justify-center transition active:scale-90"
+            style={{ color: data.theme?.contrasfont }}>
+            <i className="fa-regular fa-face-smile text-xl" />
           </button>
 
-          {/* SEND */}
-          <button className={`border rounded-lg flex-1
-              ${loading ? "opacity-50 cursor-not-allowed": ""}`}
-            style={{ background: data.theme?.warnaButtonBackground,color: data.theme?.contrasfont,}}
-            type="submit" disabled={loading}>
-            {loading ? "..." : "Send"}
+          <button type="submit" disabled={loading}
+            className="h-[46px] px-4 rounded-xl flex items-center justify-center font-medium transition active:scale-95 disabled:opacity-50"
+            style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.contrasfont }}>
+            {loading ? <i className="fa-solid fa-spinner animate-spin" /> : <i className="fa-solid fa-paper-plane" />}
           </button>
-
         </div>
-
       </form>
     </section>
   );

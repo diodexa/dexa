@@ -6,13 +6,12 @@ interface Props {
   isOpen: boolean;
   onOpenGroupInfo: () => void;
 }
-const Header  = ({data, isOpen, onOpenGroupInfo} : Props) => {
 
+const Header = ({ data, isOpen, onOpenGroupInfo }: Props) => {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-    const audioRef = useRef<HTMLAudioElement>(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-
-    useEffect(() => {
+  useEffect(() => {
     const audio = audioRef.current;
 
     if (!audio || !data.music || !isOpen) return;
@@ -29,31 +28,31 @@ const Header  = ({data, isOpen, onOpenGroupInfo} : Props) => {
 
     playAudio();
   }, [isOpen, data.music]);
-  
-    useEffect(() => {
+
+  useEffect(() => {
     const handleVisibilityChange = () => {
-    const audio = audioRef.current;
+      const audio = audioRef.current;
 
-    if (!audio) return;
+      if (!audio) return;
 
-    if (document.hidden) {
-      audio.pause();
-      setIsPlaying(false);
-    }
-  };
+      if (document.hidden) {
+        audio.pause();
+        setIsPlaying(false);
+      }
+    };
 
-  document.addEventListener(
-    "visibilitychange",
-    handleVisibilityChange
-  );
-
-  return () => {
-    document.removeEventListener(
+    document.addEventListener(
       "visibilitychange",
       handleVisibilityChange
     );
-  };
-}, []);
+
+    return () => {
+      document.removeEventListener(
+        "visibilitychange",
+        handleVisibilityChange
+      );
+    };
+  }, []);
 
   const toggle = async () => {
     const audio = audioRef.current;
@@ -72,42 +71,104 @@ const Header  = ({data, isOpen, onOpenGroupInfo} : Props) => {
       setIsPlaying(false);
     }
   };
-  
+
   if (!data.music) return null;
+
   return (
-      <div className="w-full h-23 flex items-center font-LoveFlorida" 
-      style={{background: `${data.theme?.warna1}` ,color: data.theme?.warna2,}}>
-        <div className="flex-1 animate-[bounce_3s_linear_infinite]">
-            <a href="https://dexa-invitation.com" target="blank">
-              <img src="/logo-dio.webp" className="max-h-25 w-auto object-contain"  />
+    <header
+      className="w-full h-[68px] shrink-0 flex items-center px-2"
+      style={{
+        background: data.theme?.warna1,
+        color: data.theme?.warna2,
+      }}
+    >
 
-            </a>
-
-        </div>
-        <div className="flex-3 flex flex-col h-full  mt-1 tracking-wider "
-        onClick={onOpenGroupInfo}>
-        
-          <h1 className="text-3xl leading-none">{data.NamabridePanggilan} & {data.NamagroomPanggilan} <br/> Wedding</h1>
-          <p className="text-lg animate-pulse"> klik untuk detail </p>
-  
-          
-        </div>
-        <div className="flex-1 flex h-full items-center justify-center ">
-          <audio ref={audioRef} src={data.music} loop/>
-
-          {isOpen && (
-              <button type="button"
-              onClick={toggle}
-              className="items-center justify-center rounded-full pointer-events-auto">
-
-              <i className={`fa-regular ${isPlaying ? "fa-circle-pause" : "fa-circle-play"} text-5xl animate-[spin_4s_linear_infinite]`}
-              />
-              </button>
-            )}
-        </div>
+      {/* ================= LOGO ================= */}
+      <div className="w-14 h-full shrink-0 flex items-center justify-center">
+        <a
+          href="https://dexa-invitation.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
+          <img
+            src="/logo-dio.webp"
+            alt="Dexa Invitation"
+            className="w-11 h-11 object-contain"
+          />
+        </a>
       </div>
-  )
-}
 
 
-export default Header
+      {/* ================= TITLE ================= */}
+      <button
+        type="button"
+        onClick={onOpenGroupInfo}
+        className="flex-1 min-w-0 h-full flex flex-col items-center justify-center text-center px-1"
+      >
+        <h1
+          className="
+            font-LoveFlorida
+            text-xl
+            leading-tight
+            truncate
+            max-w-full
+          "
+        >
+          {data.NamabridePanggilan} & {data.NamagroomPanggilan}
+        </h1>
+
+        <p className="text-xs opacity-70 mt-0.5">
+          klik untuk detail
+        </p>
+      </button>
+
+
+      {/* ================= AUDIO ================= */}
+      <div className="w-14 h-full shrink-0 flex items-center justify-center">
+        <audio
+          ref={audioRef}
+          src={data.music}
+          loop
+        />
+
+        {isOpen && (
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={
+              isPlaying
+                ? "Pause musik"
+                : "Play musik"
+            }
+            className="
+              w-11
+              h-11
+              flex
+              items-center
+              justify-center
+              rounded-full
+              transition-transform
+              active:scale-90
+            "
+          >
+            <i
+              className={`
+                fa-regular
+                ${
+                  isPlaying
+                    ? "fa-circle-pause"
+                    : "fa-circle-play"
+                }
+                text-3xl
+              `}
+            />
+          </button>
+        )}
+      </div>
+
+    </header>
+  );
+};
+
+export default Header;
