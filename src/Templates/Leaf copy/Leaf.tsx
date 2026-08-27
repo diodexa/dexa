@@ -39,20 +39,31 @@ const ScrollCream = ({ data,guest }: Props) => {
   // =========================
 
   useEffect(() => {
-    const container = scrollRef.current;
+  const container = scrollRef.current;
 
-    if (!container) return;
+  if (!container) return;
 
-    const handleScroll = () => {
+  let ticking = false;
+
+  const handleScroll = () => {
+    if (ticking) return;
+
+    ticking = true;
+
+    requestAnimationFrame(() => {
       setScrollY(container.scrollTop);
-    };
+      ticking = false;
+    });
+  };
 
-    container.addEventListener("scroll", handleScroll);
+  container.addEventListener("scroll", handleScroll, {
+    passive: true,
+  });
 
-    return () => {
-      container.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  return () => {
+    container.removeEventListener("scroll", handleScroll);
+  };
+}, []);
 
   //comment 
   const [comments, setComments] = useState<Comment[]>([]);

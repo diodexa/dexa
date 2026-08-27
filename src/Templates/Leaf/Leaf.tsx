@@ -44,11 +44,22 @@ const ScrollLeaf = ({ data,guest }: Props) => {
 
     if (!container) return;
 
+    let ticking = false;
+
     const handleScroll = () => {
-      setScrollY(container.scrollTop);
+      if (ticking) return;
+
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        setScrollY(container.scrollTop);
+        ticking = false;
+      });
     };
 
-    container.addEventListener("scroll", handleScroll);
+    container.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     return () => {
       container.removeEventListener("scroll", handleScroll);
