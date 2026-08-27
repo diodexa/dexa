@@ -10,8 +10,8 @@ export const FAQ = ()=> {
                             <p>Untuk pembuatannya dilakukan oleh admin, jadi proses pengerjaannya MAX 2 hari (disesuaikan antrian)</p>
                         </li>
                         <li>
-                            <strong>Apakah tema bisa di custom? </strong>
-                            <p>Tentu bisa. Kamu bisa custom warna tema, jenis font dan lainnya :) Tinggal hubungi admin aja langsung ya {":)"} </p>
+                            <strong>Apakah nama setiap tamu bisa dibuat berbeda? </strong>
+                            <p>Bisa dong. Setiap tamu bisa mendapatkan link undangan dengan nama masing-masing, jadi undangan terasa lebih personal :)</p>
                         </li>
                         <li>
                             <strong>Ada batas kirim undangan?</strong>
@@ -22,8 +22,8 @@ export const FAQ = ()=> {
                             <p>Ga ada masa aktif, ga seperti undangan digital web lainnya, undangan dari dexa-invitation bakal bisa di akses terus </p>
                         </li>
                         <li>
-                            <strong>Apakah bisa kirim undangan sekaligus?</strong>
-                            <p>Bisa dong.  Kamu bisa kirim langsung ke banyak tamu dalam satu klik melalui Whatsapp tau media lainnya tanpa perlu kirim manual satu per satu {":)"}</p>
+                            <strong>Apakah bisa menggunakan lagu pilihan sendiri?</strong>
+                            <p>Bisa. Kamu bisa request lagu yang ingin digunakan sebagai backsound undangan agar suasananya lebih sesuai dengan cerita kalian :)</p>
                         </li>
                         <li>
                             <strong>Gimana cara pesannya?</strong>

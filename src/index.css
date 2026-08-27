@@ -130,14 +130,7 @@ body {
   overflow-x: clip;
 }
 
-.scrollSnap{
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-}
 
-.snappingScroll {
-  scroll-snap-align: bottom;
-}
 
 .MunculKanan {
   animation: MunculKanan linear both;

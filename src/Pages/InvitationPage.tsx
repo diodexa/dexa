@@ -7,6 +7,9 @@ import GroupChat from "../Templates/GroupChat/GroupChat";
 import Monochrome from "../Templates/Monochrome/Monochrome";
 import JourneyLeaf from "../Templates/Leaf/Leaf";
 import JourneyCream from "../Templates/Leaf copy/Leaf";
+import Floral from "../Templates/Floral/Floral";
+import ScrollLeaf from "../Templates/Leaf/Leaf";
+import ScrollCream from "../Templates/Leaf copy/Leaf";
 
 const InvitationPage = () => {
   const { slug, guest } = useParams();
@@ -36,13 +39,18 @@ const InvitationPage = () => {
         <FlipBook data={invitation} guest={guestName}/>
       );
 
-    case "JourneyLeaf":
-      return (<JourneyLeaf data={invitation} guest={guestName}/>
+    case "ScrollLeaf":
+      return (<ScrollLeaf data={invitation} guest={guestName}/>
       );
       
-    case "JourneyCream":
-      return (<JourneyCream data={invitation} guest={guestName}/>
+    case "ScrollCream":
+      return (<ScrollCream data={invitation} guest={guestName}/>
       );
+      
+    case "Floral":
+      return (<Floral data={invitation} guest={guestName}/>
+      );
+    
       
     case "GroupChat":
       return (<GroupChat data={invitation} guest={guestName}/>

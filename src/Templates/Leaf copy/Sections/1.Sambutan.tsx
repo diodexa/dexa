@@ -35,7 +35,7 @@ const Sambutan = ({ data, scrollY }: Props) => {
 
 
   return (
-    <div className="absolute left-1/2 top-1/2 w-full  h-screen flex flex-col pointer-events-none font-ColveticaCond text-2xl snappingScroll" 
+    <div className="absolute left-1/2 top-1/2 w-full  h-screen flex flex-col pointer-events-none font-ColveticaCond text-2xl " 
     style={{transform: `translate(calc(-50% + ${x}%),calc(-50% + ${y}%)) scale(${scale})`,opacity ,filter: `blur(${blur}px)`,}}>
       {/* ornament */}
       <div className="relative w-full h-2/7  flex-1">

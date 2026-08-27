@@ -1,9 +1,9 @@
 import type { Invitation } from "../../types/invitationType";
 
-export const ContohJourneyLeaf: Invitation = {
-  slug: "ScrollLeaf",
+export const ContohScrollFloral: Invitation = {
+  slug: "Floral",
 
-  template: "ScrollLeaf",
+  template: "Floral",
 
   Namabride: "Riana Sulastri S.Kom",
   NamabridePanggilan : "Riana",
@@ -18,8 +18,8 @@ export const ContohJourneyLeaf: Invitation = {
   BapakpengantinPria : "Bpk Mamat",
   IbupengantinPria : "Ibu Rina",
 
-  FotoBride: "/Gallery/ContohLeaf/wanita1.png",
-  FotoGroom: "/Gallery/ContohLeaf/pria1.png",
+  FotoBride: "/Gallery/ContohDio/wanita.webp",
+  FotoGroom: "/Gallery/ContohDio/pria.webp",
   
   FormatWaktu: "WIB",
   
@@ -57,7 +57,7 @@ export const ContohJourneyLeaf: Invitation = {
     rekening: [
       {
         bank: "shopeepay",
-        atasNama: "Indra",
+        atasNama: "Inra",
         nomorRekening: "1234567890",
       },
       {
@@ -100,14 +100,14 @@ With love, always.`,
 
     warnaweddingInvitation : "#F0E3D3",
 
-    warna1: "#1E3C2B",
-    warna2: "#F0E3D3",
-    warna3: "#D3A474",
+    warna1: "#c98a9a",
+    warna2: "#f6d5db",
+    warna3: "#ffffff",
     
-    contrasfont: "#F0E3D3",
+    contrasfont: "#5b3a41",
     ContrasBackgroundColor:"#050505",
 
-    warnaButtonBackground : "#1E3C2B",
+    warnaButtonBackground : "#f3c9d2",
     warnaButtonBorder : "#F0E3D3",
     
 

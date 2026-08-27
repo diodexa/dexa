@@ -36,7 +36,7 @@ const SaveTheDate = ({ data, scrollY }: Props) => {
 
 
   return (
-    <div className={`absolute left-1/2 top-1/2 w-full h-screen  flex flex-col bg-white/15 snappingScroll ${isActive ? "pointer-events-auto z-50" : "pointer-events-none z-0"}`} 
+    <div className={`absolute left-1/2 top-1/2 w-full h-screen  flex flex-col bg-white/15  ${isActive ? "pointer-events-auto z-50" : "pointer-events-none z-0"}`} 
     style={{transform: `translate(
       calc(-50% + ${x}%),
       calc(-50% + ${y}%))scale(${scale})`,opacity,filter: `blur(${blur}px) `}}>

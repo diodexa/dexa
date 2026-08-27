@@ -1,9 +1,9 @@
 import type { Invitation } from "../../types/invitationType";
 
 export const ContohJourneyCream: Invitation = {
-  slug: "JourneyCream",
+  slug: "ScrollCream",
 
-  template: "JourneyCream",
+  template: "ScrollCream",
 
   Namabride: "Riana Sulastri  S.Kom",
   NamabridePanggilan : "Riana",
@@ -12,8 +12,8 @@ export const ContohJourneyCream: Invitation = {
   BapakpengantinWanita : "Bpk Heri",
   IbupengantinWanita : "Ibu Sumi",
 
-  Namagroom: "Jutawan Bangun Putra Raja Samudera",
-  NamagroomPanggilan : "Jutawan",
+  Namagroom: "Aris Bangun Putra Raja Samudera",
+  NamagroomPanggilan : "Aris",
   AkunIGPria : "jbprs",
   AkunTikTokPria : "jbprs",
   BapakpengantinPria : "Bpk Mamat",
@@ -58,7 +58,7 @@ export const ContohJourneyCream: Invitation = {
     rekening: [
       {
         bank: "shopeepay",
-        atasNama: "Jutawan",
+        atasNama: "Aris",
         nomorRekening: "1234567890",
       },
       {

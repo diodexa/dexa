@@ -28,7 +28,7 @@ interface Props {
   guest: string;
 }
 
-const JourneyLeaf = ({ data,guest }: Props) => {
+const ScrollLeaf = ({ data,guest }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState(0);
   const [openGallery, setOpenGallery] = useState(false);
@@ -87,58 +87,58 @@ const JourneyLeaf = ({ data,guest }: Props) => {
 
     // Scroll
 
-  useEffect(() => {
-    const container = scrollRef.current;
+  // useEffect(() => {
+  //   const container = scrollRef.current;
 
-    if (!container) return;
+  //   if (!container) return;
     
 
-    let timeout: ReturnType<typeof setTimeout>;
+  //   let timeout: ReturnType<typeof setTimeout>;
 
-    const snapPoints = [
-      0,
-      500,
-      1000,
-      1500,
-      2000,
-      2500,
-      3000,
-      3500,
-      4000,
-    ];
+  //   const snapPoints = [
+  //     0,
+  //     500,
+  //     1000,
+  //     1500,
+  //     2000,
+  //     2500,
+  //     3000,
+  //     3500,
+  //     4000,
+  //   ];
 
-    const handleScrollEnd = () => {
-      const currentScroll = container.scrollTop;
-       if (currentScroll > 4000) {return }
+  //   const handleScrollEnd = () => {
+  //     const currentScroll = container.scrollTop;
+  //      if (currentScroll > 4000) {return }
 
-      const nearest = snapPoints.reduce((prev, curr) => {
-        return Math.abs(curr - currentScroll) <
-          Math.abs(prev - currentScroll)
-          ? curr
-          : prev;
-      });
+  //     const nearest = snapPoints.reduce((prev, curr) => {
+  //       return Math.abs(curr - currentScroll) <
+  //         Math.abs(prev - currentScroll)
+  //         ? curr
+  //         : prev;
+  //     });
 
-      container.scrollTo({
-        top: nearest,
-        behavior: "smooth",
-      });
-    };
+  //     container.scrollTo({
+  //       top: nearest,
+  //       behavior: "smooth",
+  //     });
+  //   };
 
-    const handleScroll = () => {
-      clearTimeout(timeout);
+  //   const handleScroll = () => {
+  //     clearTimeout(timeout);
 
-      timeout = setTimeout(() => {
-        handleScrollEnd();
-      }, 150);
-    };
+  //     timeout = setTimeout(() => {
+  //       handleScrollEnd();
+  //     }, 150);
+  //   };
 
-    container.addEventListener("scroll", handleScroll);
+  //   container.addEventListener("scroll", handleScroll);
 
-    return () => {
-      container.removeEventListener("scroll", handleScroll);
-      clearTimeout(timeout);
-    };
-  }, []);
+  //   return () => {
+  //     container.removeEventListener("scroll", handleScroll);
+  //     clearTimeout(timeout);
+  //   };
+  // }, []);
 
 
     return (
@@ -187,4 +187,4 @@ const JourneyLeaf = ({ data,guest }: Props) => {
   );
 };
 
-export default JourneyLeaf;
+export default ScrollLeaf;

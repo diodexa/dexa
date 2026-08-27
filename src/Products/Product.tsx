@@ -9,14 +9,15 @@ const projects: Project[] = [
     img: "/ProjectBook.webp", 
     demoUrl: "https://dexa-invitation.com/FlipBook" },
 
-  { title: "Journey Leaf", 
+  { title: "Scroll Leaf", 
     img: "/ProjectLeaf.webp", 
-    demoUrl: "https://dexa-invitation.com/JourneyLeaf" },
+    demoUrl: "https://dexa-invitation.com/ScrollLeaf" },
 
-  { title: "JourneyCream", 
+  { title: "Scroll Cream", 
     img: "/ProjectJourneyCream.webp", 
-    demoUrl: "https://dexa-invitation.com/JourneyLeaf" },
+    demoUrl: "https://dexa-invitation.com/ScrollCream" },
 
+  
   { title: "Group Chat", 
     img: "/projectGroupChat.webp", 
     demoUrl: "https://dexa-invitation.com/GroupChat" },
