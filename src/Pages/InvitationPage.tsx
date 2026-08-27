@@ -5,8 +5,6 @@ import FlipBook from "../Templates/FlipBook/FlipBook";
 
 import GroupChat from "../Templates/GroupChat/GroupChat";
 import Monochrome from "../Templates/Monochrome/Monochrome";
-import JourneyLeaf from "../Templates/Leaf/Leaf";
-import JourneyCream from "../Templates/Leaf copy/Leaf";
 import Floral from "../Templates/Floral/Floral";
 import ScrollLeaf from "../Templates/Leaf/Leaf";
 import ScrollCream from "../Templates/Leaf copy/Leaf";
