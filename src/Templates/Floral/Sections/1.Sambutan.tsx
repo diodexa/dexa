@@ -1,5 +1,5 @@
 import type { Invitation } from "../../../types/invitationType";
-import { FloralCorner, FloralDivider, FloralLeaf, FloralSmallFlower } from "../utils/floralSvg";
+import { FloralCorner, FloralDivider } from "../utils/floralSvg";
 
 interface Props {
   data: Invitation;
