@@ -19,18 +19,18 @@ const Sambutan = ({ data, scrollY }: Props) => {
   const p1 = progress(scrollY, 0, 500);
   const p2 = progress(scrollY, 500, 1000);
   const p3 = progress(scrollY, 1000, 1500);
-  const p4 = progress(scrollY, 1500, 2000);
+  // const p4 = progress(scrollY, 1500, 2000);
   // const p5 = progress(scrollY, 2000, 2500);
   // const p6 = progress(scrollY, 2500, 3000);
 
 
 
   //Animasi
-  const x = 0 - 20 * p2 + 20 * p3 -20* p4;
+  const x = 0 - 20 * p2 + 20 * p3 -20* p3;
   const y =  200 - 200 * p1
   const scale = 3 - 2 * p1 - 0.2 * p2 - 0.2 * p3;
-  const blur = 10 * p2 + 5 * p3 + 10 * p4;
-  const opacity =1 - p4;
+  const blur = 5 * p2 + 5 * p3;
+  const opacity =1 - p3;
 
 
 

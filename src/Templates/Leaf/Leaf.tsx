@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { Invitation } from "../../types/invitationType";
 
-// import Hero from "./Sections/Hero";
-
 import Gallery from "./Sections/Gallery";
 import Video from "./Sections/video";
 import Ucapan from "./Sections/UcapanDoa";
@@ -28,8 +26,9 @@ interface Props {
   guest: string;
 }
 
-const ScrollLeaf = ({ data,guest }: Props) => {
+const ScrollLeaf = ({ data, guest }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+
   const [scrollY, setScrollY] = useState(0);
   const [openGallery, setOpenGallery] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -66,133 +65,201 @@ const ScrollLeaf = ({ data,guest }: Props) => {
     };
   }, []);
 
-  //comment 
-  const [comments, setComments] = useState<Comment[]>([]);
-  const idUndangan = `${data.template} ${data.NamabridePanggilan}-${data.NamagroomPanggilan}`;
+  // =========================
+  // ACTIVE SECTION
+  // =========================
 
+  const SECTION_HEIGHT = 500;
+  const TOTAL_SECTIONS = 8;
+
+  const activeSection = Math.min(
+    TOTAL_SECTIONS - 1,
+    Math.max(0, Math.floor(scrollY / SECTION_HEIGHT))
+  );
+
+  const isSectionActive = (index: number) => {
+    return Math.abs(index - activeSection) <= 1;
+  };
+
+  // =========================
+  // COMMENTS
+  // =========================
+
+  const [comments, setComments] = useState<Comment[]>([]);
+
+  const idUndangan =
+    `${data.template} ${data.NamabridePanggilan}-${data.NamagroomPanggilan}`;
 
   const loadComments = async () => {
-      try {
-        const result = await fetchComments(idUndangan);
-        setComments(result);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    useEffect(() => {loadComments();}, [idUndangan]);
-    
-    //Galery
-    const handleOpenGallery = (index: number) => {
-      setSelectedIndex(index);
-      setOpenGallery(true);
-    };
+    try {
+      const result = await fetchComments(idUndangan);
+      setComments(result);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    //NAV ITEM
+  useEffect(() => {
+    loadComments();
+  }, [idUndangan]);
 
-    const scrollTo = (position: number) => {
-      scrollRef.current?.scrollTo({
-        top: position,
-        behavior: "smooth",
-      });
-    };
+  // =========================
+  // GALLERY
+  // =========================
 
-    // Scroll
+  const handleOpenGallery = (index: number) => {
+    setSelectedIndex(index);
+    setOpenGallery(true);
+  };
 
-  // useEffect(() => {
-  //   const container = scrollRef.current;
+  // =========================
+  // NAVIGATION
+  // =========================
 
-  //   if (!container) return;
-    
+  const scrollTo = (position: number) => {
+    scrollRef.current?.scrollTo({
+      top: position,
+      behavior: "smooth",
+    });
+  };
 
-  //   let timeout: ReturnType<typeof setTimeout>;
+  return (
+    <div
+      ref={scrollRef}
+      className="relative mx-auto h-screen w-[385px] max-w-full overflow-x-hidden overflow-y-auto scrollSnap"
+      style={{
+        background: `url(${data.Background?.CoverBack})`,
+        color: data.theme?.warna1,
+      }}
+    >
+      <Hero
+        data={data}
+        guest={guest}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
 
-  //   const snapPoints = [
-  //     0,
-  //     500,
-  //     1000,
-  //     1500,
-  //     2000,
-  //     2500,
-  //     3000,
-  //     3500,
-  //     4000,
-  //   ];
+      <ModalGallery
+        isOpen={openGallery}
+        images={data.gallery ?? []}
+        initialIndex={selectedIndex}
+        onClose={() => setOpenGallery(false)}
+      />
 
-  //   const handleScrollEnd = () => {
-  //     const currentScroll = container.scrollTop;
-  //      if (currentScroll > 4000) {return }
+      <BottomNav
+        data={data}
+        onNavigate={scrollTo}
+        scrollY={scrollY}
+      />
 
-  //     const nearest = snapPoints.reduce((prev, curr) => {
-  //       return Math.abs(curr - currentScroll) <
-  //         Math.abs(prev - currentScroll)
-  //         ? curr
-  //         : prev;
-  //     });
+      <AudioController
+        data={data}
+        isOpen={isOpen}
+      />
 
-  //     container.scrollTo({
-  //       top: nearest,
-  //       behavior: "smooth",
-  //     });
-  //   };
-
-  //   const handleScroll = () => {
-  //     clearTimeout(timeout);
-
-  //     timeout = setTimeout(() => {
-  //       handleScrollEnd();
-  //     }, 150);
-  //   };
-
-  //   container.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     container.removeEventListener("scroll", handleScroll);
-  //     clearTimeout(timeout);
-  //   };
-  // }, []);
-
-
-    return (
-      <div ref={scrollRef}
-      className={`relative mx-auto h-screen w-[385px] max-w-full overflow-x-hidden overflow-y-auto scrollSnap`}
-      style={{background: `url(${data.Background?.CoverBack})` ,color: data.theme?.warna1,}}>
-      <Hero data={data} guest={guest} isOpen={isOpen} setIsOpen={setIsOpen}/>
-      
-      <ModalGallery isOpen={openGallery} images={data.gallery ?? []}
-              initialIndex={selectedIndex}
-              onClose={() => setOpenGallery(false)} 
-            />
-
-      <BottomNav data={data} onNavigate={scrollTo} scrollY={scrollY}/>
-      <AudioController data={data} isOpen ={isOpen}/>
+      {/* FALLING LEAVES */}
       <div className="fixed inset-0 pointer-events-none z-[9999]">
-        <div className={`relative mx-auto h-screen w-[385px] max-w-full overflow-hidden `}>
+        <div className="relative mx-auto h-screen w-[385px] max-w-full overflow-hidden">
           <FallingLeaves />
         </div>
       </div>
 
-      <div className="relative h-[4500px]">
-        
-      
+      {/* =========================
+          MAIN SCROLL AREA
+      ========================= */}
 
+      <div className="relative h-[4500px]">
         <div className="sticky top-0 h-screen overflow-hidden snap-y snap-mandatory">
-          <Opening data={data} scrollY={scrollY} isOpen={isOpen}/>
-          <Sambutan data={data} scrollY={scrollY} />
-          <Ayat data={data} scrollY={scrollY} />
-          <Bride data={data} scrollY={scrollY} />
-          <Groom data={data} scrollY={scrollY} />
-          <SaveTheDate data={data} scrollY={scrollY} />
-          <Story data={data} scrollY={scrollY} />
-          
-          <Gallery data={data} scrollY={scrollY} openGallery={handleOpenGallery}/>
-        
+
+          {/* 0 - OPENING */}
+          {isSectionActive(0) && (
+            <Opening
+              data={data}
+              scrollY={scrollY}
+              isOpen={isOpen}
+            />
+          )}
+
+          {/* 1 - SAMBUTAN */}
+          {isSectionActive(1) && (
+            <Sambutan
+              data={data}
+              scrollY={scrollY}
+            />
+          )}
+
+          {/* 2 - AYAT */}
+          {isSectionActive(2) && (
+            <Ayat
+              data={data}
+              scrollY={scrollY}
+            />
+          )}
+
+          {/* 3 - BRIDE */}
+          {isSectionActive(3) && (
+            <Bride
+              data={data}
+              scrollY={scrollY}
+            />
+          )}
+
+          {/* 4 - GROOM */}
+          {isSectionActive(4) && (
+            <Groom
+              data={data}
+              scrollY={scrollY}
+            />
+          )}
+
+          {/* 5 - SAVE THE DATE */}
+          {isSectionActive(5) && (
+            <SaveTheDate
+              data={data}
+              scrollY={scrollY}
+            />
+          )}
+
+          {/* 6 - STORY */}
+          {isSectionActive(6) && (
+            <Story
+              data={data}
+              scrollY={scrollY}
+            />
+          )}
+
+          {/* 7 - GALLERY */}
+          {isSectionActive(7) && (
+            <Gallery
+              data={data}
+              scrollY={scrollY}
+              openGallery={handleOpenGallery}
+            />
+          )}
+
         </div>
       </div>
 
-      <Gallery2 data={data} openGallery={handleOpenGallery}/>
+      {/* =========================
+          NORMAL SCROLL SECTIONS
+      ========================= */}
+
+      <Gallery2
+        data={data}
+        openGallery={handleOpenGallery}
+      />
+
       <Video data={data} />
-      <Ucapan data={data} loadComments={loadComments} comments={comments} guest={guest} />
+
+      <Ucapan
+        data={data}
+        loadComments={loadComments}
+        comments={comments}
+        guest={guest}
+      />
+
       <WeddingGift data={data} />
+
       <Closing data={data} />
     </div>
   );

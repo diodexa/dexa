@@ -27,8 +27,8 @@ const Ayat = ({ data, scrollY }: Props) => {
   const x =200 -200 * p2 + 20 * p3 -30* p4 + 30 * p5  ;
   const y = 50 - 50 * p2;
   const scale = 3 - 2 * p2 - 0.2 * p3 - 0.2 * p4 ;
-  const blur = 30 * p3 + 10* p4;
-  const opacity = 1- p5;
+  const blur = 10 * p3;
+  const opacity = 1- p4;
 
 
 

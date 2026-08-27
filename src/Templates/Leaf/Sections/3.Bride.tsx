@@ -27,8 +27,8 @@ const Bride = ({ data, scrollY }: Props) => {
     const x =-200 + 200 * p3 - 20 * p4 + 30* p5 - 30 *p6;
     const y = 50 - 50 * p3;
     const scale = 3 - 2 * p3 - 0.2 * p4 - 0.2 * p5 ;
-    const blur = 20 * p4 + 10* p5;
-    const opacity = 1 -  p6;
+    const blur = 10 * p4 + 10* p5;
+    const opacity = scrollY < 1500 ? p3 : 1 - p6;
 
     const isActive = scrollY >= 1454 && scrollY < 1608;
     

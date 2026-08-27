@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { Invitation } from "../../types/invitationType";
 
-// import Hero from "./Sections/Hero";
-
 import Gallery from "./Sections/Gallery";
 import Video from "./Sections/video";
 import Ucapan from "./Sections/UcapanDoa";
@@ -27,7 +25,7 @@ interface Props {
   guest: string;
 }
 
-const ScrollCream = ({ data,guest }: Props) => {
+const ScrollCream = ({ data, guest }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState(0);
   const [openGallery, setOpenGallery] = useState(false);
@@ -39,157 +37,212 @@ const ScrollCream = ({ data,guest }: Props) => {
   // =========================
 
   useEffect(() => {
-  const container = scrollRef.current;
+    const container = scrollRef.current;
+    if (!container) return;
 
-  if (!container) return;
+    let ticking = false;
 
-  let ticking = false;
+    const handleScroll = () => {
+      if (ticking) return;
 
-  const handleScroll = () => {
-    if (ticking) return;
+      ticking = true;
 
-    ticking = true;
-
-    requestAnimationFrame(() => {
-      setScrollY(container.scrollTop);
-      ticking = false;
-    });
-  };
-
-  container.addEventListener("scroll", handleScroll, {
-    passive: true,
-  });
-
-  return () => {
-    container.removeEventListener("scroll", handleScroll);
-  };
-}, []);
-
-  //comment 
-  const [comments, setComments] = useState<Comment[]>([]);
-  const idUndangan = `${data.template} ${data.NamabridePanggilan}-${data.NamagroomPanggilan}`;
-
-
-  const loadComments = async () => {
-      try {
-        const result = await fetchComments(idUndangan);
-        setComments(result);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    useEffect(() => {loadComments();}, [idUndangan]);
-    
-    //Galery
-    const handleOpenGallery = (index: number) => {
-      setSelectedIndex(index);
-      setOpenGallery(true);
-    };
-
-    //NAV ITEM
-
-    const scrollTo = (position: number) => {
-      scrollRef.current?.scrollTo({
-        top: position,
-        behavior: "smooth",
+      requestAnimationFrame(() => {
+        setScrollY(container.scrollTop);
+        ticking = false;
       });
     };
 
-// Scroll
+    container.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
-  // useEffect(() => {
-  //   const container = scrollRef.current;
+    return () => {
+      container.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-  //   if (!container) return;
-    
+  // =========================
+  // COMMENT
+  // =========================
 
-  //   let timeout: ReturnType<typeof setTimeout>;
+  const [comments, setComments] = useState<Comment[]>([]);
 
-  //   const snapPoints = [
-  //     0,
-  //     500,
-  //     1000,
-  //     1500,
-  //     2000,
-  //     2500,
-  //     3000,
-  //     3500,
-  //     4000,
-  //   ];
+  const idUndangan = `${data.template} ${data.NamabridePanggilan}-${data.NamagroomPanggilan}`;
 
-  //   const handleScrollEnd = () => {
-  //     const currentScroll = container.scrollTop;
-  //      if (currentScroll > 4000) {return }
+  const loadComments = async () => {
+    try {
+      const result = await fetchComments(idUndangan);
+      setComments(result);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-  //     const nearest = snapPoints.reduce((prev, curr) => {
-  //       return Math.abs(curr - currentScroll) <
-  //         Math.abs(prev - currentScroll)
-  //         ? curr
-  //         : prev;
-  //     });
+  useEffect(() => {
+    loadComments();
+  }, [idUndangan]);
 
-  //     container.scrollTo({
-  //       top: nearest,
-  //       behavior: "smooth",
-  //     });
-  //   };
+  // =========================
+  // GALLERY
+  // =========================
 
-  //   const handleScroll = () => {
-  //     clearTimeout(timeout);
+  const handleOpenGallery = (index: number) => {
+    setSelectedIndex(index);
+    setOpenGallery(true);
+  };
 
-  //     timeout = setTimeout(() => {
-  //       handleScrollEnd();
-  //     }, 150);
-  //   };
+  // =========================
+  // NAVIGATION
+  // =========================
 
-  //   container.addEventListener("scroll", handleScroll);
+  const scrollTo = (position: number) => {
+    scrollRef.current?.scrollTo({
+      top: position,
+      behavior: "smooth",
+    });
+  };
 
-  //   return () => {
-  //     container.removeEventListener("scroll", handleScroll);
-  //     clearTimeout(timeout);
-  //   };
-  // }, []);
+  // =========================
+  // ACTIVE SECTION
+  // =========================
+
+  const SECTION_HEIGHT = 500;
+
+  const activeSection = Math.min(
+    Math.floor(scrollY / SECTION_HEIGHT),
+    8
+  );
+
+  const shouldRender = (index: number) => {
     return (
-      <div ref={scrollRef}
-      className={`relative mx-auto h-screen w-[385px] max-w-full overflow-x-hidden overflow-y-auto  `}
-      style={{background: `${data.Background?.CoverBack}` ,color: data.theme?.warna1,}}>
-      <Hero data={data} guest={guest} isOpen={isOpen} setIsOpen={setIsOpen}/>
-      
-      <ModalGallery isOpen={openGallery} images={data.gallery ?? []}
-              initialIndex={selectedIndex}
-              onClose={() => setOpenGallery(false)} 
+      index >= activeSection - 1 &&
+      index <= activeSection + 1
+    );
+  };
+
+  return (
+    <div
+      ref={scrollRef}
+      className="relative mx-auto h-screen w-[385px] max-w-full overflow-x-hidden overflow-y-auto"
+      style={{
+        background: data.Background?.CoverBack,
+        color: data.theme?.warna1,
+      }}
+    >
+      <Hero
+        data={data}
+        guest={guest}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
+
+      <ModalGallery
+        isOpen={openGallery}
+        images={data.gallery ?? []}
+        initialIndex={selectedIndex}
+        onClose={() => setOpenGallery(false)}
+      />
+
+      <BottomNav
+        data={data}
+        onNavigate={scrollTo}
+        scrollY={scrollY}
+      />
+
+      <AudioController
+        data={data}
+        isOpen={isOpen}
+      />
+
+      <div className="relative h-[4500px]">
+        <div className="sticky top-0 h-screen">
+
+          {/* OPENING */}
+          {shouldRender(0) && (
+            <Opening
+              data={data}
+              scrollY={scrollY}
+              isOpen={isOpen}
             />
+          )}
 
-      <BottomNav data={data} onNavigate={scrollTo} scrollY={scrollY}/>
-      <AudioController data={data} isOpen ={isOpen}/>
-      {/* <div className="fixed inset-0 pointer-events-none z-[9999]">
-        <div className={`relative mx-auto h-screen w-[385px] max-w-full overflow-hidden `}>
-          <FallingLeaves />
-        </div>
-      </div> */}
+          {/* SAMBUTAN */}
+          {shouldRender(1) && (
+            <Sambutan
+              data={data}
+              scrollY={scrollY}
+            />
+          )}
 
-      <div className="relative h-[4500px]  ">
-        
-      
+          {/* AYAT */}
+          {shouldRender(2) && (
+            <Ayat
+              data={data}
+              scrollY={scrollY}
+            />
+          )}
 
-        <div className="sticky top-0 h-screen ">
-          <Opening data={data} scrollY={scrollY} isOpen={isOpen}/>
-          <Sambutan data={data} scrollY={scrollY} />
-          <Ayat data={data} scrollY={scrollY} />
-          <Bride data={data} scrollY={scrollY} />
-          <Groom data={data} scrollY={scrollY} />
-          <SaveTheDate data={data} scrollY={scrollY} />
-          <Story data={data} scrollY={scrollY} />
-          
-          <Gallery data={data} scrollY={scrollY} openGallery={handleOpenGallery}/>
-        
+          {/* BRIDE */}
+          {shouldRender(3) && (
+            <Bride
+              data={data}
+              scrollY={scrollY}
+            />
+          )}
+
+          {/* GROOM */}
+          {shouldRender(4) && (
+            <Groom
+              data={data}
+              scrollY={scrollY}
+            />
+          )}
+
+          {/* SAVE THE DATE */}
+          {shouldRender(5) && (
+            <SaveTheDate
+              data={data}
+              scrollY={scrollY}
+            />
+          )}
+
+          {/* STORY */}
+          {shouldRender(6) && (
+            <Story
+              data={data}
+              scrollY={scrollY}
+            />
+          )}
+
+          {/* GALLERY */}
+          {shouldRender(7) && (
+            <Gallery
+              data={data}
+              scrollY={scrollY}
+              openGallery={handleOpenGallery}
+            />
+          )}
+
         </div>
       </div>
 
-      <Gallery2 data={data} openGallery={handleOpenGallery}/>
+      <Gallery2
+        data={data}
+        openGallery={handleOpenGallery}
+      />
+
       <Video data={data} />
-      <Ucapan data={data} loadComments={loadComments} comments={comments} guest={guest} />
+
+      <Ucapan
+        data={data}
+        loadComments={loadComments}
+        comments={comments}
+        guest={guest}
+      />
+
       <WeddingGift data={data} />
+
       <Closing data={data} />
     </div>
   );

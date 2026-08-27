@@ -28,7 +28,7 @@ const SaveTheDate = ({ data, scrollY }: Props) => {
     const x =-200 + 200 * p5  -20 * p6 + 30* p7 - 30  * p8;
     const y = 50 - 50 * p5;
     const scale = 3 - 2 * p5 - 0.2 * p6 - 0.2 * p7 ;
-    const blur = 30 * p6 + 15 * p7 ;
+    const blur = 10 * p6 + 15 * p7 ;
 
     const opacity = 1 - p7;
     const isActive = scrollY >= 2482 && scrollY < 2572;
