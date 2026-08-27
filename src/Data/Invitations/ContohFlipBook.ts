@@ -71,22 +71,22 @@ export const ContohFlipBook: Invitation = {
     },
   },
   
-  Salam: "Assalamualaikum wr wb",
+  Salam: "Salam Sejahtera",
   Sambutan : "Dengan segala kerendahan hati dan dengan ungkapan syukur atas karunia Tuhan, kami mengundang Bapak/ Ibu/ Saudara/i untuk menghadiri acara pernikahan putra & putri kami",
-  Ayat: '"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."',
-  NamaSurat : "Surah Ar-Rum : 21",
-  // Ayat:"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia",
-  // NamaSurat:"Markus 10:9",
+  // Ayat: '"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."',
+  // NamaSurat : "Surah Ar-Rum : 21",
+  Ayat:"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia",
+  NamaSurat:"Markus 10:9",
 
   Story : [
     {Head : "Tak Ada yang Kebetulan",
-    Story : "Oktober 2020, awal bertemu lewat aplikasi dating. awalnya sih ingin cari teman bercerita, namun takdir berkata lain"},
+    Story : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque vero dolores temporibus."},
     {Head : "Pertemuan Pertama ",
-    Story : "5 Desember 2020, awal bertemu di 150 Coffee Garden Bandung. Obrolan mulai terasa hangat dan nyaman"},
+    Story : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. "},
     {Head : "Belajar Memahami",
-    Story : " 20 Desember 2020 kami memutuskan mulai berjalan bersama. Banyak cerita dan tantangan yang kita lewati untuk terus belajar saling memahami."},
+    Story : " Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga totam minus, obcaecati amet similique nesciunt dignissimos doloribus. Nesciunt atque architecto, officiis est reiciendis velit."},
     {Head : "Final Chapter",
-    Story : "Setelah 6 tahun lamanya, kami memantapkan hati untuk melangkah ke jenjang yang lebih serius. 12 Juni 2029. Let’s grow old together! ❤️"},
+    Story : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga totam minus, obcaecati amet similique nesciunt dignissimos doloribus. "},
     ],
 
   Closing : `Terima kasih telah menjadi bagian dari cerita dan kebahagiaan kami.

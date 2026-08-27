@@ -85,7 +85,7 @@ const WeddingGift = ({ data }: Props) => {
 
               return (
                 <div key={index}
-                  className={`border border-black/15 p-6 ${index%2 ? "MunculKanan": "MunculKiri"}`}
+                  className={`border border-black/15 p-6 FadeinScale`}
                   style={{border: `1px solid color-mix(in srgb, ${data.theme?.warna2} 15%, transparent)`, backgroundColor:data.theme?.warna2}}>
 
                   {/* LOGO */}

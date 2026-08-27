@@ -5,10 +5,10 @@ export const ContohMonohrome: Invitation = {
 
   template: "Monochrome",
 
-  Namabride: "Meko Maki S.Kom",
-  NamabridePanggilan : "Meko",
-  AkunTikTokWanita : "Meko",
-  AkunIGWanita: "Meko123",
+  Namabride: "Dilla Nur S.Kom",
+  NamabridePanggilan : "Dilla",
+  AkunTikTokWanita : "Dilla",
+  AkunIGWanita: "Dilla123",
   BapakpengantinWanita : "Bpk Heri",
   IbupengantinWanita : "Ibu Sumi",
 
@@ -57,12 +57,12 @@ export const ContohMonohrome: Invitation = {
     rekening: [
       {
         bank: "shopeepay",
-        atasNama: "Jutawan",
+        atasNama: "Dilla",
         nomorRekening: "1234567890",
       },
       {
         bank: "bni",
-        atasNama: "Riana",
+        atasNama: "Aris",
         nomorRekening: "9876543210",
       },
     ],
