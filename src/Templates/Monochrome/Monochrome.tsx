@@ -17,6 +17,7 @@ import WeddingGift from "./Sections/WeddingGift";
 import ModalGallery from "../1.Components/ModalGalery";
 
 
+
 interface Props {
   data: Invitation;
   guest: string;
@@ -30,6 +31,18 @@ const Monochrome = ({ data, guest }: Props) => {
   //comment 
   const [comments, setComments] = useState<Comment[]>([]);
   const idUndangan = `${data.template} ${data.NamabridePanggilan}-${data.NamagroomPanggilan}`;
+
+  useEffect(() => {
+    if (!isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
 
   const loadComments = async () => {
@@ -50,7 +63,7 @@ const Monochrome = ({ data, guest }: Props) => {
 
       
   return (
-    <main className="w-full   bg-black text-white"
+    <main className="w-full   bg-black text-white "
       style={{
         backgroundColor: "#000",
         color: "#fff",
@@ -88,6 +101,7 @@ const Monochrome = ({ data, guest }: Props) => {
       <WeddingGift data={data}/>
 
       <Closing data={data} />
+  
     </main>
   );
 };

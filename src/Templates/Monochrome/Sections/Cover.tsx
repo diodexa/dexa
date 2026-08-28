@@ -1,3 +1,4 @@
+
 import type { Invitation } from "../../../types/invitationType";
 import VideoBackground from "./Videobackground";
 
@@ -10,8 +11,10 @@ interface Props {
 }
 
 const Cover = ({ data, guest, isOpen, setIsOpen }: Props) => {
+   
+  
   return (
-    <section className={`fixed inset-0 overflow-hidden z-9998 transition-all duration-700 ease-in-out  ${ isOpen ? "-translate-y-full opacity-0 pointer-events-none" : " translate-y-0 opacity-100"}`}
+    <section className={`fixed inset-0 z-9998 overflow-hidden transition-all duration-700 ease-in-out ${isOpen ? "-translate-y-full opacity-0 pointer-events-none" : "translate-y-0 opacity-100"}`}
     style={{background:data.theme?.warna1, color:data.theme?.warna2}}>
 
       <VideoBackground

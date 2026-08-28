@@ -6,7 +6,7 @@ interface Props {
 
 const Ayat = ({ data }: Props) => {
   return (
-    <section className="px-6 py-24"
+    <section className="px-6 py-24 overflow-x-clip"
     style={{backgroundColor:data.theme?.warna2, color:data.theme?.warna1}}>
       <div className="max-w-md mx-auto text-center">
 

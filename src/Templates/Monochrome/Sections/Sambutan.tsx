@@ -7,7 +7,7 @@ interface Props {
 
 const Sambutan = ({ data }: Props) => {
   return (
-    <section className="px-6 py-24 FadeinScale"
+    <section className="px-6 py-24 FadeinScale overflow-x-clip"
     style={{backgroundColor: data.theme?.warna1, color:data.theme?.warna2}}>
       <div className="max-w-md mx-auto text-center">
 

@@ -73,7 +73,7 @@ const WeddingGift = ({ data }: Props) => {
 
 
         {/* REKENING */}
-        <div className="mt-10 space-y-3">
+        <div className="mt-10 space-y-3 overflow-x-clip">
 
           {data.WeddingGift?.rekening?.map(
             (rekening, index) => {
@@ -85,7 +85,7 @@ const WeddingGift = ({ data }: Props) => {
 
               return (
                 <div key={index}
-                  className={`border border-black/15 p-6 FadeinScale`}
+                  className={`border border-black/15 p-6 ${index%2 ? "MunculKanan" : "MunculKiri"}`}
                   style={{border: `1px solid color-mix(in srgb, ${data.theme?.warna2} 15%, transparent)`, backgroundColor:data.theme?.warna2}}>
 
                   {/* LOGO */}

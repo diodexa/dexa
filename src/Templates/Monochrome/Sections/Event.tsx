@@ -118,7 +118,7 @@ const Event = ({ data }: Props) => {
 
 
   return (
-    <section className="px-6 py-24"
+    <section className="px-6 py-24 overflow-x-clip"
     style={{color:data.theme?.warna2, backgroundColor:data.theme?.warna1}}>
 
       <div className="max-w-md mx-auto text-center">

@@ -6,10 +6,10 @@ interface Props {
 
 const Story = ({ data }: Props) => {
   return (
-    <section className="px-6 py-24"
+    <section className="px-6 py-24 overflow-x-clip"
     style={{backgroundColor: data.theme?.warna2, color:data.theme?.warna1}}>
 
-      <div className="max-w-md mx-auto MunculAtas">
+      <div className="max-w-md mx-auto FadeinScale">
 
         <div className="text-center">
           <p className="text-xs tracking-[0.4em] uppercase"

@@ -156,7 +156,7 @@ const ScrollCream = ({ data, guest }: Props) => {
       />
 
       <div className="relative h-[4500px]">
-        <div className="sticky top-0 h-screen">
+        <div className="sticky top-0 h-screen overflow-hidden snap-y snap-mandatory">
 
           {/* OPENING */}
           {shouldRender(0) && (

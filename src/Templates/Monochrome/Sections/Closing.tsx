@@ -43,8 +43,9 @@ const Closing = ({ data }: Props) => {
           Forever Begins Here
         </p>
 
+        {/* <Footer data={data} /> */}
       </div>
-
+  
     </section>
   );
 };

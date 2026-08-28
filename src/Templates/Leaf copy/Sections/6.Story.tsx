@@ -45,8 +45,7 @@ const opacity = 1-  p7;
 
           {data.Story?.map((Cerita,index)=>{
             return (
-              <div key={index} className={` pl-1 rounded ${ index %2 ? "text-right" : "text-left"}`}
-          style={{background:  `color-mix(in srgb, ${ index %2 ? data.theme?.warna2 : data.theme?.warna3} 30%, transparent)` }}>
+              <div key={index} className={` pl-1 rounded ${ index %2 ? "text-right" : "text-left"}`}>
                 <strong className="text-lg">{Cerita.Head}</strong>
                 <p>{Cerita.Story}</p>
 

@@ -9,7 +9,7 @@ const Gallery = ({ data,openGallery }: Props) => {
   const images = data.gallery ?? [];
 
   return (
-    <section className="px-4 py-24"
+    <section className="px-4 py-24 overflow-x-clip"
     style={{color:data.theme?.warna2, background:data.theme?.warna1}}>
 
       <div className="max-w-md mx-auto">

@@ -7,17 +7,17 @@ interface Props {
 
 const Couple = ({ data }: Props) => {
   return (
-    <section className="relativepx-6 py-24"
+    <section className="relativepx-6 py-24 overflow-x-clip"
     style={{background:data.theme?.warna2, color:data.theme?.warna1}}>
 
-      <div className="max-w-md mx-auto text-center">
+      <div className="max-w-md mx-auto text-center ">
 
         <p className="text-xs tracking-[0.4em] uppercase "
         style={{color:`color-mix(in srgb, ${data.theme?.warna1} 50%, transparent)`}}>
           The Couple
         </p>
 
-        <h2 className="mt-4 text-4xl font-serif">
+        <h2 className="mt-4 text-4xl font-serif FadeinScale">
           Bride & Groom
         </h2>
 
