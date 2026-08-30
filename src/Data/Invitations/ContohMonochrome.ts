@@ -12,7 +12,7 @@ export const ContohMonohrome: Invitation = {
   BapakpengantinWanita : "Bpk Heri",
   IbupengantinWanita : "Ibu Sumi",
 
-  Namagroom: "Aris Dwi Bangun Putra Inra S.hum A.md",
+  Namagroom: "Aris Dwi Putra S.hum A.md",
   NamagroomPanggilan : "Aris",
   AkunIGPria : "Arispdrs",
   BapakpengantinPria : "Bpk Mamat",
@@ -40,13 +40,12 @@ export const ContohMonohrome: Invitation = {
   coverImage: "/Gallery/ContohLeaf/4.webp",
   
   gallery: [
-    "/Gallery/ContohLeaf/1.webp",
-    "/Gallery/ContohLeaf/2.webp",
-    "/Gallery/ContohLeaf/3.webp",
-    "/Gallery/ContohLeaf/4.webp",
-    "/Gallery/ContohLeaf/5.webp",
-    "/Gallery/ContohLeaf/6.webp",
-    "/Gallery/ContohLeaf/7.webp",
+    "/Gallery/ContohMonochrome/1.webp",
+    "/Gallery/ContohMonochrome/2.webp",
+    "/Gallery/ContohMonochrome/3.webp",
+    "/Gallery/ContohMonochrome/4.webp",
+    "/Gallery/ContohMonochrome/5.webp",
+    "/Gallery/ContohMonochrome/6.webp",
    
     
   ],
@@ -85,13 +84,13 @@ export const ContohMonohrome: Invitation = {
 
   Story : [
     {Head : "Tak Ada yang Kebetulan",
-    Story : "Oktober 2020, awal bertemu lewat aplikasi dating. awalnya sih ingin cari teman bercerita, namun takdir berkata lain"},
+    Story : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam, necessitatibus."},
     {Head : "Pertemuan Pertama ",
-    Story : "5 Desember 2020, awal bertemu di 150 Coffee Garden Bandung. Obrolan mulai terasa hangat dan nyaman"},
+    Story : "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit tempora expedita porro ab modi totam laboriosam voluptates ea, minima molestiae!"},
     {Head : "Belajar Memahami",
-    Story : " 20 Desember 2020 kami memutuskan mulai berjalan bersama. Banyak cerita dan tantangan yang kita lewati untuk terus belajar saling memahami."},
+    Story : " Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis dolorem exercitationem, maiores necessitatibus quos cupiditate."},
     {Head : "Final Chapter",
-    Story : "Setelah 6 tahun lamanya, kami memantapkan hati untuk melangkah ke jenjang yang lebih serius. 12 Juni 2029. Let’s grow old together! ❤️"},
+    Story : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, magnam! Asperiores at distinctio mollitia! Minima asperiores corrupti possimus?"},
     ],
 
   Closing : `Terima kasih telah menjadi bagian dari cerita dan kebahagiaan kami.
@@ -114,13 +113,7 @@ With love, always.`,
     
 
   },
-  Background : {
-    Background1 :"/Gallery/ContohLeaf/1.png",
-    Background2 :"/Gallery/ContohLeaf/2(1).png",
-    Background3 :"/Gallery/ContohLeaf/5.png",
-    Background4 :"/Gallery/ContohLeaf/6.png",
-    CoverBack :"/Gallery/ContohLeaf/background.webp",
-  },
+
 
   
 };

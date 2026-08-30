@@ -38,7 +38,6 @@ const opacity = scrollY < 2000 ? p4 : 1 - p7;
     style={{transform: `translate(calc(-50% + ${x}%),calc(-50% + ${y}%)) scale(${scale})`,opacity,filter: `blur(${blur}px)`,}}>
       {/* frame + text */}
       <div className="relative w-full h-4/7 ">
-
         {/* frame */}
         <div className="absolute inset-0 flex justify-center">
           <img src="/Ornament/frame.png" alt="" className="h-full w-auto" />
