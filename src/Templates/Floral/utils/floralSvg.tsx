@@ -402,51 +402,39 @@ export const FloralDivider = ({
 }) => {
   return (
     <svg
-      width={width}
-      height="45"
-      viewBox="0 0 240 45"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M5 22.5H83"
-        stroke={color}
-        strokeWidth="1"
-      />
+  width={width}
+  height="45"
+  viewBox="0 0 240 45"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path d="M5 22.5H82" stroke={color} strokeWidth="1" />
+  <path d="M158 22.5H235" stroke={color} strokeWidth="1" />
 
+  {/* BUNGA MATAHARI */}
+  <g transform="translate(120 22.5)">
+    {Array.from({ length: 8 }).map((_, i) => (
       <path
-        d="M157 22.5H235"
-        stroke={color}
-        strokeWidth="1"
-      />
-
-      <path
-        d="M120 8C108 17 108 28 120 37C132 28 132 17 120 8Z"
+        key={i}
+        d="M0 -4 C-5 -10 -6 -17 0 -22 C6 -17 5 -10 0 -4Z"
+        transform={`rotate(${i * 45})`}
         stroke={accent}
         strokeWidth="1.2"
+        fill="none"
       />
+    ))}
 
-      <circle
-        cx="120"
-        cy="22.5"
-        r="4"
-        fill={accent}
-      />
+    <circle
+      cx="0"
+      cy="0"
+      r="4"
+      fill={accent}
+    />
+  </g>
 
-      <circle
-        cx="96"
-        cy="22.5"
-        r="2"
-        fill={color}
-      />
-
-      <circle
-        cx="144"
-        cy="22.5"
-        r="2"
-        fill={color}
-      />
-    </svg>
+  <circle cx="94" cy="22.5" r="2" fill={color} />
+  <circle cx="146" cy="22.5" r="2" fill={color} />
+</svg>
   );
 };
 

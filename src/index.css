@@ -32,6 +32,10 @@
     font-size: 16px;
   }
 }
+/* 
+*{
+  border: 1px solid red;
+} */
 
 @font-face {
   font-family: "TheWeddingSignature";
@@ -51,9 +55,14 @@
   src: url("/Fonts/Wedding.ttf") format("truetype");
 }
 @font-face {
+  font-family: "LilitaOne-Regular";
+  src: url("/Fonts/LilitaOne-Regular.ttf") format("truetype");
+}
+@font-face {
   font-family: "Sephora&Hayden";
   src: url("/Fonts/Sephora&Hayden.ttf") format("truetype");
 }
+
 @font-face {
     font-family: "BetterChill";
   src: url("/Fonts/BetterChill.otf") format("opentype");
@@ -75,7 +84,7 @@
     font-family: "Perandory";
   src: url("/Fonts/Perandory-Regular.otf") format("opentype");
 }
-
+/* script */
 .font-cursive {
     font-family: "Great Vibes", cursive;;  
 }
@@ -93,17 +102,17 @@
 .font-Bromello {
   font-family: "Bromello";
 }
+.font-SephoraHayden{
+  font-family: "Sephora&Hayden";
+}
+
+
+
 .font-Colvetica{
   font-family: "Colvetica";
 }
 .font-ColveticaCond{
   font-family: "ColveticaCond";
-}
-.font-WeddingIcon{
-  font-family: "WeddingIcon";
-}
-.font-SephoraHayden{
-  font-family: "Sephora&Hayden";
 }
 .font-LoveFlorida{
   font-family: "LoveFlorida";
@@ -112,6 +121,12 @@
   font-family: "Perandory";
 }
 
+.font-WeddingIcon{
+  font-family: "WeddingIcon";
+}
+.font-Lilitaone{
+  font-family: "LilitaOne-Regular";
+}
 
 #root {
 
@@ -131,6 +146,9 @@ body {
 }
 
 
+.butterfly-fly {
+  animation: butterfly-fly 4s ease-in-out infinite;
+}
 
 .MunculKanan {
   animation: MunculKanan linear both;
@@ -147,6 +165,12 @@ body {
   animation-timeline: view();
   animation-range: entry 0% cover 50%;
 }
+
+.sway-flower {
+  animation: sway 6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
 .MunculBawah {
   animation: MunculBawah linear both;
   animation-timeline: view();
@@ -157,6 +181,52 @@ body {
   animation-timeline: view();
   animation-range: entry 0% cover 50%;
 }
+
+@keyframes sway {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(2deg);
+  }
+
+  50% {
+    transform: rotate(-2deg);
+  }
+
+  75% {
+    transform: rotate(1.5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+@keyframes butterfly-fly {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(10px, -8px) rotate(3deg);
+  }
+
+  50% {
+    transform: translate(0, -16px) rotate(0deg);
+  }
+
+  75% {
+    transform: translate(-10px, -8px) rotate(-3deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
 
 
 @keyframes Munculkiri {

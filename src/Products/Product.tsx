@@ -7,7 +7,7 @@ interface Project {
 const projects: Project[] = [
   { title: "Flip book", 
     img: "/ProjectBook.webp", 
-    demoUrl: "https://dexa-invitation.com/FlipBook" },
+    demoUrl: "https://dexa-invitation.com/Flipbook" },
 
   { title: "Scroll Leaf", 
     img: "/ProjectLeaf.webp", 

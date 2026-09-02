@@ -1,4 +1,5 @@
 import type { Invitation } from "../../../types/invitationType";
+import Countdown from "../../1.Components/Countdown";
 import {
   FloralCorner,
   FloralFlower,
@@ -20,21 +21,8 @@ const Opening = ({
   return (
     <section
       className={`absolute inset-0 z-50 flex min-h-screen w-full items-center justify-center overflow-hidden transition-all duration-1000 ${
-        isOpen
-          ? "pointer-events-none opacity-0"
-          : "opacity-100"
-      }`}
-      style={{
-        background: data.theme?.warna1,
-        color: data.theme?.warna2,
-      }}
-    >
-      <div className="absolute left-0 top-0">
-        <FloralCorner
-          color={data.theme?.warna3}
-          size={180}
-        />
-      </div>
+        isOpen? "pointer-events-none opacity-0": "opacity-100"}`}
+      style={{background: data.theme?.warna1,color: data.theme?.warna2,}}>
 
       <div className="absolute bottom-0 right-0">
         <FloralCorner
@@ -74,8 +62,13 @@ const Opening = ({
         <p className="text-xs tracking-[0.2em]">
           {data.TanggalAkad}
         </p>
+        <div className="pointer-events-none mt-3  flex items-center justify-center mb-8">
+          <div style={{"--bg2": data.theme?.warna3 , "--bgcountdown": data.theme?.warna2,  "--minhcountdown": "60px",  "--minwcountdown": "60px", color:data.theme?.warna1, } as React.CSSProperties}>
+            <Countdown date={`${data.TanggalAkadISO}T${data.JamAkad}:00`}/>
+          </div>
+        </div>
 
-        <p className="mt-8 text-xs opacity-70">
+        <p className=" text-xs opacity-70">
           Kepada Yth.
         </p>
 
@@ -90,8 +83,7 @@ const Opening = ({
             borderColor: data.theme?.warna3,
             background: data.theme?.warnaButtonBackground,
             color: data.theme?.contrasfont,
-          }}
-        >
+          }}>
           Buka Undangan
         </button>
       </div>

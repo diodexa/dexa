@@ -1,5 +1,4 @@
 import type { Invitation } from "../../../types/invitationType";
-import { FloralFlower } from "../utils/floralSvg";
 
 interface Props {
   data: Invitation;
@@ -11,16 +10,20 @@ const Story = ({ data }: Props) => {
     <section
       className="relative min-h-screen overflow-hidden px-6 py-16"
       style={{
-        background: data.theme?.warna2,
-        color: data.theme?.warna1,
-      }}
-    >
-      <div className="absolute right-0 top-0">
-        <FloralFlower
-          color={data.theme?.warna3}
-          size={180}
-          opacity={0.25}
-        />
+        background: data.theme?.warna1,
+        color: data.theme?.warna2,
+      }}>
+
+      <div className="opacity-50">
+        <img src="/Ornament/awan1.png" alt=""className="absolute left-1/2 top-1/2 w-auto h-[40%] object-contain  MunculKiri "/>
+      </div>
+      <div className="opacity-50">
+        <img src="/Ornament/awan1.png" alt=""className="absolute right-1/2 bottom-1/2 w-auto h-[40%] object-contain  MunculKiri "/>
+      </div>
+      
+      <div className="absolute bottom-0 -right-32 w-full h-[200px] -rotate-45">
+        <div className="sway-flower w-full h-full opacity-50"
+        style={{ backgroundImage: "url('/Ornament/sun5.png')" }}/>
       </div>
 
       <div className="relative z-10">

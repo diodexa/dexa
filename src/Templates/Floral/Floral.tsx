@@ -9,7 +9,6 @@ import FloralCouple from "./Sections/3.Couple";
 import SaveTheDate from "./Sections/5.SaveTheDate";
 import Story from "./Sections/6.Story";
 
-import Gallery2 from "../Leaf copy/Sections/Gallery2";
 import Video from "../Leaf copy/Sections/video";
 import Ucapan from "../Leaf copy/Sections/UcapanDoa";
 import WeddingGift from "../Leaf copy/Sections/WeddingGift";
@@ -18,6 +17,7 @@ import Closing from "../Leaf copy/Sections/Closing";
 import ModalGallery from "../1.Components/ModalGalery";
 import BottomNav from "../1.Components/BottomNav";
 import AudioController from "../1.Components/Audio";
+import Gallery from "./Sections/7.Gallery";
 
 interface Props {
   data: Invitation;
@@ -97,7 +97,7 @@ const Floral = ({ data, guest }: Props) => {
   return (
     <div
       ref={scrollRef}
-      className="relative mx-auto h-screen w-[385px] max-w-full overflow-x-hidden overflow-y-auto"
+      className="relative mx-auto h-screen max-w-[385px] overflow-x-clip"
       style={{
         background: data.theme?.warna1,
         color: data.theme?.warna2,
@@ -122,15 +122,8 @@ const Floral = ({ data, guest }: Props) => {
       {/* =========================
           OPENING
       ========================= */}
+        <Opening data={data} guest={guest} isOpen={isOpen}setIsOpen={setIsOpen}/>
 
-      <div className="relative h-screen">
-        <Opening
-          data={data}
-          guest={guest}
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-        />
-      </div>
 
       {/* =========================
           SAMBUTAN
@@ -147,7 +140,7 @@ const Floral = ({ data, guest }: Props) => {
           AYAT
       ========================= */}
 
-      <div className="relative h-screen">
+      <div className="relative">
         <Ayat
           data={data}
           scrollY={scrollY}
@@ -158,43 +151,32 @@ const Floral = ({ data, guest }: Props) => {
           BRIDE + GROOM
       ========================= */}
 
-      <div className="relative h-screen">
+    
         <FloralCouple
           data={data}
-          scrollY={scrollY}
         />
-      </div>
+      
 
       {/* =========================
           SAVE THE DATE
       ========================= */}
 
-      <div className="relative h-screen">
-        <SaveTheDate
-          data={data}
-          scrollY={scrollY}
-        />
-      </div>
+        <SaveTheDate data={data} />
+
 
       {/* =========================
           STORY
       ========================= */}
 
-      <div className="relative h-screen">
-        <Story
-          data={data}
-          scrollY={scrollY}
-        />
-      </div>
+
+        <Story data={data}scrollY={scrollY}/>
+
 
       {/* =========================
           GALLERY
       ========================= */}
 
-      <Gallery2
-        data={data}
-        openGallery={handleOpenGallery}
-      />
+      <Gallery data={data} openGallery={handleOpenGallery}/>
 
       {/* =========================
           VIDEO
