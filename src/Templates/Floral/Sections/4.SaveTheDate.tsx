@@ -3,10 +3,11 @@ import { FloralDivider } from "../utils/floralSvg";
 
 interface Props {
   data: Invitation;
-
+  scrollY: number;
+  animate: boolean
 }
 
-const SaveTheDate = ({ data }: Props) => {
+const SaveTheDate = ({ data,animate }: Props) => {
   return (
     <section className="relative flex h-screen flex-col items-center  px-2 text-center"
       style={{ background: data.theme?.warna1, color: data.theme?.warna2,}}>
@@ -21,12 +22,10 @@ const SaveTheDate = ({ data }: Props) => {
         <img src="/Ornament/awan1.png" alt=""className="absolute right-20 bottom-0 w-auto h-[40%] object-contain  MunculKanan "/>
       </div>
 
-      <div className="mt-10">
-        <p className=" text-xl uppercase tracking-[0.4em]">
-          Save The Date
-        </p>
-        
-      </div>
+      <p className={` text-xl uppercase tracking-[0.4em] mt-10 ${animate ? "MunculAtas-1 " : "opacity-0"}`}>
+        Save The Date
+      </p>
+
 
       <div className="w-full flex  justify-center">
         <FloralDivider color={data.theme?.warna3} width={500} />

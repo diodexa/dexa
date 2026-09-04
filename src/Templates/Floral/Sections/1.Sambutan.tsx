@@ -3,11 +3,12 @@ import type { Invitation } from "../../../types/invitationType";
 interface Props {
   data: Invitation;
   scrollY: number;
+  isOpen : boolean
 }
 
-const Sambutan = ({ data }: Props) => {
+const Sambutan = ({ data, isOpen }: Props) => {
   return (
-    <section className="relative flex h-screen items-center justify-center overflow-x-clip  text-center "
+    <section className={`relative flex h-screen items-center justify-center overflow-x-clip  text-center transition-all duration-2000 ease-out ${isOpen? "translate-y-0 opacity-100": "translate-y-10 opacity-0"} `}
       style={{background: data.theme?.warna1,color: data.theme?.contrasfont,}}>
         <div>
           <img src="/Ornament/ButterflyBlue.png" alt=""className="absolute left-0 bottom-30 w-auto h-[10%] object-contain butterfly-fly -scale-x-90 z-2"/>
@@ -28,7 +29,7 @@ const Sambutan = ({ data }: Props) => {
 
         </div>
         
-           <div className=" flex flex-col items-center justify-center px-5 font-LoveFlorida">
+           <div className={` flex flex-col items-center justify-center px-5 font-LoveFlorida transition-all duration-6000 ease-out ${isOpen? "scale-100 opacity-100": "scale-50 opacity-0"}`}>
             <p className=" text-xl uppercase tracking-[0.4em]  ">
               {data.Salam}
             </p>

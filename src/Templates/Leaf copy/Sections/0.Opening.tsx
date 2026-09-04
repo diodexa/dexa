@@ -28,8 +28,7 @@ const Opening = ({ data, scrollY, isOpen }: Props) => {
 
   return (
     <div className={`absolute left-1/2 top-1/2 h-screen w-full flex flex-col items-center justify-center  pointer-events-none `}
-      style={{
-        transform: `translate(-50%, -50%) scale(${scale}) `,opacity, filter: `blur(${blur}px)`,}}>
+      style={{ transform: `translate(-50%, -50%) scale(${scale}) `,opacity, filter: `blur(${blur}px)`,}}>
           <div>
 
             <div className={`absolute inset-0 flex justify-center h-1/2 top-1/2 -translate-y-1/2 transition-all duration-2000 ease-out  ${isOpen? "scale-100 opacity-100": "scale-0 opacity-0"}`}>

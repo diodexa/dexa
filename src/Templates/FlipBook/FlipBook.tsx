@@ -194,7 +194,7 @@ const FlipBook = ({ data,guest  }: Props) => {
         style={{ color: data.theme?.warna3 }}>
           <p className="text-sm">swipe left</p>
 
-          <i className="fa-solid fa-arrow-right text-2xl animate-[slideRight_1.2s_ease-in-out_infinite]" />
+          <i className="fa-solid fa-arrow-left text-2xl animate-[slideRight_1.2s_ease-in-out_infinite]" />
         </div>
         <Loading isLoading={loading} />
         <ModalGallery isOpen={openGallery} images={data.gallery ?? []}

@@ -7,15 +7,21 @@ interface Props {
 
 const Story = ({ data }: Props) => {
   return (
-    <section
-      className="relative min-h-screen overflow-hidden px-6 py-16"
+    <section className="relative min-h-screen  px-6 py-16 overflow-x-clip"
       style={{
         background: data.theme?.warna1,
-        color: data.theme?.warna2,
-      }}>
+        color: data.theme?.warna2,}}>
+        <div className="inline-block bg-white p-1 pb-5 shadow-lg rotate-[-15deg] absolute -top-10 left-0 ">
+          <img src={data.gallery?.[4]} alt={data.Namabride}
+            className="w-[60px] h-[75px] object-cover"/>
+        </div>
+        <div className="inline-block bg-white p-1 pb-5 shadow-lg rotate-[15deg] absolute -top-10 left-12 ">
+          <img src={data.gallery?.[3]} alt={data.Namabride}
+            className="w-[60px] h-[75px] object-cover"/>
+        </div>
 
       <div className="opacity-50">
-        <img src="/Ornament/awan1.png" alt=""className="absolute left-1/2 top-1/2 w-auto h-[40%] object-contain  MunculKiri "/>
+        <img src="/Ornament/awan1.png" alt=""className="absolute left-1/2 top-1/2 w-auto h-[40%] object-contain  MunculKanan "/>
       </div>
       <div className="opacity-50">
         <img src="/Ornament/awan1.png" alt=""className="absolute right-1/2 bottom-1/2 w-auto h-[40%] object-contain  MunculKiri "/>
@@ -25,6 +31,7 @@ const Story = ({ data }: Props) => {
         <div className="sway-flower w-full h-full opacity-50"
         style={{ backgroundImage: "url('/Ornament/sun5.png')" }}/>
       </div>
+
 
       <div className="relative z-10">
         <p className="text-center text-[10px] uppercase tracking-[0.4em]">

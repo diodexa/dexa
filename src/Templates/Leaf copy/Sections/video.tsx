@@ -8,7 +8,8 @@ const Video = ({ data }: Props) => {
   if (!data.video) return null;
 
   return (
-        <div className="relative w-full h-[500px] overflow-hidden mt-2">
+        <div className="relative w-full h-[500px] overflow-hidden "
+        style={{background:"transparent"}}>
 
           <video
             muted

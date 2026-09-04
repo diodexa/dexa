@@ -35,7 +35,7 @@ const BottomNav = ({
             style={{
               color: isActive
                 ? data.theme?.warna3
-                : data.theme?.warna1,
+                : data.theme?.warna2,
             }}
           >
             <i className={`fas ${item.icon} text-lg`} />

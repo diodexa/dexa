@@ -122,8 +122,7 @@ const ScrollCream = ({ data, guest }: Props) => {
   };
 
   return (
-    <div
-      ref={scrollRef}
+    <div ref={scrollRef}
       className="relative mx-auto h-screen w-[385px] max-w-full overflow-x-hidden overflow-y-auto"
       style={{
         background: data.Background?.CoverBack,

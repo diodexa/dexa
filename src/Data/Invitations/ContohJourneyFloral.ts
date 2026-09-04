@@ -97,7 +97,7 @@ With love, always.`,
   music: "/Audio/audio.mp3",
   theme : {
 
-    warnaweddingInvitation : "#F0E3D3",
+    warnaweddingInvitation : "#297fc1",
 
     warna1: "#297fc1",
     warna2: "#ffffff",
@@ -106,8 +106,8 @@ With love, always.`,
     contrasfont: "#ffffff",
     ContrasBackgroundColor:"#050505",
 
-    warnaButtonBackground : "#f3c9d2",
-    warnaButtonBorder : "#F0E3D3",
+    warnaButtonBackground : "#d6b81e",
+    warnaButtonBorder : "#297fc1",
     
 
   },
@@ -117,13 +117,12 @@ With love, always.`,
     {
       label: "Mempelai",
       icon: "fa-heart",
-      scrollTo: 1500,
-      scrollEnd: 2090,
+      scrollTo: 1010,
     },
     {
       label: "Jadwal",
       icon: "fa-calendar-alt",
-      scrollTo: 2500,
+      scrollTo: 1662,
     },
     {
       label: "Home",
@@ -133,13 +132,13 @@ With love, always.`,
     {
       label: "Galeri",
       icon: "fa-th",
-      scrollTo: 3500,
-      scrollEnd: 4844,
+      scrollTo: 3428,
+      scrollEnd: 3996,
     },
     {
       label: "Ucapan",
       icon: "fa-pencil",
-      scrollTo: 5482,
+      scrollTo: 4754,
     },
   ],
   
