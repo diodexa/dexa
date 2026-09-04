@@ -5,9 +5,9 @@ import FlipBook from "../Templates/FlipBook/FlipBook";
 
 import GroupChat from "../Templates/GroupChat/GroupChat";
 import Monochrome from "../Templates/Monochrome/Monochrome";
-import Floral from "../Templates/Floral/Floral";
 import ScrollLeaf from "../Templates/Leaf/Leaf";
 import ScrollCream from "../Templates/Leaf copy/Leaf";
+import Sunflower from "../Templates/Sunflower/Sunflower";
 
 const InvitationPage = () => {
   const { slug, guest } = useParams();
@@ -45,8 +45,8 @@ const InvitationPage = () => {
       return (<ScrollCream data={invitation} guest={guestName}/>
       );
       
-    case "Floral":
-      return (<Floral data={invitation} guest={guestName}/>
+    case "Sunflower":
+      return (<Sunflower data={invitation} guest={guestName}/>
       );
     
       

@@ -26,16 +26,16 @@ const FloralCouple = ({ data, animate }: Props) => {
       </div>
 
     {/* CONTENT */}
-      <div className="relative z-10 w-full max-w-[500px] h-full flex flex-col items-center justify-center pl-[70px] pr-5 font-LoveFlorida">
-        <h2 className={`text-4xl mb-8  uppercase font-Perandory ${animate ? "Fadein-1" : "opacity-0"}`} >Bride & Groom</h2>
+      <div className="relative z-10 w-full max-w-[500px] h-full flex flex-col items-center justify-center pl-[70px] pr-5">
+        <h2 className={`text-4xl mb-8  uppercase font-Cenova ${animate ? "Fadein-1" : "opacity-0"}`} >Bride & Groom</h2>
 
         <div className="w-full flex flex-col gap-8 text-xl">
           {/* BRIDE */}
           <div className={`flex items-center gap-4 `} >
-            <div className={`shrink-0  bg-white p-2 pb-1 shadow-lg rotate-[-3deg]  ${animate ? "Fadein-2" : ""}`}>
+            <div className={`shrink-0  bg-white p-2 pb-1 shadow-lg rotate-[-3deg]  ${animate ? "Fadein-2" : "opacit-0"}`}>
               <img src={data.FotoBride} alt={data.Namabride}
                 className="w-[100px] h-[120px] object-cover"/>
-              <p className="font-Signature text-4xl " style={{color:data.theme?.warna1}}>Bride</p>
+              <p className="font-BylinerScript text-3xl " style={{color:data.theme?.warna1}}>Bride</p>
             </div>
             <div className={`text-left ${animate ? "MunculKanan-2 " : "opacity-0"}`}>
               <p className="text-3xl">{data.Namabride}</p>
@@ -48,10 +48,10 @@ const FloralCouple = ({ data, animate }: Props) => {
 
           {/* GROOM */}
           <div className="flex items-center gap-4">
-            <div className={`shrink-0 bg-white p-2 pb-1 shadow-lg rotate-[3deg] ${animate ? "Fadein-2" : ""}`}>
+            <div className={`shrink-0 bg-white p-2 pb-1 shadow-lg rotate-[3deg] ${animate ? "Fadein-2" : "opacity-0"}`}>
               <img src={data.FotoGroom} alt=""
                 className="w-[100px] h-[120px] object-cover"/>
-              <p className="font-Signature text-4xl" style={{color:data.theme?.warna1}}>Groom</p>
+              <p className="font-BylinerScript text-4xl" style={{color:data.theme?.warna1}}>Groom</p>
             </div>
             <div className={`text-left  ${animate ? "MunculKanan-2 " : ""}`}>
               <p className="text-3xl">{data.Namagroom}</p>

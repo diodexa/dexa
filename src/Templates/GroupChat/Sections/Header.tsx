@@ -106,19 +106,11 @@ const Header = ({ data, isOpen, onOpenGroupInfo }: Props) => {
         onClick={onOpenGroupInfo}
         className="flex-1 min-w-0 h-full flex flex-col items-center justify-center text-center px-1"
       >
-        <h1
-          className="
-            font-LoveFlorida
-            text-xl
-            leading-tight
-            truncate
-            max-w-full
-          "
-        >
+        <h1 className=" font-FloridaIsland  text-3xl leading-tight truncate max-w-full" >
           {data.NamabridePanggilan} & {data.NamagroomPanggilan}
         </h1>
 
-        <p className="text-xs opacity-70 mt-0.5">
+        <p className="text-xs opacity-70 mt-0.5  tracking-[0.1em]">
           klik untuk detail
         </p>
       </button>

@@ -51,12 +51,12 @@ const WeddingGift = ({ data }: Props) => {
       style={{ background: data.theme?.warna1, color: data.theme?.contrasfont }}>
       {data.Background?.Background14 ? (
         <img src={data.Background.Background14}alt=""className="absolute inset-0 w-full h-full object-cover"/>) : (
-        <div className="flex flex-col items-center   my-6 w-full h-full" >
+          <div className="flex flex-col items-center   my-6 w-full h-full" >
+          <h2 className="text-3xl tracking-[0.2rem] pt-10 uppercase font-Cenova "> Wedding Gift</h2>
           <div className=" relative  w-full opacity-60 pointer-events-none">
             <img src="/Ornament/sun5.png"  alt="" className=" w-auto absolute opacity-40 "/>
           </div>
         
-          <h2 className="text-3xl tracking-[0.2rem] pt-10 "> Wedding Gift</h2>
           <div className="w-full px-2 mt-15 z-2">
             {data.WeddingGift?.rekening?.map((rekening, index) => {
               const bank = rekening.bank?.toUpperCase() ?? "";
@@ -64,7 +64,7 @@ const WeddingGift = ({ data }: Props) => {
 
               return (
                 <div className="border rounded-lg p-1 mb-2 flex flex-col items-center  text-sm"
-                  key={index} style={{background:data.theme?.warna2, color: data.theme?.ContrasBackgroundColor}}>
+                  key={index} style={{background:data.theme?.warna2 , color: data.theme?.ContrasBackgroundColor}}>
                   {logo && (
                     <img src={logo} alt={rekening.bank} 
                     style={{filter: `drop-shadow(0 0 2px white`}}

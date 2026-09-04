@@ -23,7 +23,7 @@ interface Props {
   guest: string;
 }
 
-const Floral = ({ data, guest }: Props) => {
+const Sunflower = ({ data, guest }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -122,8 +122,11 @@ const Floral = ({ data, guest }: Props) => {
     setAnimations(prev => ({
       ...prev,
       ayat: scrollY >= 64,
-      couple: scrollY >= 332,
+      couple: scrollY >= 675,
       saveDate: scrollY >= 1231,
+      story: scrollY >= 2036,
+      gallery: scrollY>=2728,
+      
     }));
   }, [scrollY]);
   
@@ -133,7 +136,7 @@ console.log(scrollY)
 
   return (
     <div ref={scrollRef}
-      className="relative mx-auto h-screen max-w-[385px] overflow-x-clip overflow-y-auto"
+      className="relative mx-auto h-screen max-w-[385px] overflow-x-clip overflow-y-auto font-Sunflower"
       style={{
         background: data.theme?.warna1,
         color: data.theme?.warna2,
@@ -159,10 +162,10 @@ console.log(scrollY)
       <SaveTheDate data={data} scrollY={scrollY} animate={animations.saveDate}/>
 
 
-      <Story data={data}scrollY={scrollY}/>
+      <Story data={data}scrollY={scrollY} animate={animations.story}/>
 
 
-      <Gallery data={data} openGallery={handleOpenGallery} scrollY={scrollY}/>
+      <Gallery data={data} openGallery={handleOpenGallery} scrollY={scrollY} animate={animations.gallery}/>
 
       <Ucapan data={data} loadComments={loadComments} comments={comments} guest={guest} scrollY={scrollY}/>
 
@@ -189,4 +192,4 @@ console.log(scrollY)
   );
 };
 
-export default Floral;
+export default Sunflower;

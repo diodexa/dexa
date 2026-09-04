@@ -34,13 +34,13 @@ const Closing = ({ data }: Props) => {
         }}
       />
 
-      <div className="absolute bottom-0 left-0 z-20 w-full px-6 pb-20 text-center">
+      <div className="absolute bottom-10 left-0 z-20 w-full px-6 pb-20 text-center">
         <p className="mx-auto mb-5 max-w-[500px] whitespace-pre-line text-sm leading-relaxed"
           style={{ color: data.theme?.warna3 }}>
           {data.Closing}
         </p>
 
-        <p className="font-BetterChill text-4xl leading-none"
+        <p className="font-BylinerScript text-4xl leading-none"
           style={{ color: data.theme?.warna3 }}>
           {data.NamabridePanggilan} & {data.NamagroomPanggilan}
         </p>

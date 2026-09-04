@@ -62,6 +62,10 @@
   font-family: "Sephora&Hayden";
   src: url("/Fonts/Sephora&Hayden.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Cenova";
+  src: url("/Fonts/Cenova.ttf") format("truetype");
+}
 
 @font-face {
     font-family: "BetterChill";
@@ -84,6 +88,18 @@
     font-family: "Perandory";
   src: url("/Fonts/Perandory-Regular.otf") format("opentype");
 }
+@font-face {
+    font-family: "FloridaIsland";
+  src: url("/Fonts/FloridaIsland.otf") format("opentype");
+}
+@font-face {
+    font-family: "Sunflower";
+  src: url("/Fonts/Sunflower.otf") format("opentype");
+}
+@font-face {
+    font-family: "BylinerScript";
+  src: url("/Fonts/BylinerScript.otf") format("opentype");
+}
 /* script */
 .font-cursive {
     font-family: "Great Vibes", cursive;;  
@@ -105,6 +121,9 @@
 .font-SephoraHayden{
   font-family: "Sephora&Hayden";
 }
+.font-BylinerScript{
+  font-family: "BylinerScript";
+}
 
 
 
@@ -120,6 +139,16 @@
 .font-Perandory{
   font-family: "Perandory";
 }
+.font-Cenova{
+  font-family: "Cenova";
+}
+.font-FloridaIsland{
+  font-family: "FloridaIsland";
+}
+.font-Sunflower{
+  font-family: "Sunflower";
+}
+
 
 .font-WeddingIcon{
   font-family: "WeddingIcon";
@@ -186,25 +215,31 @@ body {
   animation-range: entry 0% cover 50%;
 }
 .MunculAtas-1 {
-  animation: revealUp 1.2s ease-out 0.5s forwards;
+  animation: MunculAtas 1.2s ease-out 0.5s forwards;
   opacity: 0;
 }
 
 .MunculAtas-2 {
-  animation: revealUp 1.2s ease-out 0.8s forwards;
+  animation: MunculAtas 1.2s ease-out 0.8s forwards;
   opacity: 0;
 }
 
 .MunculAtas-3 {
-  animation: revealUp 1.2s ease-out 1s forwards;
+  animation: MunculAtas 1.2s ease-out 1s forwards;
   opacity: 0;
 }
-.MunculKanan-1 {
-  animation: revealRight 1.2s ease-out 0.5s forwards;
+.MunculBawah-1 {
+  animation: MunculBawah 1.2s ease-out 0.5s forwards;
   opacity: 0;
 }
-.MunculKanan-2 {
-  animation: MunculKanan 1.2s ease-out 0.8s forwards;
+
+.MunculBawah-2 {
+  animation: MunculBawah 1.2s ease-out 0.8s forwards;
+  opacity: 0;
+}
+
+.MunculBawah-3 {
+  animation: MunculBawah 1.2s ease-out 1s forwards;
   opacity: 0;
 }
 .MunculKanan-1 {
@@ -213,6 +248,14 @@ body {
 }
 .MunculKanan-2 {
   animation: MunculKanan 1.2s ease-out 0.8s forwards;
+  opacity: 0;
+}
+.MunculKiri-1 {
+  animation: Munculkiri 1.2s ease-out 0.5s forwards;
+  opacity: 0;
+}
+.MunculKiri-2 {
+  animation: Munculkiri 1.2s ease-out 0.8s forwards;
   opacity: 0;
 }
 .Fadein-1 {
@@ -244,18 +287,6 @@ body {
 
   100% {
     transform: rotate(0deg);
-  }
-}
-@keyframes flowerGrow {
-  0% {
-    opacity: 0;
-    transform: translateY(80px) scaleY(0.8);
-    transform-origin: bottom left;
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) scaleY(1);
   }
 }
 
@@ -329,6 +360,17 @@ body {
       transform: translateY(0);
     }
   }
+  @keyframes FadeinScale {
+    from {
+      opacity: 0;
+      scale: 0.3;
+    }
+  
+    to {
+      opacity: 1;
+      transform: 1;
+    }
+  }
   
 
 @keyframes zoomfade {
@@ -367,16 +409,6 @@ body {
   }
 }
 
-@keyframes slideRight {
-  0%, 100% {
-    transform: translateX(0);
-    opacity: 0.5;
-  }
 
-  50% {
-    transform: translateX(15px);
-    opacity: 1;
-  }
-}
 
 

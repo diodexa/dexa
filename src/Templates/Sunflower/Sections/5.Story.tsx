@@ -3,9 +3,10 @@ import type { Invitation } from "../../../types/invitationType";
 interface Props {
   data: Invitation;
   scrollY: number;
+  animate: boolean
 }
 
-const Story = ({ data }: Props) => {
+const Story = ({ data,animate }: Props) => {
   return (
     <section className="relative min-h-screen  px-6 py-16 overflow-x-clip"
       style={{
@@ -34,32 +35,27 @@ const Story = ({ data }: Props) => {
 
 
       <div className="relative z-10">
-        <p className="text-center text-[10px] uppercase tracking-[0.4em]">
+        <p className={`text-center text-[10px] uppercase tracking-[0.4em]  ${animate ? "MunculAtas-1 " : "opacity-0"}`}>
           Our Journey
         </p>
 
-        <h2 className="mt-3 text-center font-serif text-4xl">
+        <h2 className={`mt-3 text-center  text-4xl font-Cenova uppercase   ${animate ? "MunculBawah-1 " : "opacity-0"}`}>
           Story of Love
         </h2>
 
         <div className="mt-12 space-y-6">
           {data.Story?.map((story, index) => (
-            <div
-              key={index}
-              className={`border-b pb-5 ${
-                index % 2
-                  ? "text-right"
-                  : "text-left"
-              }`}
+            <div key={index}
+              className={`border-b pb-5  ${animate ? (index % 2 ? "text-right MunculKanan-2 ": "MunculKiri-2 text-left") : "opacity-0"} `}
               style={{
                 borderColor: data.theme?.warna3,
               }}
             >
-              <p className="font-serif text-xl">
+              <p className=" text-xl">
                 {story.Head}
               </p>
 
-              <p className="mt-2 text-sm leading-6">
+              <p className="mt-2 leading-6 ">
                 {story.Story}
               </p>
             </div>

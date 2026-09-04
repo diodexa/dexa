@@ -7,7 +7,7 @@ import ChatArea from "./Sections/ChatArea";
 import InputArea from "./Sections/InputArea";
 import ModalLook from "../1.Components/ModalLook";
 import ModalGallery from "../1.Components/ModalGalery";
-import ModalGroupInfo from "../1.Components/ModalDetailGrup";
+import ModalGroupInfo from "./Sections/ModalDetailGrup";
 
 
 

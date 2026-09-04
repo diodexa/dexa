@@ -1,16 +1,16 @@
 import { useState } from "react";
-import type { Invitation } from "../../types/invitationType";
+import type { Invitation } from "../../../types/invitationType";
 
-import logoBCA from "../../../public/Icon/BCA Logo.png";
-import logoBNI from "../../../public/Icon/BNI Logo.png";
-import logoBRI from "../../../public/Icon/BRI Logo.png";
-import logoMandiri from "../../../public/Icon/Mandiri Logo.png";
-import logoCIMB from "../../../public/Icon/CIMB Niaga Logo.png";
-import logoDANA from "../../../public/Icon/Dana Logo.png";
-import logoGopay from "../../../public/Icon/GoPay Logo.png";
-import logoOVO from "../../../public/Icon/OVO Logo.png";
-import logoShopeePay from "../../../public/Icon/ShopeePay Logo.png";
-import logoSeabank from "../../../public/Icon/SeaBank Logo.png";
+import logoBCA from "../../../../public/Icon/BCA Logo.png";
+import logoBNI from "../../../../public/Icon/BNI Logo.png";
+import logoBRI from "../../../../public/Icon/BRI Logo.png";
+import logoMandiri from "../../../../public/Icon/Mandiri Logo.png";
+import logoCIMB from "../../../../public/Icon/CIMB Niaga Logo.png";
+import logoDANA from "../../../../public/Icon/Dana Logo.png";
+import logoGopay from "../../../../public/Icon/GoPay Logo.png";
+import logoOVO from "../../../../public/Icon/OVO Logo.png";
+import logoShopeePay from "../../../../public/Icon/ShopeePay Logo.png";
+import logoSeabank from "../../../../public/Icon/SeaBank Logo.png";
 
 interface Props {
   data: Invitation;
@@ -73,18 +73,11 @@ const ModalGroupInfo = ({data,isOpen,onClose,onOpenGallery,}: Props) => {
   
 
   return (
-    <div
-      className="fixed inset-0 z-[999] bg-black/70 flex items-center justify-center"
-      onClick={onClose}
-    >
-      <div
-        className="w-[95%] max-w-[385px] max-h-full overflow-y-auto rounded-2xl"
-        style={{
-          background: data.theme?.contrasfont,
-          color: data.theme?.warna1,
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="fixed inset-0 z-[999] bg-black/70 flex items-center justify-center font-Colvetica"
+      onClick={onClose}>
+      <div className="w-[95%] max-w-[385px] max-h-full overflow-y-auto rounded-2xl"
+        style={{ background: data.theme?.contrasfont,color: data.theme?.warna1,}}
+        onClick={(e) => e.stopPropagation()}>
 
         {/* ================= HEADER ================= */}
         <div className="relative flex flex-col items-center px-5 pt-6 pb-6">
@@ -102,7 +95,7 @@ const ModalGroupInfo = ({data,isOpen,onClose,onOpenGallery,}: Props) => {
             }}/>
 
           {/* Nama Grup */}
-          <h2 className="mt-3 text-lg font-bold text-center">
+          <h2 className="mt-3 text-lg text-center">
             {data.NamabridePanggilan} & {data.NamagroomPanggilan}
           </h2>
 
@@ -116,9 +109,7 @@ const ModalGroupInfo = ({data,isOpen,onClose,onOpenGallery,}: Props) => {
         <div className="px-4 py-4 border-t">
 
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-bold">
-              Gallery
-            </h3>
+            <h3 className="text-xl">Gallery</h3>
 
             {gallery.length > 0 && (
               <button
@@ -147,7 +138,7 @@ const ModalGroupInfo = ({data,isOpen,onClose,onOpenGallery,}: Props) => {
 
                   {index === 7 && gallery.length > 8 && (
                     <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">
+                      <span className="text-white text-lg">
                         +{gallery.length - 8}
                       </span>
                     </div>
@@ -166,12 +157,12 @@ const ModalGroupInfo = ({data,isOpen,onClose,onOpenGallery,}: Props) => {
         {/* ============= Save The Date ==================== */}
             <div className="flex flex-col px-4 py-5 border-t">
 
-            <h2 className="text-lg font-bold text-left mb-2">save the date</h2>
+            <h3 className="text-xl  text-left mb-2">save the date</h3>
 
             {/* ================= AKAD ================= */}
             <div className="mb-5 leading-2">
 
-                <p className="font-bold text-center mb-2">
+                <p className=" text-center mb-2">
                 Akad
                 </p>
 
@@ -227,7 +218,7 @@ const ModalGroupInfo = ({data,isOpen,onClose,onOpenGallery,}: Props) => {
 
                     <div className="min-w-0">
 
-                        <p className="font-bold text-sm">
+                        <p className=" text-sm">
                         {data.LokasiAkad}
                         </p>
 
@@ -248,7 +239,7 @@ const ModalGroupInfo = ({data,isOpen,onClose,onOpenGallery,}: Props) => {
             {/* ================= RESEPSI ================= */}
             <div className="leading-2">
 
-                <p className="font-bold text-center mb-2">Resepsi</p>
+                <p className="text-center mb-2">Resepsi</p>
 
                 <p className="text-sm opacity-70 text-center">
                 {data.TanggalResepsi} Pukul {data.JamResepsi}
@@ -300,7 +291,7 @@ const ModalGroupInfo = ({data,isOpen,onClose,onOpenGallery,}: Props) => {
 
                         <div className="min-w-0">
 
-                            <p className="font-bold text-sm">
+                            <p className="text-sm">
                             {data.LokasiResepsi}
                             </p>
 
@@ -318,9 +309,9 @@ const ModalGroupInfo = ({data,isOpen,onClose,onOpenGallery,}: Props) => {
 
 
         {/* ================= WEDDING GIFT ================= */}
-         <div className="px-4 py-4 border-t">
+         <div className="px-4 py-4 border-t tracking-[0.1em]">
 
-          <h3 className="font-bold mb-3 text-center"> Wedding Gift</h3>
+          <h3 className=" text-xl mb-3 text-center"> Wedding Gift</h3>
 
 
           {/* ================= REKENING ================= */}
@@ -350,7 +341,7 @@ const ModalGroupInfo = ({data,isOpen,onClose,onOpenGallery,}: Props) => {
 
                   <div className="flex items-center gap-2 mt-1">
 
-                    <p className="font-bold">
+                    <p >
                       {item.nomorRekening}
                     </p>
 

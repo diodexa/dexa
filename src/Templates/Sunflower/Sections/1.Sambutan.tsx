@@ -29,8 +29,8 @@ const Sambutan = ({ data, isOpen }: Props) => {
 
         </div>
         
-           <div className={` flex flex-col items-center justify-center px-5 font-LoveFlorida transition-all duration-6000 ease-out ${isOpen? "scale-100 opacity-100": "scale-50 opacity-0"}`}>
-            <p className=" text-xl uppercase tracking-[0.4em]  ">
+           <div className={` flex flex-col items-center justify-center px-5  transition-all duration-6000 ease-out ${isOpen? "scale-100 opacity-100": "scale-50 opacity-0"}`}>
+            <p className=" text-xl uppercase font-Cenova  ">
               {data.Salam}
             </p>
 
@@ -38,7 +38,7 @@ const Sambutan = ({ data, isOpen }: Props) => {
               {data.Sambutan}
             </p>
 
-            <div className="mt-8 font-BetterChill text-5xl" 
+            <div className="mt-8 font-BylinerScript text-5xl" 
             style={{color:data.theme?.warna3}}>
               {data.NamabridePanggilan}
               <span className="mx-2 italic">&</span>

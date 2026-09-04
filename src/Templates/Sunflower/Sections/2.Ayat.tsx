@@ -25,7 +25,7 @@ const Ayat = ({ data,animate }: Props) => {
       <div className={`relative z-10 flex max-w-[650px] flex-col items-center ${animate ? "Fadein-1 " : ""}`}>
 
         <p className="text-base italic leading-8 md:text-lg md:leading-9">
-          “{data.Ayat}”
+          {data.Ayat}
         </p>
 
         <div

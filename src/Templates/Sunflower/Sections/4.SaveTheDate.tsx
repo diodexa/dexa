@@ -22,7 +22,7 @@ const SaveTheDate = ({ data,animate }: Props) => {
         <img src="/Ornament/awan1.png" alt=""className="absolute right-20 bottom-0 w-auto h-[40%] object-contain  MunculKanan "/>
       </div>
 
-      <p className={` text-xl uppercase tracking-[0.4em] mt-10 ${animate ? "MunculAtas-1 " : "opacity-0"}`}>
+      <p className={` text-xl uppercase tracking-[0.4em] mt-10 font-Cenova ${animate ? "MunculAtas-1 " : "opacity-0"}`}>
         Save The Date
       </p>
 
@@ -31,10 +31,10 @@ const SaveTheDate = ({ data,animate }: Props) => {
         <FloralDivider color={data.theme?.warna3} width={500} />
       </div>
 
-      <div className="mt-5 w-full flex flex-col space-y-8 items-end">
-        <div className="w-[200px] flex flex-col items-end text-right">
+      <div className="mt-5 w-full flex flex-col space-y-8 items-end tracking-[0.1em] ">
+        <div className={`w-[200px] flex flex-col items-end text-right ${animate ? "MunculKanan-1 " : "opacity-0"}  `}>
           <div>
-            <p className="font-serif text-2xl">
+            <p className="font-Cenova uppercase text-2xl  ">
               Akad
             </p>
             <p className="mt-2 text-sm">
@@ -50,7 +50,7 @@ const SaveTheDate = ({ data,animate }: Props) => {
           </div>
           <div className="z-11">
               <a href={data.LinkGoogleMapsResepsi} target="blank" >
-                <button className="border-1  flex items-center p-1 rounded-md hover:scale-110 transition mt-2" style={{background:data.theme?.warnaButtonBackground, color:data.theme?.contrasfont}}>
+                <button className="border-1  flex items-center p-1 rounded-md hover:scale-110 transition mt-2 " style={{background:data.theme?.warnaButtonBackground, color:data.theme?.contrasfont}}>
                   <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -64,9 +64,9 @@ const SaveTheDate = ({ data,animate }: Props) => {
             </div>
         </div>
 
-        <div className="text-left flex flex-col ">
+        <div className={`text-left flex flex-col ${animate ? "MunculKiri-2 " : "opacity-0"}`} >
           <div>
-            <p className="font-serif text-2xl">
+            <p className="font-Cenova uppercase  text-2xl ">
               Resepsi
             </p>
             <p className="mt-2 text-sm">

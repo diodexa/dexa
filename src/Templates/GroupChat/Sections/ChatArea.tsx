@@ -90,7 +90,7 @@ const ChatArea = ({ data, comments, guest, isOpen, onOpenImage, onOpenVideo, ope
     return (
       <div key={`${isOpen}-${index}`}
         className="flex items-start gap-2 w-full animate-[chatIn_0.2s_ease-out]"
-        style={{ animationDelay: `${index * 0.15}s`, animationFillMode: "both" }}
+        style={{ animationDelay: `${index * 1}s`, animationFillMode: "both" }}
       >
         <img src={Chat.FotoProfil}
           alt=""
@@ -102,11 +102,11 @@ const ChatArea = ({ data, comments, guest, isOpen, onOpenImage, onOpenVideo, ope
         />
 
         <div
-          className="max-w-[72%] min-w-0 rounded-2xl rounded-tl-sm px-3 py-2 shadow-sm text-left"
+          className="max-w-[72%] min-w-0 rounded-2xl rounded-tl-sm px-3 py-2 shadow-sm text-left font-Colvetica"
           style={sticker ? { background: "transparent" } : { background: data.theme?.contrasfont }}
         >
           <strong
-            className="block text-sm font-semibold truncate mb-0.5 text-left"
+            className="block text-sm  truncate mb-0.5 text-left"
             style={{ color: data.theme?.warna3 }}
           >
             {Chat.Nama}
@@ -184,16 +184,14 @@ const ChatArea = ({ data, comments, guest, isOpen, onOpenImage, onOpenVideo, ope
         />
 
         <div
-          className="max-w-[72%] min-w-0 rounded-2xl rounded-tl-sm px-3 py-2 shadow-sm text-left"
+          className="max-w-[72%] min-w-0 rounded-2xl rounded-tl-sm px-3 py-2 shadow-sm text-left font-Colvetica"
           style={{
             background: sticker ? "transparent" : data.theme?.contrasfont,
             border: sticker ? "none" : `1px solid ${data.theme?.warna3}`,
-          }}
-        >
+          }} >
           <strong
             className={`block text-sm truncate mb-0.5 text-left rounded ${sticker? "pl-2" : ""}`}
-            style={{ color: data.theme?.warna3, background: data.theme?.contrasfont }}
-          >
+            style={{ color: data.theme?.warna3, background: data.theme?.contrasfont }}>
             {comment.nama}
           </strong>
 

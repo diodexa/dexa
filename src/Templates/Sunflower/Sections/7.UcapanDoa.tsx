@@ -9,9 +9,10 @@ interface Props {
   loadComments: () => Promise<void>;
   comments : Comment[]
   scrollY: number;
+
 }
 
-const Ucapan = ({data, guest, loadComments, comments}:Props) =>  {
+const Ucapan = ({data, guest, loadComments, comments, }:Props) =>  {
   const idUndangan = `${data.template} ${data.NamabridePanggilan}-${data.NamagroomPanggilan}`
   const [nama,setNama] = useState (guest || "");
   const [ucapan,setUcapan] = useState ("");
@@ -85,13 +86,13 @@ const Ucapan = ({data, guest, loadComments, comments}:Props) =>  {
         <div className=" w-full h-full  bg-repeat"
         style={{ backgroundImage: "url('/Ornament/sun1.png')" }}/>
     </div>
-    <div className="relative flex h-[110px] mt-10 w-full shrink-0 items-center justify-center">
+    <div className={`relative flex h-[110px] mt-10 w-full shrink-0 items-center justify-center `}>
 
-        <h2 className="   text-4xl">Ucapan & Doa</h2>
+        <h2 className=" font-Cenova uppercase  text-4xl">Ucapan & Doa</h2>
     </div>
 
     <div className="mx-auto flex w-full max-w-[600px] flex-1 min-h-0 flex-col px-4">
-        <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border p-2 shadow-sm" style={{ background: data.theme?.warna2, color: data.theme?.ContrasBackgroundColor }}>
+        <div className={`flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border p-2 shadow-sm`} style={{ background: data.theme?.warna2, color: data.theme?.ContrasBackgroundColor }}>
         <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-hidden">
             {comments.length === 0 ? (
             <div className="flex h-full items-center justify-center">
@@ -122,10 +123,10 @@ const Ucapan = ({data, guest, loadComments, comments}:Props) =>  {
         </div>
         </div>
 
-        <form className="shrink-0 px-1 pb-5 pt-4" onSubmit={handleSubmit}>
+        <form className={`shrink-0 px-1 pb-5 pt-4 `} onSubmit={handleSubmit}>
         <input required type="text" placeholder="Nama kamu" value={nama} onChange={(e) => setNama(e.target.value)} className="mb-2 w-full rounded-lg border bg-transparent px-3 py-2 text-sm outline-none" style={{ background: data.theme?.warna2, color: data.theme?.ContrasBackgroundColor }} />
         <textarea required placeholder="Tulis ucapan dan doa..." value={ucapan} onChange={(e) => setUcapan(e.target.value)} className="h-[80px] w-full resize-none rounded-lg border px-3 py-2 text-sm outline-none" style={{ background: data.theme?.warna2, color: data.theme?.ContrasBackgroundColor }} />
-        <div className="mt-2 flex items-center justify-between">
+        <div className="mt-2 flex items-center justify-end gap-7">
             <label className="flex cursor-pointer items-center gap-2 text-sm">
             <input type="checkbox" checked={kehadiran === "Hadir"} style={{ accentColor: data.theme?.warnaButtonBackground }} onChange={(e) => setKehadiran(e.target.checked ? "Hadir" : "Tidak Hadir")} />
             Hadir

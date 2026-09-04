@@ -1,9 +1,9 @@
 import type { Invitation } from "../../types/invitationType";
 
-export const ContohScrollFloral: Invitation = {
-  slug: "Floral",
+export const ContohSunflower: Invitation = {
+  slug: "Sunflower",
 
-  template: "Floral",
+  template: "Sunflower",
 
   Namabride: "Martha Nila S.pd",
   NamabridePanggilan : "Martha",
