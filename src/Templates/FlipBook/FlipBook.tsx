@@ -46,11 +46,27 @@ const FlipBook = ({ data,guest  }: Props) => {
   const pageDistance = 700;
 
   const [comments, setComments] = useState<Comment[]>([]);
+  const [copied,setCopied] = useState(false)
   
   const handleOpenGallery = (index: number) => {
     setSelectedIndex(index);
     setOpenGallery(true);
   };
+
+
+  const handleCopy = async (nomorRekening: string) => {
+  try {
+    await navigator.clipboard.writeText(nomorRekening);
+    setCopied(true)
+
+  } catch (err) {
+    console.error("Gagal copy:", err);
+  }
+  finally {
+    setTimeout(()=> setCopied(false), 1500)
+  }
+};
+
 // =========================
 // post fetch ucapan
   // =========================
@@ -117,14 +133,14 @@ const FlipBook = ({ data,guest  }: Props) => {
     const halaman34Active =(getRotate(2) >= 148) && (getRotate(3)< 93) ;
     const halaman67Active =(getRotate(3) >= 148) && (getRotate(4)< 93) ;
     const halaman1011Active =(getRotate(5) >= 148) && (getRotate(6)< 93) ;
-    const halaman1213Active =(getRotate(6) >= 93) && (getRotate(7)< 93) ;
-    const halaman1415Active =(getRotate(7) >= 93) && (getRotate(8)< 93) ;
+    const halaman1213Active =(getRotate(6) >= 93) && (getRotate(7)< 49) ;
+    const halaman1415Active =(getRotate(7) >= 148) && (getRotate(8)< 120) ;
 
     
     //scrollevent di book
   
-    
-
+  
+console.log(getRotate(8))
     
     // =========================
   // LIST SEMUA PAPER
@@ -167,7 +183,7 @@ const FlipBook = ({ data,guest  }: Props) => {
     // 7
     {
       front: <Halaman13 data={data} isActive={halaman1213Active} comments={comments}  />,
-      back: <Halaman14  data={data} isActive={halaman1415Active} />,
+      back: <Halaman14  data={data} isActive={halaman1415Active} onCopy={handleCopy}/>,
     },
     // 8
     {
@@ -183,18 +199,18 @@ const FlipBook = ({ data,guest  }: Props) => {
  
   
   return ( 
-    <div className="min-h-screen flex justify-center bg-gray-600">
+    <div className=" flex justify-center bg-gray-600">
       <div className="relative w-[385px] max-w-full  overflow-x-auto"
       style={{background:data.theme?.contrasfont}}>
         <div className="absolute top-15 left-1/2 -translate-x-1/2 w-full pointer-events-none" style={{color:data.theme?.warna3}}>
           <h2 className="font-SephoraHayden text-5xl">{data.NamabridePanggilan} & {data.NamagroomPanggilan} </h2>
           <h2>Wedding</h2>
         </div>
-        <div className="absolute bottom-15 left-1/2 -translate-x-1/2 w-full flex flex-col items-center pointer-events-none"
+        <div className="absolute bottom-30 left-1/2 -translate-x-1/2 w-full flex flex-col items-center pointer-events-none"
         style={{ color: data.theme?.warna3 }}>
           <p className="text-sm">swipe left</p>
 
-          <i className="fa-solid fa-arrow-left text-2xl animate-[slideRight_1.2s_ease-in-out_infinite]" />
+          <i className="fa-solid fa-arrow-left text-2xl animate-[slideLeft_1.2s_ease-in-out_infinite]" />
         </div>
         <Loading isLoading={loading} />
         <ModalGallery isOpen={openGallery} images={data.gallery ?? []}
@@ -230,6 +246,11 @@ const FlipBook = ({ data,guest  }: Props) => {
             </div>
           </div>
         </div>
+        {copied && (
+          <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-[9999] bg-black/80 text-white rounded-lg text-sm px-3 py-2">
+            ✓ Berhasil disalin
+          </div>
+        )}
       </div>
     </div>
   );

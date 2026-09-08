@@ -6,6 +6,7 @@ import { ContohJourneyCream } from "./ContohJourneyCream";
 import { ContohSunflower } from "./ContohSunflower";
 import { ContohJourneyLeaf } from "./ContohJourneyLeaf";
 import { ContohMonohrome } from "./ContohMonochrome";
+import { ContohRustic } from "./ContohRustic";
 
 
 
@@ -16,7 +17,8 @@ export const invitations = [
   ContohJourneyLeaf,
   ContohSunflower,
   ContohGroupChat,
-  ContohMonohrome
+  ContohMonohrome,
+  ContohRustic
 ];
 
 

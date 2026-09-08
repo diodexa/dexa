@@ -9,7 +9,7 @@ const Halaman15 = ({ data }: Props) => {
   const images = data.gallery ?? [];
 
   return (
-    <div className="Kertas__half Kertas__half--front w-full h-full"
+    <div className="Kertas__half Kertas__half--front w-full h-full overflow-hidden"
       style={{ background: data.theme?.warna1, color: data.theme?.warna2}}>
       <div className="absolute inset-0 z-10 pointer-events-none"
           style={{ background: `linear-gradient(to top,${data.theme?.contrasfont},
@@ -28,6 +28,8 @@ const Halaman15 = ({ data }: Props) => {
             src={image}
             alt={`Foto ${index + 1}`}
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
 
         </div>

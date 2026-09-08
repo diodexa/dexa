@@ -8,7 +8,7 @@ interface Props {
 const Halaman4  = ({data, isActive}:Props) =>  {
   return (
     <div className="Kertas__half Kertas__half--back  flex w-full h-full relative"
-    style={{background: data.theme?.warna1, color: data.theme?.warna2}}>
+    style={{background: data.theme?.warna1, color: data.theme?.warna2,}}>
         {data.Background?.Background4 ? (
              <img src={data.Background.Background4} alt="" className="absolute inset-0 w-full h-full object-cover" />
         ) : 
@@ -58,9 +58,10 @@ const Halaman4  = ({data, isActive}:Props) =>  {
             </div>
         </div>
       
-        <div className="relative w-15">
-            <div className=" absolute right-0 top-1/2 -translate-y-1/2 w-fit py-2 bg-white/30 h-full  " style={{color:data.theme?.warna3}}>
-                <h2 className="text-3xl font-Colvetica" style={{writingMode: "sideways-lr", textOrientation: "mixed"}}>{data.Namagroom}</h2>
+        <div className="relative w-15 h-[55vh]  bg-white/30 ">
+            <div className=" absolute  w-fit py-2  h-full flex items-center" style={{color:data.theme?.warna3}}>
+                <h2 className="text-3xl font-Colvetica" 
+                style={{writingMode: "sideways-lr", textOrientation: "mixed", backgroundColor: "rgba(255, 255, 255, 0.3)" }}>{data.Namagroom}</h2>
             </div>
         </div>
         </>}

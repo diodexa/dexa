@@ -199,6 +199,14 @@ body {
   animation: sway 6s ease-in-out infinite;
   transform-origin: bottom center;
 }
+.sway-flower2 {
+  animation: sway 8s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+.sway-flower1 {
+  animation: sway 5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
 .flowerGrow {
   animation: flowerGrow 1.2s ease-out 0.6s forwards;
   transform-origin: bottom center;

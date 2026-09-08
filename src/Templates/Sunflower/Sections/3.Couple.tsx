@@ -32,7 +32,7 @@ const FloralCouple = ({ data, animate }: Props) => {
         <div className="w-full flex flex-col gap-8 text-xl">
           {/* BRIDE */}
           <div className={`flex items-center gap-4 `} >
-            <div className={`shrink-0  bg-white p-2 pb-1 shadow-lg rotate-[-3deg]  ${animate ? "Fadein-2" : "opacit-0"}`}>
+            <div className={`shrink-0  bg-white p-2 pb-1 shadow-lg rotate-[-3deg]  ${animate ? "Fadein-2" : "opacity-0"}`}>
               <img src={data.FotoBride} alt={data.Namabride}
                 className="w-[100px] h-[120px] object-cover"/>
               <p className="font-BylinerScript text-3xl " style={{color:data.theme?.warna1}}>Bride</p>

@@ -13,9 +13,9 @@ const Halaman3  = ({data,isActive}:Props) =>  {
             <img src={data.Background.Background3} alt="" className="absolute inset-0 w-full h-full object-cover" />
         ) : 
         <>
-        <div className="relative w-15">
-            <div className=" absolute left-0 top-1/2 -translate-y-1/2 w-fit py-2 bg-white/30 h-full " style={{color:data.theme?.warna3}}>
-                <h2 className="text-3xl font-Colvetica" style={{writingMode: "sideways-lr", textOrientation: "mixed"}}>{data.Namabride}</h2>
+        <div className="relative w-15 h-full  bg-white/30 ">
+            <div className=" absolute  flex items-end inset-0 w-fit py-2  h-full " style={{color:data.theme?.warna3}}>
+                <h2 className="text-3xl mb-10 ml-5 font-Colvetica rotate-[-90deg] whitespace-nowrap origin-left " >{data.Namabride}</h2>
             </div>
         </div>
         <div className=" w-full p-2 font-ColveticaCond tracking-[0.1rem] text-right flex flex-col items-end justify-center mb-5">

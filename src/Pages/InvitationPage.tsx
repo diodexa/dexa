@@ -8,6 +8,7 @@ import Monochrome from "../Templates/Monochrome/Monochrome";
 import ScrollLeaf from "../Templates/Leaf/Leaf";
 import ScrollCream from "../Templates/Leaf copy/Leaf";
 import Sunflower from "../Templates/Sunflower/Sunflower";
+import Rustic from "../Templates/Rustic/Rustic";
 
 const InvitationPage = () => {
   const { slug, guest } = useParams();
@@ -57,6 +58,12 @@ const InvitationPage = () => {
     case "Monochrome":
       return (<Monochrome data={invitation} guest={guestName}/>
       );
+
+    case "Rustic":
+      return (<Rustic data={invitation} guest={guestName}/>
+      );
+
+
     default:
       return (
         <div className="flex items-center justify-center h-screen">

@@ -66,7 +66,7 @@ const GroupChat = ({ data , guest }: Props) => {
 
   return (
     <div ref={scrollRef}
-    className={` mx-auto h-screen w-[385px] max-w-full overflow-x-hidden overflow-y-auto `}
+    className={` mx-auto h-[100dvh] w-[385px] max-w-full overflow-x-hidden overflow-y-auto `}
     style={{color: data.theme?.warna1,}}>
       <Hero  data={data} guest={guest} isOpen={isOpen} setIsOpen={setIsOpen}/>
       <ModalLook isOpen={isModalOpen}
@@ -84,11 +84,11 @@ const GroupChat = ({ data , guest }: Props) => {
         onClose={() => setIsGroupInfoOpen(false)}
         onOpenGallery={handleOpenChatGallery}
       />
-    <div className="flex flex-col h-full relative">
+    <div className="flex flex-col h-[100dvh] relative">
       <div className="flex-none shrink-0">
         <Header data={data} isOpen={isOpen} onOpenGroupInfo={() => setIsGroupInfoOpen(true)}/>
       </div>
-      <div className="flex-1 overflow-y-auto shrink-0 ">
+      <div className="flex-1 overflow-y-auto shrink-0 min-h-0 ">
         <ChatArea data={data} comments={comments} isOpen={isOpen} onOpenImage={handleOpenImage} openGallery={handleOpenChatGallery} onOpenVideo={handleOpenVideo} guest={guest}/>
       </div>
       <div className="flex-none  shrink-0">
