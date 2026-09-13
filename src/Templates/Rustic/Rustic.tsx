@@ -154,10 +154,12 @@ console.log(scrollY)
         initialIndex={selectedIndex}
         onClose={() => setOpenGallery(false)}
       />
+      
 
       <div className="pointer-events-none sticky top-0 z-0 h-0">
         <Background data={data} isOpen={isOpen}/>
       </div>
+      
 
       <div className="pointer-events-none sticky top-0 z-[2] h-0">
         
@@ -170,11 +172,12 @@ console.log(scrollY)
           <img src="/Ornament/Pohon2.webp" alt=""
             className="sway-flower2 h-full w-auto object-contain object-right-bottom scale-x-[-1]" />
         </div>
-
+        
 
       </div>
       {/* OPENING */}
       <div className="relative z-[1]">
+        
         <Opening data={data} isOpen={isOpen}/>
       </div>
       <div className="absolute z-[4] ">

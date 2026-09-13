@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import type { Invitation } from "../../../types/invitationType";
 
 interface Props {
@@ -7,17 +6,17 @@ interface Props {
 
 const Closing = ({ data }: Props) => {
   const images = data.gallery ?? [];
-  const [currentImage, setCurrentImage] = useState(images.length - 1);
+  // const [currentImage, setCurrentImage] = useState(images.length - 1);
 
-  useEffect(() => {
-    if (images.length <= 1) return;
+  // useEffect(() => {
+  //   if (images.length <= 1) return;
 
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
-    }, 4000);
+  //   const interval = setInterval(() => {
+  //     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
+  //   }, 4000);
 
-    return () => clearInterval(interval);
-  }, [images.length]);
+  //   return () => clearInterval(interval);
+  // }, [images.length]);
 
 
   return (

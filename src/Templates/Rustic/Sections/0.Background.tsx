@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import type { Invitation } from "../../../types/invitationType";
 
 interface Props {
@@ -9,24 +8,24 @@ interface Props {
 
 const Background = ({ data, isOpen }: Props) => {
 
-    const [scrollProgress, setScrollProgress] = useState(0);
+    // const [scrollProgress, setScrollProgress] = useState(0);
 
-    useEffect(() => {
-    const handleScroll = () => {
-        const scrollY = window.scrollY;
+    // useEffect(() => {
+    // const handleScroll = () => {
+    //     const scrollY = window.scrollY;
 
-        const progress = Math.min(
-        Math.max(scrollY / 300, 0),
-        1
-        );
+    //     const progress = Math.min(
+    //     Math.max(scrollY / 300, 0),
+    //     1
+    //     );
 
-        setScrollProgress(progress);
-    };
+    //     setScrollProgress(progress);
+    // };
 
-    window.addEventListener("scroll", handleScroll);
+    // window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    // return () => window.removeEventListener("scroll", handleScroll);
+    // }, []);
   return (
     <section className={`relative flex h-screen items-center justify-center overflow-clip  text-center transition-all duration-2000 ease-out  `}
       style={{background: data.theme?.warna1,color: data.theme?.contrasfont,}}>
@@ -40,7 +39,7 @@ const Background = ({ data, isOpen }: Props) => {
                 style={{ backgroundImage: "url('/Ornament/RumahJoglo.webp')" }} />
             </div>
 
-            <div className={`absolute bottom-55 -right-80 h-[350px] opacity-81 ${isOpen ? "MunculKananBackground-1" : ""}`}>
+            <div className={`absolute bottom-55 -right-90 h-[350px] opacity-81 ${isOpen ? "MunculKananBackground-1" : ""}`}>
                 <img src="/Ornament/Pohon2.webp" alt=""
                 className="sway-flower2 h-full w-auto object-contain object-right-bottom scale-x-[-1]" />
             </div>
@@ -101,7 +100,7 @@ const Background = ({ data, isOpen }: Props) => {
                 </div>
                 
             </div>
-            <div className={`absolute bottom-50 -left-80 h-[350px] opacity-81  ${isOpen ? "MunculKiriBackground-1" : ""}`}>
+            <div className={`absolute bottom-50 -left-90 h-[350px] opacity-81  ${isOpen ? "MunculKiriBackground-1" : ""}`}>
                 <img src="/Ornament/Pohon1.webp" alt=""
                 className="sway-flower2 h-full w-auto object-contain object-right-bottom scale-x-[-1] " />
             </div>
