@@ -37,13 +37,13 @@ const Couple = ({ data, animate }: Props) => {
                 </div>
 
 
-                <div className={` flex items-center gap-5 `}>
-                    <div className={`flex-flex-col justify-center items-center ${animate ? "MunculKiri-1 " : "opacity-0"}`} >
-                        <p className="mt-5  text-lg" style={{ color: data.theme?.warna3 }}>{data.Namabride} <span>{data.GelarBride} </span> </p>
-                        <p className="mt-1 text-xs ">Putri dari<br />{data.BapakpengantinWanita} & {data.IbupengantinWanita}</p>
+                <div className={` flex items-start justify-center gap-5  `}>
+                    <div className={`flex flex-col justify-center items-center ${animate ? "MunculKiri-1 " : "opacity-0"}`} >
+                        <p className="mt-5  " style={{ color: data.theme?.warna3 }}>{data.Namabride} <span>{data.GelarBride} </span> </p>
+                        <p className="mt-1 text-xs ">Putri dari<br />{data.BapakpengantinWanita} <br/> & <br/> {data.IbupengantinWanita}</p>
                         <div className="mt-4 flex flex-col gap-2">
                             {data.AkunIGWanita && (
-                            <div className="flex items-center justify-center text-sm ">
+                            <div className="flex items-center justify-center text-xs ">
                                 <a href={`https://instagram.com/${data.AkunIGWanita}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-end gap-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" 
                                         viewBox="0 0 24 24" 
@@ -71,9 +71,9 @@ const Couple = ({ data, animate }: Props) => {
                         </div>
                     </div>
 
-                    <div className={`flex-flex-col justify-center items-center ${animate ? "MunculKanan-1 " : "opacity-0"}`}>
-                        <p className="mt-5  text-lg " style={{ color: data.theme?.warna3 }}>{data.Namagroom} <span>{data.GelarGroom} </span> </p>
-                        <p className="mt-1 text-xs ">Putri dari<br />{data.BapakpengantinPria} & {data.IbupengantinPria}</p>
+                    <div className={`flex-flex-col justify-center items-center  ${animate ? "MunculKanan-1 " : "opacity-0"}`}>
+                        <p className="mt-5   " style={{ color: data.theme?.warna3 }}>{data.Namagroom} <span>{data.GelarGroom} </span> </p>
+                        <p className="mt-1 text-xs ">Putri dari<br />{data.BapakpengantinPria} <br/>& <br/> {data.IbupengantinPria}</p>
                         <div className="mt-4 flex flex-col gap-2">
                             {data.AkunIGPria && (
                             <div className="flex items-center justify-center text-xs ">

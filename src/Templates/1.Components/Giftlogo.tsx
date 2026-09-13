@@ -8,6 +8,7 @@ import logoGopay from "../../../public/Icon/GoPay Logo.png";
 import logoOVO from "../../../public/Icon/OVO Logo.png";
 import logoShopeePay from "../../../public/Icon/ShopeePay Logo.png";
 import logoSeabank from "../../../public/Icon/SeaBank Logo.png";
+import logoBSI from "../../../public/Icon/BSI Logo.png";
 
 export const GiftLogo: Record<string, string> = {
   BCA: logoBCA,
@@ -20,4 +21,5 @@ export const GiftLogo: Record<string, string> = {
   DANA: logoDANA,
   OVO: logoOVO,
   SHOPEEPAY: logoShopeePay,
+  BSI : logoBSI,
 };

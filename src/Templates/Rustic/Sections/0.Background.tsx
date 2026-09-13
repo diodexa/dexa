@@ -44,7 +44,7 @@ const Background = ({ data, isOpen }: Props) => {
                 className="sway-flower2 h-full w-auto object-contain object-right-bottom scale-x-[-1]" />
             </div>
 
-            <div className={`h-screen w-screen inset-0 z-[1] ${isOpen ? "MunculKananZoomOutBackground-2" : "opacity-0"}`}>
+            <div className={`absolute inset-0 z-[1] ${isOpen ? "MunculKananZoomOutBackground-2" : "opacity-0"}`}>
 
                 {/* KANAN */}
                 <div className={`absolute bottom-5 -right-10 h-[250px] `}>
