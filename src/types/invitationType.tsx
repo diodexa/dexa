@@ -5,6 +5,7 @@ export type Invitation = {
 
   Namabride: string;
   NamabridePanggilan: string;
+  GelarBride? : string;
   AkunIGWanita? : string;
   AkunTikTokWanita? : string;
   BapakpengantinWanita: string;
@@ -13,6 +14,7 @@ export type Invitation = {
 
   Namagroom: string;
   NamagroomPanggilan: string;
+  GelarGroom? : string;
   AkunIGPria? : string;
   AkunTikTokPria? : string;
   BapakpengantinPria: string;
@@ -43,6 +45,7 @@ export type Invitation = {
   Salam?: string;
   Sambutan? : string;
   Ayat? : string;
+  Ayat2? : string;
   NamaSurat? : string;
 
   Story?: {

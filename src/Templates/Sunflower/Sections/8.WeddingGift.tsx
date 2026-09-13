@@ -11,6 +11,7 @@ import logoOVO from "../../../../public/Icon/OVO Logo.png";
 import logoShopeePay from "../../../../public/Icon/ShopeePay Logo.png";
 import logoSeabank from "../../../../public/Icon/SeaBank Logo.png";
 import { useState } from "react";
+import { GiftLogo } from "../../1.Components/Giftlogo";
 
 interface Props {
   data: Invitation;
@@ -18,18 +19,18 @@ interface Props {
 }
 
 const WeddingGift = ({ data }: Props) => {
-  const GiftLogo: Record<string, string> = {
-    BCA: logoBCA,
-    BNI: logoBNI,
-    BRI: logoBRI,
-    MANDIRI: logoMandiri,
-    SEABANK: logoSeabank,
-    CIMB: logoCIMB,
-    GOPAY: logoGopay,
-    DANA: logoDANA,
-    OVO: logoOVO,
-    SHOPEEPAY: logoShopeePay,
-  };
+  // const GiftLogo: Record<string, string> = {
+  //   BCA: logoBCA,
+  //   BNI: logoBNI,
+  //   BRI: logoBRI,
+  //   MANDIRI: logoMandiri,
+  //   SEABANK: logoSeabank,
+  //   CIMB: logoCIMB,
+  //   GOPAY: logoGopay,
+  //   DANA: logoDANA,
+  //   OVO: logoOVO,
+  //   SHOPEEPAY: logoShopeePay,
+  // };
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async (nomorRekening: string) => {

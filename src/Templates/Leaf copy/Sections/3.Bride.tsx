@@ -57,7 +57,7 @@ const Bride = ({ data, scrollY }: Props) => {
           <div className="flex mt-2 gap-2">         
               {data.AkunIGWanita && (
               <div>
-                  <a href={`https://instagram.com/${data.AkunIGPria}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-end"
+                  <a href={`https://instagram.com/${data.AkunIGWanita}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-end"
                   style={{pointerEvents: isActive ? "auto" : "none"}}>
                       <svg xmlns="http://www.w3.org/2000/svg" 
                           viewBox="0 0 24 24" 
@@ -72,7 +72,7 @@ const Bride = ({ data, scrollY }: Props) => {
                 )}
                 {data.AkunTikTokWanita && (
                 <div className="flex items-center justify-end">
-                    <a href={`https://tiktok.com/@${data.AkunTikTokPria}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-end"
+                    <a href={`https://tiktok.com/@${data.AkunTikTokWanita}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-end"
                     style={{pointerEvents: isActive ? "auto" : "none"}}>
                         <svg xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"

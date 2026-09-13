@@ -8,6 +8,16 @@ import ModalGallery from "../1.Components/ModalGalery";
 // import BottomNav from "../1.Components/BottomNav";
 import AudioController from "../1.Components/Audio";
 import Opening from "./Sections/1.Opening";
+import Background from "./Sections/0.Background";
+import Ayat from "./Sections/2.Ayat";
+import Sambutan from "./Sections/3.Sambutan";
+import Couple from "./Sections/4.Couple";
+import SaveTheDate from "./Sections/5.SaveTheDate";
+import Gallery from "./Sections/6.Gallery";
+import UcapanDoa from "./Sections/7.UcapanDoa";
+import WeddingGift from "./Sections/8.WedingGift";
+import Closing from "./Sections/9.Closing";
+import Hero from "./Sections/Hero";
 
 interface Props {
   data: Invitation;
@@ -25,10 +35,13 @@ const Rustic = ({ data, guest }: Props) => {
 
   const [animations, setAnimations] = useState({
   ayat: false,
+  sambutan :false,
   couple: false,
   saveDate: false,
   story: false,
   gallery: false,
+  ucapan: false,
+  gift: false
 });
 
   const idUndangan =`${data.template} ${data.NamabridePanggilan}-${data.NamagroomPanggilan}`;
@@ -98,12 +111,12 @@ const Rustic = ({ data, guest }: Props) => {
   // NAVIGATION
   // =========================
   
-  const scrollTo = (position: number) => {
-    scrollRef.current?.scrollTo({
-      top: position,
-      behavior: "smooth",
-    });
-  };
+  // const scrollTo = (position: number) => {
+  //   scrollRef.current?.scrollTo({
+  //     top: position,
+  //     behavior: "smooth",
+  //   });
+  // };
   
   // =========================
   // Animasi
@@ -112,11 +125,15 @@ const Rustic = ({ data, guest }: Props) => {
   useEffect(() => {
     setAnimations(prev => ({
       ...prev,
-      ayat: scrollY >= 64,
-      couple: scrollY >= 675,
-      saveDate: scrollY >= 1231,
+      ayat: scrollY >= 203,
+      sambutan: scrollY >= 862,
+      couple: scrollY >= 1350,
+      saveDate: scrollY >= 2044,
       story: scrollY >= 2036,
-      gallery: scrollY>=2728,
+      gallery: scrollY>=2874,
+      ucapan: scrollY>=3760,
+      gift: scrollY>=4832,
+
       
     }));
   }, [scrollY]);
@@ -127,15 +144,54 @@ console.log(scrollY)
 
   return (
     <div ref={scrollRef}
-      className="relative mx-auto h-screen max-w-[385px] overflow-x-clip overflow-y-auto font-Sunflower"
-      style={{ background: data.theme?.warna1,color: data.theme?.warna2,}} >
+    className="relative mx-auto h-screen max-w-[385px] overflow-x-clip overflow-y-auto font-BethanyElingston"
+    style={{ background: data.theme?.warna1, color: data.theme?.warna2 }}>
+      <Hero data={data} isOpen={isOpen} setIsOpen={setIsOpen} guest={guest} />
+      <AudioController data={data} isOpen={isOpen}/>
+      <ModalGallery
+        isOpen={openGallery}
+        images={data.gallery ?? []}
+        initialIndex={selectedIndex}
+        onClose={() => setOpenGallery(false)}
+      />
 
-        <AudioController data={data} isOpen={isOpen}/>
-        <ModalGallery  isOpen={openGallery} images={data.gallery ?? []} initialIndex={selectedIndex} onClose={() => setOpenGallery(false)}/>
+      <div className="pointer-events-none sticky top-0 z-0 h-0">
+        <Background data={data} isOpen={isOpen}/>
+      </div>
 
-        <Opening data={data} isOpen={isOpen} /> 
+      <div className="pointer-events-none sticky top-0 z-[2] h-0">
+        
+        <div className={`absolute -top-20 -right-60 h-[250px] ${isOpen ? "MunculKananBackground-1" : ""}`}>
+          <img src="/Ornament/Pohon1.webp" alt=""
+            className="sway-flower2 h-full w-auto object-contain object-right-bottom scale-x-[-1]"/>
+        </div>
 
-    </div>
+        <div className={`absolute -top-20 -left-50 h-[250px] ${isOpen ? "MunculKiriBackground-1" : ""}`}>
+          <img src="/Ornament/Pohon2.webp" alt=""
+            className="sway-flower2 h-full w-auto object-contain object-right-bottom scale-x-[-1]" />
+        </div>
+
+
+      </div>
+      {/* OPENING */}
+      <div className="relative z-[1]">
+        <Opening data={data} isOpen={isOpen}/>
+      </div>
+      <div className="absolute z-[4] ">
+        <Ayat data={data} animate={animations.ayat}/>
+        <Sambutan data={data} animate={animations.sambutan}/>
+        <Couple data={data} animate={animations.couple}/>
+        <SaveTheDate data={data} animate={animations.saveDate}/>
+        <Gallery data={data} openGallery={handleOpenGallery} animate={animations.gallery}/>
+        <UcapanDoa data={data} loadComments={loadComments} comments={comments} guest={guest} animate={animations.ucapan}/>
+        <WeddingGift data={data} animate={animations.gift}/>
+        <Closing data={data}/>
+
+      </div>
+
+      {/* FOREGROUND */}
+
+  </div>
   );
 };
 

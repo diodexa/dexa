@@ -5,17 +5,19 @@ export const ContohRustic: Invitation = {
 
   template: "Rustic",
 
-  Namabride: "Oci",
+  Namabride: "Oci Putri Ibunya",
   NamabridePanggilan : "Oci",
+  GelarBride : "S.pd",
   AkunTikTokWanita : "Oci",
   AkunIGWanita: "Oci",
   BapakpengantinWanita : "Bpk Heri",
   IbupengantinWanita : "Ibu Sumi",
 
-  Namagroom: "Trisna Rizky",
+  Namagroom: `Trisna Rizky Saputra `,
+  GelarGroom : "S . E.",
   NamagroomPanggilan : "Trisna",
   AkunIGPria : "Trisna",
-  BapakpengantinPria : "Bpk Soni",
+  BapakpengantinPria : "Bpk Sony",
   IbupengantinPria : "Ibu Waode",
 
   FotoBride: "/Gallery/ContohSunFlower/Wanita.webp",
@@ -56,26 +58,29 @@ export const ContohRustic: Invitation = {
     rekening: [
       {
         bank: "shopeepay",
-        atasNama: "Andre",
+        atasNama: "Trisna",
         nomorRekening: "1234567890",
       },
       {
         bank: "bni",
-        atasNama: "Martha",
+        atasNama: "Oci",
         nomorRekening: "9876543210",
       },
     ],
 
     alamat: {
-      penerima: "Andre",
+      penerima: "Trisna",
       noHp: "081234567890",
-      alamat: "Jl. Contoh No. 123, kelurahan Yogya, kecamatan Yogya, kota Yogyakarta",
+      alamat: "Jl. Contoh No. 123, kelurahan Yogya Tenggara Timur Barat, kecamatan Yogya, kota Yogyakarta",
     },
   },
   
   Salam: "Assalamualaikum wr wb",
   Sambutan : "Dengan memohon rahmat dan ridho Allah SWT,kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.",
-  Ayat: `"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri.."`,
+  Ayat: `وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ
+          أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم
+          مَّوَدَّةً وَرَحْمَةً`,
+  Ayat2: `“Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.”`,
   NamaSurat : "QS. Ar-Rum : 21",
   // Ayat:"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia",
   // NamaSurat:"Markus 10:9",
@@ -97,17 +102,17 @@ With love, always.`,
   music: "/Audio/audio.mp3",
   theme : {
 
-    warnaweddingInvitation : "#297fc1",
+    warnaweddingInvitation : "#6c613b",
 
     warna1: "#E2E2E1",
-    warna2: "#5e6c3b",
-    warna3: "#c3cf23",
+    warna2: "#6c613b",
+    warna3: "#981206",
     
-    contrasfont: "#5e6c3b",
-    ContrasBackgroundColor:"#050505",
+    contrasfont: "#6c613b",
+    ContrasBackgroundColor:"#981206",
 
-    warnaButtonBackground : "#d6b81e",
-    warnaButtonBorder : "#297fc1",
+    warnaButtonBackground : "#6c613b",
+    warnaButtonBorder : "#E2E2E1",
     
 
   },

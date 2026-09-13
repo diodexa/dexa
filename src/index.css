@@ -66,6 +66,14 @@
   font-family: "Cenova";
   src: url("/Fonts/Cenova.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Tempting";
+  src: url("/Fonts/Tempting.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Breathing";
+  src: url("/Fonts/Breathing.ttf") format("truetype");
+}
 
 @font-face {
     font-family: "BetterChill";
@@ -100,6 +108,11 @@
     font-family: "BylinerScript";
   src: url("/Fonts/BylinerScript.otf") format("opentype");
 }
+@font-face {
+    font-family: "BethanyElingston";
+  src: url("/Fonts/BethanyElingston.otf") format("opentype");
+}
+
 /* script */
 .font-cursive {
     font-family: "Great Vibes", cursive;;  
@@ -124,6 +137,10 @@
 .font-BylinerScript{
   font-family: "BylinerScript";
 }
+.font-Tempting{
+  font-family: "Tempting";
+}
+
 
 
 
@@ -133,22 +150,26 @@
 .font-ColveticaCond{
   font-family: "ColveticaCond";
 }
-.font-LoveFlorida{
-  font-family: "LoveFlorida";
-}
 .font-Perandory{
   font-family: "Perandory";
 }
 .font-Cenova{
   font-family: "Cenova";
 }
+.font-BethanyElingston{
+  font-family: "BethanyElingston";
+}
+
+/* playfull */
 .font-FloridaIsland{
   font-family: "FloridaIsland";
 }
 .font-Sunflower{
   font-family: "Sunflower";
 }
-
+.font-LoveFlorida{
+  font-family: "LoveFlorida";
+}
 
 .font-WeddingIcon{
   font-family: "WeddingIcon";
@@ -275,6 +296,48 @@ body {
   opacity: 0;
 }
 
+.BukaKartu {
+  animation: cardOpen 2s forwards;
+}
+
+.BukaEnvelopee {
+  animation: envelopeOpen 2s forwards;
+}
+
+.MunculBawahBackground-2 {
+  animation: MunculBawah 1.2s ease-out 8s forwards;
+  opacity: 0;
+}
+.MunculBawahBackground-1 {
+  animation: MunculBawah 1.2s ease-out 4s forwards;
+  opacity: 0;
+}
+.MunculBawahBackground-3 {
+  animation: MunculBawah 1.2s ease-out 9s forwards;
+  opacity: 0;
+}
+.MunculBawahZoomOutBackground-1 {
+  animation: MunculBawahZoomOut 2s ease-out 3s forwards;
+  opacity: 0;
+}
+.MunculKananZoomOutBackground-2 {
+  animation: MunculKananZoomOut 2s ease-out 4s forwards;
+  opacity: 0;
+}
+.MunculKiriZoomOutBackground-2 {
+  animation: MunculKiriZoomOut 2s ease-out 4s forwards;
+  opacity: 0;
+}
+
+.MunculKiriBackground-1 {
+  animation: Munculkiri 2s ease-out 5s forwards;
+  opacity: 0;
+}
+.MunculKananBackground-1 {
+  animation: MunculKanan 2s ease-out 5s forwards;
+  opacity: 0;
+}
+
 
 @keyframes sway {
   0% {
@@ -368,6 +431,45 @@ body {
       transform: translateY(0);
     }
   }
+  @keyframes MunculBawahZoomOut {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+      scale: 2;
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      scale: 1;
+    }
+  }
+  @keyframes MunculKananZoomOut {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+      scale: 2;
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0);
+      scale: 1;
+    }
+  }
+  @keyframes MunculKiriZoomOut {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+      scale: 2;
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0);
+      scale: 1;
+    }
+  }
   @keyframes FadeinScale {
     from {
       opacity: 0;
@@ -417,6 +519,39 @@ body {
   }
 }
 
+@keyframes cardOpen {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 
+  50% {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(80%) scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes envelopeOpen {
+  0% {
+    transform:  translateY(0);
+    opacity: 1;
+  }
+
+
+  80% {
+    transform: translateY(500px);
+    opacity: 1;
+  }
+
+  100% {
+    transform:  translateY(1500px);
+    opacity: 0;
+  }
+}
 
 
