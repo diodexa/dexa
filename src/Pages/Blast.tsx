@@ -212,23 +212,22 @@ ${wanitaDepan} & ${priaDepan}
     const wanitaDepan = getFirstName(wanita)
 
     return `
-Halo ${name}
+Kepada Yth.
+Bapak/Ibu/Saudara/i
+*${name}*
+di tempat
 
-Kami mengundang Anda ke acara pernikahan kami
+Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, untuk menghadiri acara Resepsi Pernikahan Kami
 
-${wanita}
-&
-${pria}
-
-Berikut link untuk info lengkap dari acara kami:
-
+Info lebih lengkap klik link dibawah ini
 ${link}
 
-Merupakan suatu kehormatan bagi kami jika Anda berkenan hadir
+Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.
 
 Kami yang berbahagia:
+
 Kel. Kedua mempelai,
-${wanitaDepan} & ${priaDepan}
+*${wanitaDepan} & ${priaDepan}*
 `
   },
 }
@@ -241,7 +240,8 @@ export const GuestWA = () => {
   const [guests, setGuests] = useState<Guest[]>([])
 
   /* URL UNDANGAN */
-  const [baseLink, setBaseLink] = useState("")
+  const [baseLink, setBaseLink] = useState(() => {
+  return localStorage.getItem("blast-baseLink") || ""})
 
   /* NAMA MEMPELAI */
   const [namaPria, setNamaPria] = useState("")
@@ -425,6 +425,7 @@ export const GuestWA = () => {
         )
       }
     }
+
 
     const savedChecks =
       localStorage.getItem("guest-checks")
@@ -624,19 +625,18 @@ export const GuestWA = () => {
 
           <input
             type="text"
-            placeholder="https://dexa-invitation.com/Bride-Groom"
+            placeholder="https://dexa-invitation.com/Bride-Groom-Wedding"
             value={baseLink}
-            onChange={(e) =>
-              setBaseLink(
-                e.target.value
-              )
-            }
+            onChange={(e) => {const value = e.target.value 
+              setBaseLink(value)
+              localStorage.setItem("blast-baseLink", value)
+            }}
             className="w-full border border-gray-300 rounded-xl px-4 py-3 bg-white outline-none focus:ring-2 focus:ring-teal-500"
           />
 
           {/* PREVIEW MEMPELAI */}
 
-          {namaWanita && namaPria && (
+          {/* {namaWanita && namaPria && (
             <div className="grid grid-cols-2 gap-3 mt-4">
 
               <div className="bg-pink-50 border border-pink-100 rounded-xl p-4">
@@ -664,7 +664,7 @@ export const GuestWA = () => {
               </div>
 
             </div>
-          )}
+          )} */}
 
         </div>
 

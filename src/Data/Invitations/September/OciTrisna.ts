@@ -25,7 +25,7 @@ export const OciTrisna: Invitation = {
   TanggalAkad: "28 November 2026",
   TanggalAkadISO: "2026-11-28",
   JamAkad: "09:00",
-  LokasiAkad: " The Ratan, Jl. Ringroad Selatan No.93, Glugo, Panggungharjo, Kec. Sewon, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55188",
+  LokasiAkad: " Aula Badarusamsi Ditkuad, Jl. Menado No.8, Merdeka, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40113",
 
   TanggalResepsi: "28 November 2026",
   JamResepsi: "11:00 - 14:00",
