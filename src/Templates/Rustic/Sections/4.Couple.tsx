@@ -73,7 +73,7 @@ const Couple = ({ data, animate }: Props) => {
 
                     <div className={`flex-flex-col justify-center items-center  ${animate ? "MunculKanan-1 " : "opacity-0"}`}>
                         <p className="mt-5   " style={{ color: data.theme?.warna3 }}>{data.Namagroom} <span>{data.GelarGroom} </span> </p>
-                        <p className="mt-1 text-xs ">Putri dari<br />{data.BapakpengantinPria} <br/>& <br/> {data.IbupengantinPria}</p>
+                        <p className="mt-1 text-xs ">Putra dari<br />{data.BapakpengantinPria} <br/>& <br/> {data.IbupengantinPria}</p>
                         <div className="mt-4 flex flex-col gap-2">
                             {data.AkunIGPria && (
                             <div className="flex items-center justify-center text-xs ">
