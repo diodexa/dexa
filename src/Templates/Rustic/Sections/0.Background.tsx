@@ -76,7 +76,7 @@ const Background = ({ data, isOpen }: Props) => {
                 </div>
             </div>
 
-            <div className={`absolute h-screen w-screen inset-0 z-[1] ${isOpen ? "MunculKiriZoomOutBackground-2" : "opacity-0"}`}>
+            <div className={`absolute inset-0 z-[1] ${isOpen ? "MunculKiriZoomOutBackground-2" : "opacity-0"}`}>
                 {/* KIRI */}
                         
                 <div className={`absolute bottom-5 -left-10 h-[250px] `}>

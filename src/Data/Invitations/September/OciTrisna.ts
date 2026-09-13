@@ -1,7 +1,7 @@
 import type { Invitation } from "../../../types/invitationType";
 
 export const OciTrisna: Invitation = {
-  slug: "Oci-Trisna_Wedding",
+  slug: "Oci-Trisna-Wedding",
 
   template: "Rustic",
 
