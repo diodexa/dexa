@@ -206,7 +206,7 @@ console.log(getRotate(8))
           <h2 className="font-SephoraHayden text-5xl">{data.NamabridePanggilan} & {data.NamagroomPanggilan} </h2>
           <h2>Wedding</h2>
         </div>
-        <div className="absolute bottom-30 left-1/2 -translate-x-1/2 w-full flex flex-col items-center pointer-events-none"
+        <div className="absolute bottom-30 lg:bottom-10 left-1/2 -translate-x-1/2 w-full flex flex-col items-center pointer-events-none"
         style={{ color: data.theme?.warna3 }}>
           <p className="text-sm">swipe left</p>
 
