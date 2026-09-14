@@ -29,6 +29,10 @@ const projects: Project[] = [
   { title: "Sunflower", 
     img: "/ProjectSunflower.webp", 
     demoUrl: "https://dexa-invitation.com/Sunflower" },
+
+  { title: "Rustic", 
+    img: "/ProjectRustic.webp", 
+    demoUrl: "https://dexa-invitation.com/Rustic" },
 ];
 
 export default projects;
