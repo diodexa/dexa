@@ -3,7 +3,7 @@
 //HOME dexa-invitiation
 export const Footer = ()=> {
     return(
-        <div className="bg-[#48A6A7] text-white h-20">
+        <section className="bg-[#48A6A7] text-white h-20">
             <div className="flex justify-center gap-5 mt-5">
 
                 <a href="https://www.instagram.com/dexa_invitation/" target="_blank">
@@ -28,6 +28,6 @@ export const Footer = ()=> {
                 </a>
             </div>
             <small>&copy;2025 dexa-invitation.com. All Rights Reserved.</small>
-        </div>
+        </section>
     )
 }

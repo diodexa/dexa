@@ -132,8 +132,6 @@ const Sunflower = ({ data, guest }: Props) => {
   
 
 
-console.log(scrollY)
-
   return (
     <div ref={scrollRef}
       className="relative mx-auto h-screen max-w-[385px] overflow-x-clip overflow-y-auto font-Sunflower"

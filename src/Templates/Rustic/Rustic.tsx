@@ -139,9 +139,6 @@ const Rustic = ({ data, guest }: Props) => {
   }, [scrollY]);
   
 
-
-console.log(scrollY)
-
   return (
     <div ref={scrollRef}
     className="relative mx-auto h-screen max-w-[385px] overflow-x-clip overflow-y-auto font-BethanyElingston"

@@ -1,6 +1,6 @@
 export const FAQ = ()=> {
     return (
-        <div id="faq" className="p-8 md:p-12 text-sm lg:text-base md:text-base mb-10">
+        <section id="faq" className="p-8 md:p-12 text-sm lg:text-base md:text-base mb-10">
             <h1 className="text-5xl  text-gray-800  leading-tight " >FAQ</h1>
             <div className="md:col-span-1 lg:col-span-3 flex flex-col self-stretch pt-10">
                 <div className="text-left">
@@ -32,6 +32,6 @@ export const FAQ = ()=> {
                     </ul>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

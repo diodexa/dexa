@@ -6,7 +6,7 @@ export const Catalogue = () => {
   const [modalUrl, setModalUrl] = useState<string | null>(null);
 
   return (
-    <section id="Katalog" className="p-4">
+    <section id="katalog" className="p-4">
       <h1 className="text-4xl md:text-5xl text-gray-800 leading-tight mb-4">Katalog</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {projects.map((contoh, index) => (
@@ -17,7 +17,9 @@ export const Catalogue = () => {
             </div>
             <div className="grid gap-2 mt-2">
               <button onClick={() => setModalUrl(contoh.demoUrl)} className="bg-[#F2EFE7] text-[#08060d] text-sm p-2 rounded-full cursor-pointer hover:bg-[#48A6A7] hover:text-white border border-white transition">Open Demo</button>
-              <button className="bg-[#F2EFE7] text-[#08060d] text-sm p-2 rounded-full cursor-pointer hover:bg-[#48A6A7] hover:text-white border border-white transition">Order</button>
+              <a href={`https://api.whatsapp.com/send/?phone=6285155001718&text=Hai+Min+Saya+mau+Pesan+Undangan+Digitalnya+dong+yang+${contoh.title}&type=phone_number&app_absent=0`} target="_blank">  
+                <button className="bg-[#F2EFE7] text-[#08060d] text-sm p-2  w-full rounded-full cursor-pointer hover:bg-[#48A6A7] hover:text-white border border-white transition">Order</button>
+              </a>
             </div>
           </div>
         ))}

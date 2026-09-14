@@ -14,7 +14,7 @@ function DexaInvitation() {
   useEffect(() => {
 
     const handleScroll = () => {
-      const sections = document.querySelectorAll("div[id]");;
+      const sections = document.querySelectorAll("section[id]");
       let currentSection = "";
 
       sections.forEach((section) => {
