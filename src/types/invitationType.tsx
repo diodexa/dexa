@@ -85,10 +85,14 @@ export type Invitation = {
       atasNama?: string;
       nomorRekening?: string;
     }[];
-   alamat: {
+   alamat?: {
     alamat: string;
     penerima: string;
     noHp: string;
+  };
+   Qris?: {
+    Qris: string;
+    penerima: string;
   };
   };
 

@@ -66,8 +66,8 @@ const GroupChat = ({ data , guest }: Props) => {
 
   return (
     <div ref={scrollRef}
-    className={` mx-auto h-[100dvh] w-[385px] max-w-full overflow-x-hidden overflow-y-auto `}
-    style={{color: data.theme?.warna1,}}>
+    className={` mx-auto h-[100dvh] w-[385px] max-w-full overflow-x-hidden overflow-y-auto `}>
+      <h2 className="uppercase">Lokavara</h2>
       <Hero  data={data} guest={guest} isOpen={isOpen} setIsOpen={setIsOpen}/>
       <ModalLook isOpen={isModalOpen}
         images={selectedImage}

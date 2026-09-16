@@ -8,6 +8,7 @@ import { ContohJourneyLeaf } from "./ContohJourneyLeaf";
 import { ContohMonohrome } from "./ContohMonochrome";
 import { ContohRustic } from "./ContohRustic";
 import { OciTrisna } from "./September/OciTrisna";
+import { SyifaJody } from "./September/SyifaJody";
 
 
 
@@ -23,6 +24,7 @@ export const invitations = [
 
   // September
   OciTrisna,
+  SyifaJody,
 ];
 
 

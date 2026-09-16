@@ -9,6 +9,8 @@ import ScrollLeaf from "../Templates/Leaf/Leaf";
 import ScrollCream from "../Templates/Leaf copy/Leaf";
 import Sunflower from "../Templates/Sunflower/Sunflower";
 import Rustic from "../Templates/Rustic/Rustic";
+import RusticBilingual from "../Templates/Rustic Bilingual/RusticBilingual";
+
 
 const InvitationPage = () => {
   const { slug, guest } = useParams();
@@ -61,6 +63,10 @@ const InvitationPage = () => {
 
     case "Rustic":
       return (<Rustic data={invitation} guest={guestName}/>
+      );
+
+    case "RusticBilingual":
+      return (<RusticBilingual data={invitation} guest={guestName}/>
       );
 
 

@@ -59,6 +59,7 @@ const WeddingGift = ({ data }: Props) => {
                   </div>
               );
             })}
+            {data.WeddingGift?.alamat && (
 
             <div className="border rounded-lg p-1 mb-2 flex flex-col items-center ">
               <i className="fa-solid fa-gift text-4xl my-1"></i>
@@ -72,7 +73,7 @@ const WeddingGift = ({ data }: Props) => {
              
                 <button className="border px-2 rounded py-1"
                 style={{background: data.theme?.warnaButtonBackground,color: data.theme?.contrasfont}}
-                onClick={() => handleCopy(data.WeddingGift?.alamat.alamat ?? "")}>
+                onClick={() => handleCopy(data.WeddingGift?.alamat?.alamat?? "")}>
                   Copy alamat
                 </button>
 
@@ -81,6 +82,8 @@ const WeddingGift = ({ data }: Props) => {
                   </p> */}
               </div>
             </div>
+            )}
+
           </div>
           <div className="h-[100px] relative  w-full rotate-180 ">
             <img src="/Ornament/bunga2.png"  alt="" className=" w-auto absolute"/>

@@ -74,28 +74,29 @@ const WeddingGift = ({ data }: Props) => {
                   </div>
               );
             })}
+            {data.WeddingGift?.alamat && 
+              <div className="border rounded-lg p-1 mb-2 flex flex-col items-center z-2 text-sm" style={{background:data.theme?.warna2, color: data.theme?.ContrasBackgroundColor}}>
+                <i className="fa-solid fa-gift text-4xl my-1" style={{color: data.theme?.warna1}}/>
 
-            <div className="border rounded-lg p-1 mb-2 flex flex-col items-center z-2 text-sm" style={{background:data.theme?.warna2, color: data.theme?.ContrasBackgroundColor}}>
-              <i className="fa-solid fa-gift text-4xl my-1" style={{color: data.theme?.warna1}}/>
+                <div>
+                  {/* <p className="font-bold">
+                    {data.WeddingGift?.alamat?.penerima}
+                    </p> */}
 
-              <div>
-                {/* <p className="font-bold">
-                  {data.WeddingGift?.alamat?.penerima}
-                  </p> */}
+                  <p> {data.WeddingGift?.alamat?.alamat && data.WeddingGift.alamat.alamat.length > 40 ? data.WeddingGift.alamat.alamat.slice(0, 40) + "...": data.WeddingGift?.alamat?.alamat} </p>
+              
+                  <button className="border px-2 rounded py-1"
+                  style={{background: data.theme?.warnaButtonBackground,color: data.theme?.contrasfont}}
+                  onClick={() => handleCopy(data.WeddingGift?.alamat?.alamat ?? "")}>
+                    Copy alamat
+                  </button>
 
-                <p> {data.WeddingGift?.alamat?.alamat && data.WeddingGift.alamat.alamat.length > 40 ? data.WeddingGift.alamat.alamat.slice(0, 40) + "...": data.WeddingGift?.alamat?.alamat} </p>
-             
-                <button className="border px-2 rounded py-1"
-                style={{background: data.theme?.warnaButtonBackground,color: data.theme?.contrasfont}}
-                onClick={() => handleCopy(data.WeddingGift?.alamat.alamat ?? "")}>
-                  Copy alamat
-                </button>
-
-                {/* <p>
-                  {data.WeddingGift?.alamat?.noHp}
-                  </p> */}
+                  {/* <p>
+                    {data.WeddingGift?.alamat?.noHp}
+                    </p> */}
+                </div>
               </div>
-            </div>
+            }
           </div>
 
         </div>
