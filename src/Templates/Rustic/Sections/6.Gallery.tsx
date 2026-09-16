@@ -59,7 +59,7 @@ const Gallery = ({ data, openGallery, animate }: Props) => {
           {/* Foto lainnya */}
           {photos.length > 1 && (
             <div className="grid grid-cols-2 gap-2">
-              {photos.slice(1).map((photo, index) => {
+              {photos.slice(0).map((photo, index) => {
                 const galleryIndex = index + 1;
 
                 return (

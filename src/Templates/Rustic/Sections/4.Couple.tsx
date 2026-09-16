@@ -26,7 +26,7 @@ const Couple = ({ data, animate }: Props) => {
             
             <div className="flex flex-col items-center justify-center mb-30 mt-10 gap-1">
                 {/* foto */}
-                <div className={` flex items-center gap-12 `}>
+                <div className={` flex items-center justify-center gap-12 `}>
                     <div className={`h-[160px] w-[130px] overflow-hidden rounded-t-[90px] border ${animate ? "MunculKiri-1 " : "opacity-0"}`} style={{ borderColor: data.theme?.warna3 }}>
                         <img src={data.FotoBride} alt="" className="h-full w-full object-cover" />
                     </div>
@@ -40,7 +40,7 @@ const Couple = ({ data, animate }: Props) => {
                 <div className={` flex items-start justify-center gap-5  `}>
                     <div className={`flex flex-col justify-center items-center ${animate ? "MunculKiri-1 " : "opacity-0"}`} >
                         <p className="mt-5  " style={{ color: data.theme?.warna3 }}>{data.Namabride} <span>{data.GelarBride} </span> </p>
-                        <p className="mt-1 text-xs ">Putri dari<br />{data.BapakpengantinWanita} <br/> & <br/> {data.IbupengantinWanita}</p>
+                        <p className="mt-1 text-xs ">{data.Putri}<br />{data.BapakpengantinWanita} <br/> & <br/> {data.IbupengantinWanita}</p>
                         <div className="mt-4 flex flex-col gap-2">
                             {data.AkunIGWanita && (
                             <div className="flex items-center justify-center text-xs ">
@@ -73,7 +73,7 @@ const Couple = ({ data, animate }: Props) => {
 
                     <div className={`flex-flex-col justify-center items-center  ${animate ? "MunculKanan-1 " : "opacity-0"}`}>
                         <p className="mt-5   " style={{ color: data.theme?.warna3 }}>{data.Namagroom} <span>{data.GelarGroom} </span> </p>
-                        <p className="mt-1 text-xs ">Putra dari<br />{data.BapakpengantinPria} <br/>& <br/> {data.IbupengantinPria}</p>
+                        <p className="mt-1 text-xs ">{data.Putra}<br />{data.BapakpengantinPria} <br/>& <br/> {data.IbupengantinPria}</p>
                         <div className="mt-4 flex flex-col gap-2">
                             {data.AkunIGPria && (
                             <div className="flex items-center justify-center text-xs ">

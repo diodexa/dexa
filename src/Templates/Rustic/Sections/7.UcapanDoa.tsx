@@ -86,7 +86,7 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
         </p>
         <h2 className="text-5xl"
           style={{ color: data.theme?.warna3}} >
-          Ucapan & Doa
+          Whises
         </h2>
         <div className="mx-auto mt-4 flex items-center justify-center gap-3">
           <span className="h-px w-10 opacity-30" style={{ background: data.theme?.warna3 }} />
@@ -105,9 +105,9 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
                   color: data.theme?.warna3 }} >
                 <span className="text-2xl">♡</span>
               </div>
-              <p className="text-sm opacity-60">Belum ada ucapan</p>
+              <p className="text-sm opacity-60">No wishes yet</p>
               <p className="mt-1 text-xs opacity-40">
-                Jadilah yang pertama memberikan doa
+                Be the first to send your wishes
               </p>
             </div>
           ) : (
@@ -218,7 +218,7 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
               Leave a Wish
             </p>
             <p className="mt-1 text-[10px] opacity-50">
-              Kirimkan doa dan ucapan terbaik
+              Send your best wishes and prayers
             </p>
           </div>
 
@@ -240,13 +240,13 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
               <input type="checkbox" checked={kehadiran === "Hadir"}
                 style={{ accentColor: data.theme?.warna3 }}
                 onChange={(e) =>  setKehadiran(e.target.checked ? "Hadir" : "Tidak Hadir") }  />
-              Hadir
+              Attending
             </label>
 
             <button type="submit"  disabled={loading}
               className="rounded-xl border px-5 py-2.5 text-xs transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50"
               style={{  background: data.theme?.warnaButtonBackground,  color: data.theme?.warnaButtonBorder  }} >
-              {loading ? "Mengirim..." : "Kirim Ucapan"}
+              {loading ? "Sending..." : "Send"}
             </button>
           </div>
         </form>

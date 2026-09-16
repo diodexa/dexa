@@ -48,7 +48,7 @@ const WeddingGift = ({ data,animate }: Props) => {
                 <span style={{ color: data.theme?.warna3 }}>♡</span>
                 <span className="h-px w-12 opacity-30" style={{ background: data.theme?.warna3 }} />
             </div>
-            <p className="mx-auto mt-4 max-w-[330px] text-xs leading-6 ">Kehadiran dan doa Anda adalah hadiah terindah bagi kami. Jika berkenan memberikan tanda kasih, dapat melalui pilihan berikut.</p>
+            <p className="mx-auto mt-4 max-w-[330px] text-xs leading-6 ">Having you with us and receiving your prayers is the greatest gift. If you would like to share a token of love, you may do so through the options below.</p>
             </div>
             <div className="w-full">
             <div className="mb-4 flex items-center gap-3">
@@ -81,6 +81,20 @@ const WeddingGift = ({ data,animate }: Props) => {
                 })}
             </div>
             </div>
+            {data.WeddingGift?.Qris?.Qris && (
+            <div className="mt-5 w-full">
+                <div className="relative overflow-hidden rounded-2xl border p-6 text-center" style={{ background: `${data.theme?.warna2}40`, borderColor: `${data.theme?.contrasfont}15`, color: data.theme?.ContrasBackgroundColor, backdropFilter: "blur(10px)" }}>
+                    <div className="mx-auto mb-4 flex w-fit items-center justify-center " >
+                        <img src={data.WeddingGift.Qris.Qris} alt={`Qris ${data.WeddingGift.Qris.penerima}`} />
+                    </div>
+                    <p className="mx-auto max-w-[300px] line-clamp-2 text-sm leading-6">QRIS a.n. <br/> {data.WeddingGift.Qris.penerima}</p>
+                    {/* <p className="mx-auto max-w-[300px] line-clamp-2 text-sm leading-6">{data.WeddingGift.alamat.alamat}</p>
+                    <button type="button" className="mt-5 rounded-full border px-5 py-2 text-[10px] tracking-widest transition hover:scale-105" style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.warnaButtonBorder, borderColor: data.theme?.warnaButtonBackground }} onClick={() => handleCopy(data.WeddingGift?.alamat?.alamat ?? "")}>
+                        <i className="fa-regular fa-copy mr-2" />Copy Address
+                    </button> */}
+                </div>
+            </div>
+            )}
             {data.WeddingGift?.alamat?.alamat && (
             <div className="mt-5 w-full">
                 <div className="relative overflow-hidden rounded-2xl border p-6 text-center" style={{ background: `${data.theme?.warna2}40`, borderColor: `${data.theme?.contrasfont}15`, color: data.theme?.ContrasBackgroundColor, backdropFilter: "blur(10px)" }}>

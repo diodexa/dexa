@@ -3,18 +3,20 @@ import type { Invitation } from "../../../types/invitationType";
 export const SyifaJody: Invitation = {
   slug: "Syifa-Jody-Wedding",
 
-  template: "RusticBilingual",
+  template: "Rustic",
 
   Namabride: "Syifa Sopia Nur Fadilah",
   NamabridePanggilan : "Syifa",
   AkunIGWanita: "Syifasopiaaanf",
   AkunTikTokWanita :"Syifasopiaaanf",
+  Putri: "The beloved daughter",
   BapakpengantinWanita : "Mr. Ceppy Sopian ",
   IbupengantinWanita : "Mrs. Rina Kustiana Arini",
 
   Namagroom: `Jody Bagja Firdaus `,
   NamagroomPanggilan : "Jody",
   AkunIGPria : "jodybagjafirdaus21",
+  Putra :"The beloved son",
   BapakpengantinPria : "Mr. Sukmara ",
   IbupengantinPria : "Mrs. Yuyun yusilawati",
 

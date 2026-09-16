@@ -11,6 +11,7 @@ export type Invitation = {
   BapakpengantinWanita: string;
   IbupengantinWanita: string;
   FotoBride: string;
+  Putra? : string;
 
   Namagroom: string;
   NamagroomPanggilan: string;
@@ -20,6 +21,7 @@ export type Invitation = {
   BapakpengantinPria: string;
   IbupengantinPria: string;
   FotoGroom: string;
+  Putri? : string;
   
    
   FormatWaktu? : string,

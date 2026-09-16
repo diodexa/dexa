@@ -24,7 +24,7 @@ interface Props {
   guest: string;
 }
 
-const Rustic = ({ data, guest }: Props) => {
+const Rustic= ({ data, guest }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +32,7 @@ const Rustic = ({ data, guest }: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const [comments, setComments] = useState<Comment[]>([]);
+  const [audioReady, setAudioReady] = useState(false);
 
   const [animations, setAnimations] = useState({
   ayat: false,
@@ -131,12 +132,27 @@ const Rustic = ({ data, guest }: Props) => {
       saveDate: scrollY >= 2044,
       story: scrollY >= 2036,
       gallery: scrollY>=2874,
-      ucapan: scrollY>=3760,
-      gift: scrollY>=4832,
+      ucapan: scrollY>=4832,
+      gift: scrollY>=3760,
 
       
     }));
   }, [scrollY]);
+
+  // delay audio 
+
+  useEffect(() => {
+  if (!isOpen) {
+    setAudioReady(false);
+    return;
+  }
+
+  const timer = setTimeout(() => {
+    setAudioReady(true);
+  }, 1000);
+
+  return () => clearTimeout(timer);
+}, [isOpen]);
   
 
   return (
@@ -144,7 +160,7 @@ const Rustic = ({ data, guest }: Props) => {
     className="relative mx-auto h-screen max-w-[385px] overflow-x-clip overflow-y-auto font-BethanyElingston"
     style={{ background: data.theme?.warna1, color: data.theme?.warna2 }}>
       <Hero data={data} isOpen={isOpen} setIsOpen={setIsOpen} guest={guest} />
-      <AudioController data={data} isOpen={isOpen}/>
+      <AudioController data={data} isOpen={audioReady}/>
       <ModalGallery
         isOpen={openGallery}
         images={data.gallery ?? []}
@@ -183,8 +199,8 @@ const Rustic = ({ data, guest }: Props) => {
         <Couple data={data} animate={animations.couple}/>
         <SaveTheDate data={data} animate={animations.saveDate}/>
         <Gallery data={data} openGallery={handleOpenGallery} animate={animations.gallery}/>
-        <UcapanDoa data={data} loadComments={loadComments} comments={comments} guest={guest} animate={animations.ucapan}/>
         <WeddingGift data={data} animate={animations.gift}/>
+        <UcapanDoa data={data} loadComments={loadComments} comments={comments} guest={guest} animate={animations.ucapan}/>
         <Closing data={data}/>
 
       </div>

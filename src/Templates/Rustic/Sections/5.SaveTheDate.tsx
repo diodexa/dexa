@@ -53,6 +53,7 @@ const SaveTheDate = ({ data, animate }: Props) => {
     )}`;
 
     window.open(url, "_blank");
+    
   };
 
   return (
