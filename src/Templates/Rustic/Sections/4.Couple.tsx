@@ -112,7 +112,7 @@ const Couple = ({ data, animate }: Props) => {
           className="h-full w-auto object-contain object-right-bottom scale-x-[-1]"/>
           </div> */}
         
-        <div className={`absolute h-screen w-screen bottom-0  ${animate ? "MunculBawah-1 " : "opacity-0"}`}>
+        <div className={`absolute h-screen w-screen bottom-0 left-0 ${animate ? "MunculBawah-1 " : "opacity-0"}`}>
             <img src="/Ornament/DaunDahlia.webp" alt="" className="absolute -bottom-10 -left-0 z-[1] h-[180px] w-auto object-contain sway-flower1" />
             <img src="/Ornament/DaunDahlia.webp" alt="" className="absolute -bottom-20 left-50 z-[1] h-[190px] w-auto object-contain rotate-290 sway-flower2" />
             
