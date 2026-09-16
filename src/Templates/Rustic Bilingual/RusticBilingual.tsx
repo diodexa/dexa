@@ -149,7 +149,7 @@ const RusticBilingual = ({ data, guest }: Props) => {
 
   const timer = setTimeout(() => {
     setAudioReady(true);
-  }, 3000);
+  }, 1000);
 
   return () => clearTimeout(timer);
 }, [isOpen]);
