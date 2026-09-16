@@ -32,6 +32,7 @@ const RusticBilingual = ({ data, guest }: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const [comments, setComments] = useState<Comment[]>([]);
+  const [audioReady, setAudioReady] = useState(false);
 
   const [animations, setAnimations] = useState({
   ayat: false,
@@ -137,6 +138,21 @@ const RusticBilingual = ({ data, guest }: Props) => {
       
     }));
   }, [scrollY]);
+
+  // delay audio 
+
+  useEffect(() => {
+  if (!isOpen) {
+    setAudioReady(false);
+    return;
+  }
+
+  const timer = setTimeout(() => {
+    setAudioReady(true);
+  }, 3000);
+
+  return () => clearTimeout(timer);
+}, [isOpen]);
   
 
   return (
@@ -144,7 +160,7 @@ const RusticBilingual = ({ data, guest }: Props) => {
     className="relative mx-auto h-screen max-w-[385px] overflow-x-clip overflow-y-auto font-BethanyElingston"
     style={{ background: data.theme?.warna1, color: data.theme?.warna2 }}>
       <Hero data={data} isOpen={isOpen} setIsOpen={setIsOpen} guest={guest} />
-      <AudioController data={data} isOpen={isOpen}/>
+      <AudioController data={data} isOpen={audioReady}/>
       <ModalGallery
         isOpen={openGallery}
         images={data.gallery ?? []}
