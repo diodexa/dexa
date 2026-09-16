@@ -45,6 +45,7 @@ export const SyifaJody: Invitation = {
     "/Gallery/SyifaJody/3.webp",
     "/Gallery/SyifaJody/4.webp",
     "/Gallery/SyifaJody/5.webp",
+    "/Gallery/SyifaJody/6.webp",
 
    
     
@@ -85,7 +86,7 @@ export const SyifaJody: Invitation = {
 
   Closing : `Thank you for being part of our story, our journey, and our happiness.`,
 
-  music: "/Audio/audio.mp3",
+  music: "/Audio/Bermuara-Adera.mp3",
   theme : {
 
     warnaweddingInvitation : "#6c613b",
