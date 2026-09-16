@@ -8,12 +8,14 @@ export const OciTrisna: Invitation = {
   Namabride: "Rossiana Iqlima Zulfah, A.Md",
   NamabridePanggilan : "Oci",
   AkunIGWanita: "rossiana.iqlima",
+  Putri: "Putri dari",
   BapakpengantinWanita : "Bapak Wawan",
   IbupengantinWanita : "Ibu Ani Tukini",
 
   Namagroom: `Trisna Rizky Saputra, S.M. `,
   NamagroomPanggilan : "Trisna",
   AkunIGPria : "Trisnarizky",
+  Putra :"Putra dari",
   BapakpengantinPria : "Bapak Sonny Wirahma Soemantri",
   IbupengantinPria : "Ibu (Purn) AKP. Waode Nurbahana",
 
