@@ -97,6 +97,10 @@ export type Invitation = {
     penerima: string;
   };
   };
+  sections?: {
+    id: string;
+    scrollY: number;
+  }[];
 
   Closing? : string;
 
@@ -133,3 +137,4 @@ export type Invitation = {
   };
   sticker?: string[];
 };
+

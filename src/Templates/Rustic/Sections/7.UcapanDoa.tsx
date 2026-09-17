@@ -64,10 +64,8 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
   };
 
   return (
-    <section
-      className="relative flex min-h-screen w-full flex-col overflow-hidden px-5 py-20"
-      style={{ background: data.theme?.warna1, color: data.theme?.contrasfont }}
-    >
+    <section className="relative flex min-h-screen w-full flex-col overflow-hidden px-5 py-20"
+      style={{ background: data.theme?.warna1, color: data.theme?.contrasfont }} >
 
 
       {/* Ornament */}

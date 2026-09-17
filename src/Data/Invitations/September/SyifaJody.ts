@@ -13,7 +13,7 @@ export const SyifaJody: Invitation = {
   BapakpengantinWanita : "Mr. Ceppy Sopian ",
   IbupengantinWanita : "Mrs. Rina Kustiana Arini",
 
-  Namagroom: `Jody Bagja Firdaus `,
+  Namagroom: `Jody Bagja Firdaus, S.H. `,
   NamagroomPanggilan : "Jody",
   AkunIGPria : "jodybagjafirdaus21",
   Putra :"The beloved son",
@@ -84,6 +84,16 @@ export const SyifaJody: Invitation = {
   // Ayat:"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia",
   // NamaSurat:"Markus 10:9",
 
+  sections : [
+  { id: "ayat", scrollY: 203 },
+  { id: "sambutan", scrollY: 862 },
+  { id: "couple", scrollY: 1350 },
+  { id: "saveDate", scrollY: 2044 },
+  { id: "gallery", scrollY: 2874 },
+  { id: "gift", scrollY: 3760 },
+  { id: "ucapan", scrollY: 4832 },
+  { id: "closing", scrollY: 5500 }
+  ],
   
 
   Closing : `Thank you for being part of our story, our journey, and our happiness.`,

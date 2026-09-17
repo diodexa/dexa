@@ -89,15 +89,15 @@ export const OciTrisna: Invitation = {
   // Ayat:"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia",
   // NamaSurat:"Markus 10:9",
 
-  Story : [
-    {Head : "Tak Ada yang Kebetulan",
-    Story : "Oktober 2020, awal bertemu lewat aplikasi dating. awalnya sih ingin cari teman bercerita, namun takdir berkata lain"},
-    {Head : "Pertemuan Pertama ",
-    Story : "5 Desember 2020, awal bertemu di Alun-alun. Obrolan mulai terasa hangat dan nyaman"},
-    {Head : "Belajar Memahami",
-    Story : " 20 Desember 2020 kami memutuskan mulai berjalan bersama. Banyak cerita dan tantangan yang kita lewati untuk terus belajar saling memahami."},
-    {Head : "Final Chapter",
-    Story : "Setelah 6 tahun lamanya, kami memantapkan hati untuk melangkah ke jenjang yang lebih serius. 30 Juni 2029. Let’s grow old together! ❤️"},
+    sections : [
+    { id: "ayat", scrollY: 203 },
+    { id: "sambutan", scrollY: 862 },
+    { id: "couple", scrollY: 1350 },
+    { id: "saveDate", scrollY: 2044 },
+    { id: "gallery", scrollY: 2874 },
+    { id: "ucapan", scrollY: 3760 },
+    { id: "gift", scrollY: 4832 },
+    { id: "closing", scrollY: 5500 }
     ],
 
   Closing : `Terima kasih telah menjadi bagian dari cerita dan kebahagiaan kami.
