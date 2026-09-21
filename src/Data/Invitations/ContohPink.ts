@@ -1,22 +1,22 @@
 import type { Invitation } from "../../types/invitationType";
 
-export const ContohRustic: Invitation = {
-  slug: "Rustic",
+export const ContohPink: Invitation = {
+  slug: "PinkGreen",
 
-  template: "Rustic",
+  template: "PinkGreen",
 
-  Namabride: "Oci Putri Ibunya",
-  NamabridePanggilan : "Oci",
+  Namabride: "Haryati Putri Ibunya",
+  NamabridePanggilan : "Haryati",
   GelarBride : "S.pd",
-  AkunTikTokWanita : "Oci",
-  AkunIGWanita: "Oci",
+  AkunTikTokWanita : "Haryati",
+  AkunIGWanita: "Haryati",
   BapakpengantinWanita : "Bpk Heri",
   IbupengantinWanita : "Ibu Sumi",
 
-  Namagroom: `Trisna Rizky Saputra `,
+  Namagroom: `Dino Putra Bapakany `,
   GelarGroom : "S . E.",
-  NamagroomPanggilan : "Trisna",
-  AkunIGPria : "Trisna",
+  NamagroomPanggilan : "Dino",
+  AkunIGPria : "Dino",
   BapakpengantinPria : "Bpk Sony",
   IbupengantinPria : "Ibu Waode",
 
@@ -25,8 +25,8 @@ export const ContohRustic: Invitation = {
   
   FormatWaktu: "WIB",
   
-  TanggalAkad: "10 Desember 2029",
-  TanggalAkadISO: "2029-12-10",
+  TanggalAkad: "10 Februari 2029",
+  TanggalAkadISO: "2029-02-10",
   JamAkad: "08:00",
   LokasiAkad: " The Ratan, Jl. Ringroad Selatan No.93, Glugo, Panggungharjo, Kec. Sewon, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55188",
 
@@ -36,34 +36,43 @@ export const ContohRustic: Invitation = {
   LinkGoogleMapsAkad: "https://www.google.com/maps/place/The+Ratan+-+Multi+Use+Building/@-7.834827,110.3627029,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7a5753a2bd3a9b:0x1a6020ff1e351a58!8m2!3d-7.834827!4d110.3627029!16s%2Fg%2F11mx5m9jmc?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D",
   LinkGoogleMapsResepsi: "https://www.google.com/maps/place/The+Ratan+-+Multi+Use+Building/@-7.834827,110.3627029,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7a5753a2bd3a9b:0x1a6020ff1e351a58!8m2!3d-7.834827!4d110.3627029!16s%2Fg%2F11mx5m9jmc?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D",
 
-  // note: `*dresscode putih krem untuk cowok 
-  //  putih hitam untuk cewek` ,
+  sections : [
+    { id: "ayat", scrollY: 203 },
+    { id: "sambutan", scrollY: 862 },
+    { id: "couple", scrollY: 1350 },
+    { id: "saveDate", scrollY: 2044 },
+    { id: "gallery", scrollY: 2874 },
+    { id: "gift", scrollY: 3760 },
+    { id: "ucapan", scrollY: 4832 },
+    { id: "closing", scrollY: 5500 }
+    ],
+  
 
   coverImage: "/Gallery/ContohSunFlower/4.webp",
   
   gallery: [
-    "/Gallery/ContohSunFlower/1.webp",
-    "/Gallery/ContohSunFlower/2.webp",
-    "/Gallery/ContohSunFlower/3.webp",
-    "/Gallery/ContohSunFlower/4.webp",
-    "/Gallery/ContohSunFlower/5.webp",
+    "/Gallery/ContohLeaf/1.webp",
+    "/Gallery/ContohLeaf/2.webp",
+    "/Gallery/ContohLeaf/3.webp",
+    "/Gallery/ContohLeaf/4.webp",
+    "/Gallery/ContohLeaf/5.webp",
 
    
     
   ],
 
-  video : "/Gallery/ContohLeaf/video.mp4",
+
 
   WeddingGift: {
     rekening: [
       {
         bank: "shopeepay",
-        atasNama: "Trisna",
+        atasNama: "Dino",
         nomorRekening: "1234567890",
       },
       {
         bank: "bni",
-        atasNama: "Oci",
+        atasNama: "Haryati",
         nomorRekening: "9876543210",
       },
     ],
@@ -85,34 +94,23 @@ export const ContohRustic: Invitation = {
   // Ayat:"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia",
   // NamaSurat:"Markus 10:9",
 
- sections : [
-    { id: "ayat", scrollY: 203 },
-    { id: "sambutan", scrollY: 862 },
-    { id: "couple", scrollY: 1350 },
-    { id: "saveDate", scrollY: 2044 },
-    { id: "gallery", scrollY: 2874 },
-    { id: "ucapan", scrollY: 3760 },
-    { id: "gift", scrollY: 4832 },
-    { id: "closing", scrollY: 5500 }
-    ],
-
   Closing : `Terima kasih telah menjadi bagian dari cerita dan kebahagiaan kami.
 With love, always.`,
 
   music: "/Audio/audio.mp3",
   theme : {
 
-    warnaweddingInvitation : "#6c613b",
+    warnaweddingInvitation : "linear-gradient(180deg, #cad0f4 0%, #d2d3ed 22%, #e5d5e8 40%, #f6dce0 58%, #fde4df 72%, #fbd3c9 100%)",
 
-    warna1: "#E2E2E1",
-    warna2: "#6c613b",
-    warna3: "#981206",
+    warna1: " #F6C5CC",
+    warna2: "#7FA66F",
+    warna3: "#B85C78",
     
-    contrasfont: "#6c613b",
+    contrasfont: "#5E6623",
     ContrasBackgroundColor:"#981206",
 
-    warnaButtonBackground : "#6c613b",
-    warnaButtonBorder : "#E2E2E1",
+    warnaButtonBackground : "#B85C78",
+    warnaButtonBorder : "#f8f3e8",
     
 
   },

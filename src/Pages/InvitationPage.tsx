@@ -9,6 +9,7 @@ import ScrollLeaf from "../Templates/Leaf/Leaf";
 import ScrollCream from "../Templates/Leaf copy/Leaf";
 import Sunflower from "../Templates/Sunflower/Sunflower";
 import Rustic from "../Templates/Rustic/Rustic";
+import PinkGreen from "../Templates/Pink/PinkLily";
 
 
 const InvitationPage = () => {
@@ -62,6 +63,9 @@ const InvitationPage = () => {
 
     case "Rustic":
       return (<Rustic data={invitation} guest={guestName}/>
+      );
+    case "PinkGreen":
+      return (<PinkGreen data={invitation} guest={guestName}/>
       );
 
 

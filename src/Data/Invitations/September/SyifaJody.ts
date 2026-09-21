@@ -85,16 +85,16 @@ export const SyifaJody: Invitation = {
   // NamaSurat:"Markus 10:9",
 
   sections : [
-  { id: "ayat", scrollY: 203 },
-  { id: "sambutan", scrollY: 862 },
-  { id: "couple", scrollY: 1350 },
-  { id: "saveDate", scrollY: 2044 },
-  { id: "gallery", scrollY: 2874 },
-  { id: "gift", scrollY: 3760 },
-  { id: "ucapan", scrollY: 4832 },
-  { id: "closing", scrollY: 5500 }
-  ],
-  
+    { id: "ayat", scrollY: 203 },
+    { id: "sambutan", scrollY: 862 },
+    { id: "couple", scrollY: 1350 },
+    { id: "saveDate", scrollY: 2044 },
+    { id: "gallery", scrollY: 2874 },
+    { id: "gift", scrollY: 3760 },
+    { id: "ucapan", scrollY: 4832 },
+    { id: "closing", scrollY: 5500 }
+    ],
+    
 
   Closing : `Thank you for being part of our story, our journey, and our happiness.`,
 
