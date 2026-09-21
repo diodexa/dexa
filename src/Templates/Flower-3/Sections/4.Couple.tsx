@@ -11,7 +11,7 @@ const Couple = ({ data, animate, scrollY }: Props) => {
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-5 text-center" style={{ color: data.theme?.contrasfont }}>
         <div className="absolute inset-0 h-full w-full  opacity-80" style={{ background: `linear-gradient(180deg, ${data.theme?.warna1} 0%, ${data.theme?.warna1} 35%, ${data.theme?.warna2} 65%, ${data.theme?.warna2} 100%)` }} />
         <div className="absolute left-1/2 top-0 z-[1] aspect-[2/1] w-full -translate-x-1/2">
-        <div className="h-full w-full bg-contain bg-top bg-no-repeat" style={{ backgroundImage: "url('/Ornament/lace.webp')" }} />
+        <div className="h-full w-full bg-contain bg-top bg-no-repeat" style={{ backgroundImage: "url('/Ornament/LacePinkHijau.webp')" }} />
         </div>
         <div className="relative z-10 my-28 flex w-full max-w-md flex-col items-center">
         <p className={`text-[10px] uppercase tracking-[0.4em] ${animate ? "Fadein-1" : "opacity-0"}`}>The Happy Couple</p>

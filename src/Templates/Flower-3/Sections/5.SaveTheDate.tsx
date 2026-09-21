@@ -64,7 +64,7 @@ const SaveTheDate = ({ data, animate }: Props) => {
   };
 
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-6 py-12 text-center " style={{ color: data.theme?.contrasfont }}>
+    <section className="relative flex -mt-px min-h-screen w-full items-center justify-center overflow-hidden px-6 py-12 text-center " style={{ color: data.theme?.contrasfont }}>
     <div className="absolute inset-0 opacity-80" style={{ background: data.theme?.warna2 }} />
     <div className="absolute bottom-9 -left-20 z-11 w-full  ">
         <img src="/Ornament/BungaPanjang.webp"alt=""

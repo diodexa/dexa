@@ -6,15 +6,15 @@ interface Project {
 
 const projects: Project[] = [
   
-  { title: "Pink Green", 
+  { title: "Flower-3", 
     img: "/PinkGreen.webp", 
     demoUrl: "https://dexa-invitation.com/PinkGreen" },
 
-  { title: "Rustic", 
+  { title: "Flower-2", 
     img: "/ProjectRustic.webp", 
     demoUrl: "https://dexa-invitation.com/Rustic" },
 
-  { title: "Sunflower", 
+  { title: "Flower-1", 
     img: "/ProjectSunflower.webp", 
     demoUrl: "https://dexa-invitation.com/Sunflower" },
 

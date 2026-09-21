@@ -3,7 +3,7 @@ import type { Invitation } from "../../../types/invitationType";
 export const SyifaJody: Invitation = {
   slug: "Syifa-Jody-Wedding",
 
-  template: "Rustic",
+  template: "Flower-2",
 
   Namabride: "Syifa Sopia Nur Fadilah",
   NamabridePanggilan : "Syifa",

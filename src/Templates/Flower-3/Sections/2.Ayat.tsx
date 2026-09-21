@@ -8,12 +8,12 @@ interface Props {
 const Ayat = ({ data, animate }: Props) => {
   return (
     <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-8 py-20 text-center" style={{ color: data.theme?.contrasfont }}>
-  <div className="absolute inset-0 bg-white/20 backdrop-blur-[6px]" />
+      <div className="absolute inset-0 bg-white/20 backdrop-blur-[6px]" />
 
-  <div className="pointer-events-none absolute -left-[20%] top-[15%] h-[180px] w-[80%] rounded-full bg-white/60 blur-[35px]" />
-  <div className="pointer-events-none absolute -right-[20%] top-[28%] h-[150px] w-[75%] rounded-full bg-white/50 blur-[40px]" />
-  <div className="pointer-events-none absolute -left-[15%] bottom-[20%] h-[170px] w-[70%] rounded-full bg-white/50 blur-[45px]" />
-  <div className="pointer-events-none absolute -right-[20%] bottom-[10%] h-[190px] w-[80%] rounded-full bg-white/60 blur-[40px]" />
+      <div className="pointer-events-none absolute -left-[20%] top-[15%] h-[180px] w-[80%] rounded-full bg-white/60 blur-[35px]" />
+      <div className="pointer-events-none absolute -right-[20%] top-[28%] h-[150px] w-[75%] rounded-full bg-white/50 blur-[40px]" />
+      <div className="pointer-events-none absolute -left-[15%] bottom-[20%] h-[170px] w-[70%] rounded-full bg-white/50 blur-[45px]" />
+      <div className="pointer-events-none absolute -right-[20%] bottom-[10%] h-[190px] w-[80%] rounded-full bg-white/60 blur-[40px]" />
 
         {/* <div className="absolute -bottom-15 -right-15 z-[1] h-[250px] rotate-30">
           <img src="/Ornament/DaunDahlia.webp"alt=""

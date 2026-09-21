@@ -7,9 +7,9 @@ import GroupChat from "../Templates/GroupChat/GroupChat";
 import Monochrome from "../Templates/Monochrome/Monochrome";
 import ScrollLeaf from "../Templates/Leaf/Leaf";
 import ScrollCream from "../Templates/Leaf copy/Leaf";
-import Sunflower from "../Templates/Sunflower/Sunflower";
-import Rustic from "../Templates/Rustic/Rustic";
-import PinkGreen from "../Templates/Pink/PinkLily";
+import Sunflower from "../Templates/Flower-1/Sunflower";
+import Rustic from "../Templates/Flower-2/Rustic";
+import PinkGreen from "../Templates/Flower-3/PinkLily";
 
 
 const InvitationPage = () => {
@@ -48,7 +48,7 @@ const InvitationPage = () => {
       return (<ScrollCream data={invitation} guest={guestName}/>
       );
       
-    case "Sunflower":
+    case "Flower-1":
       return (<Sunflower data={invitation} guest={guestName}/>
       );
     
@@ -61,10 +61,10 @@ const InvitationPage = () => {
       return (<Monochrome data={invitation} guest={guestName}/>
       );
 
-    case "Rustic":
+    case "Flower-2":
       return (<Rustic data={invitation} guest={guestName}/>
       );
-    case "PinkGreen":
+    case "Flower-3":
       return (<PinkGreen data={invitation} guest={guestName}/>
       );
 
