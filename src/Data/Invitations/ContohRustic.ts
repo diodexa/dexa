@@ -5,8 +5,8 @@ export const ContohRustic: Invitation = {
 
   template: "Flower-2",
 
-  Namabride: "Oci Putri Ibunya",
-  NamabridePanggilan : "Oci",
+  Namabride: "Rosi Putri Ibunya",
+  NamabridePanggilan : "Rosi",
   GelarBride : "S.pd",
   AkunTikTokWanita : "Oci",
   AkunIGWanita: "Oci",
