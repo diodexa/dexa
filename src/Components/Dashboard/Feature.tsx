@@ -14,7 +14,8 @@ export const Feature = ()=> {
                     Fitur Eksklusif untuk Momen Spesialmu
                 </h1>
                 <p className="text-justify md:text-lg text-gray-600  max-w-lg mt-8 mb-auto">
-                    Hanya dengan <span className="text-[#48A6A7] text-xl">IDR 99K</span> Semua yang kamu butuhkan untuk membuat undangan digital yang elegan dan berkesan
+                    Hanya dengan <span className="text-gray-400 line-through text-lg text-xl">IDR 99K </span>{" "}<span className="text-[#48A6A7] text-xl font-semibold">
+    IDR 50K</span> Semua yang kamu butuhkan untuk membuat undangan digital yang elegan dan berkesan
                 </p>
                 <div className="md:col-span-1 lg:col-span-1 flex flex-col items-center self-stretch h-10"> </div>
                 <div className="md:col-span-1 lg:col-span-3 flex flex-col  self-stretch"> 

@@ -10,6 +10,7 @@ import ScrollCream from "../Templates/Leaf copy/Leaf";
 import Sunflower from "../Templates/Flower-1/Sunflower";
 import Rustic from "../Templates/Flower-2/Rustic";
 import PinkGreen from "../Templates/Flower-3/PinkLily";
+import Jawa1 from "../Templates/Adat-1/Jawa1";
 
 
 const InvitationPage = () => {
@@ -48,10 +49,6 @@ const InvitationPage = () => {
       return (<ScrollCream data={invitation} guest={guestName}/>
       );
       
-    case "Flower-1":
-      return (<Sunflower data={invitation} guest={guestName}/>
-      );
-    
       
     case "GroupChat":
       return (<GroupChat data={invitation} guest={guestName}/>
@@ -61,11 +58,18 @@ const InvitationPage = () => {
       return (<Monochrome data={invitation} guest={guestName}/>
       );
 
+    case "Flower-1":
+      return (<Sunflower data={invitation} guest={guestName}/>
+      );
+
     case "Flower-2":
       return (<Rustic data={invitation} guest={guestName}/>
       );
     case "Flower-3":
       return (<PinkGreen data={invitation} guest={guestName}/>
+      );
+    case "Jawa1":
+      return (<Jawa1 data={invitation} guest={guestName}/>
       );
 
 
