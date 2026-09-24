@@ -74,6 +74,28 @@
   font-family: "Breathing";
   src: url("/Fonts/Breathing.ttf") format("truetype");
 }
+@font-face {
+    font-family: "Exmouth";
+  src: url("/Fonts/exmouth.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Rosabelia";
+  src: url("/Fonts/Rosabelia.ttf") format("truetype");
+}
+@font-face {
+  font-family: "LTPerfume";
+  src: url("/Fonts/LTPerfume.ttf") format("truetype");
+}
+@font-face {
+  font-family: "TypographyTimes";
+  src: url("/Fonts/TypographyTimes.ttf") format("truetype");
+}
+@font-face {
+  font-family: "ZTOtez";
+  src: url("/Fonts/ZTOtez.ttf") format("truetype");
+}
+
 
 @font-face {
     font-family: "BetterChill";
@@ -112,6 +134,13 @@
     font-family: "BethanyElingston";
   src: url("/Fonts/BethanyElingston.otf") format("opentype");
 }
+@font-face {
+    font-family: "Euphorigenic";
+  src: url("/Fonts/Euphorigenic.otf") format("opentype");
+}
+
+
+
 
 /* script */
 .font-cursive {
@@ -140,6 +169,15 @@
 .font-Tempting{
   font-family: "Tempting";
 }
+.font-Exmouth{
+  font-family: "Exmouth";
+}
+.font-Rosabelia{
+  font-family: "Rosabelia";
+}
+.font-LTPerfume{
+  font-family: "LTPerfume";
+}
 
 
 
@@ -158,6 +196,15 @@
 }
 .font-BethanyElingston{
   font-family: "BethanyElingston";
+}
+.font-ZTOtez{
+  font-family: "ZTOtez";
+}
+.font-TypographiTimes{
+  font-family: "TypographiTimes";
+}
+.font-Euphorigenic{
+  font-family: "Euphorigenic";
 }
 
 /* playfull */

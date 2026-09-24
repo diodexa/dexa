@@ -5,18 +5,18 @@ export const ContohJawa: Invitation = {
 
   template: "Jawa1",
 
-  Namabride: "Martha Nila S.pd",
-  NamabridePanggilan : "Martha",
-  AkunTikTokWanita : "Martha",
-  AkunIGWanita: "Martha",
-  BapakpengantinWanita : "Bpk Heri",
-  IbupengantinWanita : "Ibu Sumi",
+  Namabride: "Juliet  S.pd",
+  NamabridePanggilan : "Juliet",
+  AkunTikTokWanita : "Juliet",
+  AkunIGWanita: "Juliet",
+  BapakpengantinWanita : "Bpk Romeo",
+  IbupengantinWanita : "Ibu Juliete",
 
-  Namagroom: "Andre Muhammad S.pd",
-  NamagroomPanggilan : "Andre",
-  AkunIGPria : "Andre",
-  BapakpengantinPria : "Bpk Andre",
-  IbupengantinPria : "Ibu Rina",
+  Namagroom: "Romeo S.pd",
+  NamagroomPanggilan : "Domeo",
+  AkunIGPria : "Romeo",
+  BapakpengantinPria : "Bpk Romeo",
+  IbupengantinPria : "Ibu Juliete",
 
   FotoBride: "/Gallery/ContohSunFlower/Wanita.webp",
   FotoGroom: "/Gallery/ContohSunFlower/Pria.webp",
@@ -75,7 +75,10 @@ export const ContohJawa: Invitation = {
   
   Salam: "Assalamualaikum wr wb",
   Sambutan : "Dengan memohon rahmat dan ridho Allah SWT,kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.",
-  Ayat: `"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri.."`,
+  Ayat: `وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ
+          أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم
+          مَّوَدَّةً وَرَحْمَةً`,
+  Ayat2: `“Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.”`,
   NamaSurat : "QS. Ar-Rum : 21",
   // Ayat:"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia",
   // NamaSurat:"Markus 10:9",

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { Invitation } from "../../../types/invitationType";
 import { postComment, type Comment } from "../../1.Components/ChatService";
 
@@ -17,6 +17,7 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
   const [kehadiran, setKehadiran] = useState("Hadir");
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const submittingRef = useRef(false);
 
   const COMMENTS_PER_PAGE = 4;
   const totalPages = Math.ceil(comments.length / COMMENTS_PER_PAGE);
@@ -25,19 +26,27 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (submittingRef.current) return;
+
     if (!nama.trim() || !ucapan.trim()) {
       alert("Isi nama atau ucapannya dulu ya :)");
       return;
     }
+
+    submittingRef.current = true;
+    setLoading(true);
+
     const formData = new FormData();
     formData.append("id", idUndangan);
     formData.append("Nama", nama.trim());
     formData.append("Kehadiran", kehadiran);
     formData.append("Ucapan", ucapan.trim());
-    setLoading(true);
+
     try {
       await postComment(formData);
       await loadComments();
+
       setNama("");
       setUcapan("");
       setKehadiran("Hadir");
@@ -46,6 +55,7 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
       console.error(err);
       alert("Gagal mengirim. Coba ulangi ya");
     } finally {
+      submittingRef.current = false;
       setLoading(false);
     }
   };
@@ -110,51 +120,40 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-2 items-start gap-4">
+              <div className="space-y-4">
                 {currentComments.map((comment, index) => {
-                  const rotations = [
-                    "-rotate-1 translate-y-1",
-                    "rotate-1 translate-y-5",
-                    "rotate-[0.5deg] -translate-y-1",
-                    "-rotate-1 translate-y-4",
-                  ];
-
                   return (
-                    <div key={index}
-                      className={`relative h-[180px] overflow-hidden rounded-2xl p-2 shadow-sm transition-transform duration-300 ${rotations[index % rotations.length]}`}
-                      style={{ background:`${data.theme?.warna2}45`, border: `1px solid ${data.theme?.contrasfont}15`,backdropFilter: "blur(8px)", }} >
-                      {/* Name */}
-                        <div className="flex items-center ">
-                            <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full"
-                            style={{ background: `${data.theme?.warna3}20` }}>
-                            <img src="/logo-dio.webp"  alt=""
-                                className="h-full w-full object-cover"/>
-                            </div>
-                            <div className="min-w-0 flex-1">
-                            <p className="truncate text-xs font-semibold"
-                                style={{ color: data.theme?.warna3 }} >
-                                {comment.nama}
-                            </p>
-                            <p className="text-[9px] opacity-50">
-                                {comment.kehadiran}
-                            </p>
-                            </div>
-                        </div>
+                <div key={index}
+                  className="relative min-w-0 overflow-hidden rounded-2xl p-3 shadow-sm transition duration-300 hover:-translate-y-0.5"
+                  style={{ background: `${data.theme?.warna2}35`, border: `1px solid ${data.theme?.contrasfont}15`, backdropFilter: "blur(8px)" }}>
 
-                        {/* Message */}
-                        <div className="mt-4 max-h-[85px] overflow-y-auto pr-1 scrollbar-thin">
-                                <p className="whitespace-pre-line break-words text-xs leading-6 opacity-75">
-                                    {formatUcapan(comment.ucapan)}
-                                </p>
-                            </div>
+                  <div className="flex items-center gap-2">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full"
+                      style={{ background: `${data.theme?.warna3}20` }}>
+                      <img src="/logo-dio.webp" alt="" className="h-full w-full object-cover" />
+                    </div>
 
-                        {/* Date */}
-                        <p className="absolute -bottom-1 right-4 text-[8px] opacity-70">
-                            {formatDate(comment.date)}
-                        </p>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-xs font-semibold text-left" style={{ color: data.theme?.warna3 }}>
+                        {comment.nama}
+                      </p>
+                      <p className="text-[9px] opacity-50 text-left">
+                        {comment.kehadiran}
+                      </p>
+                    </div>
+                  </div>
 
-                        </div>
-                    );
+                  <div className="mt-3 max-h-[90px] overflow-y-auto pr-1 scrollbar-thin">
+                    <p className="whitespace-pre-line break-words text-xs leading-5 opacity-75">
+                      {formatUcapan(comment.ucapan)}
+                    </p>
+                  </div>
+
+                  <p className="mt-2 text-right text-[8px] opacity-40">
+                    {formatDate(comment.date)}
+                  </p>
+                </div>
+              );
                 })}
               </div>
 

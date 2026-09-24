@@ -51,11 +51,11 @@ export const ContohPink: Invitation = {
   coverImage: "/Gallery/ContohSunFlower/4.webp",
   
   gallery: [
-    "/Gallery/ContohLeaf/1.webp",
-    "/Gallery/ContohLeaf/2.webp",
-    "/Gallery/ContohLeaf/3.webp",
-    "/Gallery/ContohLeaf/4.webp",
-    "/Gallery/ContohLeaf/5.webp",
+    "/Gallery/ContohSunFlower/1.webp",
+    "/Gallery/ContohSunFlower/2.webp",
+    "/Gallery/ContohSunFlower/3.webp",
+    "/Gallery/ContohSunFlower/4.webp",
+    "/Gallery/ContohSunFlower/5.webp",
 
    
     

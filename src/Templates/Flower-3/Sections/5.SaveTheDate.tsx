@@ -73,9 +73,9 @@ const SaveTheDate = ({ data, animate }: Props) => {
     <div className={`relative z-10 flex w-full max-w-md flex-col items-center ${animate ? "Fadein-1" : "opacity-0"}`}>
       <p className="text- uppercase tracking-[0.4em] text-white" >Save The Date</p>
       <div className="mt-5 flex w-full items-center justify-center gap-4">
-        <div className="h-px w-12" style={{ backgroundColor: data.theme?.warnaButtonBorder }} />
-        <span style={{ color: data.theme?.warnaButtonBorder }}>✦</span>
-        <div className="h-px w-12" style={{ backgroundColor: data.theme?.warnaButtonBorder }} />
+        <div className="h-px w-12" style={{ backgroundColor: data.theme?.warna1 }} />
+        <span style={{ color: data.theme?.warna1 }}>✦</span>
+        <div className="h-px w-12" style={{ backgroundColor: data.theme?.warna1 }} />
       </div>
 
       <div className="relative mt-7 w-full max-w-[300px]">
@@ -83,7 +83,7 @@ const SaveTheDate = ({ data, animate }: Props) => {
         <div className="relative overflow-hidden rounded-[30px]  px-7 py-7" style={{ background: `${data.theme?.warnaButtonBorder}`, color:data.theme?.contrasfont  }}>
           <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: data.theme?.warna3 }}>{tanggal?.toLocaleDateString("en-US", { month: "long" })}</p>
           <div className="mx-auto my-3 h-px w-16" style={{ backgroundColor: data.theme?.warna3 }} />
-          <p className="font-Tempting text-7xl leading-none" style={{ color: data.theme?.warna3 }}>{tanggal?.getDate()}</p>
+          <p className="font-Tempting text-7xl leading-none" style={{ color: data.theme?.warna2 }}>{tanggal?.getDate()}</p>
           <p className="mt-3 text-xs uppercase tracking-[0.3em]">{tanggal?.toLocaleDateString("en-US", { weekday: "long" })}</p>
           <p className="mt-1 text-sm tracking-[0.2em]" style={{ color: data.theme?.warna3 }}>{tanggal?.getFullYear()}</p>
           <div className="mt-6 grid grid-cols-7 gap-y-3 text-[8px] uppercase tracking-wider opacity-60">
@@ -91,9 +91,10 @@ const SaveTheDate = ({ data, animate }: Props) => {
         </div>
         <div className="mt-3 grid grid-cols-7 gap-y-3 text-[10px]" >
           {kalender.map((day, i) => (
-            <span key={i} className={`mx-auto flex h-6 w-6 items-center justify-center ${day === tanggalWedding ? "rounded-full" : ""}`} style={day === tanggalWedding ? { backgroundColor: data.theme?.warna3, color: data.theme?.warna1 } : undefined}>
-              {day}
-            </span>
+          <span key={i} className="relative mx-auto flex h-7 w-7 items-center justify-center">
+            {day === tanggalWedding && <i className="fas fa-heart absolute text-[28px]" style={{ color: data.theme?.warna3 }} />}
+            <span className={`relative z-10 text-[10px]  ${day === tanggalWedding ? "text-white" : ""}`}>{day}</span>
+          </span>
           ))}
         </div>
             
@@ -112,7 +113,7 @@ const SaveTheDate = ({ data, animate }: Props) => {
         <p className="text-[9px] uppercase tracking-[0.3em]" style={{ color: data.theme?.warna3 }}>Wedding Venue</p>
         <p className="mt-2 text-sm leading-6">{data.LokasiAkad}</p>
         <a href={data.LinkGoogleMapsAkad} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block rounded-full border px-5 py-2 text-[9px] uppercase tracking-[0.2em]" 
-        style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.warnaButtonBorder, borderColor: data.theme?.warna3 }}>View on Google Maps</a>
+        style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.warna1, borderColor: data.theme?.warna3 }}>View on Google Maps</a>
       </div>
 
       <div className="mt-8 grid grid-cols-4 gap-2" style={{color:data.theme?.contrasfont}}>
@@ -120,13 +121,13 @@ const SaveTheDate = ({ data, animate }: Props) => {
         { label: "Minutes", value: countdown.minutes }, 
         { label: "Seconds", value: countdown.seconds }].map((item) => 
         <div key={item.label} className="flex h-[62px] w-[62px] flex-col items-center justify-center rounded-2xl border " 
-        style={{ borderColor: `${data.theme?.warna3}70`, background: `${data.theme?.warnaButtonBorder}` }}>
+        style={{ borderColor: `${data.theme?.warna3}70`, background: `${data.theme?.warna1}` }}>
           <span className="text-lg" style={{ color: data.theme?.warna3 }}>{String(item.value).padStart(2, "0")}</span>
           <span className="text-[7px] uppercase tracking-wider ">{item.label}</span>
         </div>)}
       </div>
 
-      <button onClick={addToCalendar} className="mt-7 mb-15 rounded-full px-7 py-3 text-[10px] uppercase tracking-[0.2em]" style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.warnaButtonBorder }}>Add to Calendar</button>
+      <button onClick={addToCalendar} className="mt-7 mb-15 rounded-full px-7 py-3 text-[10px] uppercase tracking-[0.2em]" style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.warna1 }}>Add to Calendar</button>
     </div>
   </section>
   );
