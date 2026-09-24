@@ -115,7 +115,7 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
             </div>
           ) : (
             <>
-              <div className="space-y-4">
+              <div className="space-y-4 text-left">
                 {currentComments.map((comment, index) => {
                   return (
                 <div key={index}

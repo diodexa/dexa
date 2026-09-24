@@ -124,7 +124,7 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
                 {currentComments.map((comment, index) => {
                   return (
                 <div key={index}
-                  className="relative min-w-0 overflow-hidden rounded-2xl p-3 shadow-sm transition duration-300 hover:-translate-y-0.5"
+                  className="relative min-w-0 overflow-hidden rounded-2xl p-3 text-left shadow-sm transition duration-300 hover:-translate-y-0.5"
                   style={{ background: `${data.theme?.warna2}35`, border: `1px solid ${data.theme?.contrasfont}15`, backdropFilter: "blur(8px)" }}>
 
                   <div className="flex items-center gap-2">
@@ -134,10 +134,10 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <p className="truncate text-xs font-semibold text-left" style={{ color: data.theme?.warna3 }}>
+                      <p className="truncate text-xs font-semibold " style={{ color: data.theme?.warna3 }}>
                         {comment.nama}
                       </p>
-                      <p className="text-[9px] opacity-50 text-left">
+                      <p className="text-[9px] opacity-50">
                         {comment.kehadiran}
                       </p>
                     </div>
