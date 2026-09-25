@@ -1,5 +1,5 @@
 const scriptURL =
-  "https://script.google.com/macros/s/AKfycbwr3c_LZ_636Dv3gB9gEoTe_rEtvsoYfUAC9DI-AGQ4386O6PHmlJKZ6U9UzxOE6V0/exec";
+  "https://script.google.com/macros/s/AKfycbzkOfoLbMfBnmpWp0WrOkMNRXofnNExS0VZl6jHxRH4eu82-EuXlxVwtq6nptFT0I4/exec";
 
 export interface Comment {
   id: string;

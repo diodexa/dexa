@@ -13,7 +13,7 @@ export const ContohJawa: Invitation = {
   IbupengantinWanita : "Ibu Juliete",
 
   Namagroom: "Romeo S.pd",
-  NamagroomPanggilan : "Domeo",
+  NamagroomPanggilan : "Romeo",
   AkunIGPria : "Romeo",
   BapakpengantinPria : "Bpk Romeo",
   IbupengantinPria : "Ibu Juliete",

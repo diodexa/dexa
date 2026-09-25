@@ -43,7 +43,7 @@ const Ucapan = ({data, guest, loadComments, comments, }:Props) =>  {
       setKehadiran("Hadir");
     } catch (err) {
       console.error(err);
-      alert("Gagal mengirim. Coba ulangi ya");
+      alert("Gagal mengirim. Coba refresh ya");
     }
     finally {setLoading(false)}
   };
@@ -126,10 +126,10 @@ const Ucapan = ({data, guest, loadComments, comments, }:Props) =>  {
         <form className={`shrink-0 px-1 pb-5 pt-4 `} onSubmit={handleSubmit}>
         <input required type="text" placeholder="Nama kamu" value={nama} onChange={(e) => setNama(e.target.value)} className="mb-2 w-full rounded-lg border bg-transparent px-3 py-2 text-sm outline-none" style={{ background: data.theme?.warna2, color: data.theme?.ContrasBackgroundColor }} />
         <textarea required placeholder="Tulis ucapan dan doa..." value={ucapan} onChange={(e) => setUcapan(e.target.value)} className="h-[80px] w-full resize-none rounded-lg border px-3 py-2 text-sm outline-none" style={{ background: data.theme?.warna2, color: data.theme?.ContrasBackgroundColor }} />
-        <div className="mt-2 flex items-center justify-end gap-7">
+        <div className="mt-2 flex items-center justify-end gap-7 disabled:cursor-not-allowed disabled:opacity-50">
             <label className="flex cursor-pointer items-center gap-2 text-sm">
-            <input type="checkbox" checked={kehadiran === "Hadir"} style={{ accentColor: data.theme?.warnaButtonBackground }} onChange={(e) => setKehadiran(e.target.checked ? "Hadir" : "Tidak Hadir")} />
-            Hadir
+            <input type="checkbox" checked={kehadiran === "Hadir"} disabled={loading} style={{ accentColor: data.theme?.warnaButtonBackground }} onChange={(e) => setKehadiran(e.target.checked ? "Hadir" : "Tidak Hadir")} />
+            Attending
             </label>
             <button type="submit" disabled={loading} className={`rounded-lg border px-4 py-2 text-sm transition hover:scale-105 ${loading ? "cursor-not-allowed opacity-50" : ""}`} style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.contrasfont }}>
             {loading ? "Mengirim..." : "Kirim Pesan"}

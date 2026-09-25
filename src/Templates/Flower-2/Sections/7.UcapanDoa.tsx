@@ -53,7 +53,7 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
       setCurrentPage(1);
     } catch (err) {
       console.error(err);
-      alert("Gagal mengirim. Coba ulangi ya");
+      alert("Coba refresh ya :)");
     } finally {
       submittingRef.current = false;
       setLoading(false);
@@ -233,8 +233,8 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
             style={{  background: `${data.theme?.warna2}30`, borderColor: `${data.theme?.contrasfont}25`, color: data.theme?.ContrasBackgroundColor }}  />
 
           <div className="mt-3 flex items-center justify-end gap-5">
-            <label className="flex cursor-pointer items-center gap-2 text-xs">
-              <input type="checkbox" checked={kehadiran === "Hadir"}
+            <label className="flex cursor-pointer items-center gap-2 text-xs disabled:cursor-not-allowed disabled:opacity-50">
+              <input type="checkbox" checked={kehadiran === "Hadir"} disabled={loading}
                 style={{ accentColor: data.theme?.warna3 }}
                 onChange={(e) =>  setKehadiran(e.target.checked ? "Hadir" : "Tidak Hadir") }  />
               Attending
