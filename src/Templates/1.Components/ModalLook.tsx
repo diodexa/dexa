@@ -41,8 +41,8 @@ useEffect(() => {
         {/* Main Image */}
         <div className="relative">
           {type === "video" ? (
-            <video src={images} controls playsInline muted
-              className="w-full h-[60vh] object-cover rounded-lg"/>
+            <video src={images} controls autoPlay muted
+              className="w-full h-[60vh] object-contain rounded-lg"/>
           ) : (
             <img src={images} alt="" className="w-full h-[60vh] object-cover rounded-lg" />
           )}

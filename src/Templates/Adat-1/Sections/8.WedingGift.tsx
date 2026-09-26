@@ -22,21 +22,31 @@ const WeddingGift = ({ data, animate }: Props) => {
     }
   };
 
+  const maskAccountNumber = (number: string = "") => {
+    if (!number) return "";
+    const clean = number.replace(/\s/g, "");
+    if (clean.length <= 4) return clean;
+    return `•••• •••• ${clean.slice(-4)}`;
+  };
+
   return (
     <section
   className="relative flex min-h-screen w-full overflow-hidden px-5 py-20 bg-white"
-  style={{ color: data.theme?.contrasfont }}
+  style={{ color: data.theme?.contrasfont, background: `${data.theme?.warna2}D7` }}
 >
-  <div className="absolute -top-32 -left-32 h-[350px] w-[350px] rounded-full opacity-70" style={{ background: data.theme?.warna1 }} />
-  <div className="absolute -bottom-40 -right-32 h-[350px] w-[350px] rounded-full opacity-70" style={{ background: data.theme?.warna2 }} />
+  {/* <div className="absolute -top-32 -left-32 h-[350px] w-[350px] rounded-full opacity-70" style={{ background: data.theme?.warna1 }} />
+  <div className="absolute -bottom-40 -right-32 h-[350px] w-[350px] rounded-full opacity-70" style={{ background: data.theme?.warna2 }} /> */}
   {/* konten Wedding Gift kamu tetap di sini */}
 
       {/* Ornamen */}
-      <div className="pointer-events-none absolute -right-30 -top-10 z-[2] h-[350px]">
-        <img src="/Ornament/LilyPink.webp" alt="" className="h-full w-auto object-contain object-center-bottom opacity-70" />
+      <div className="pointer-events-none absolute -right-30 -bottom-50 z-[2] h-[300px]">
+        <img src="/Ornament/BungaJawa1.webp" alt="" className="h-full w-auto object-contain object-center-bottom opacity-80" />
       </div>
-      <div className="pointer-events-none absolute -bottom-20 -left-40 z-[2] h-[350px]">
-        <img src="/Ornament/LilyWhite.webp" alt="" className="h-full w-auto object-contain object-right-bottom scale-x-[-1] opacity-70" />
+      <div className="pointer-events-none absolute -bottom-50 -left-30 z-[2] h-[300px]">
+        <img src="/Ornament/BungaJawa1.webp" alt="" className="h-full w-auto object-contain object-right-bottom scale-x-[-1] opacity-70" />
+      </div>
+      <div className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 z-[2] h-[300px]">
+        <img src="/Ornament/BungaJawa2.webp" alt="" className="h-full w-auto object-contain object-right-bottom scale-x-[-1] opacity-70" />
       </div>
 
 
@@ -65,7 +75,7 @@ const WeddingGift = ({ data, animate }: Props) => {
               const bank = rekening.bank?.toUpperCase() ?? "";
               const logo = GiftLogo[bank];
               return (
-                <div key={index} className="relative overflow-hidden rounded-2xl border  shadow-sm" style={{ background: `${data.theme?.warna2}e6`, borderColor: `${data.theme?.warna3}25`, color: data.theme?.warnaButtonBorder, backdropFilter: "blur(10px)" }}>
+                <div key={index} className="relative overflow-hidden rounded-2xl border  shadow-sm" style={{ background: `${data.theme?.warna2}e6`, borderColor: `${data.theme?.warna3}25`,  backdropFilter: "blur(10px)" }}>
                   <span className="absolute -right-3 -top-7 text-8xl opacity-5" style={{ color: data.theme?.warna3 }}>{index + 1}</span>
                   <div className="relative z-10 flex items-center justify-between bg-white p-5">
                     {logo ? 
@@ -77,7 +87,7 @@ const WeddingGift = ({ data, animate }: Props) => {
                   <div className="relative z-10 mt-7">
                     <p className="mb-1 text-xs tracking-[0.2em] opacity-50">Account Number</p>
                     <div className="flex items-center justify-center gap-3">
-                      <p className="text-xl font-semibold tracking-[0.12em]">{rekening.nomorRekening}</p>
+                      <p className="text-xl font-semibold tracking-[0.12em]">{maskAccountNumber(rekening.nomorRekening)}</p>
                     </div>
                     <p className="mt-3 opacity-60">a.n. {rekening.atasNama}</p>
                   </div>
@@ -90,7 +100,7 @@ const WeddingGift = ({ data, animate }: Props) => {
         {/* QRIS */}
         {data.WeddingGift?.Qris?.Qris && (
           <div className="mt-5 w-full">
-            <div className="relative overflow-hidden rounded-2xl border p-6 text-center shadow-sm" style={{ background: `${data.theme?.warna1}e6`, borderColor: `${data.theme?.warna3}25`, color: data.theme?.ContrasBackgroundColor, backdropFilter: "blur(10px)" }}>
+            <div className="relative overflow-hidden rounded-2xl border p-6 text-center shadow-sm" style={{ background: `${data.theme?.warna1}e6`, borderColor: `${data.theme?.warna3}25`, backdropFilter: "blur(10px)" }}>
               <div className="mx-auto mb-4 flex w-fit items-center justify-center rounded-xl p-2" style={{ background: data.theme?.ContrasBackgroundColor }}>
                 <img src={data.WeddingGift.Qris.Qris} alt={`Qris ${data.WeddingGift.Qris.penerima}`} className="h-auto w-[190px] object-contain" />
               </div>
@@ -102,10 +112,11 @@ const WeddingGift = ({ data, animate }: Props) => {
         {/* Alamat */}
         {data.WeddingGift?.alamat?.alamat && (
           <div className="mt-5 w-full">
-            <div className="relative overflow-hidden rounded-2xl border p-6 text-center shadow-sm" style={{ background: `${data.theme?.warna2}e6`, borderColor: `${data.theme?.warna2}25`, color: data.theme?.warnaButtonBorder, backdropFilter: "blur(10px)" }}>
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full" style={{background:data.theme?.warna1, color:data.theme?.warna3}} >
-                <i className="fa-solid fa-gift text-2xl" />
-              </div>
+            <div className="relative overflow-hidden rounded-2xl border p-6 text-center shadow-sm" style={{ background: `${data.theme?.warna2}e6`, borderColor: `${data.theme?.warna2}25`,  backdropFilter: "blur(10px)" }}>
+             
+              <i className="fa-solid fa-gift text-2xl"
+              style={{color:data.theme?.warna3}} />
+              
               <p className="mb-2 text-[9px] uppercase tracking-[0.25em] opacity-70">Gift Delivery Address</p>
               <p className="mx-auto max-w-[300px] line-clamp-2 text-sm leading-6">{data.WeddingGift.alamat.alamat}</p>
               <button type="button" className="mt-5 rounded-full border px-5 py-2 text-[10px] tracking-widest transition hover:scale-105" style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.warnaButtonBorder, borderColor: data.theme?.warnaButtonBackground }} onClick={() => handleCopy(data.WeddingGift?.alamat?.alamat ?? "")}>

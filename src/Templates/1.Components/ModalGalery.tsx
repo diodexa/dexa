@@ -51,7 +51,7 @@ useEffect(() => {
           <img
             src={images[current]}
             alt=""
-            className="w-full h-[60vh] object-cover rounded-lg"
+            className="w-full h-[60vh] object-contain rounded-lg"
           />
 
           <button

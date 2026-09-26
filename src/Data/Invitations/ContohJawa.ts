@@ -11,15 +11,17 @@ export const ContohJawa: Invitation = {
   AkunIGWanita: "Juliet",
   BapakpengantinWanita : "Bpk Romeo",
   IbupengantinWanita : "Ibu Juliete",
+  Putri: "Putri dari",
 
   Namagroom: "Romeo S.pd",
   NamagroomPanggilan : "Romeo",
   AkunIGPria : "Romeo",
   BapakpengantinPria : "Bpk Romeo",
   IbupengantinPria : "Ibu Juliete",
+  Putra: "Putra dari",
 
-  FotoBride: "/Gallery/ContohSunFlower/Wanita.webp",
-  FotoGroom: "/Gallery/ContohSunFlower/Pria.webp",
+  FotoBride: "/Gallery/ContohAdat/Wanita.webp",
+  FotoGroom: "/Gallery/ContohAdat/Pria.webp",
   
   FormatWaktu: "WIB",
   
@@ -40,28 +42,29 @@ export const ContohJawa: Invitation = {
   coverImage: "/Gallery/ContohSunFlower/4.webp",
   
   gallery: [
-    "/Gallery/ContohSunFlower/1.webp",
-    "/Gallery/ContohSunFlower/2.webp",
-    "/Gallery/ContohSunFlower/3.webp",
-    "/Gallery/ContohSunFlower/4.webp",
-    "/Gallery/ContohSunFlower/5.webp",
+    "/Gallery/ContohAdat/9.webp",
+    "/Gallery/ContohAdat/8.webp",
+    "/Gallery/ContohAdat/7.webp",
+    "/Gallery/ContohAdat/1.webp",
+    "/Gallery/ContohAdat/5.webp",
+    "/Gallery/ContohAdat/6.webp",
 
    
     
   ],
 
-  video : "/Gallery/ContohLeaf/video.mp4",
+  // video : "/Gallery/ContohLeaf/video.mp4",
 
   WeddingGift: {
     rekening: [
       {
         bank: "shopeepay",
-        atasNama: "Andre",
+        atasNama: "Romeo",
         nomorRekening: "1234567890",
       },
       {
         bank: "bni",
-        atasNama: "Martha",
+        atasNama: "Juliet",
         nomorRekening: "9876543210",
       },
     ],
@@ -74,7 +77,7 @@ export const ContohJawa: Invitation = {
   },
   
   Salam: "Assalamualaikum wr wb",
-  Sambutan : "Dengan memohon rahmat dan ridho Allah SWT,kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.",
+  Sambutan : "Maha suci Allah SWT yang telah menciptakan makhlukNya berpasang-pasangan. Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:",
   Ayat: `وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ
           أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم
           مَّوَدَّةً وَرَحْمَةً`,
@@ -103,14 +106,14 @@ With love, always.`,
     warnaweddingInvitation : "#297fc1",
 
     warna1: "#bd9e66",
-    warna2: "#787777",
+    warna2: "#F7F2E4",
     warna3: "#8c0c0c",
     
     contrasfont: "#050505",
     ContrasBackgroundColor:"#050505",
 
-    warnaButtonBackground : "#d6b81e",
-    warnaButtonBorder : "#297fc1",
+    warnaButtonBackground : "#8c0c0c",
+    warnaButtonBorder : "#F7F2E4",
     
 
   },

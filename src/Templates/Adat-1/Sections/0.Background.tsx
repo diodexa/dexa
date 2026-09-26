@@ -54,7 +54,7 @@ const Background = ({ data, isOpen }: Props) => {
             </div>
             <div className={`absolute bottom-40 -left-15 ${isOpen ? "MunculBawahZoomOutBackground-1" : ""}`}>
                 <img  src="/Ornament/Janur.webp" alt=""
-                className="sway-flower h-full w-auto object-contain object-left-bottom "/>
+                className="sway-flower2 h-full w-auto object-contain object-left-bottom "/>
             </div>
             <div className={`absolute bottom-40 -right-15 ${isOpen ? "MunculBawahZoomOutBackground-1" : ""}`}>
                 <img  src="/Ornament/Janur.webp" alt=""

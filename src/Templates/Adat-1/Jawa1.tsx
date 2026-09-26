@@ -141,7 +141,7 @@ const Jawa1 = ({ data, guest }: Props) => {
         return <Sambutan data={data} animate={animate} />;
 
       case "couple":
-        return <Couple data={data} animate={animate} scrollY={scrollY}/>;
+        return <Couple data={data} animate={animate} />;
 
       case "saveDate":
         return <SaveTheDate data={data} animate={animate} />;
