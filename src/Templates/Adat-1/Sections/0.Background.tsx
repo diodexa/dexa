@@ -40,7 +40,7 @@ const Background = ({ data, isOpen }: Props) => {
             </div>
             <div className={`absolute -top-0 left-1/2 -translate-x-1/2 grayscale h-1/2 w-screen ${isOpen ? "MunculBawahZoomOutBackground-1" : ""}`}>
                 <img src="/Ornament/Gobyok.webp"alt=""
-                className="absolute left-1/2 top-0 w-full max-w-none -translate-x-1/2 scale-[1.3] origin-top"/>
+                className="absolute left-1/2 top-0 w-full max-w-none -translate-x-1/2 scale-[1.3] origin-top lg:scale-[0.4]"/>
             </div>
            
 
