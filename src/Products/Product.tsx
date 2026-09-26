@@ -6,6 +6,10 @@ interface Project {
 
 const projects: Project[] = [
   
+  { title: "Adat-1", 
+    img: "/ProjectAdat.webp", 
+    demoUrl: "https://dexa-invitation.com/Jawa" },
+
   { title: "Flower-3", 
     img: "/PinkGreen.webp", 
     demoUrl: "https://dexa-invitation.com/PinkGreen" },
