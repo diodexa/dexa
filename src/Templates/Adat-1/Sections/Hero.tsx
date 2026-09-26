@@ -31,10 +31,11 @@ const Hero = ({ data, guest, isOpen, setIsOpen }: Props) => {
         </div>
 
         {/* FLAP AMPLOP TERBUKA */}
-        <div className={`absolute bottom-[265px]  h-[170px] w-[330px] origin-bottom ${isOpen ? "BukaEnvelopee" : ""}`} style={{ background: data.theme?.warna1, clipPath: "polygon(0 100%, 50% 0, 100% 100%)"}} />
+        <div className={`absolute bottom-[255px] border h-[170px] w-[330px] origin-bottom ${isOpen ? "BukaEnvelopee" : ""}`} style={{ background: `${data.theme?.warna3}80`, clipPath: "polygon(0 100%, 50% 0, 100% 100%)"}} />
+        
 
         {/* KARTU UNDANGAN */}
-        <div className={`absolute bottom-[80px]  h-[240px] w-[300px] flex flex-col items-center justify-start border bg-white px-6 pt-8 text-center shadow-xl  [transform-origin:center_bottom] ${isOpen ? "BukaKartu" : " "}`} style={{ background: data.theme?.warnaButtonBorder, borderColor: `${data.theme?.warna3}60`, color: data.theme?.warna2 }}>
+        <div className={`absolute bottom-[80px]  h-[240px] w-[320px] flex flex-col items-center justify-start border bg-white px-6 pt-8 text-center shadow-xl  [transform-origin:center_bottom] ${isOpen ? "BukaKartu" : " "}`} style={{ background: data.theme?.warnaButtonBorder, borderColor: `${data.theme?.warna3}60`, color: data.theme?.contrasfont }}>
             <p className="text-[8px] uppercase tracking-[.45em] opacity-60">The Wedding Of</p>
             <div className="flex items-center justify-center gap-3">
                 <p className="text-2xl font-Tempting" style={{ color: data.theme?.warna3 }}>{data.NamabridePanggilan}</p>

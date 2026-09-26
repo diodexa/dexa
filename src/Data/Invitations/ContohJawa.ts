@@ -103,7 +103,7 @@ With love, always.`,
   music: "/Audio/audio.mp3",
   theme : {
 
-    warnaweddingInvitation : "#297fc1",
+    warnaweddingInvitation : "#bd9e66",
 
     warna1: "#bd9e66",
     warna2: "#F7F2E4",

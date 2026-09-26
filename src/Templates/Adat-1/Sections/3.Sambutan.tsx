@@ -10,7 +10,7 @@ const Sambutan = ({ data, animate }: Props) => {
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-8 text-center "
     style={{color: data.theme?.contrasfont, }} >
       
-      <div className="absolute w-screen h-screen inset-0 "
+      <div className="absolute w-screen h-screen inset-0 opacity-80 "
       style={{ background: data.theme?.warna2 }}/>
       
 
@@ -47,7 +47,7 @@ const Sambutan = ({ data, animate }: Props) => {
           <p className={` leading-7 ${animate ? "MunculAtas-1 " : "opacity-0"}`}>
             {data.Sambutan}
           </p>
-          <div className={`mt-8 text-3xl ${animate ? "MunculBawah-1 " : "opacity-0"}`}
+          <div className={`mt-8 text-3xl text-center ${animate ? "MunculBawah-1 " : "opacity-0"}`}
           style={{color:data.theme?.warna3}}>
             <span className="font-Tempting">{data.NamabridePanggilan.charAt(0)}</span>
             <span className="text-xl"> & </span>
