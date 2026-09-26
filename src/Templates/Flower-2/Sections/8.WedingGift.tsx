@@ -11,16 +11,23 @@ const WeddingGift = ({ data,animate }: Props) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async (text: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopied(true);
-    } catch (err) {
-      console.error("Gagal copy:", err);
-      alert("Copy gagal: " + err);
-    } finally {
-      setTimeout(() => setCopied(false), 1500);
-    }
-  };
+        try {
+        await navigator.clipboard.writeText(text);
+        setCopied(true);
+        } catch (err) {
+        console.error("Gagal copy:", err);
+        alert("Copy gagal: " + err);
+        } finally {
+        setTimeout(() => setCopied(false), 1500);
+        }
+    };
+
+    const maskAccountNumber = (number: string = "") => {
+        if (!number) return "";
+        const clean = number.replace(/\s/g, "");
+        if (clean.length <= 4) return clean;
+        return `•••• •••• ${clean.slice(-4)}`;
+    };
 
   return (
     <section className="relative flex min-h-screen w-full overflow-hidden px-5 py-20" style={{ background: data.theme?.warna1, color: data.theme?.contrasfont }}>
@@ -72,7 +79,7 @@ const WeddingGift = ({ data,animate }: Props) => {
                     <div className="relative z-10 mt-7">
                         <p className="mb-1 text-xs  tracking-[0.2em] opacity-50">Account Number</p>
                         <div className="flex items-center justify-center gap-3">
-                        <p className="text-xl font-semibold tracking-[0.12em]">{rekening.nomorRekening}</p>
+                        <p className="text-xl font-semibold tracking-[0.12em]">{maskAccountNumber(rekening.nomorRekening)}</p>
                         </div>
                         <p className="mt-3 text- opacity-60">a.n. {rekening.atasNama}</p>
                     </div>

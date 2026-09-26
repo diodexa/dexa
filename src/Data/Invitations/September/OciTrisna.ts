@@ -88,12 +88,25 @@ export const OciTrisna: Invitation = {
   NamaSurat : "QS. Ar-Rum : 21",
   // Ayat:"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia",
   // NamaSurat:"Markus 10:9",
+  Story : [
+    {Head : "Desember 2022 - Pertemuan Pertama",
+    Story : "Berawal dari rekan beda divisi di kantor, momen saling bantu pekerjaan menjadi pintu awal perkenalan Trisna dan Oci."},
+    {Head : "​Maret 2023 - Makin Dekat & Cocok",
+    Story : "Komunikasi yang terjalin hangat membuat kami yakin untuk berjalan lebih dekat dan saling mengenal lebih dalam."},
+    {Head : "​Februari 2026 - Pertemuan Keluarga",
+    Story : "Merajut keseriusan hubungan, kedua keluarga besar kami bertemu untuk menyatukan niat baik."},
+    {Head : "​28 November 2026 - Awal Perjalanan Baru",
+    Story : "Momen indah di mana kami mengikat janji suci, memulai babak baru sebagai pasangan suami istri."},
+    ],
 
     sections : [
     { id: "ayat", scrollY: 203 },
     { id: "sambutan", scrollY: 862 },
     { id: "couple", scrollY: 1350 },
     { id: "saveDate", scrollY: 2044 },
+    { id: "story", scrollY: 2044 },
+    { id: "story2", scrollY: 2044 },
+    { id: "story3", scrollY: 2044 },
     { id: "gallery", scrollY: 2874 },
     { id: "ucapan", scrollY: 3760 },
     { id: "gift", scrollY: 4832 },
@@ -103,7 +116,8 @@ export const OciTrisna: Invitation = {
   Closing : `Terima kasih telah menjadi bagian dari cerita dan kebahagiaan kami.
 With love, always.`,
 
-  music: "/Audio/audio.mp3",
+  music: "/Audio/Maoli - From This Moment On.mp3",
+  delayMusic: 4000,
   theme : {
 
     warnaweddingInvitation : "#6c613b",

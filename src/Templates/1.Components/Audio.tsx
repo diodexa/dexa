@@ -57,7 +57,7 @@ const AudioController = ({ data, isOpen }: Props) => {
     const audio = audioRef.current;
 
     if (!audio) return;
-    audio.volume = 0.5;
+    audio.volume = 0.3;
 
     if (audio.paused) {
       try {

@@ -16,6 +16,9 @@ import UcapanDoa from "./Sections/7.UcapanDoa";
 import WeddingGift from "./Sections/8.WedingGift";
 import Closing from "./Sections/9.Closing";
 import Hero from "./Sections/Hero";
+import Story from "./Sections/10.Story";
+import Story2 from "./Sections/Contoh";
+import Story3 from "./Sections/Contoh copy";
 
 interface Props {
   data: Invitation;
@@ -123,7 +126,7 @@ const Rustic = ({ data, guest }: Props) => {
 
     const timer = setTimeout(() => {
       setAudioReady(true);
-    }, 1000);
+    }, data.delayMusic);
 
     return () => clearTimeout(timer);
   }, [isOpen]);
@@ -145,6 +148,13 @@ const Rustic = ({ data, guest }: Props) => {
 
       case "saveDate":
         return <SaveTheDate data={data} animate={animate} />;
+
+      case "story":
+        return <Story data={data} animate={animate} />;
+      case "story2":
+        return <Story2 data={data} animate={animate} />;
+      case "story3":
+        return <Story3 data={data} animate={animate} />;
 
       case "gallery":
         return (

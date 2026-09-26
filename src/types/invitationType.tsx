@@ -56,6 +56,7 @@ export type Invitation = {
   }[];
 
   music?: string;
+  delayMusic?: number;
   video? : string;
 
   theme?: {

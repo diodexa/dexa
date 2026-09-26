@@ -99,6 +99,7 @@ export const SyifaJody: Invitation = {
   Closing : `Thank you for being part of our story, our journey, and our happiness.`,
 
   music: "/Audio/Bermuara-Adera.mp3",
+  delayMusic : 1000,
   theme : {
 
     warnaweddingInvitation : "#6c613b",
