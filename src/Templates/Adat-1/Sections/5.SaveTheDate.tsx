@@ -143,7 +143,7 @@ const SaveTheDate = ({ data, animate }: Props) => {
         </div>
 
         {/* DATE */}
-        <div className="relative mt-12">
+        <div className="relative mt-7">
           {/* Decorative circle */}
           <div className="absolute left-1/2 top-1/2 h-[245px] w-[245px] -translate-x-1/2 -translate-y-1/2 rounded-full "
             style={{ borderColor: `${data.theme?.warna3}25`, }} />

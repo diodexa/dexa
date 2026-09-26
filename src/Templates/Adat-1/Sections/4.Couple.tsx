@@ -15,9 +15,9 @@ const Couple = ({ data, animate }: Props) => {
         <div className="h-full w-full bg-contain bg-top bg-no-repeat" style={{ backgroundImage: "url('/Ornament/lace.webp')" }} />
       </div>
 
-      <p className={`text-3xl my-20 uppercase tracking-[0.2em] ${animate ? "Fadein-1" : "opacity-0"}`} style={{color:data.theme?.warna3}}>Bride & Groom</p>
+      <p className={`text-3xl mt-20 mb-10 uppercase tracking-[0.2em] ${animate ? "Fadein-1" : "opacity-0"}`} style={{color:data.theme?.warna3}}>Bride & Groom</p>
           
-      <div className="relative  z-2 w-[90%] py-10   rounded-b-[60px]  rounded-t-[60px]" style={{ background: `${data.theme?.warna2}` }}>
+      <div className="relative  z-2 w-[90%] py-10 mb-10   rounded-b-[60px]  rounded-t-[60px]" style={{ background: `${data.theme?.warna2}` }}>
 
         <div className="mt-2 flex w-full flex-col items-center gap-8">
           {/* BRIDE */}
@@ -152,12 +152,7 @@ const Couple = ({ data, animate }: Props) => {
           </div>
         </div>
       </div>
-      <div className="mt-6 flex items-center justify-between text-[7px] uppercase tracking-[0.2em] opacity-60">
-          <span>Our Story</span>
-          <span>With Love</span>
-          <span>Forever</span>
-      </div>
-          
+
   
 
       
