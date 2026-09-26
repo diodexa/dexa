@@ -31,7 +31,10 @@ const Hero = ({ data, guest, isOpen, setIsOpen }: Props) => {
         </div>
 
         {/* FLAP AMPLOP TERBUKA */}
-        <div className={`absolute bottom-[255px] border h-[170px] w-[330px] origin-bottom ${isOpen ? "BukaEnvelopee" : ""}`} style={{ background: `${data.theme?.warna3}80`, clipPath: "polygon(0 100%, 50% 0, 100% 100%)"}} />
+        <div className={`absolute bottom-[90px] h-[340px] w-[330px] origin-bottom ${isOpen ? "BukaEnvelopee" : ""}`}>
+          <div className="absolute bottom-0 h-[170px] w-full" style={{ background: `${data.theme?.warna3}80` }} />
+          <div className="absolute left-0 top-0 h-[170px] w-full" style={{ background: `${data.theme?.warna3}80`, clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }} />
+        </div>
         
 
         {/* KARTU UNDANGAN */}

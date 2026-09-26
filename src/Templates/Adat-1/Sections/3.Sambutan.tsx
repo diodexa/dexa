@@ -7,8 +7,8 @@ interface Props {
 
 const Sambutan = ({ data, animate }: Props) => {
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-8 text-center "
-    style={{color: data.theme?.contrasfont, }} >
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-8 text-center text-shadow"
+    style={{color: data.theme?.warna2, }} >
       
       <div className="absolute w-screen h-screen inset-0 opacity-80 "
       style={{ background: data.theme?.warna2 }}/>
