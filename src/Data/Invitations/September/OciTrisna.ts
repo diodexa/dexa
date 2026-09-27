@@ -93,7 +93,7 @@ export const OciTrisna: Invitation = {
     Story : "Berawal dari rekan beda divisi di kantor, momen saling bantu pekerjaan menjadi pintu awal perkenalan Trisna dan Oci."},
     {Head : "​Maret 2023 - Makin Dekat & Cocok",
     Story : "Komunikasi yang terjalin hangat membuat kami yakin untuk berjalan lebih dekat dan saling mengenal lebih dalam."},
-    {Head : "​Februari 2026 - Pertemuan Keluarga",
+    {Head : "Februari 2026 - Pertemuan Keluarga",
     Story : "Merajut keseriusan hubungan, kedua keluarga besar kami bertemu untuk menyatukan niat baik."},
     {Head : "​28 November 2026 - Awal Perjalanan Baru",
     Story : "Momen indah di mana kami mengikat janji suci, memulai babak baru sebagai pasangan suami istri."},
@@ -104,13 +104,11 @@ export const OciTrisna: Invitation = {
     { id: "sambutan", scrollY: 862 },
     { id: "couple", scrollY: 1350 },
     { id: "saveDate", scrollY: 2044 },
-    { id: "story", scrollY: 2044 },
-    { id: "story2", scrollY: 2044 },
-    { id: "story3", scrollY: 2044 },
-    { id: "gallery", scrollY: 2874 },
-    { id: "ucapan", scrollY: 3760 },
-    { id: "gift", scrollY: 4832 },
-    { id: "closing", scrollY: 5500 }
+    { id: "story", scrollY: 2874 },
+    { id: "gallery", scrollY: 5100 },
+    { id: "ucapan", scrollY: 6152 },
+    { id: "gift", scrollY: 7155 },
+    { id: "closing", scrollY: 8421 }
     ],
 
   Closing : `Terima kasih telah menjadi bagian dari cerita dan kebahagiaan kami.

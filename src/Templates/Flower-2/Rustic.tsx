@@ -17,8 +17,8 @@ import WeddingGift from "./Sections/8.WedingGift";
 import Closing from "./Sections/9.Closing";
 import Hero from "./Sections/Hero";
 import Story from "./Sections/10.Story";
-import Story2 from "./Sections/Contoh";
-import Story3 from "./Sections/Contoh copy";
+import Story2 from "../1.Components/ContohStory";
+import Story3 from "../1.Components/ContohStory2";
 
 interface Props {
   data: Invitation;

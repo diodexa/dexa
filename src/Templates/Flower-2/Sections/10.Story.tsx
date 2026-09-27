@@ -18,7 +18,13 @@ const Story = ({ data, animate }: Props) => {
         </div>
 
         <div className="space-y-12">
-          {stories.map((story, index) => (
+          {stories.map((story, index) => {
+
+            const cleanHead = story.Head.replace(/[\u200B-\u200D\uFEFF]/g, "").trim();
+              const match = cleanHead.match(/^(.*?)\s*[—–-]\s*(.+)$/);
+              const date = match ? match[1].trim() : cleanHead;
+              const title = match ? match[2].trim() : "";
+            return (
             <article key={index} className={`relative ${index % 2 === 0 ? "rotate-[-1.5deg]" : "rotate-[1.5deg]"}`}>
               <div className="bg-white p-3 pb-5 shadow-lg">
                 <div className="aspect-[4/3] w-full overflow-hidden">
@@ -32,18 +38,16 @@ const Story = ({ data, animate }: Props) => {
                 </div>
 
                 <div className="px-2 pt-4 text-center">
-                  <p className="text-[9px] uppercase tracking-[0.25em]" style={{ color: data.theme?.warna3 }}>
-                    {story.Head}
-                  </p>
-                  <p className="mt-3 text-xs leading-6" style={{ color: data.theme?.contrasfont }}>
-                    {story.Story}
-                  </p>
-                </div>
+                  <p className="text-[8px] uppercase tracking-[0.3em] opacity-50">{date}</p>
+                    <div className="mx-auto  h-px w-8" style={{ background: data.theme?.warna3 }} />
+                    <h3 className="mt-3 text-xl" style={{ color: data.theme?.warna3 }}>{title}</h3>
+                    <p className="mt-3 text-xs leading-6 opacity-65">{story.Story}</p>
+                  </div>
               </div>
 
               <div className="absolute -bottom-3 left-1/2 h-5 w-20 -translate-x-1/2 rotate-[-2deg] opacity-40" style={{ background: `${data.theme?.warna3}30` }} />
             </article>
-          ))}
+          )})}
         </div>
       </div>
     </section>
