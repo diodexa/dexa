@@ -36,7 +36,7 @@ export const Navbar = ({activeSection} : Navbarprops)=> {
                         </svg>   
                         )}
                     </button>
-                    <div className= {`${isOpen ? "block bg-[#f2efe7bf]  absolute " : "hidden"}  md:block md:w-auto text-right`}
+                    <div className= {`${isOpen ? "block bg-[#f2efe7bf]  absolute " : "hidden"}  md:block md:w-auto text-right dark:bg-gray-700`}
                     style={{ positionAnchor: "--hamburger",right: "anchor(right)",top: "anchor(bottom)",}}>
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4  border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-700 md:dark:bg-gray-700 dark:border-gray-700 ">
                             {menu.map((item)=>(

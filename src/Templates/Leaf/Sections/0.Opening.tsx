@@ -32,19 +32,20 @@ const Opening = ({ data, scrollY, isOpen }: Props) => {
       style={{
         transform: `translate(-50%, -50%) scale(${scale}) `,opacity, filter: `blur(${blur}px)`,}}>
 
-      <div className="absolute inset-0 flex justify-center">
-        <img src="/Ornament/frame6.webp" alt="" className="h-full w-auto" />
+      <div className="absolute inset-0 flex ">
+        <img src="/Ornament/frame6.webp" alt="" className="h-full w-auto object-cover" />
       </div>
 
         {/* text di atas frame */}
         <div className={`relative w-full h-[200px] transition-all duration-2000 ease-out ${isOpen? "scale-100 opacity-100": "scale-0 opacity-0"}`}>
-          <div className={`absolute inset-0 z-10 flex flex-col items-center justify-center pt-10 px-2 text-xl `}
+          <div className={`absolute inset-0 z-10 flex flex-col items-center justify-center pt-10 px-2 text-xl gap-5 `}
             style={{ opacity: opacity, color: data.theme?.warna1}}>
-            <h1 className="text-7xl font-BetterChill font-bold"
+            <p className="tracking-[0.1em] uppercase text-sm">The Wedding Of</p>
+            <h1 className="text-5xl font-BetterChill font-bold"
               style={{color: data.theme?.warna1}}>
-              {data.NamabridePanggilan?.charAt(0)}
+              {data.NamabridePanggilan}
               <span className="mx-2">&</span>
-              {data.NamagroomPanggilan?.charAt(0)}
+              {data.NamagroomPanggilan}
             </h1> 
             
           </div>
