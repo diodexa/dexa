@@ -27,9 +27,8 @@ const Couple = ({ data, animate }: Props) => {
                 <img src="/Ornament/BungaJawa1.webp" alt=""
                 className=" h-full w-auto object-contain object-top -rotate-60 scale-x-[-1] " />
             </div>
-              <div className="relative h-[220px] w-[130px] overflow-hidden rounded-t-full rounded-b-full">
-                <img src={data.FotoBride} alt="" className="h-full w-full object-contain  " />
-                
+              <div className="relative h-[235px] w-[140px] overflow-hidden rounded-[70px]">
+                <img src={data.FotoBride} alt="" className="h-full w-full object-cover" />
               </div>
               <div className={`absolute -bottom-0 -left-15 h-[80px]   `}>
                 <img src="/Ornament/BungaJawa2.webp" alt=""
@@ -94,9 +93,8 @@ const Couple = ({ data, animate }: Props) => {
                 <img src="/Ornament/BungaJawa1.webp" alt=""
                 className=" h-full w-auto object-contain object-top -rotate-60 scale-x-[-1] " />
             </div>
-              <div className="relative h-[220px] w-[130px] overflow-hidden rounded-t-full rounded-b-full">
-                <img src={data.FotoGroom} alt="" className="h-full w-full object-contain  " />
-                
+              <div className="relative h-[235px] w-[140px] overflow-hidden rounded-[70px]">
+                <img src={data.FotoGroom} alt="" className="h-full w-full object-cover" />
               </div>
               <div className={`absolute -bottom-0 -left-15 h-[80px]   `}>
                 <img src="/Ornament/BungaJawa2.webp" alt=""

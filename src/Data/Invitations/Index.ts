@@ -11,6 +11,7 @@ import { OciTrisna } from "./September/OciTrisna";
 import { SyifaJody } from "./September/SyifaJody";
 import { ContohPink } from "./ContohPink";
 import { ContohJawa } from "./ContohJawa";
+import { ContohLampung } from "./ContohLampung";
 
 
 
@@ -25,6 +26,7 @@ export const invitations = [
   ContohRustic,
   ContohPink,
   ContohJawa,
+  ContohLampung,
 
   // September
   OciTrisna,

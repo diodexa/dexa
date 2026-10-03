@@ -24,7 +24,7 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
   const startIndex = (currentPage - 1) * COMMENTS_PER_PAGE;
   const currentComments = comments.slice(startIndex, startIndex + COMMENTS_PER_PAGE);
 
-   const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (submittingRef.current) return;
@@ -53,13 +53,12 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
       setCurrentPage(1);
     } catch (err) {
       console.error(err);
-      alert("Gagal mengirim. Coba refresh ya :)");
+      alert("Coba refresh ya :)");
     } finally {
       submittingRef.current = false;
       setLoading(false);
     }
   };
-
 
   const formatDate = (date: string) => {
     return new Date(date).toLocaleString("id-ID", {
@@ -75,16 +74,20 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
   };
 
   return (
-    <section className="relative flex min-h-screen w-full flex-col overflow-hidden  px-5 py-20" style={{color:data.theme?.contrasfont, background:data.theme?.warnaButtonBorder}}>
-  <div className="pointer-events-none absolute -left-20 top-20 h-[500px] w-[100px] rounded-full border-[18px] opacity-30" style={{ borderColor: data.theme?.warna1 }} />
-  <div className="pointer-events-none absolute -right-20 bottom-20 h-[450px] w-[100px] rounded-full border-[18px] opacity-30" style={{ borderColor: data.theme?.warna2 }} />
+    <section className="relative flex min-h-screen w-full flex-col overflow-hidden px-5 py-20"
+      style={{ background: `${data.theme?.warna1}D7`, color: data.theme?.contrasfont }} >
+
+
+      {/* Ornament */}
+      <div className="pointer-events-none absolute left-1/2 top-0 z-[1] h-[90px] w-full -translate-x-1/2 overflow-hidden">
+        <div className="h-full w-full bg-top bg-repeat-x" style={{ backgroundImage: "url('/Ornament/MotifLampung.webp')", backgroundSize: "auto 100%" }} />
+      </div>
+
 
       {/* Header */}
       <div className={`relative z-10 mb-8 pt-5 text-center ${animate? "Fadein-1" : "opacity-0"}`}>
-        <p
-          className="mb-2 text-[10px] uppercase tracking-[0.4em]"
-          style={{ color: data.theme?.warna2 }}
-        >
+        <p className="mb-2 text-[10px] uppercase tracking-[0.4em]"
+          style={{ color: data.theme?.warna2 }} >
           From Your Loved Ones
         </p>
         <h2 className="text-5xl"
@@ -99,8 +102,65 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-[500px] flex-1 flex-col">
+              
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="shrink-0">
+          <div className="mb-5 text-center">
+            <p className="text-2xl"
+              style={{color: data.theme?.warna3}}>
+              Leave a Wish
+            </p>
+            <p className="mt-1 text-[10px] opacity-50">
+              Send your best wishes and prayers
+            </p>
+          </div>
+
+          <input required type="text" placeholder="Nama kamu"
+            value={nama}
+            onChange={(e) => setNama(e.target.value)}
+            className="mb-2 w-full rounded-xl border px-4 py-3 text-sm outline-none placeholder:opacity-50"
+            style={{  background: `${data.theme?.warna2}`,  borderColor: `${data.theme?.contrasfont}25`,color: data.theme?.ContrasBackgroundColor,
+            }} />
+
+          <textarea required placeholder="Tulis ucapan dan doa..."
+            value={ucapan}
+            onChange={(e) => setUcapan(e.target.value)}
+            className="h-[85px] w-full resize-none rounded-xl border px-4 py-3 text-sm outline-none placeholder:opacity-50"
+            style={{  background: `${data.theme?.warna2}`, borderColor: `${data.theme?.contrasfont}25`, color: data.theme?.ContrasBackgroundColor }}  />
+
+          <div className="mt-3 flex items-center justify-end gap-5">
+            <label className="flex cursor-pointer items-center gap-2 text-xs disabled:cursor-not-allowed disabled:opacity-50">
+              <input type="checkbox" disabled={loading} checked={kehadiran === "Hadir"}
+                style={{ accentColor: data.theme?.warna3 }}
+                onChange={(e) =>  setKehadiran(e.target.checked ? "Hadir" : "Tidak Hadir") }  />
+              Attending
+            </label>
+
+            <button type="submit"  disabled={loading}
+              className="rounded-xl  px-5 py-2.5 text-xs transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50"
+              style={{  background: data.theme?.warnaButtonBackground,  color: data.theme?.warnaButtonBorder  }} >
+              {loading ? "Sending..." : "Send"}
+            </button>
+          </div>
+        </form>
+
+         {/* Divider */}
+        <div className="my-9 flex items-center gap-3">
+          <div className="h-px flex-1 opacity-20"
+            style={{ background: data.theme?.contrasfont }}
+          />
+          <span className="text-sm" style={{ color: data.theme?.warna3 }}>
+            ❦
+          </span>
+          <div
+            className="h-px flex-1 opacity-20"
+            style={{ background: data.theme?.contrasfont }}
+          />
+        </div>
+
         {/* Wishes Wall */}
-        <div>{comments.length === 0 ? (
+        <div >{comments.length === 0 ? (
             <div className="flex h-[350px] flex-col items-center justify-center text-center">
               <div
                 className="mb-5 flex h-16 w-16 items-center justify-center rounded-full border"
@@ -120,7 +180,7 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
                   return (
                 <div key={index}
                   className="relative min-w-0 overflow-hidden rounded-2xl p-3 text-left shadow-sm transition duration-300 hover:-translate-y-0.5"
-                  style={{ background: `${data.theme?.warna2}35`, border: `1px solid ${data.theme?.contrasfont}15`, backdropFilter: "blur(8px)" }}>
+                  style={{ background: `${data.theme?.warna1}`, border: `1px solid ${data.theme?.contrasfont}`, backdropFilter: "blur(8px)" }}>
 
                   <div className="flex items-center gap-2">
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full"
@@ -183,62 +243,6 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
             </>
           )}
         </div>
-
-        {/* Divider */}
-        <div className="my-9 flex items-center gap-3">
-          <div
-            className="h-px flex-1 opacity-20"
-            style={{ background: data.theme?.contrasfont }}
-          />
-          <span className="text-sm" style={{ color: data.theme?.warna3 }}>
-            ❦
-          </span>
-          <div
-            className="h-px flex-1 opacity-20"
-            style={{ background: data.theme?.contrasfont }}
-          />
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="shrink-0">
-          <div className="mb-5 text-center">
-            <p className="text-2xl"
-              style={{color: data.theme?.warna3}}>
-              Leave a Wish
-            </p>
-            <p className="mt-1 text-[10px] opacity-50">
-              Send your best wishes and prayers
-            </p>
-          </div>
-
-          <input required type="text" placeholder="Nama kamu"
-            value={nama}
-            onChange={(e) => setNama(e.target.value)}
-            className="mb-2 w-full rounded-xl border px-4 py-3 text-sm outline-none placeholder:opacity-50"
-            style={{  background: `${data.theme?.warna2}30`,  borderColor: `${data.theme?.contrasfont}25`,color: data.theme?.ContrasBackgroundColor,
-            }} />
-
-          <textarea required placeholder="Tulis ucapan dan doa..."
-            value={ucapan}
-            onChange={(e) => setUcapan(e.target.value)}
-            className="h-[85px] w-full resize-none rounded-xl border px-4 py-3 text-sm outline-none placeholder:opacity-50"
-            style={{  background: `${data.theme?.warna2}30`, borderColor: `${data.theme?.contrasfont}25`, color: data.theme?.ContrasBackgroundColor }}  />
-
-          <div className="mt-3 flex items-center justify-end gap-5">
-            <label className="flex cursor-pointer items-center gap-2 text-xs disabled:cursor-not-allowed disabled:opacity-50">
-              <input type="checkbox" checked={kehadiran === "Hadir"} disabled={loading}
-                style={{ accentColor: data.theme?.warna3 }}
-                onChange={(e) =>  setKehadiran(e.target.checked ? "Hadir" : "Tidak Hadir") }  />
-              Attending
-            </label>
-
-            <button type="submit"  disabled={loading}
-              className="rounded-xl border px-5 py-2.5 text-xs transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50"
-              style={{  background: data.theme?.warnaButtonBackground,  color: data.theme?.warnaButtonBorder  }} >
-              {loading ? "Sending..." : "Send"}
-            </button>
-          </div>
-        </form>
       </div>
     </section>
   );

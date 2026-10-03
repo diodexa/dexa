@@ -1,32 +1,32 @@
 import type { Invitation } from "../../types/invitationType";
 
-export const ContohPink: Invitation = {
-  slug: "PinkGreen",
+export const ContohLampung: Invitation = {
+  slug: "Lampung",
 
-  template: "Flower-3",
+  template: "Adat-2",
 
-  Namabride: "Haryati Putri Ibunya",
-  NamabridePanggilan : "Haryati",
-  GelarBride : "S.pd",
-  AkunTikTokWanita : "Haryati",
-  AkunIGWanita: "Haryati",
-  BapakpengantinWanita : "Bpk Heri",
-  IbupengantinWanita : "Ibu Sumi",
+  Namabride: "Juliet  S.pd",
+  NamabridePanggilan : "Juliet",
+  AkunTikTokWanita : "Juliet",
+  AkunIGWanita: "Juliet",
+  BapakpengantinWanita : "Bpk Romeo",
+  IbupengantinWanita : "Ibu Juliete",
+  Putri: "Putri dari",
 
-  Namagroom: `Dino Putra Bapakany `,
-  GelarGroom : "S . E.",
-  NamagroomPanggilan : "Dino",
-  AkunIGPria : "Dino",
-  BapakpengantinPria : "Bpk Sony",
-  IbupengantinPria : "Ibu Waode",
+  Namagroom: "Romeo S.pd",
+  NamagroomPanggilan : "Romeo",
+  AkunIGPria : "Romeo",
+  BapakpengantinPria : "Bpk Romeo",
+  IbupengantinPria : "Ibu Juliete",
+  Putra: "Putra dari",
 
-  FotoBride: "/Gallery/ContohSunFlower/Wanita.webp",
-  FotoGroom: "/Gallery/ContohSunFlower/Pria.webp",
+  FotoBride: "/Gallery/ContohAdat/Wanita.webp",
+  FotoGroom: "/Gallery/ContohAdat/Pria.webp",
   
   FormatWaktu: "WIB",
   
-  TanggalAkad: "10 Februari 2029",
-  TanggalAkadISO: "2029-02-10",
+  TanggalAkad: "10 Desember 2029",
+  TanggalAkadISO: "2029-12-10",
   JamAkad: "08:00",
   LokasiAkad: " The Ratan, Jl. Ringroad Selatan No.93, Glugo, Panggungharjo, Kec. Sewon, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55188",
 
@@ -36,56 +36,48 @@ export const ContohPink: Invitation = {
   LinkGoogleMapsAkad: "https://www.google.com/maps/place/The+Ratan+-+Multi+Use+Building/@-7.834827,110.3627029,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7a5753a2bd3a9b:0x1a6020ff1e351a58!8m2!3d-7.834827!4d110.3627029!16s%2Fg%2F11mx5m9jmc?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D",
   LinkGoogleMapsResepsi: "https://www.google.com/maps/place/The+Ratan+-+Multi+Use+Building/@-7.834827,110.3627029,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7a5753a2bd3a9b:0x1a6020ff1e351a58!8m2!3d-7.834827!4d110.3627029!16s%2Fg%2F11mx5m9jmc?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D",
 
-  sections : [
-    { id: "ayat", scrollY: 203 },
-    { id: "sambutan", scrollY: 862 },
-    { id: "couple", scrollY: 1350 },
-    { id: "saveDate", scrollY: 2044 },
-    { id: "gallery", scrollY: 2874 },
-    { id: "gift", scrollY: 3760 },
-    { id: "ucapan", scrollY: 4832 },
-    { id: "closing", scrollY: 5500 }
-    ],
-  
+  // note: `*dresscode putih krem untuk cowok 
+  //  putih hitam untuk cewek` ,
 
   coverImage: "/Gallery/ContohSunFlower/4.webp",
   
   gallery: [
-    "/Gallery/ContohSunFlower/1.webp",
-    "/Gallery/ContohSunFlower/2.webp",
-    "/Gallery/ContohSunFlower/3.webp",
-    "/Gallery/ContohSunFlower/4.webp",
-    "/Gallery/ContohSunFlower/5.webp",
+    "/Gallery/ContohAdat/9.webp",
+    "/Gallery/ContohAdat/8.webp",
+    "/Gallery/ContohAdat/7.webp",
+    "/Gallery/ContohAdat/1.webp",
+    "/Gallery/ContohAdat/5.webp",
+    "/Gallery/ContohAdat/6.webp",
 
    
     
   ],
 
-
+  // video : "/Gallery/ContohLeaf/video.mp4",
 
   WeddingGift: {
     rekening: [
       {
         bank: "shopeepay",
-        atasNama: "Dino",
+        atasNama: "Romeo",
         nomorRekening: "1234567890",
       },
       {
         bank: "bni",
-        atasNama: "Haryati",
+        atasNama: "Juliet",
         nomorRekening: "9876543210",
       },
     ],
 
     alamat: {
-      penerima: "Trisna",
+      penerima: "Andre",
       noHp: "081234567890",
-      alamat: "Jl. Contoh No. 123, kelurahan Yogya Tenggara Timur Barat, kecamatan Yogya, kota Yogyakarta",
+      alamat: "Jl. Contoh No. 123, kelurahan Yogya, kecamatan Yogya, kota Yogyakarta",
     },
   },
   
   Salam: "Assalamualaikum wr wb",
-  Sambutan : "Dengan memohon rahmat dan ridho Allah SWT,kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.",
+  Sambutan : "Maha suci Allah SWT yang telah menciptakan makhlukNya berpasang-pasangan. Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:",
   Ayat: `وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ
           أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم
           مَّوَدَّةً وَرَحْمَةً`,
@@ -94,23 +86,34 @@ export const ContohPink: Invitation = {
   // Ayat:"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia",
   // NamaSurat:"Markus 10:9",
 
-  Closing : `Terima kasih telah menjadi bagian dari cerita dan kebahagiaan kami.
-With love, always.`,
+  sections : [
+    { id: "ayat", scrollY: 203 },
+    { id: "sambutan", scrollY: 862 },
+    { id: "couple", scrollY: 1350 },
+    { id: "saveDate", scrollY: 2044 },
+    { id: "gallery", scrollY: 2874 },
+    { id: "ucapan", scrollY: 3760 },
+    { id: "gift", scrollY: 4832 },
+    { id: "closing", scrollY: 5500 }
+    ],
+
+  Closing : `Sampai jumpa di hari bahagia kami. 
+  Terima kasih telah menjadi bagian dari cerita ini.`,
 
   music: "/Audio/audio.mp3",
   theme : {
 
-    warnaweddingInvitation : "linear-gradient(180deg, #cad0f4 0%, #d2d3ed 22%, #e5d5e8 40%, #f6dce0 58%, #fde4df 72%, #fbd3c9 100%)",
+    warnaweddingInvitation : "#bd9e66",
 
-    warna1: " #F6C5CC",
-    warna2: "#7FA66F",
-    warna3: "#B85C78",
+    warna1: "#501119",
+    warna2: "#fbfbfb",
+    warna3: "#e9b55c",
     
-    contrasfont: "#5E6623",
-    ContrasBackgroundColor:"#981206",
+    contrasfont: "#fbfbfb",
+    ContrasBackgroundColor:"#050505",
 
-    warnaButtonBackground : "#B85C78",
-    warnaButtonBorder : "#FFF9E6",
+    warnaButtonBackground : "#8c0c0c",
+    warnaButtonBorder : "#F7F2E4",
     
 
   },

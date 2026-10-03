@@ -237,37 +237,25 @@ const SaveTheDate = ({ data, animate }: Props) => {
         </div>
 
         {/* COUNTDOWN */}
-        <div className="mt-12 w-full">
-          <p className="mb-5 text-[8px] uppercase tracking-[0.4em] opacity-50" >
+        <div className="mt-14 w-full max-w-sm">
+          <p className="mb-5 text-[8px] uppercase tracking-[0.5em] opacity-50">
             Counting The Days
           </p>
 
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-4 divide-x" style={{ borderTop: `1px solid ${data.theme?.warna3}25`, borderBottom: `1px solid ${data.theme?.warna3}25` }}>
             {[
-              { label: "Days",
-                value: countdown.days,
-              },
-              { label: "Hours",
-                value: countdown.hours,
-              },
-              { label: "Minutes",
-                value: countdown.minutes,
-              },
-              { label: "Seconds",
-                value: countdown.seconds,
-              },
-            ].map((item) => (
-              <div key={item.label}
-                className="flex flex-col items-center justify-center py-3" 
-                style={{background:data.theme?.warna1, color: data.theme?.warna2}} >
-                <span className="text-xl"
-                  style={{ color: data.theme?.warna3 }} >
-                  {String(item.value).padStart(2, "0")}
-                </span>
-
-                <span className="mt-1 text-[7px] uppercase tracking-[0.15em] ">
-                  {item.label}
-                </span>
+              ["Days", countdown.days],
+              ["Hours", countdown.hours],
+              ["Minutes", countdown.minutes],
+              ["Seconds", countdown.seconds],
+            ].map(([label, value]) => (
+              <div key={label as string} className="py-4">
+                <p className="font-Tempting text-2xl" style={{ color: data.theme?.warna3 }}>
+                  {String(value).padStart(2, "0")}
+                </p>
+                <p className="mt-1 text-[7px] uppercase tracking-[0.2em] opacity-50">
+                  {label}
+                </p>
               </div>
             ))}
           </div>

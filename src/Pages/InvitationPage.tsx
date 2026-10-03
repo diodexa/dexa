@@ -11,6 +11,7 @@ import Sunflower from "../Templates/Flower-1/Sunflower";
 import Rustic from "../Templates/Flower-2/Rustic";
 import PinkGreen from "../Templates/Flower-3/PinkLily";
 import Jawa1 from "../Templates/Adat-1/Jawa1";
+import Lampung1 from "../Templates/Adat-2/Lampung";
 
 
 const InvitationPage = () => {
@@ -68,8 +69,11 @@ const InvitationPage = () => {
     case "Flower-3":
       return (<PinkGreen data={invitation} guest={guestName}/>
       );
-    case "Jawa1":
+    case "Adat-1":
       return (<Jawa1 data={invitation} guest={guestName}/>
+      );
+    case "Adat-2":
+      return (<Lampung1 data={invitation} guest={guestName}/>
       );
 
 

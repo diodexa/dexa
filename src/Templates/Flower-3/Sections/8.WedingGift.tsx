@@ -24,8 +24,8 @@ const WeddingGift = ({ data, animate }: Props) => {
 
   return (
     <section
-  className="relative flex min-h-screen w-full overflow-hidden px-5 py-20 bg-white"
-  style={{ color: data.theme?.contrasfont }}
+  className="relative flex min-h-screen w-full overflow-hidden px-5 py-20 "
+  style={{ color: data.theme?.contrasfont, background:data.theme?.warnaButtonBorder }}
 >
   <div className="absolute -top-32 -left-32 h-[350px] w-[350px] rounded-full opacity-70" style={{ background: data.theme?.warna1 }} />
   <div className="absolute -bottom-40 -right-32 h-[350px] w-[350px] rounded-full opacity-70" style={{ background: data.theme?.warna2 }} />
@@ -67,7 +67,8 @@ const WeddingGift = ({ data, animate }: Props) => {
               return (
                 <div key={index} className="relative overflow-hidden rounded-2xl border  shadow-sm" style={{ background: `${data.theme?.warna2}e6`, borderColor: `${data.theme?.warna3}25`, color: data.theme?.warnaButtonBorder, backdropFilter: "blur(10px)" }}>
                   <span className="absolute -right-3 -top-7 text-8xl opacity-5" style={{ color: data.theme?.warna3 }}>{index + 1}</span>
-                  <div className="relative z-10 flex items-center justify-between bg-white p-5">
+                  <div className="relative z-10 flex items-center justify-between  p-5"
+                  style={{background:data.theme?.warnaButtonBorder}}>
                     {logo ? 
                     <img src={logo} alt={rekening.bank} className="h-7 w-auto object-contain"  /> : <p className="text-xs font-bold">{rekening.bank}</p>}
                     <button type="button" onClick={() => handleCopy(rekening.nomorRekening ?? "")} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition hover:scale-105" style={{ borderColor: `${data.theme?.warna3}`,color:data.theme?.warna3 }}>
