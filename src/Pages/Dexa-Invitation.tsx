@@ -7,6 +7,7 @@ import { Hero } from '../Components/Dashboard/Hero';
 import { NamaTamu } from '../Components/Dashboard/NamaTamu';
 import { WhatsappButton } from '../Components/Blastes/WhatsappButton';
 import { useEffect, useState } from 'react'
+import { CaraMemesan } from '../Components/Dashboard/CaraMemesan';
 
 function DexaInvitation() {
   const [activeSection, setActiveSection] = useState("home");
@@ -47,6 +48,7 @@ function DexaInvitation() {
           <NamaTamu/>
           <Feature/>
           <Catalogue/>
+          <CaraMemesan/>
           <FAQ/>
           <WhatsappButton/>
         </div>

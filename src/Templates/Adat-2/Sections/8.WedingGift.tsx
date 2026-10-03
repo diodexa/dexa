@@ -30,9 +30,14 @@ const WeddingGift = ({ data, animate }: Props) => {
   };
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden px-5 py-16" style={{ background: data.theme?.warna1, color: data.theme?.contrasfont }}>
-      <div className={`relative z-[3] mx-auto flex w-full max-w-[380px] flex-col items-center pt-[105px] ${animate ? "MunculBawah-1" : "opacity-0"}`}>
-        <p className="text-[8px] uppercase tracking-[0.5em]" style={{ color: data.theme?.warna3 }}>A Little Gift</p>
+    <section className="relative min-h-screen w-full overflow-hidden px-5 py-10" style={{ background: data.theme?.warna1, color: data.theme?.contrasfont }}>
+      
+      <div className={`relative z-[3] mx-auto flex w-full max-w-[380px] flex-col items-center pt-30 ${animate ? "MunculBawah-1" : "opacity-0"}`}>
+        
+        <div className="pointer-events-none absolute left-1/2 top-0 z-[1] h-[90px] w-full -translate-x-1/2 overflow-hidden">
+          <div className="h-full w-full bg-top bg-no-repeat" style={{ backgroundImage: "url('/Ornament/SigerLampung.webp')", backgroundSize: "auto 100%" }} />
+        </div>
+ 
         <h2 className="mt-1 font-Tempting text-4xl" style={{ color: data.theme?.warna3 }}>Wedding Gift</h2>
         <div className="mt-3 flex items-center gap-2">
           <span className="h-px w-8" style={{ background: `${data.theme?.warna3}70` }} />

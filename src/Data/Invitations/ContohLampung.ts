@@ -103,7 +103,7 @@ export const ContohLampung: Invitation = {
   music: "/Audio/audio.mp3",
   theme : {
 
-    warnaweddingInvitation : "#bd9e66",
+    warnaweddingInvitation : "#501119",
 
     warna1: "#501119",
     warna2: "#fbfbfb",

@@ -24,10 +24,10 @@ const Opening = ({ data, isOpen }: Props) => {
             className="absolute inset-0 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 object-fill" />
 
           {/* teks */}
-          <div className="relative z-1 flex min-h-[500px] flex-col items-center justify-center px-12 py-20 gap-10 ">
-            <p className="text-l uppercase tracking-[0.27em]">The Weeding Of</p>
-            <h2 className={`font-LTPerfume text-shadow-lg lg:text-4xl lg:leading-15 ${(data.NamagroomPanggilan.length || data.NamabridePanggilan.length) >= 7 ? "text-5xl leading-15" : "text-6xl leading-20 "}`}>
-              {data.NamabridePanggilan} & {data.NamagroomPanggilan}
+          <div className="relative z-1 flex min-h-[500px] flex-col items-center justify-center px-12  gap-5 ">
+            <p className="text-l uppercase tracking-[0.17em]">The Weeding Of</p>
+            <h2 className={`font-LTPerfume text-shadow-lg  lg:text-4xl lg:leading-15 ${(data.NamagroomPanggilan.length || data.NamabridePanggilan.length) >= 7 ? "text-5xl leading-15" : "text-6xl leading-20 "}`}>
+              {data.NamabridePanggilan} <br/> <span className="text-5xl">&</span><br/> {data.NamagroomPanggilan}
             </h2>
           </div>
         </div>

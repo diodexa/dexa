@@ -50,7 +50,7 @@ const SaveTheDate = ({ data, animate }: Props) => {
       <img
         src="/Ornament/gorden merah.webp"
         alt=""
-        className={`pointer-events-none absolute left-1/2 top-0 z-[1] h-[780px] w-auto -translate-x-1/2 ${animate ? "Fadein-1" : "opacity-0"}`}
+        className={`pointer-events-none absolute left-1/2 top-0 z-[1] h-[780px] w-auto -translate-x-1/2 `}
       />
 
       {/* ISI PANGGUNG */}

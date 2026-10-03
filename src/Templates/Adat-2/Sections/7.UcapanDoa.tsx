@@ -85,7 +85,7 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
 
 
       {/* Header */}
-      <div className={`relative z-10 mb-8 pt-5 text-center ${animate? "Fadein-1" : "opacity-0"}`}>
+      <div className={`relative z-10 mb-8 pt-15 text-center ${animate? "Fadein-1" : "opacity-0"}`}>
         <p className="mb-2 text-[10px] uppercase tracking-[0.4em]"
           style={{ color: data.theme?.warna2 }} >
           From Your Loved Ones
