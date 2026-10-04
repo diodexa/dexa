@@ -11,7 +11,7 @@ interface Props {
 const Hero = ({ data, guest, isOpen, setIsOpen }: Props) => {
     const [HideHero,setHideHero] = useState(false)
   return (
-    <section className={`fixed inset-0 z-9998 mx-auto flex max-w-[385px] items-center justify-center overflow-hidden transition-all duration-800 ${HideHero ? "pointer-events-none opacity-0" : "opacity-100"}`} style={{ background: data.theme?.warnaweddingInvitation, color: data.theme?.warna1 }}>
+    <section className={`fixed inset-0 z-9998 mx-auto flex items-center justify-center overflow-hidden transition-all duration-800 ${HideHero ? "pointer-events-none opacity-0" : "opacity-100"}`} style={{ background: data.theme?.warnaweddingInvitation, color: data.theme?.warna1 }}>
       <div className={`relative flex h-[520px] w-[330px] items-end justify-center `}>
 
         {/* BAGIAN DALAM AMPLOP */}

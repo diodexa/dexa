@@ -47,7 +47,7 @@ const Sambutan = ({ data, animate }: Props) => {
           <p className={` leading-7 ${animate ? "MunculAtas-1 " : "opacity-0"}`}>
             {data.Sambutan}
           </p>
-          <div className={`mt-8 text-3xl text-center ${animate ? "MunculBawah-1 " : "opacity-0"}`}
+          <div className={`mt-8 text-3xl text-center `}
           style={{color:data.theme?.warna3}}>
             <span className="font-Tempting">{data.NamabridePanggilan.charAt(0)}</span>
             <span className="text-xl"> & </span>

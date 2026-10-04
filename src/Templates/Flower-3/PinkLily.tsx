@@ -169,7 +169,7 @@ const PinkGreen = ({ data, guest }: Props) => {
 
   return (
     <div ref={scrollRef}
-      className="relative mx-auto h-screen max-w-[385px] overflow-x-clip overflow-y-auto font-BethanyElingston"
+      className="relative mx-auto h-screen w-screen md:max-w-[385px] lg:max-w-[385px]  overflow-x-clip overflow-y-auto font-BethanyElingston"
       style={{
         background: data.theme?.warnaweddingInvitation,
         color: data.theme?.warna2,

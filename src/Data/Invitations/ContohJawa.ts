@@ -100,7 +100,7 @@ export const ContohJawa: Invitation = {
   Closing : `Terima kasih telah menjadi bagian dari cerita dan kebahagiaan kami.
 With love, always.`,
 
-  music: "/Audio/audio.mp3",
+  music: "/Audio/Maoli - From This Moment On.mp3",
   theme : {
 
     warnaweddingInvitation : "#bd9e66",
