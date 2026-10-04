@@ -1,6 +1,6 @@
 export const Hero = ()=> {
     function handleKatalog () {
-        document.getElementById('catalogue')?.scrollIntoView({behavior:'smooth'})
+        document.getElementById('katalog')?.scrollIntoView({behavior:'smooth'})
     }
 
     return (
