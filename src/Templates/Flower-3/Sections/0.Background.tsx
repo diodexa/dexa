@@ -34,13 +34,13 @@ const Background = ({ data, isOpen }: Props) => {
                 <div className="w-full h-full bg-cover bg-no-repeat bg-center "
                 style={{ backgroundImage: "url('/Ornament/BackgroundPink.webp')" }} />
             </div>
-            <div className={`absolute -bottom-20 right-0 h-[200px] ${isOpen ? "MunculBawahZoomOutBackground-1" : ""}`}>
+            <div className={`absolute -bottom-10 right-0 h-[200px] ${isOpen ? "MunculBawahZoomOutBackground-1" : ""}`}>
                 <img src="/Ornament/LilyPink3.webp"alt=""
                 className="sway-flower1 h-full w-auto object-contain object-right-bottom scale-x-[-1]"/>
             </div>
 
 
-            <div className={`absolute -bottom-20 right-30 h-[150px] -scale-x-100  ${isOpen ? "MunculBawahZoomOutBackground-1" : ""}`}>
+            <div className={`absolute -bottom-10 right-30 h-[150px] -scale-x-100  ${isOpen ? "MunculBawahZoomOutBackground-1" : ""}`}>
             <img src="/Ornament/LilyPink.webp"
                 className="sway-flower2 h-full w-auto object-contain object-left-bottom"
                 alt="" />
@@ -52,7 +52,7 @@ const Background = ({ data, isOpen }: Props) => {
             </div>
 
      
-            <div className={`absolute -bottom-20 -left-10 h-[200px] ${isOpen ? "MunculBawahZoomOutBackground-1" : ""}`}>
+            <div className={`absolute -bottom-15 -left-10 h-[200px] ${isOpen ? "MunculBawahZoomOutBackground-1" : ""}`}>
                 <img  src="/Ornament/LilyWhite.webp" alt=""
                 className="sway-flower h-full w-auto object-contain object-left-bottom scale-x-[-1]"/>
             </div>

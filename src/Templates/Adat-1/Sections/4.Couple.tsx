@@ -42,7 +42,6 @@ const Couple = ({ data, animate }: Props) => {
               </p>
               <div className="mt-2 text-sm leading-5">
                 <p > {data.Putri}</p>
-                <p>{data.Putri}</p>
                 <p>{data.BapakpengantinWanita}</p>
                 <p>&amp;</p>
                 <p>{data.IbupengantinWanita}</p>
@@ -112,7 +111,6 @@ const Couple = ({ data, animate }: Props) => {
                 {data.Namagroom}{data.GelarGroom && <span className="ml-1 text-sm">{data.GelarGroom}</span>}
               </p>
               <div className="mt-2 text-sm leading-5">
-                <p>{data.Putra}</p>
                 <p>{data.Putra}</p>
                 <p>{data.BapakpengantinPria}</p>
                 <p>&amp;</p>
