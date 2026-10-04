@@ -34,7 +34,7 @@ const Background = ({ data, isOpen }: Props) => {
                 <div className="w-full h-full bg-cover bg-no-repeat bg-center "
                 style={{ backgroundImage: "url('/Ornament/PatternJawa.webp')" }} />
             </div>
-            <div className={`absolute bottom-20 right-0 grayscale  ${isOpen ? "MunculBawahZoomOutBackground-1" : ""}`}>
+            <div className={`absolute bottom-1/13 left-1/2 -translate-x-1/2 w-full h-[350px] grayscale  ${isOpen ? "MunculBawahZoomOutBackground-1" : ""}`}>
                 <img src="/Ornament/RumahJoglo.webp"alt=""
                 className="h-full w-auto object-contain object-center-bottom "/>
             </div>
