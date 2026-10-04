@@ -27,7 +27,7 @@ const Background = ({ data, isOpen }: Props) => {
     // return () => window.removeEventListener("scroll", handleScroll);
     // }, []);
   return (
-    <section className={`relative flex h-screen items-start justify-center overflow-clip  text-center transition-all duration-2000 ease-out  `}
+    <section className={`relative flex h-[100dvh] items-start justify-center overflow-clip  text-center transition-all duration-2000 ease-out  `}
       style={{background: data.theme?.warna1 ,color: data.theme?.contrasfont,}}>
         <div className=" pointer-events-none ">
             <div className={`absolute inset-0   w-full h-full  ${isOpen ? "MunculBawahZoomOutBackground-1" : ""}`} >

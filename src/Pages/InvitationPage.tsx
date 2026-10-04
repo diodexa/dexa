@@ -12,6 +12,7 @@ import Rustic from "../Templates/Flower-2/Rustic";
 import PinkGreen from "../Templates/Flower-3/PinkLily";
 import Jawa1 from "../Templates/Adat-1/Jawa1";
 import Lampung1 from "../Templates/Adat-2/Lampung";
+import Playful1 from "../Templates/Playful-1/Playful1";
 
 
 const InvitationPage = () => {
@@ -74,6 +75,9 @@ const InvitationPage = () => {
       );
     case "Adat-2":
       return (<Lampung1 data={invitation} guest={guestName}/>
+      );
+    case "Playful-1":
+      return (<Playful1 data={invitation} guest={guestName}/>
       );
 
 
