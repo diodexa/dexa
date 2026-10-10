@@ -95,6 +95,10 @@
   font-family: "ZTOtez";
   src: url("/Fonts/ZTOtez.ttf") format("truetype");
 }
+@font-face {
+  font-family: "AmmysHandwriting";
+  src: url("/Fonts/AmmysHandwriting.ttf") format("truetype");
+}
 
 
 @font-face {
@@ -137,6 +141,14 @@
 @font-face {
     font-family: "Euphorigenic";
   src: url("/Fonts/Euphorigenic.otf") format("opentype");
+}
+@font-face {
+    font-family: "KH-Blackline";
+  src: url("/Fonts/KH-Blackline.otf") format("opentype");
+}
+@font-face {
+    font-family: "ylee";
+  src: url("/Fonts/ylee.otf") format("opentype");
 }
 
 
@@ -208,6 +220,15 @@
 }
 
 /* playfull */
+.font-AmmysHandwriting{
+  font-family: "AmmysHandwriting";
+}
+.font-ylee{
+  font-family: "ylee";
+}
+.font-KH-Blackline{
+  font-family: "KH-Blackline";
+}
 .font-FloridaIsland{
   font-family: "FloridaIsland";
 }

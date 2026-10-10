@@ -7,15 +7,17 @@ import AudioController from "../1.Components/Audio";
 
 import Opening from "./Sections/1.Opening";
 import Background from "./Sections/0.Background";
-import Ayat from "./Sections/2.Ayat";
-import Sambutan from "./Sections/3.Sambutan";
+import Ayat from "./Sections/3.Ayat";
+
 import Couple from "./Sections/4.Couple";
 import SaveTheDate from "./Sections/5.SaveTheDate";
-import Gallery from "./Sections/6.Gallery";
+import Gallery from "./Sections/7.Gallery";
 import UcapanDoa from "./Sections/7.UcapanDoa";
 import WeddingGift from "./Sections/8.WedingGift";
 import Closing from "./Sections/9.Closing";
 import Hero from "./Sections/Hero";
+import Opening2 from "./Sections/2.Opening2";
+import Venue from "./Sections/6.Venue";
 
 interface Props {
   data: Invitation;
@@ -67,6 +69,7 @@ const Playful1 = ({ data, guest }: Props) => {
       console.error(err);
     }
   };
+  
 
   useEffect(() => {
     loadComments();
@@ -134,14 +137,19 @@ const Playful1 = ({ data, guest }: Props) => {
 
   const renderSection = (id: string, animate: boolean) => {
     switch (id) {
+      
       case "ayat":
         return <Ayat data={data} animate={animate} />;
+        
+      case "Opening2":
+        return <Opening2 data={data} animate={animate} />;
 
-      case "sambutan":
-        return <Sambutan data={data} animate={animate} />;
+
+      case "venue":
+        return <Venue data={data} animate={animate} />;
 
       case "couple":
-        return <Couple data={data} animate={animate} scrollY={scrollY}/>;
+        return <Couple data={data} animate={animate} />;
 
       case "saveDate":
         return <SaveTheDate data={data} animate={animate} />;
@@ -167,9 +175,14 @@ const Playful1 = ({ data, guest }: Props) => {
     }
   };
 
+  useEffect(() => {
+  const el = scrollRef.current;
+  if (!el) return;
+}, [isOpen, animations]);
+
   return (
     <div ref={scrollRef}
-      className="relative mx-auto h-screen max-w-[385px] overflow-x-clip overflow-y-auto font-BethanyElingston"
+      className="relative mx-auto h-screen w-screen md:max-w-[385px] lg:max-w-[385px]  overflow-x-clip overflow-y-auto font-AmmysHandwriting"
       style={{
         background: data.theme?.warnaweddingInvitation,
         color: data.theme?.warna2,
