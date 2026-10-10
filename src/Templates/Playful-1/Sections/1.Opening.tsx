@@ -43,7 +43,6 @@ const Opening = ({ data, isOpen }: Props) => {
               “Jadi pasangan kamu dong.”
             </p>
           </div>
-b
           <div className="absolute left-[8%] top-[20%] rotate-[-20deg] text-3xl" style={{ color: data.theme?.warna2, }}> ♡</div>
           <div className="absolute left-[16%] top-[43%] rotate-[15deg] text-3xl" style={{ color: data.theme?.warna3, }}> ✦</div>
           <div className="absolute right-[8%] top-[24%] rotate-[20deg] text-3xl" style={{ color: data.theme?.warna3, }}> ♡</div>
