@@ -121,7 +121,7 @@ const SaveTheDate = ({ data, animate }: Props) => {
             </div>
           ))}
         </div> */}
-          <button onClick={addToCalendar} className=" rounded-full px-7 py-3 mt-2 text-[10px] uppercase tracking-[0.2em]" style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.warnaButtonBorder }}>Add to Calendar</button>
+          <button onClick={addToCalendar} className=" rounded-full px-7 py-3 mt-2 text-[10px] uppercase tracking-[0.2em]" style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.warnaButtonBorder }}>Simpan Tanggal Acara</button>
 
         {/* LOKASI ACARA */}
         {/* <div className="relative mt-6 max-w-xs px-6 pb-5 pt-7">

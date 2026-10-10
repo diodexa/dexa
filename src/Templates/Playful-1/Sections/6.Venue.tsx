@@ -39,7 +39,7 @@ useEffect(() => {
       
 
         {/* JUDUL */}
-        <p className="mt-2 font-KH-Blackline text-3xl" style={{ color: "#af4364" }}>The Venue</p>
+        <p className="mt-2 font-KH-Blackline text-3xl" style={{ color: "#af4364" }}>Lokasi Acara</p>
         <div className="mt-2 flex items-center gap-3">
           <span className="h-px w-10" style={{ backgroundColor: data.theme?.warna2 }} />
           <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke={data.theme?.warna3} strokeWidth="1.5">
@@ -93,7 +93,7 @@ useEffect(() => {
                 <path d="M12 5 Q40 1 68 6 Q77 4 75 18 L77 81 Q78 95 65 94 L14 96 Q3 96 5 82 L4 19 Q3 6 12 5Z" stroke={i % 2 === 0 ? data.theme?.warna2 : data.theme?.warna3} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <span className="relative z-10 font-KH-Blackline text-2xl leading-none" style={{ color: data.theme?.warna3 }}>{String(item.value).padStart(2, "0")}</span>
-              <span className="relative z-10 mt-2 rotate-[-3deg] text-[9px] lowercase tracking-wider" style={{ color: data.theme?.warna2 }}>{item.label}</span>
+              <span className="relative z-10 mt-2 rotate-[-3deg] text-sm lowercase tracking-wider" style={{ color: data.theme?.warna2 }}>{item.label}</span>
         
             </div>
           ))}
@@ -101,7 +101,7 @@ useEffect(() => {
 
         <div className="mt-5 flex rotate-[-1deg] items-center justify-center gap-2">
         
-          <p className="text-sm" style={{ color: data.theme?.warna3 }}>our forever starts soon!</p>
+          <p className="text-sm" style={{ color: data.theme?.warna3 }}>Siap-siap ikut bahagia bareng kami! ♡</p>
           
         </div>
     

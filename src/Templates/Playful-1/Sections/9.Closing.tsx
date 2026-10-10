@@ -35,8 +35,8 @@ const Closing = ({ data }: Props) => {
           </div>
         </div>
 
-        <div className="relative z-10 mt-2 flex flex-col items-center px-3 pb-8 text-center">
-          <span className="mb-3 uppercase tracking-[0.3em] opacity-70">With Love</span>
+        <div className="relative z-10 mt-10 flex flex-col items-center px-3 pb-8 text-center">
+          <span className="mb-3 text-sm uppercase tracking-[0.3em] opacity-70">With Love</span>
           <h2 className="break-words text-6xl leading-tight font-KH-Blackline">
             {data.NamabridePanggilan}
             <span className="mx-2 italic" style={{ color: data.theme?.warna2 }}>&</span>

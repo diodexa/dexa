@@ -119,7 +119,7 @@ const Couple = ({ data, animate }: Props) => {
       </div>
       
       </div>
-        <p className="my-5 font-KH-Blackline text-sm opacity-60">and this is just the beginning ♡</p>
+        <p className="my-5 font-KH-Blackline text-sm opacity-60">Dan selamanya dimulai dari sini ♡</p>
     </section>
   );
 };

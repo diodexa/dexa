@@ -16,9 +16,8 @@ const Gallery = ({ data, openGallery, animate }: Props) => {
 
       {/* Header */}
       <div className={`relative z-10 mb-12 text-center ${animate ? "MunculBawah-1" : "opacity-0"}`}>
-        <p className="mb-2 text-[10px] tracking-[0.2em]" style={{ color: data.theme?.warna2 }}>♡ OUR LITTLE STORY ♡</p>
-        <h2 className="font-KH-Blackline text-5xl" style={{ color: data.theme?.warna3 }}>Memories</h2>
-        <p className="mt-2 text-[11px]" style={{ color: data.theme?.warna2 }}>every picture tells our story...</p>
+        <h2 className="font-KH-Blackline text-5xl" style={{ color: data.theme?.warna3 }}>Gallery</h2>
+        <p className="mt-2 text-[11px]" style={{ color: data.theme?.warna2 }}>Jejak cerita dalam setiap kenangan...</p>
       </div>
 
       {photos.length > 0 ? (
@@ -57,8 +56,8 @@ const Gallery = ({ data, openGallery, animate }: Props) => {
       {/* Footer */}
       {photos.length > 0 && (
         <div className={`relative z-10 mt-14 text-center ${animate ? "MunculBawah-1" : "opacity-0"}`}>
-          <p className="font-KH-Blackline text-lg" style={{ color: data.theme?.warna3 }}>Captured with love ♡</p>
-          <p className="mt-1 text-[10px]" style={{ color: data.theme?.warna2 }}>and memories we’ll cherish forever</p>
+          <p className="font-KH-Blackline text-lg" style={{ color: data.theme?.warna3 }}>Pamer bahagia dikit ♡</p>
+          <p className="mt-1 text-[10px]" style={{ color: data.theme?.warna2 }}>Mohon dimaklumi, lagi kasmaran</p>
         </div>
       )}
     </section>

@@ -34,15 +34,14 @@ const WeddingGift = ({ data, animate }: Props) => {
       <div className={`relative z-10 mx-auto w-full max-w-[370px] ${animate ? "MunculBawah-1" : "opacity-0"}`}>
         {/* Header */}
         <div className="mb-12 text-center">
-          <p className="mb-3 text-[10px] uppercase tracking-[0.3em]">♡ With love, from us ♡</p>
-          <h2 className="font-KH-Blackline text-5xl">Wedding Gift</h2>
+          <h2 className="font-KH-Blackline text-5xl">Wedding <span style={{color:data.theme?.warna3}}> Gift</span></h2>
           <div className="mx-auto mt-4 flex items-center justify-center gap-3">
             <span className="h-px w-10 opacity-50" style={{ background: data.theme?.warna3 }} />
             <span>✿</span>
             <span className="h-px w-10 opacity-50" style={{ background: data.theme?.warna3 }} />
           </div>
           <p className="mx-auto mt-4 max-w-[290px] text-xs leading-6">
-            Your presence and prayers are our greatest gifts. If you wish to share your love, we have prepared a little envelope below.
+            Kehadiran dan doa Anda adalah hadiah terindah bagi kami. Jika berkenan berbagi kasih, kami telah menyediakan amplop kecil di bawah ini.
           </p>
         </div>
 
@@ -130,14 +129,14 @@ const WeddingGift = ({ data, animate }: Props) => {
 
         {/* Footer */}
         <div className="mt-16 text-center">
-          <p className="font-KH-Blackline text-2xl">Thank You ♡</p>
-          <p className="mt-2 text-[10px]">Your kindness means the world to us</p>
+          <p className="font-KH-Blackline text-2xl" style={{color:data.theme?.warna3}}>Makasih banyak, semuanya! ♡</p>
+          <p className="mt-2 text-[10px]">Jangan lupa bahagia bareng kami, yaa!</p>
         </div>
       </div>
 
       {/* Copy notification */}
       {copied && (
-        <div className="fixed bottom-20 left-1/2 z-[9999] -translate-x-1/2 rounded-full px-5 py-2 text-xs shadow-lg" style={{ background: data.theme?.warna3, color: data.theme?.warna2 }}>
+        <div className="fixed bottom-20 left-1/2 z-[9999] -translate-x-1/2 rounded-full px-5 py-2 text-xs shadow-lg text-white" style={{ background: data.theme?.warna3 }}>
           ✓ Berhasil disalin
         </div>
       )}

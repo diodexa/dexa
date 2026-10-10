@@ -95,8 +95,8 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
       <img src="/Ornament/doodleLampuGantungHijau.webp" alt="" className={`pointer-events-none absolute top-0 -right-7 z-0 w-[120px] rotate-[5deg] object-contain ${animate ? "MunculKiri-1" : "opacity-0"}`} />
 
       <div className={`relative z-10 mb-8 pt-1 text-center ${animate ? "Fadein-1" : "opacity-0"}`}>
-        <p className="mb-2 text-[10px] uppercase tracking-[0.4em]" style={{ color: data.theme?.warna2 }}>From Your Loved Ones</p>
-        <h2 className="text-5xl" style={{ color: data.theme?.warna3 }}>Wishes</h2>
+        <p className="mb-2 text-[10px] uppercase tracking-[0.4em]" style={{ color: data.theme?.warna2 }}>Sedikit Doa, Banyak Bahagia</p>
+        <h2 className="text-3xl" style={{ color: data.theme?.warna3 }}>Love Notes</h2>
         <div className="mx-auto mt-4 flex items-center justify-center gap-3">
           <span className="h-px w-10 opacity-30" style={{ background: data.theme?.warna3 }} />
           <span>♡</span>
@@ -105,9 +105,7 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
       </div>
 
       <form onSubmit={handleSubmit} className={`relative z-20 shrink-0 ${animate ? "Fadein-1" : "opacity-0"}`}>
-        <div className="mb-5 text-center">
-          <p className="text-2xl">Leave a Wish</p>
-        </div>
+  
 
         <input type="text" required placeholder="Nama kamu" value={nama} disabled={loading} onChange={(e) => setNama(e.target.value)} className="mb-2 w-full rounded-xl border px-4 py-3 text-sm font-sans outline-none placeholder:opacity-50" style={{ background: `${data.theme?.warna2}30`, borderColor: `${data.theme?.contrasfont}25`, color: data.theme?.ContrasBackgroundColor }} />
 
@@ -163,7 +161,7 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
         <div className="mt-3 flex items-center justify-end gap-4">
           <label className="flex cursor-pointer items-center gap-2 text-xs">
             <input type="checkbox" checked={kehadiran === "Hadir"} disabled={loading} style={{ accentColor: data.theme?.warna3 }} onChange={(e) => setKehadiran(e.target.checked ? "Hadir" : "Tidak Hadir")} />
-            Attending
+            Hadir
           </label>
           <button type="submit" disabled={loading} className="rounded-xl border px-5 py-2.5 text-xs transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50" style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.warnaButtonBorder }}>
             {loading ? "Sending..." : "Send"}
