@@ -9,19 +9,9 @@ const Opening = ({ data, isOpen }: Props) => {
   return (
     <section className={`relative flex min-h-screen w-full items-center justify-center overflow-hidden px-7 text-center transition-all duration-700 ${isOpen ? "opacity-100" : "opacity-0"}`} style={{  color: data.theme?.warna3 }}>
       <div className={`relative flex h-full min-h-screen w-full flex-col items-center ${isOpen ? "MunculBawah-1" : "opacity-0"}`}>
-        {/* ORNAMEN ATAS */}
-        <div className="pointer-events-none absolute left-5 top-14 rotate-[-12deg] text-4xl"  style={{ color: data.theme?.warna3}}>♡</div>
-       
-        <div className="pointer-events-none absolute right-6 top-16 rotate-[15deg] text-3xl"  style={{ color: data.theme?.warna2, }}>♡</div>
-    
 
 
-        {/* GARIS */}
-        <div className={`pointer-events-none absolute left-1/2 top-[8%] flex w-[70%] -translate-x-1/2 items-center gap-3  `}>
-          <span className="h-px flex-1 opacity-30" style={{ background: data.theme?.warna3 }} />
-          <span className="text-[9px]" style={{ color: data.theme?.warna3 }}>♡</span>
-          <span className="h-px flex-1 opacity-30" style={{ background: data.theme?.warna3 }} />
-        </div>
+
 
         {/* JUDUL */}
         <div className={`relative z-20 mt-[13%] ${isOpen ? "MunculBawah-1" : "opacity-0"}`}>

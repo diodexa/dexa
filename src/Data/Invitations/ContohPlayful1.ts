@@ -54,18 +54,26 @@ export const ContohPlayful: Invitation = {
   coverImage: "/Gallery/ContohSunFlower/Child1.webp",
   
   gallery: [
-    "/Gallery/ContohSunFlower/Child2.webp",
-    "/Gallery/ContohSunFlower/Child3.webp",
-    "/Gallery/ContohSunFlower/Child4.webp",
+    "/Gallery/ContohSunFlower/1.webp",
+    "/Gallery/ContohSunFlower/2.webp",
+    "/Gallery/ContohSunFlower/3.webp",
     "/Gallery/ContohSunFlower/4.webp",
     "/Gallery/ContohSunFlower/5.webp",
+    "/Gallery/ContohSunFlower/6.webp",
 
 
    
     
   ],
 
-
+   sticker :[
+    "/Gallery/ContohGrupChat/galeryfoto/sticker/1.webp",
+    "/Gallery/ContohGrupChat/galeryfoto/sticker/2.webp",
+    "/Gallery/ContohGrupChat/galeryfoto/sticker/3.webp",
+    "/Gallery/ContohGrupChat/galeryfoto/sticker/4.webp",
+    "/Gallery/ContohGrupChat/galeryfoto/sticker/5.gif",
+    "/Gallery/ContohGrupChat/galeryfoto/sticker/6.gif",
+  ],
 
   WeddingGift: {
     rekening: [

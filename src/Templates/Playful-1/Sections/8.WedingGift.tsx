@@ -71,7 +71,7 @@ const WeddingGift = ({ data, animate }: Props) => {
 
                   <p className="mt-3 text-[9px] uppercase tracking-widest opacity-70">Account Number</p>
                  <p className="mt-1 break-all font-sans text-lg font-semibold tracking-wider">
-                    {"●●●● ●●●● " + (nomor.slice(-4) || "●●●●")}
+                    {"**** **** " + (nomor.slice(-4) || "****")}
                   </p>
                   <div className="mt-2 flex items-center justify-between gap-2">
                     <p className="text-[10px]">a.n. {rekening.atasNama}</p>
