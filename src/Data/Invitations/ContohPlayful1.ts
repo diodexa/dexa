@@ -30,10 +30,11 @@ export const ContohPlayful: Invitation = {
   TanggalAkad: "10 Februari 2029",
   TanggalAkadISO: "2029-02-10",
   JamAkad: "08:00",
-  LokasiAkad: " The Ratan, Jl. Ringroad Selatan No.93, Glugo, Panggungharjo, Kec. Sewon, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55188",
+  LokasiAkad: "The Ratan, Jl. Ringroad Selatan No.93, Glugo, Panggungharjo, Kec. Sewon, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55188",
 
-  TanggalResepsi: "10 Desember 2029",
-  JamResepsi: "08:00",
+  TanggalResepsi: "11 Desember 2029",
+ 
+  JamResepsi: "11:00",
   LokasiResepsi: "The Ratan, Jl. Ringroad Selatan No.93, Glugo, Panggungharjo, Kec. Sewon, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55188",
   LinkGoogleMapsAkad: "https://www.google.com/maps/place/The+Ratan+-+Multi+Use+Building/@-7.834827,110.3627029,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7a5753a2bd3a9b:0x1a6020ff1e351a58!8m2!3d-7.834827!4d110.3627029!16s%2Fg%2F11mx5m9jmc?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D",
   LinkGoogleMapsResepsi: "https://www.google.com/maps/place/The+Ratan+-+Multi+Use+Building/@-7.834827,110.3627029,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7a5753a2bd3a9b:0x1a6020ff1e351a58!8m2!3d-7.834827!4d110.3627029!16s%2Fg%2F11mx5m9jmc?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D",

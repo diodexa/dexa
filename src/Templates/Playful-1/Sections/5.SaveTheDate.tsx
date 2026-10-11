@@ -1,4 +1,5 @@
 
+import { useEffect, useState } from "react";
 import type { Invitation } from "../../../types/invitationType";
 
 interface Props {
@@ -14,7 +15,7 @@ const SaveTheDate = ({ data, animate }: Props) => {
   const jumlahHari = new Date(tahun, bulan + 1, 0).getDate();
   const hariPertama = new Date(tahun, bulan, 1).getDay();
   const kalender = [...Array(hariPertama).fill(null), ...Array.from({ length: jumlahHari }, (_, i) => i + 1)];
-
+   const [countdown, setCountdown] = useState({ hari: 0, jam: 0, menit: 0, detik: 0 });
 
   const addToCalendar = () => {
     if (!data.TanggalAkadISO || !data.JamAkad) return;
@@ -26,9 +27,31 @@ const SaveTheDate = ({ data, animate }: Props) => {
     window.open(url, "_blank");
   };
 
-  return (
-    <section className="relative -mt-px flex min-h-screen w-full items-center justify-center overflow-hidden px-6 py-10 text-center" style={{ color: data.theme?.contrasfont }}>
+  useEffect(() => {
+  if (!data.TanggalAkadISO) return;
+  const target = new Date(`${data.TanggalAkadISO}T${data.JamAkad || "00:00"}:00`).getTime();
 
+  const updateCountdown = () => {
+    const selisih = target - Date.now();
+    if (selisih <= 0) {
+      setCountdown({ hari: 0, jam: 0, menit: 0, detik: 0 });
+      return;
+    }
+    setCountdown({
+      hari: Math.floor(selisih / 86400000),
+      jam: Math.floor((selisih / 3600000) % 24),
+      menit: Math.floor((selisih / 60000) % 60),
+      detik: Math.floor((selisih / 1000) % 60),
+    });
+  };
+
+  updateCountdown();
+  const interval = setInterval(updateCountdown, 1000);
+  return () => clearInterval(interval);
+}, [data.TanggalAkadISO, data.JamAkad]);
+
+  return (
+    <section className="relative -mt-px flex min-h-screen w-full items-center justify-center overflow-hidden px-6 py-5 text-center" style={{ color: data.theme?.contrasfont }}>
 
 
 
@@ -42,7 +65,42 @@ const SaveTheDate = ({ data, animate }: Props) => {
           <img src="/Ornament/doodleCake.webp" alt="" className="h-full w-auto object-contain" />
         </div>
 
-        <p className="mt-[100px] text-4xl font-KH-Blackline">Save The Date</p>
+        {/* DOODLE COUNTDOWN */}
+        <div className="mt-27 w-full">
+          <div className="relative mb-5">
+
+            <p className="rotate-[-2deg] font-KH-Blackline text-3xl" style={{ color: data.theme?.warna3 }}> Countdown</p>
+            <svg viewBox="0 0 150 12" className="mx-auto mt-2 h-3 w-28" fill="none" stroke={data.theme?.warna2} strokeWidth="1.3" strokeLinecap="round">
+              <path d="M2 6 Q20 1 38 6 T74 6 T110 6 T148 6" />
+            </svg>
+          </div>
+
+          <div className="grid grid-cols-4 gap-2">
+            {[
+              { label: "hari", value: countdown.hari },
+              { label: "jam", value: countdown.jam },
+              { label: "menit", value: countdown.menit },
+              { label: "detik", value: countdown.detik },
+            ].map((item, i) => (
+              <div key={item.label} className={`relative flex flex-col items-center justify-center px-1 py-4 ${i % 2 === 0 ? "rotate-[-2deg]" : "rotate-[2deg]"}`}>
+                <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 80 100" preserveAspectRatio="none" fill="none">
+                  <path d="M12 5 Q40 1 68 6 Q77 4 75 18 L77 81 Q78 95 65 94 L14 96 Q3 96 5 82 L4 19 Q3 6 12 5Z" stroke={i % 2 === 0 ? data.theme?.warna2 : data.theme?.warna3} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="relative z-10 font-KH-Blackline text-2xl leading-none" style={{ color: data.theme?.warna3 }}>{String(item.value).padStart(2, "0")}</span>
+                <span className="relative z-10 mt-2 rotate-[-3deg] text-sm lowercase tracking-wider" style={{ color: data.theme?.warna2 }}>{item.label}</span>
+          
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-5 flex rotate-[-1deg] items-center justify-center gap-2">
+          
+            <p className="text-sm" style={{ color: data.theme?.warna3 }}>Siap-siap ikut bahagia bareng kami! ♡</p>
+            
+          </div>
+      
+        </div>
+        <p className="mt-10 text-4xl font-KH-Blackline">Save The Date</p>
         <div className="mt-1 flex w-full items-center justify-center gap-4">
           <div className="h-px w-12" style={{ backgroundColor: data.theme?.warna3 }} />
           <span style={{ color: data.theme?.warna3 }}>✦</span>
@@ -123,19 +181,6 @@ const SaveTheDate = ({ data, animate }: Props) => {
         </div> */}
           <button onClick={addToCalendar} className=" rounded-full px-7 py-3 mt-2 text-[10px] uppercase tracking-[0.2em]" style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.warnaButtonBorder }}>Simpan Tanggal Acara</button>
 
-        {/* LOKASI ACARA */}
-        {/* <div className="relative mt-6 max-w-xs px-6 pb-5 pt-7">
-          <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 300 150" preserveAspectRatio="none" fill="none">
-            <path d="M15 10 Q5 13 10 28 L8 125 Q10 140 25 138 L275 140 Q292 136 290 122 L288 24 Q287 9 271 12 Q150 7 15 10Z" stroke={data.theme?.warna2}strokeWidth="2.5" strokeLinecap="round" />
-            <path d="M20 15 Q150 10 280 17" stroke={data.theme?.warna3} strokeWidth="1.5" strokeDasharray="3 5" strokeLinecap="round" />
-            <path d="M142 7 Q150 -1 158 7 Q150 18 142 7Z" stroke={data.theme?.warna3} strokeWidth="1.5" />
-          </svg>
-          <div className="relative z-10">
-            <p className="text-[9px] uppercase tracking-[0.3em]" style={{ color: data.theme?.warna3 }}>Wedding Venue</p>
-            <p className="mt-2 text-sm leading-6">{data.LokasiAkad}</p>
-            <a href={data.LinkGoogleMapsAkad} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block rounded-full border px-5 py-2 text-[9px] uppercase tracking-[0.2em]" style={{ background: data.theme?.warnaButtonBackground, color: data.theme?.warna2, borderColor: data.theme?.warna3 }}>View on Google Maps</a>
-          </div>
-        </div> */}
 
 
       </div>
