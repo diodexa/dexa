@@ -180,12 +180,12 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
           </div>
         ) : (
           <>
-            <div className="mt-10 min-h-[500px] space-y-4">
+            <div className="mt-10 min-h-[500px] space-y-4 break-all overflow-y-auto">
               {currentComments.map((comment, index) => {
                 const { sticker, message } = parseComment(comment.ucapan);
 
                 return (
-                  <div key={`${comment.nama}-${comment.date}-${index}`} className="relative min-w-0 overflow-hidden rounded-2xl p-3 text-left shadow-sm transition duration-300 hover:-translate-y-0.5 font-sans" style={{ background: `${data.theme?.warna2}35`, border: `1px solid ${data.theme?.contrasfont}15`, backdropFilter: "blur(10px)", color: data.theme?.warna3 }}>
+                  <div key={`${comment.nama}-${comment.date}-${index}`} className="relative  overflow-y-auto rounded-2xl p-3 text-left shadow-sm transition duration-300 hover:-translate-y-0.5 font-sans h-[50%]  " style={{ background: `${data.theme?.warna2}35`, border: `1px solid ${data.theme?.contrasfont}15`, backdropFilter: "blur(10px)", color: data.theme?.warna3 }}>
                     <div className="flex items-center gap-2">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full" style={{ background: `${data.theme?.warna3}20` }}>
                         <img src="/logo-dio.webp" alt="" className="h-full w-full object-cover" />
@@ -196,9 +196,9 @@ const UcapanDoa = ({ data, guest, loadComments, comments, animate }: Props) => {
                       </div>
                     </div>
 
-                    <div className="mt-3 max-h-[150px] overflow-y-auto pr-1">
+                    <div className="mt-3 pr-1">
                       {message && <p className="whitespace-pre-line break-words text-sm leading-5">{message}</p>}
-                      {sticker && <img src={sticker} alt="Stiker ucapan" className={` h-30 w-30 object-contain ${!message ? "mt-0" : ""}`} />}
+                      {sticker && <img src={sticker} alt="Stiker ucapan" className={` h-25 w-25 object-contain ${!message ? "mt-0" : ""}`} />}
                     </div>
 
                     <p className="mt-1 text-right text-[8px]">{formatDate(comment.date)}</p>
