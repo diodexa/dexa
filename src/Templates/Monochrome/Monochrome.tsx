@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Invitation } from "../../types/invitationType";
-import { fetchComments, type Comment } from "../1.Components/ChatService";
+import { fetchComments, type Comment } from "../../Components/Services/ChatService";
 import Closing from "./Sections/Closing";
 import Couple from "./Sections/Couple";
 import Cover from "./Sections/Cover";

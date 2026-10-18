@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { Invitation } from "../../types/invitationType";
-import { fetchComments, type Comment } from "../1.Components/ChatService";
+import { fetchComments, type Comment } from "../../Components/Services/ChatService";
 
 
 import Sambutan from "./Sections/1.Sambutan";

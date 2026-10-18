@@ -3,6 +3,8 @@ import DexaInvitation from "./Pages/Dexa-Invitation"
 import { GuestWA } from "./Pages/Blast"
 import InvitationPage from "./Pages/InvitationPage"
 import InvitationForm from "./Pages/InvitationForm"
+import GuestPhotobooth from "./Pages/GuestPhotobooth"
+import PhotoboothDashboard from "./Pages/PhotoboothDashboard"
 
 
 
@@ -13,6 +15,8 @@ function App() {
       <Route path="/" element={<DexaInvitation />} />
       <Route path="/blast" element={<GuestWA />} />
       <Route path="/FormInput" element={<InvitationForm  />} />
+      <Route path="/GuestPhotobooth" element={<GuestPhotobooth  />} />
+      <Route path="/PhotoboothDashboard" element={<PhotoboothDashboard  />} />
       <Route path="/:slug/:guest?" element={<InvitationPage />} />
     </Routes>
   )
