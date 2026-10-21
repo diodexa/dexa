@@ -220,7 +220,15 @@ export default function AdminPelangganPhotobooth({
       });
 
       const rows = data.events || [];
-      setEvents(rows);
+
+      // Hilangkan pelanggan duplikat berdasarkan idUndangan
+      const uniqueRows = Array.from(
+        new Map(
+          rows.map((item) => [item.idUndangan.trim(), item])
+        ).values()
+      );
+
+      setEvents(uniqueRows);
 
       if (rows.length === 0) {
         setSelectedId("");

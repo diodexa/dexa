@@ -1,4 +1,5 @@
 import { type RefObject } from "react";
+import { Photobooths } from "../../Data/Photobooth";
 
 export type FrameMode = "none" | "single" | "triple";
 
@@ -10,6 +11,7 @@ interface PhotoSlot {
 }
 
 interface PhotoboothSectionProps {
+  idUndangan: string;
   photos: string[];
   activeShot: number;
   setActiveShot: (index: number) => void;
@@ -45,6 +47,7 @@ interface PhotoboothSectionProps {
 }
 
 export default function PhotoboothSection({
+  idUndangan,
   photos,
   activeShot,
   setActiveShot,
@@ -84,6 +87,10 @@ export default function PhotoboothSection({
   const isSingle = effectiveMode === "single";
   const currentPhotoIndex = isTriple ? activeShot : 0;
   const currentPhoto = photos[currentPhotoIndex] || "";
+  
+  const selectedPhotobooth = Photobooths.find(
+  (item) => item.idUndangan === idUndangan
+);
 
   const photoTitle =
     namaPengantin?.trim() || "";
@@ -98,7 +105,7 @@ export default function PhotoboothSection({
 
 
           <h2 className="mt-1 text-xs text-left text-[#39362f]">
-            Kirim foto dan doa terbaikmu untuk kedua mempelai
+            Kirim foto dan doa terbaikmu 
           </h2>
         </div>
 
@@ -247,7 +254,7 @@ export default function PhotoboothSection({
             {photoTitle && (
               <div className="pointer-events-none absolute bottom-[5%] left-1/2 z-20 w-[90%] -translate-x-1/2 px-3 text-center text-[#39362f]">
                 <p className="text-[clamp(8px,2.4vw,16px)]  uppercase tracking-[0.3em]">
-                  THE WEDDING OF
+                  {selectedPhotobooth?.JudulAcara}
                 </p>
 
                 <p className="mt-2 font-Tempting text-[clamp(20px,7vw,44px)] leading-tight">
@@ -313,10 +320,10 @@ export default function PhotoboothSection({
             {photoTitle && (
               <div className="pointer-events-none absolute bottom-[10%] left-1/2 z-20 w-[90%] -translate-x-1/2 px-3 text-center text-[#39362f]">
                 <p className="text-[clamp(8px,2.4vw,16px)] uppercase tracking-[0.3em]">
-                  THE WEDDING OF
+                  {selectedPhotobooth?.JudulAcara}
                 </p>
 
-                <p className="mt-2 font-Tempting text-[clamp(20px,7vw,44px)] leading-tight">
+                <p className={`mt-2 font-${selectedPhotobooth?.Font} text-[clamp(20px,7vw,44px)] leading-tight  `}>
                   {photoTitle}
                 </p>
               </div>

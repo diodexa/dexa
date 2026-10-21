@@ -879,6 +879,7 @@ export default function GuestPhotobooth() {
         <div className="grid w-full min-w-0 grid-cols-1 gap-4 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-6">
           {/* SECTION FOTO */}
           <PhotoboothSection
+            idUndangan={idUndangan}
             sectionRef={photoboothSectionRef}
             namaPengantin={Photobooth?.NamaPengantin ?? ""}
             photos={photos}
