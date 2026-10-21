@@ -4,7 +4,7 @@ import type { Invitation } from "../../types/invitationType";
 import Gallery from "./Sections/Gallery";
 import Video from "./Sections/video";
 import Ucapan from "./Sections/UcapanDoa";
-import { fetchComments, type Comment } from "../../Components/Services/ChatService";
+import { fetchComments, type Comment } from "../../Services/ChatService";
 import Gallery2 from "./Sections/Gallery2";
 import WeddingGift from "./Sections/WeddingGift";
 import Closing from "./Sections/Closing";

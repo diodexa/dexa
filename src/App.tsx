@@ -5,6 +5,7 @@ import InvitationPage from "./Pages/InvitationPage"
 import InvitationForm from "./Pages/InvitationForm"
 import GuestPhotobooth from "./Pages/GuestPhotobooth"
 import PhotoboothDashboard from "./Pages/PhotoboothDashboard"
+import AdminPelanggan from "./Pages/AdminPelangganPhotobooth"
 
 
 
@@ -17,6 +18,7 @@ function App() {
       <Route path="/FormInput" element={<InvitationForm  />} />
       <Route path="/GuestPhotobooth" element={<GuestPhotobooth  />} />
       <Route path="/PhotoboothDashboard" element={<PhotoboothDashboard  />} />
+      <Route path="/AdminPhotobooth" element={<AdminPelanggan dashboardBaseUrl={`${window.location.origin}/PhotoboothDashboard`} guestBaseUrl={`${window.location.origin}/GuestPhotobooth`} />} />
       <Route path="/:slug/:guest?" element={<InvitationPage />} />
     </Routes>
   )

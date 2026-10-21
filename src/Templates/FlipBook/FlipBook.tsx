@@ -22,7 +22,7 @@ import ModalGallery from "../1.Components/ModalGalery";
 import Halaman11 from "./Sections/Halaman11 Galery2";
 import Halaman12 from "./Sections/Halaman12 Ucapan";
 import Halaman13 from "./Sections/Halaman13 UcapanDoa";
-import { fetchComments, type Comment } from "../../Components/Services/ChatService";
+import { fetchComments, type Comment } from "../../Services/ChatService";
 import Halaman14 from "./Sections/Halaman14 WeddingGift";
 import Halaman15 from "./Sections/Halaman15 Closing";
 import Halaman16 from "./Sections/Halaman16 Footer";

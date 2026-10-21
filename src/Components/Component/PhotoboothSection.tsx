@@ -1,46 +1,50 @@
-
 import { type RefObject } from "react";
 
-interface PhotoboothSectionProps {
-  sectionRef: RefObject<HTMLElement | null>;
-  namaPengantin: string;
+export type FrameMode = "none" | "single" | "triple";
 
+interface PhotoSlot {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+interface PhotoboothSectionProps {
   photos: string[];
   activeShot: number;
   setActiveShot: (index: number) => void;
+
   cameraOpen: boolean;
   videoRef: RefObject<HTMLVideoElement | null>;
+
   filterStyle: string;
 
   frameSrc: string;
   singleFrameSrc: string;
   frameWidth: number;
   frameHeight: number;
-
-  photoSlots: readonly {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-  }[];
-
-  photoMode: 1 | 3;
-  setPhotoMode: (mode: 1 | 3) => void;
+  photoSlots: readonly PhotoSlot[];
 
   fileRef: RefObject<HTMLInputElement | null>;
-  choosePhoto: (file?: File) => void | Promise<void>;
+  choosePhoto: (file?: File) => void;
+
   cameraError: string;
   busy: boolean;
   showFloatingActions: boolean;
-  capturePhoto: () => void | Promise<void>;
+
+  capturePhoto: () => void;
   closeCamera: () => void;
-  openCamera: () => void | Promise<void>;
+  openCamera: () => void;
   resetPhotos: () => void;
+
+  frameMode: FrameMode;
+  setFrameMode: (mode: FrameMode) => void;
+
+  namaPengantin: string;
+  sectionRef: RefObject<HTMLElement | null>;
 }
 
 export default function PhotoboothSection({
-  sectionRef,
-  namaPengantin,
   photos,
   activeShot,
   setActiveShot,
@@ -52,131 +56,220 @@ export default function PhotoboothSection({
   frameWidth,
   frameHeight,
   photoSlots,
-  photoMode,
-  setPhotoMode,
   fileRef,
   choosePhoto,
   cameraError,
   busy,
-  showFloatingActions,
-  capturePhoto,
-  closeCamera,
-  openCamera,
   resetPhotos,
+  frameMode,
+  setFrameMode,
+  namaPengantin,
+  sectionRef,
 }: PhotoboothSectionProps) {
-  const visibleSlots = photoSlots.slice(0, photoMode);
-  const filledPhotos = photos
-    .slice(0, photoMode)
-    .filter(Boolean).length;
+  const hasWeddingFrame = Boolean(frameSrc?.trim());
+  const hasSingleFrame = Boolean(singleFrameSrc?.trim());
+  const hasAnyFrame = hasWeddingFrame || hasSingleFrame;
 
+  const effectiveMode: FrameMode = !hasAnyFrame
+    ? "none"
+    : frameMode === "single" && hasSingleFrame
+      ? "single"
+      : frameMode === "triple" && hasWeddingFrame
+        ? "triple"
+        : hasSingleFrame
+          ? "single"
+          : "triple";
+
+  const isTriple = effectiveMode === "triple";
+  const isSingle = effectiveMode === "single";
+  const currentPhotoIndex = isTriple ? activeShot : 0;
+  const currentPhoto = photos[currentPhotoIndex] || "";
+
+  const photoTitle =
+    namaPengantin?.trim() || "";
 
   return (
     <section
       ref={sectionRef}
-      className="rounded-3xl border border-[#e8e2d7] bg-white p-4 shadow-sm sm:p-6"
+      className="relative min-w-0 w-full overflow-visible"
     >
-      {/* Pilihan mode */}
-      <div className="mx-auto mb-5 grid w-full max-w-sm grid-cols-2 gap-2">
-        <button
-          type="button"
-          onClick={() => {
-            resetPhotos();
-            setPhotoMode(3);
-            setActiveShot(0);
-          }}
-          disabled={busy || cameraOpen}
-          className={`rounded-xl border px-4 py-3 text-sm font-medium transition ${
-            photoMode === 3
-              ? "border-[#39362f] bg-[#39362f] text-white"
-              : "border-[#e3ddd2] bg-white text-[#777368]"
-          } disabled:opacity-50`}
-        >
-          3 Foto
-        </button>
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <div>
+
+
+          <h2 className="mt-1 text-xs text-left text-[#39362f]">
+            Kirim foto dan doa terbaikmu untuk kedua mempelai
+          </h2>
+        </div>
 
         <button
           type="button"
-          onClick={() => {
-            setPhotoMode(1);
-            setActiveShot(0);
-            resetPhotos();
-          }}
-          disabled={busy || cameraOpen}
-          className={`rounded-xl border px-4 py-3 text-sm font-medium transition ${
-            photoMode === 1
-              ? "border-[#39362f] bg-[#39362f] text-white"
-              : "border-[#e3ddd2] bg-white text-[#777368]"
-          } disabled:opacity-50`}
+          onClick={resetPhotos}
+          disabled={busy}
+          className="shrink-0 rounded-full border border-[#d9d2c5] px-3 py-2 text-xs text-[#625e53] transition hover:bg-white disabled:opacity-50"
         >
-          1 Foto
+          Reset Foto
         </button>
       </div>
 
-      {/* Preview foto */}
-      <div className="mx-auto w-full max-w-sm">
-        <div
-          className="relative isolate w-full overflow-hidden bg-[#f5f2ec]"
-          style={{
-            aspectRatio: `${frameWidth} / ${frameHeight}`,
-          }}
-        >
-          {photoMode === 1 ? (
-            <>
-              {/* MODE 1 FOTO: satu foto memenuhi seluruh area */}
-              {cameraOpen ? (
-                <video
-                  ref={videoRef}
-                  autoPlay
-                  playsInline
-                  muted
-                  className="absolute top-5 z-0 h-[90%] w-full scale-x-[-1] object-cover"
-                  style={{ filter: filterStyle }}
-                />
-              ) : photos[0] ? (
-                <img
-                  src={photos[0]}
-                  alt="Foto"
-                  className="absolute inset-0 z-0 h-full w-full object-cover"
-                  style={{ filter: filterStyle }}
-                />
-              ) : (
-                <div className="absolute inset-0 z-0 flex flex-col items-center justify-center bg-[#f7f5f0] text-[#8b887c]">
-                  <span className="text-3xl">1</span>
-                  <span className="mt-1 text-xs">
-                    Foto Anda
-                  </span>
-                </div>
-              )}
+      {hasSingleFrame && hasWeddingFrame && (
+        <div className="mb-4 grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              setFrameMode("single");
+              setActiveShot(0);
+            }}
+            disabled={busy || cameraOpen}
+            className={`rounded-xl border px-4 py-3 text-sm transition ${
+              effectiveMode === "single"
+                ? "border-[#39362f] bg-[#39362f] text-white"
+                : "border-[#d9d2c5] bg-white text-[#625e53] hover:bg-[#f9f7f2]"
+            } disabled:opacity-50`}
+          >
+            1 Foto
+          </button>
 
-              {/* Frame khusus mode 1 foto */}
-              <img
-                src={singleFrameSrc}
-                alt="Frame wedding satu foto"
-                className="pointer-events-none absolute inset-0 z-10 h-full w-full object-fill"
+          <button
+            type="button"
+            onClick={() => {
+              setFrameMode("triple");
+              setActiveShot(0);
+            }}
+            disabled={busy || cameraOpen}
+            className={`rounded-xl border px-4 py-3 text-sm transition ${
+              effectiveMode === "triple"
+                ? "border-[#39362f] bg-[#39362f] text-white"
+                : "border-[#d9d2c5] bg-white text-[#625e53] hover:bg-[#f9f7f2]"
+            } disabled:opacity-50`}
+          >
+            3 Foto
+          </button>
+        </div>
+      )}
+
+      {/* Pratinjau foto: ukuran dan rasio frame tetap. */}
+      <div
+        className="relative isolate w-full overflow-hidden rounded-sm"
+        style={{
+          aspectRatio: `${frameWidth} / ${frameHeight}`,
+        }}
+      >
+        {/* Mode tanpa frame */}
+        {effectiveMode === "none" && (
+          <>
+            {cameraOpen ? (
+              <video
+                ref={videoRef}
+                autoPlay
+                playsInline
+                muted
+                className="absolute inset-0 z-0 h-full w-full scale-x-[-1] object-cover"
+                style={{ filter: filterStyle }}
               />
+            ) : currentPhoto ? (
+              <img
+                src={currentPhoto}
+                alt="Foto photobooth"
+                className="absolute inset-0 z-0 h-full w-full object-cover"
+                style={{ filter: filterStyle }}
+              />
+            ) : (
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-5 text-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/70 text-[#8b887c]">
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-8 w-8"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M8 5l1.5-2h5L16 5" />
+                  </svg>
+                </div>
 
-              {/* Nama pengantin */}
-              <div className="pointer-events-none absolute bottom-[8%] left-1/2 z-20 w-[80%] -translate-x-1/2 px-3 text-center">
-                <p className="mb-1 font-TypographiTimes text-[8px] uppercase tracking-[.3em]">
-                  The Wedding Of
-                </p>
-                <p className="font-Tempting text-3xl">
-                  {namaPengantin}
+           
+              </div>
+            )}
+          </>
+        )}
+
+        {/* Mode satu foto */}
+        {effectiveMode === "single" && (
+          <>
+            {cameraOpen ? (
+              <video
+                ref={videoRef}
+                autoPlay
+                playsInline
+                muted
+                className="absolute top-[2.3%] z-0 h-[90%] w-full scale-x-[-1] object-cover"
+                style={{ filter: filterStyle }}
+              />
+            ) : currentPhoto ? (
+              <img
+                src={currentPhoto}
+                alt="Foto photobooth"
+                className="absolute top-[2.3%] z-0 h-[90%] w-full object-cover"
+                style={{ filter: filterStyle }}
+              />
+            ) : (
+              <div className="absolute inset-x-0 top-[2.3%] z-0 flex h-[90%] flex-col items-center justify-center gap-3 px-5 text-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/70 text-[#8b887c]">
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-8 w-8"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M8 5l1.5-2h5L16 5" />
+                  </svg>
+                </div>
+
+                <p className="text-sm font-medium text-[#625e53]">
+                  Foto kamu akan tampil di sini
                 </p>
               </div>
-            </>
-          ) : (
-            <>
-              {/* MODE 3 FOTO: slot lama tetap digunakan */}
-              {visibleSlots.map((slot, index) => (
-                <button
+            )}
+
+            <img
+              src={singleFrameSrc}
+              alt="Frame wedding satu foto"
+              className="pointer-events-none absolute inset-0 z-10 h-full w-full object-fill"
+            />
+
+            {/* Teks pengantin di atas frame */}
+            {photoTitle && (
+              <div className="pointer-events-none absolute bottom-[5%] left-1/2 z-20 w-[90%] -translate-x-1/2 px-3 text-center text-[#39362f]">
+                <p className="text-[clamp(8px,2.4vw,16px)]  uppercase tracking-[0.3em]">
+                  THE WEDDING OF
+                </p>
+
+                <p className="mt-2 font-Tempting text-[clamp(20px,7vw,44px)] leading-tight">
+                  {photoTitle}
+                </p>
+              </div>
+            )}
+          </>
+        )}
+
+        {/* Mode tiga foto */}
+        {effectiveMode === "triple" && (
+          <>
+            {photoSlots.map((slot, index) => {
+              const isActive = activeShot === index;
+
+              return (
+                <div
                   key={index}
-                  type="button"
-                  onClick={() => setActiveShot(index)}
-                  aria-label={`Pilih kotak foto ${index + 1}`}
                   className={`absolute z-0 overflow-hidden ${
-                    activeShot === index
-                      ? "ring-2 ring-inset ring-[#9b8052]"
+                    isActive && cameraOpen
+                      ? "ring-2 ring-inset ring-white"
                       : ""
                   }`}
                   style={{
@@ -186,7 +279,7 @@ export default function PhotoboothSection({
                     height: `${(slot.height / frameHeight) * 100}%`,
                   }}
                 >
-                  {cameraOpen && activeShot === index ? (
+                  {cameraOpen && isActive ? (
                     <video
                       ref={videoRef}
                       autoPlay
@@ -203,118 +296,75 @@ export default function PhotoboothSection({
                       style={{ filter: filterStyle }}
                     />
                   ) : (
-                    <div className="flex h-full w-full flex-col items-center justify-center bg-[#f7f5f0] text-center text-[#8b887c]">
-                      <span className="text-2xl">
-                        {index + 1}
-                      </span>
-                      <span className="px-1 text-[10px] sm:text-xs">
-                        Foto {index + 1}
-                      </span>
-                    </div>
+                    <>
+                    </>
                   )}
-                </button>
-              ))}
+                </div>
+              );
+            })}
 
-              <img
-                src={frameSrc}
-                alt="Frame wedding tiga foto"
-                className="pointer-events-none absolute inset-0 z-10 h-full w-full"
-              />
+            <img
+              src={frameSrc}
+              alt="Frame wedding tiga foto"
+              className="pointer-events-none absolute inset-0 z-10 h-full w-full object-fill"
+            />
 
-              <div className="pointer-events-none absolute bottom-[8%] left-1/2 z-20 w-[80%] -translate-x-1/2 px-3 text-center">
-                <p className="mb-1 font-TypographiTimes text-[8px] uppercase tracking-[.3em]">
-                  The Wedding Of
+            {/* Teks pengantin di atas frame */}
+            {photoTitle && (
+              <div className="pointer-events-none absolute bottom-[10%] left-1/2 z-20 w-[90%] -translate-x-1/2 px-3 text-center text-[#39362f]">
+                <p className="text-[clamp(8px,2.4vw,16px)] uppercase tracking-[0.3em]">
+                  THE WEDDING OF
                 </p>
-                <p className="font-Tempting text-3xl">
-                  {namaPengantin}
+
+                <p className="mt-2 font-Tempting text-[clamp(20px,7vw,44px)] leading-tight">
+                  {photoTitle}
                 </p>
               </div>
-            </>
-          )}
-        </div>
-
-        <p className="mt-3 text-center text-xs text-[#777368]">
-          {filledPhotos}/{photoMode} foto terisi
-          {photoMode === 3
-            ? " · Klik kotak untuk memilih foto yang ingin diganti."
-            : " · Foto memenuhi seluruh area frame."}
-        </p>
+            )}
+          </>
+        )}
       </div>
 
-      {/* Input file */}
       <input
         ref={fileRef}
         type="file"
         accept="image/*"
         className="hidden"
+        disabled={busy}
         onChange={(event) => {
-          void choosePhoto(event.currentTarget.files?.[0]);
+          const file = event.currentTarget.files?.[0];
+
+          if (file) {
+            void choosePhoto(file);
+          }
+
           event.currentTarget.value = "";
         }}
       />
 
       {cameraError && (
-        <p role="alert" className="mt-3 text-sm text-red-600">
+        <div
+          role="alert"
+          className="mt-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm leading-relaxed text-red-700"
+        >
           {cameraError}
-        </p>
+        </div>
       )}
 
-      <button
-        type="button"
-        onClick={resetPhotos}
-        disabled={busy || cameraOpen}
-        className="mt-3 w-full rounded-xl border border-[#e3ddd2] px-4 py-2 text-xs text-[#777368] disabled:opacity-40"
-      >
-        Ulangi dari Foto 1
-      </button>
+     
 
-      {/* Tombol floating */}
-      {showFloatingActions && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-[#e8e2d7] bg-white/95 px-4 py-3 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] backdrop-blur-md">
-          <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-3">
-            {cameraOpen ? (
-              <>
-                <button
-                  type="button"
-                  onClick={() => void capturePhoto()}
-                  className="rounded-xl bg-[#39362f] px-4 py-3 text-sm font-medium text-white"
-                >
-                  {photoMode === 1
-                    ? "Jepret Foto"
-                    : `Jepret Foto ${activeShot + 1}/3`}
-                </button>
+      <p className="mt-3 text-center text-xs text-[#8b887c]">
+        {isTriple
+          ? `Foto ${activeShot + 1} dari 3`
+          : isSingle
+            ? "Mode satu foto"
+            : "Mode satu foto tanpa frame"}
+      </p>
 
-                <button
-                  type="button"
-                  onClick={closeCamera}
-                  className="rounded-xl border border-[#d9d2c5] bg-white px-4 py-3 text-sm font-medium"
-                >
-                  Tutup Kamera
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  type="button"
-                  onClick={() => void openCamera()}
-                  disabled={busy}
-                  className="rounded-xl bg-[#39362f] px-4 py-3 text-sm font-medium text-white disabled:opacity-50"
-                >
-                  Buka Kamera
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => fileRef.current?.click()}
-                  disabled={busy}
-                  className="rounded-xl border border-[#d9d2c5] bg-white px-4 py-3 text-sm font-medium disabled:opacity-50"
-                >
-                  Pilih Foto
-                </button>
-              </>
-            )}
-          </div>
-        </div>
+      {namaPengantin && (
+        <p className="sr-only">
+          Photobooth untuk {namaPengantin}
+        </p>
       )}
     </section>
   );

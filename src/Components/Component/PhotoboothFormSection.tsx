@@ -15,6 +15,7 @@ interface PhotoboothFormSectionProps {
   recording: boolean;
   cameraOpen: boolean;
   photos: string[];
+  photoMode: 1 | 3;
   downloadPhoto: () => void | Promise<void>;
   submit: () => void | Promise<void>;
   children?: React.ReactNode;
@@ -35,6 +36,7 @@ export default function PhotoboothFormSection({
   cameraOpen,
   photos,
   downloadPhoto,
+  photoMode,
   submit,
   children,
 }: PhotoboothFormSectionProps) {
@@ -61,6 +63,7 @@ export default function PhotoboothFormSection({
               key={item}
               type="button"
               onClick={() => setFilter(item)}
+              disabled={busy}
               className={`rounded-xl border px-2 py-3 text-xs ${
                 filter === item
                   ? "border-[#39362f] bg-[#39362f] text-white"
@@ -105,7 +108,7 @@ export default function PhotoboothFormSection({
         <button
           type="button"
           onClick={() => void downloadPhoto()}
-          disabled={photos.some((item) => !item) || busy || cameraOpen}
+          disabled={ photos.slice(0, photoMode).some((item) => !item) ||busy ||cameraOpen}
           className="rounded-xl border border-[#d9d2c5] px-3 py-3 text-sm font-medium disabled:opacity-40"
         >
           Unduh Foto
@@ -118,7 +121,7 @@ export default function PhotoboothFormSection({
             busy ||
             recording ||
             cameraOpen ||
-            photos.some((item) => !item)
+            photos.slice(0, photoMode).some((item) => !item)
           }
           className="rounded-xl bg-[#39362f] px-3 py-3 text-sm font-medium text-white disabled:opacity-50"
         >

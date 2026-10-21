@@ -18,8 +18,6 @@ import { ContohPlayful } from "./ContohPlayful1";
 
 
 export const invitations = [
-  //Photobooth
-  
 
   ContohFlipBook,
   ContohJourneyCream,

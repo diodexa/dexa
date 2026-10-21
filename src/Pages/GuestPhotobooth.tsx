@@ -1,13 +1,16 @@
 
 import { useEffect, useRef, useState } from "react";
-import { kirimPhotobooth } from "../Components/Services/PhotoboothService";
-import { Photobooth } from "../Data/Photobooth/PhotoboothAccount";
+import { kirimPhotobooth } from "../Services/PhotoboothService";
+
 import PhotoboothFormSection from "../Components/Component/PhotoboothFormSection";
 import AudioSection from "../Components/Component/AudioSection";
 import PhotoboothSection from "../Components/Component/PhotoboothSection";
+import { Photobooths } from "../Data/Photobooth";
+
 
 
 type Filter = "Original" | "Warm" | "Soft" | "B&W";
+type FrameMode = "none" | "single" | "triple";
 
 const FILTERS: Record<Filter, string> = {
   Original: "none",
@@ -16,8 +19,12 @@ const FILTERS: Record<Filter, string> = {
   "B&W": "grayscale(1)",
 };
 
-const WEDDING_FRAME_SRC = Photobooth.Frame;
-const SINGLE_FRAME_SRC = Photobooth.FrameSingle;
+// const WEDDING_FRAME_SRC = Photobooths.Frame?.trim() || "";
+// const SINGLE_FRAME_SRC = Photobooths.FrameSingle?.trim() || "";
+
+// const hasWeddingFrame = Boolean(WEDDING_FRAME_SRC);
+// const hasSingleFrame = Boolean(SINGLE_FRAME_SRC);
+// const hasAnyFrame = hasWeddingFrame || hasSingleFrame;
 
 const PHOTO_SLOTS = [
   { x: 70, y: 207, width: 700, height: 400 },
@@ -103,9 +110,22 @@ function drawTrackedText(
 }
 
 export default function GuestPhotobooth() {
-  const [idUndangan] = useState("photoboth Andi-Siti");
-  const slug =
-    new URLSearchParams(window.location.search).get("slug") || "";
+  const params = new URLSearchParams(window.location.search);
+  
+
+  const slug = params.get("slug") || "";
+  const idUndangan = params.get("idUndangan") || "";
+
+  const Photobooth = Photobooths.find(
+    (item) => item.idUndangan === idUndangan
+  );
+
+  const WEDDING_FRAME_SRC = Photobooth?.Frame?.trim() || "";
+  const SINGLE_FRAME_SRC = Photobooth?.FrameSingle?.trim() || "";
+
+  const hasWeddingFrame = Boolean(WEDDING_FRAME_SRC);
+  const hasSingleFrame = Boolean(SINGLE_FRAME_SRC);
+  const hasAnyFrame = hasWeddingFrame || hasSingleFrame;
 
   const [nama, setNama] = useState("");
   const [ucapan, setUcapan] = useState("");
@@ -136,31 +156,54 @@ export default function GuestPhotobooth() {
   const animationRef = useRef<number | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const recordingRef = useRef(false);
+
   const photoboothSectionRef = useRef<HTMLElement | null>(null);
+  const formSectionRef = useRef<HTMLDivElement | null>(null);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-  const [photoMode, setPhotoMode] = useState<1 | 3>(3);
+  // Mode awal mengikuti frame yang tersedia.
+  const [frameMode, setFrameMode] = useState<FrameMode>(
+    hasWeddingFrame ? "triple" : hasSingleFrame ? "single" : "none"
+  );
 
-  const showNotice = (message: string, error = false) => {
+  // Pastikan mode yang dipilih memang memiliki frame.
+  const effectiveFrameMode: FrameMode = !hasAnyFrame
+    ? "none"
+    : frameMode === "single" && hasSingleFrame
+      ? "single"
+      : frameMode === "triple" && hasWeddingFrame
+        ? "triple"
+        : hasSingleFrame
+          ? "single"
+          : "triple";
+
+  // Mode foto selalu mengikuti pilihan frame.
+  const photoMode: 1 | 3 =
+    effectiveFrameMode === "triple" ? 3 : 1;
+
+  function showNotice(message: string, error = false) {
     setNotice(message);
     setNoticeError(error);
-  };
+  }
 
-  // Tombol kamera dan pilih foto mengambang ketika bagian foto
-  // sudah tidak terlihat di layar.
+  // Tombol mengambang disembunyikan saat bagian form
+  // terlihat setidaknya 50%.
   useEffect(() => {
-    const photoSection = photoboothSectionRef.current;
-    if (!photoSection) return;
+    const formSection = formSectionRef.current;
+    if (!formSection) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setShowFloatingActions(entry.intersectionRatio > 0.5);
+        setShowFloatingActions(
+          !(entry.isIntersecting && entry.intersectionRatio >= 0.5)
+        );
       },
       {
         threshold: [0, 0.5, 1],
       }
     );
 
-    observer.observe(photoSection);
+    observer.observe(formSection);
 
     return () => observer.disconnect();
   }, []);
@@ -247,7 +290,6 @@ export default function GuestPhotobooth() {
     });
   }, [cameraOpen, activeShot]);
 
-  
   async function capturePhoto() {
     const video = videoRef.current;
 
@@ -260,17 +302,19 @@ export default function GuestPhotobooth() {
       const canvas = document.createElement("canvas");
       const scale = Math.min(
         1,
-        1600 / Math.max(video.videoWidth, video.videoHeight)
+        1200 / Math.max(video.videoWidth, video.videoHeight)
       );
 
       canvas.width = Math.round(video.videoWidth * scale);
       canvas.height = Math.round(video.videoHeight * scale);
 
       const ctx = canvas.getContext("2d");
+
       if (!ctx) {
         throw new Error("Browser tidak mendukung pengolahan foto.");
       }
 
+      // Membalik foto agar sesuai dengan pratinjau kamera depan.
       ctx.translate(canvas.width, 0);
       ctx.scale(-1, 1);
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -287,6 +331,8 @@ export default function GuestPhotobooth() {
       });
 
       const captured = await readFile(blob);
+
+      // Mode satu foto selalu mengisi slot pertama.
       const shot = photoMode === 1 ? 0 : activeShot;
 
       setPhotos((current) =>
@@ -298,7 +344,6 @@ export default function GuestPhotobooth() {
       setFilter("Original");
       setCameraError("");
 
-      // MODE 1 FOTO: selesai setelah satu jepretan
       if (photoMode === 1) {
         closeCamera();
         showNotice(
@@ -307,11 +352,11 @@ export default function GuestPhotobooth() {
         return;
       }
 
-      // MODE 3 FOTO: tetap lanjut mengambil tiga foto
+      // Mode tiga foto: lanjut ke slot berikutnya.
       if (shot < 2) {
         setActiveShot(shot + 1);
         showNotice(
-          `Foto ${shot + 1} berhasil! Lanjutkan ke foto ${shot + 2}.`
+          `Foto ${shot + 1} berhasil diambil! Lanjutkan ke foto ${shot + 2}.`
         );
       } else {
         closeCamera();
@@ -327,7 +372,6 @@ export default function GuestPhotobooth() {
       );
     }
   }
-
 
   function stopAudioVisualizer() {
     if (animationRef.current !== null) {
@@ -434,6 +478,7 @@ export default function GuestPhotobooth() {
       canvas.height = Math.round(original.height * scale);
 
       const ctx = canvas.getContext("2d");
+
       if (!ctx) {
         throw new Error("Browser tidak mendukung pengolahan foto.");
       }
@@ -441,21 +486,28 @@ export default function GuestPhotobooth() {
       ctx.drawImage(original, 0, 0, canvas.width, canvas.height);
 
       const chosen = canvas.toDataURL("image/jpeg", 0.88);
-      const shot = activeShot;
+
+      // Mode satu foto selalu masuk ke slot pertama.
+      const shot = photoMode === 1 ? 0 : activeShot;
 
       setPhotos((current) =>
-        current.map((item, index) => (index === shot ? chosen : item))
+        current.map((item, index) =>
+          index === shot ? chosen : item
+        )
       );
+
       setFilter("Original");
 
-      if (shot < 2) {
+      if (photoMode === 3 && shot < 2) {
         setActiveShot(shot + 1);
       }
 
       showNotice(
-        `Foto ${shot + 1} berhasil dipilih${
-          shot < 2 ? `. Lanjutkan ke foto ${shot + 2}` : ""
-        }.`
+        photoMode === 1
+          ? "Foto berhasil dipilih! Kamu bisa meninjau hasilnya."
+          : `Foto ${shot + 1} berhasil dipilih${
+              shot < 2 ? `. Lanjutkan ke foto ${shot + 2}.` : "."
+            }`
       );
     } catch {
       showNotice("Foto gagal diproses. Coba foto lain.", true);
@@ -618,71 +670,99 @@ export default function GuestPhotobooth() {
   }
 
   async function makeFinalImage(): Promise<string> {
-    if (photos.some((item) => !item)) {
-      throw new Error("Lengkapi ketiga foto terlebih dahulu.");
+    const requiredPhotos = photos.slice(0, photoMode);
+
+    if (requiredPhotos.some((item) => !item)) {
+      throw new Error(
+        photoMode === 1
+          ? "Ambil atau pilih satu foto terlebih dahulu."
+          : "Ambil atau pilih ketiga foto terlebih dahulu."
+      );
     }
 
-    const [img1, img2, img3, frameImg] = await Promise.all([
-      loadImage(photos[0]),
-      loadImage(photos[1]),
-      loadImage(photos[2]),
-      loadImage(WEDDING_FRAME_SRC),
-    ]);
+    const frameSrc =
+      photoMode === 1 ? SINGLE_FRAME_SRC : WEDDING_FRAME_SRC;
+
+    const images = await Promise.all(
+      requiredPhotos.map((photo) => loadImage(photo))
+    );
+
+    const frameImg = frameSrc ? await loadImage(frameSrc) : null;
 
     await document.fonts.load('12px "Euphorigenic"');
     await document.fonts.load('36px "Tempting"');
+    await document.fonts.load('36px "TypographiTimes"');
 
     const canvas = document.createElement("canvas");
     canvas.width = FRAME_WIDTH;
     canvas.height = FRAME_HEIGHT;
 
     const ctx = canvas.getContext("2d");
-    if (!ctx) throw new Error("Gagal membuat foto.");
 
-    const images = [img1, img2, img3];
+    if (!ctx) {
+      throw new Error("Gagal membuat foto.");
+    }
 
-    PHOTO_SLOTS.forEach((slot, index) => {
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
+    if (photoMode === 1) {
+
       drawCover(
         ctx,
-        images[index],
-        slot.x,
-        slot.y,
-        slot.width,
-        slot.height,
+        images[0],
+        0,
+        40,
+        FRAME_WIDTH,
+        FRAME_HEIGHT - 80,
         FILTERS[filter]
       );
-    });
+    } else {
+      PHOTO_SLOTS.forEach((slot, index) => {
+        drawCover(
+          ctx,
+          images[index],
+          slot.x,
+          slot.y,
+          slot.width,
+          slot.height,
+          FILTERS[filter]
+        );
+      });
+    }
 
-    ctx.drawImage(frameImg, 0, 0, FRAME_WIDTH, FRAME_HEIGHT);
+    if (frameImg) {
+      ctx.drawImage(frameImg, 0, 0, FRAME_WIDTH, FRAME_HEIGHT);
 
-    ctx.save();
-    ctx.fillStyle = "#39362f";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "alphabetic";
+      ctx.save();
+      ctx.fillStyle = "#39362f";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "alphabetic";
 
-    const centerX = FRAME_WIDTH / 2;
-    const textTop = FRAME_HEIGHT * 0.95 - 200;
-    const SCALE = FRAME_WIDTH / 384;
+      const centerX = FRAME_WIDTH / 2;
+      const SCALE = FRAME_WIDTH / 384;
+      const textTop = FRAME_HEIGHT * 0.95 - 200;
+      const weddingTitleScale = photoMode === 1 ? 0.65 : SCALE * 0.4;
 
-    ctx.font = `${36 * SCALE}px "TypographiTimes"`;
+      ctx.font = `${30 * weddingTitleScale}px "TypographiTimes"`;
 
-    drawTrackedText(
-      ctx,
-      "The Wedding Of",
-      centerX,
-      textTop + 12 * SCALE,
-      2.6 * SCALE
-    );
+      drawTrackedText(
+        ctx,
+        "THE WEDDING OF",
+        centerX,
+        textTop + 12 * SCALE,
+        2.6 * weddingTitleScale
+      );
 
-    ctx.font = `${36 * SCALE}px "Tempting"`;
+      ctx.font = `${36 * SCALE}px "Tempting"`;
 
-    ctx.fillText(
-      Photobooth.NamaPengantin,
-      centerX,
-      textTop + 60 * SCALE
-    );
+      ctx.fillText(
+        Photobooth?.NamaPengantin ?? "",
+        centerX,
+        textTop + 60 * SCALE
+      );
 
-    ctx.restore();
+      ctx.restore();
+    }
 
     return canvas.toDataURL("image/jpeg", 0.9);
   }
@@ -693,21 +773,33 @@ export default function GuestPhotobooth() {
       const link = document.createElement("a");
 
       link.href = image;
-      link.download = `photobooth-${nama.trim() || "tamu"}.jpg`;
+      link.download = `Photobooths-${nama.trim() || "tamu"}.jpg`;
       link.click();
-    } catch {
-      showNotice("Foto gagal dibuat. Coba lagi.", true);
+    } catch (error) {
+      showNotice(
+        error instanceof Error
+          ? error.message
+          : "Foto gagal dibuat. Coba lagi.",
+        true
+      );
     }
   }
 
-  async function submit() {
+  function submit() {
+    if (busy) return;
+
     if (!nama.trim()) {
       showNotice("Masukkan nama kamu terlebih dahulu.", true);
       return;
     }
 
-    if (photos.some((item) => !item)) {
-      showNotice("Ambil atau pilih ketiga foto terlebih dahulu.", true);
+    if (photos.slice(0, photoMode).some((item) => !item)) {
+      showNotice(
+        photoMode === 1
+          ? "Ambil atau pilih satu foto terlebih dahulu."
+          : "Ambil atau pilih ketiga foto terlebih dahulu.",
+        true
+      );
       return;
     }
 
@@ -717,9 +809,15 @@ export default function GuestPhotobooth() {
     }
 
     if (!slug) {
-      showNotice("Link photobooth tidak valid.", true);
+      showNotice("Link Photobooths tidak valid.", true);
       return;
     }
+
+    setShowConfirmModal(true);
+  }
+
+  async function handleConfirmSend() {
+    if (busy) return;
 
     setBusy(true);
     showNotice("");
@@ -741,8 +839,10 @@ export default function GuestPhotobooth() {
         audio,
       });
 
+      setShowConfirmModal(false);
       showNotice("Foto dan ucapan berhasil dikirim. Terima kasih!");
     } catch (error) {
+      setShowConfirmModal(false);
       showNotice(
         error instanceof Error ? error.message : "Gagal mengirim data.",
         true
@@ -753,13 +853,16 @@ export default function GuestPhotobooth() {
   }
 
   function resetPhotos() {
-  setPhotos(["", "", ""]);
-  setActiveShot(0);
-  setCameraError("");
-  showNotice(
-    "Ketiga kotak foto dikosongkan. Mulai dari foto pertama."
-  );
-}
+    setPhotos(["", "", ""]);
+    setActiveShot(0);
+    setCameraError("");
+
+    showNotice(
+      photoMode === 1
+        ? "Foto dikosongkan. Silakan ambil atau pilih foto kembali."
+        : "Ketiga kotak foto dikosongkan. Mulai dari foto pertama."
+    );
+  }
 
   return (
     <main className="min-h-screen w-full overflow-x-clip bg-[#f6f3ed] px-3 py-6 text-[#39362f] sm:px-4 sm:py-8">
@@ -768,17 +871,16 @@ export default function GuestPhotobooth() {
           <p className="text-xs uppercase tracking-[0.3em] text-[#8b887c]">
             Dexa Invitation
           </p>
-          <h1 className="mt-3 text-3xl font-semibold">Photobooth</h1>
-          <p className="mt-2 text-sm text-[#777368]">
-            Abadikan momen dan tinggalkan pesan untuk kedua mempelai.
-          </p>
+
+          <h1 className="mt-3 text-xl font-semibold uppercase">photobooth virtual</h1>
+
         </header>
 
         <div className="grid w-full min-w-0 grid-cols-1 gap-4 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-6">
           {/* SECTION FOTO */}
           <PhotoboothSection
             sectionRef={photoboothSectionRef}
-            namaPengantin={Photobooth.NamaPengantin}
+            namaPengantin={Photobooth?.NamaPengantin ?? ""}
             photos={photos}
             activeShot={activeShot}
             setActiveShot={setActiveShot}
@@ -798,61 +900,64 @@ export default function GuestPhotobooth() {
             closeCamera={closeCamera}
             openCamera={openCamera}
             resetPhotos={resetPhotos}
-            photoMode={photoMode}
-            setPhotoMode={setPhotoMode}
+            frameMode={effectiveFrameMode}
+            setFrameMode={setFrameMode}
             singleFrameSrc={SINGLE_FRAME_SRC}
           />
 
-
           {/* SECTION FORM */}
-          <PhotoboothFormSection
-            nama={nama}
-            setNama={setNama}
-            ucapan={ucapan}
-            setUcapan={setUcapan}
-            filter={filter}
-            setFilter={setFilter}
-            filters={FILTERS}
-            notice={notice}
-            noticeError={noticeError}
-            busy={busy}
-            recording={recording}
-            cameraOpen={cameraOpen}
-            photos={photos}
-            downloadPhoto={downloadPhoto}
-            submit={submit}
-          >
-            <AudioSection
-              audio={audio}
-              recording={recording}
-              seconds={seconds}
-              audioLevel={audioLevel}
+          <div ref={formSectionRef} className="min-w-0">
+            <PhotoboothFormSection
+              nama={nama}
+              setNama={setNama}
+              ucapan={ucapan}
+              setUcapan={setUcapan}
+              filter={filter}
+              setFilter={setFilter}
+              filters={FILTERS}
+              notice={notice}
+              noticeError={noticeError}
               busy={busy}
-              startRecording={startRecording}
-              stopRecording={stopRecording}
-              onDeleteAudio={() => {
-                setAudio("");
-                setSeconds(0);
-                showNotice("");
-              }}
-            />
-          </PhotoboothFormSection>
+              recording={recording}
+              cameraOpen={cameraOpen}
+              photos={photos}
+              downloadPhoto={downloadPhoto}
+              photoMode={photoMode}
+              submit={submit}
+            >
+              <AudioSection
+                audio={audio}
+                recording={recording}
+                seconds={seconds}
+                audioLevel={audioLevel}
+                busy={busy}
+                startRecording={startRecording}
+                stopRecording={stopRecording}
+                onDeleteAudio={() => {
+                  setAudio("");
+                  setSeconds(0);
+                  showNotice("");
+                }}
+              />
+            </PhotoboothFormSection>
+          </div>
         </div>
 
         {/* FLOATING ACTIONS */}
         {showFloatingActions && (
           <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-[#e8e2d7] bg-white/95 px-4 py-3 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] backdrop-blur-md">
-            <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-3">
+            <div className="mx-auto flex w-full w-full  gap-3">
               {cameraOpen ? (
                 <>
                   <button
                     type="button"
                     onClick={() => void capturePhoto()}
-                    className="rounded-xl bg-[#39362f] px-4 py-3 text-sm font-medium text-white"
+                    disabled={busy}
+                    className="rounded-xl bg-[#39362f] px-4 py-3 text-sm font-medium text-white disabled:opacity-50 flex-1"
                   >
                     {photoMode === 1
-                    ? "Jepret Foto"
-                    : `Jepret Foto ${activeShot + 1}/3`}
+                      ? "Jepret Foto"
+                      : `Jepret Foto ${activeShot + 1}/3`}
                   </button>
 
                   <button
@@ -869,19 +974,12 @@ export default function GuestPhotobooth() {
                     type="button"
                     onClick={() => void openCamera()}
                     disabled={busy}
-                    className="rounded-xl bg-[#39362f] px-4 py-3 text-sm font-medium text-white disabled:opacity-50"
+                    className="rounded-xl bg-[#39362f] px-4 py-3 text-sm font-medium text-white disabled:opacity-50 flex-1"
                   >
                     Buka Kamera
                   </button>
 
-                  <button
-                    type="button"
-                    onClick={() => fileRef.current?.click()}
-                    disabled={busy}
-                    className="rounded-xl border border-[#d9d2c5] bg-white px-4 py-3 text-sm font-medium disabled:opacity-50"
-                  >
-                    Pilih Foto
-                  </button>
+                 
                 </>
               )}
             </div>
@@ -891,6 +989,49 @@ export default function GuestPhotobooth() {
         <p className="mt-6 text-center text-xs text-[#8b887c]">
           Made with love by Dexa Invitation
         </p>
+
+        {showConfirmModal && (
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 px-4">
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="confirm-title"
+              className="w-full max-w-sm rounded-2xl bg-white p-6 text-center shadow-xl"
+            >
+              <h2
+                id="confirm-title"
+                className="text-lg font-semibold text-[#39362f]"
+              >
+                Konfirmasi Pengiriman
+              </h2>
+
+              <p className="mt-3 text-sm leading-relaxed text-[#777368]">
+                Apakah kamu yakin ingin mengirim foto dan ucapan ini?
+                Pastikan semua data sudah benar.
+              </p>
+
+              <div className="mt-6 flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmModal(false)}
+                  disabled={busy}
+                  className="flex-1 rounded-xl border border-[#e3ddd2] px-4 py-3 text-sm disabled:opacity-50"
+                >
+                  Batal
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => void handleConfirmSend()}
+                  disabled={busy}
+                  className="flex-1 rounded-xl bg-[#39362f] px-4 py-3 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {busy ? "Mengirim..." : "Ya, Kirim"}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </main>
   );

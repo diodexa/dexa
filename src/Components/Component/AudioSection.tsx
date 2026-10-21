@@ -83,15 +83,24 @@ export default function AudioSection({
           </span>
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center gap-3">
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
           {!recording ? (
             <button
               type="button"
               onClick={() => void startRecording()}
               disabled={busy}
-              className="rounded-full bg-[#39362f] px-5 py-3 text-sm font-medium text-white disabled:opacity-50"
+              className="rounded-full bg-[#39362f] px-5 py-3  text-white disabled:opacity-50"
             >
-              {audio ? "↻ Rekam Ulang" : "● Mulai Rekam"}
+              {audio ? (
+                <>
+                  <i className="fa-solid fa-rotate-right text-lg" />
+               
+                </>
+              ) : (
+                <>
+                  <i className="fa-solid fa-microphone text-lg" />
+                </>
+              )}
             </button>
           ) : (
             <button
@@ -99,7 +108,7 @@ export default function AudioSection({
               onClick={stopRecording}
               className="rounded-full bg-red-100 px-5 py-3 text-sm font-medium text-red-700"
             >
-              ■ Berhenti
+               <i className="fa-solid fa-stop text-lg" />
             </button>
           )}
 
@@ -110,7 +119,7 @@ export default function AudioSection({
               onClick={onDeleteAudio}
               className="rounded-full border border-[#e3ddd2] px-4 py-3 text-sm disabled:opacity-50"
             >
-              Hapus
+              <i className="fa-solid fa-trash-can text-lg" />
             </button>
           )}
         </div>

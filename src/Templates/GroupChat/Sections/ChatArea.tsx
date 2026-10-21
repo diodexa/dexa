@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Invitation } from "../../../types/invitationType";
-import type { Comment } from "../../../Components/Services/ChatService";
+import type { Comment } from "../../../Services/ChatService";
 import "../GroupChat.css";
 
 interface Props {

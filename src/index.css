@@ -32,6 +32,46 @@
     font-size: 16px;
   }
 }
+
+
+
+@media print {
+  #qr-print-area article {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 3mm !important;
+    break-inside: avoid;
+  }
+
+  #qr-print-area .qr-artwork {
+    width: 42mm;
+    max-width: none;
+  }
+
+  #qr-print-area .qr-image-wrap {
+    width: 42mm;
+    height: 42mm;
+  }
+
+  #qr-print-area .qr-number {
+    font-size: 5px !important;
+    margin-top: 1mm !important;
+  }
+
+  #qr-print-area article h3,
+  #qr-print-area article > p,
+  #qr-print-area article input,
+  #qr-print-area article button {
+    display: none !important;
+  }
+
+  #qr-print-area .qr-artwork {
+    display: block !important;
+  }
+}
+
+
 /* 
 *{
   border: 1px solid red;

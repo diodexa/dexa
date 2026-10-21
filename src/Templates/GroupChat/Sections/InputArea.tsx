@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Invitation } from "../../../types/invitationType";
-import { postComment } from "../../../Components/Services/ChatService";
+import { postComment } from "../../../Services/ChatService";
 
 interface Props {
   data: Invitation;
