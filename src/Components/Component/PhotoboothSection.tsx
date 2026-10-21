@@ -252,12 +252,12 @@ export default function PhotoboothSection({
 
             {/* Teks pengantin di atas frame */}
             {photoTitle && (
-              <div className="pointer-events-none absolute bottom-[5%] left-1/2 z-20 w-[90%] -translate-x-1/2 px-3 text-center text-[#39362f]">
+              <div className="pointer-events-none absolute bottom-[6%] left-1/2 z-20 w-[90%] -translate-x-1/2 px-3 text-center text-[#39362f]">
                 <p className="text-[clamp(8px,2.4vw,16px)]  uppercase tracking-[0.3em]">
                   {selectedPhotobooth?.JudulAcara}
                 </p>
 
-                <p className="mt-2 font-Tempting text-[clamp(20px,7vw,44px)] leading-tight">
+                <p className={`mt-2 font-${selectedPhotobooth?.Font} text-[clamp(20px,7vw,44px)] leading-tight`}>
                   {photoTitle}
                 </p>
               </div>
@@ -318,7 +318,7 @@ export default function PhotoboothSection({
 
             {/* Teks pengantin di atas frame */}
             {photoTitle && (
-              <div className="pointer-events-none absolute bottom-[10%] left-1/2 z-20 w-[90%] -translate-x-1/2 px-3 text-center text-[#39362f]">
+              <div className="pointer-events-none absolute bottom-[7%] left-1/2 z-20 w-[90%] -translate-x-1/2 px-3 text-center text-[#39362f]">
                 <p className="text-[clamp(8px,2.4vw,16px)] uppercase tracking-[0.3em]">
                   {selectedPhotobooth?.JudulAcara}
                 </p>

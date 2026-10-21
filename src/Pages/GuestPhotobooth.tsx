@@ -27,7 +27,7 @@ const FILTERS: Record<Filter, string> = {
 // const hasAnyFrame = hasWeddingFrame || hasSingleFrame;
 
 const PHOTO_SLOTS = [
-  { x: 70, y: 207, width: 700, height: 400 },
+  { x: 70, y: 216, width: 700, height: 400 },
   { x: 70, y: 666, width: 700, height: 400 },
   { x: 70, y: 1115, width: 700, height: 400 },
 ] as const;
@@ -87,27 +87,6 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
-function drawTrackedText(
-  ctx: CanvasRenderingContext2D,
-  text: string,
-  centerX: number,
-  y: number,
-  tracking: number
-) {
-  const chars = [...text];
-  const widths = chars.map((char) => ctx.measureText(char).width);
-
-  const totalWidth =
-    widths.reduce((sum, width) => sum + width, 0) +
-    tracking * Math.max(0, chars.length - 1);
-
-  let x = centerX - totalWidth / 2;
-
-  chars.forEach((char, index) => {
-    ctx.fillText(char, x, y);
-    x += widths[index] + tracking;
-  });
-}
 
 export default function GuestPhotobooth() {
   const params = new URLSearchParams(window.location.search);
@@ -690,7 +669,7 @@ export default function GuestPhotobooth() {
     const frameImg = frameSrc ? await loadImage(frameSrc) : null;
 
     await document.fonts.load('12px "Euphorigenic"');
-    await document.fonts.load('36px "Tempting"');
+    await document.fonts.load(`36px ${Photobooth?.Font}`);
     await document.fonts.load('36px "TypographiTimes"');
 
     const canvas = document.createElement("canvas");
@@ -741,19 +720,23 @@ export default function GuestPhotobooth() {
       const centerX = FRAME_WIDTH / 2;
       const SCALE = FRAME_WIDTH / 384;
       const textTop = FRAME_HEIGHT * 0.95 - 200;
-      const weddingTitleScale = photoMode === 1 ? 0.65 : SCALE * 0.4;
+      const weddingTitleScale = SCALE * 0.41;
 
       ctx.font = `${30 * weddingTitleScale}px "TypographiTimes"`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "alphabetic";
+      ctx.letterSpacing = `10px`;
 
-      drawTrackedText(
-        ctx,
-        "THE WEDDING OF",
+      ctx.fillText(
+        Photobooth?.JudulAcara ?? "",
         centerX,
-        textTop + 12 * SCALE,
-        2.6 * weddingTitleScale
+        textTop + 12 * SCALE
       );
 
-      ctx.font = `${36 * SCALE}px "Tempting"`;
+      ctx.letterSpacing = "0px";
+
+
+      ctx.font = `${36 * SCALE}px  ${Photobooth?.Font}`;
 
       ctx.fillText(
         Photobooth?.NamaPengantin ?? "",
