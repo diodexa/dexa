@@ -177,7 +177,7 @@ export default function PhotoboothSection({
                   autoPlay
                   playsInline
                   muted
-                  className={`absolute inset-0 z-0 h-full w-full object-contain ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
+                  className={`absolute inset-0 z-0 h-full w-full object-cover ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
                   style={{ filter: filterStyle }}
                 />
 
@@ -228,14 +228,14 @@ export default function PhotoboothSection({
                   autoPlay
                   playsInline
                   muted
-                  className={`absolute inset-0 z-0 h-[90%] w-full object-contain ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
+                  className={`absolute top-1/2 left-0 -translate-y-1/2 z-0 h-[80%] w-full object-cover ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
                   style={{ filter: filterStyle }}
                 />
 
                 <button
                   type="button"
                   onClick={switchCamera}
-                  className="absolute top-30 right-15 z-10 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md"
+                  className="absolute top-30 right-13 z-99 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md"
                 >
                   <i className="fa-solid fa-camera-rotate text-xl" />
                 </button>
@@ -244,7 +244,7 @@ export default function PhotoboothSection({
               <img
                 src={currentPhoto}
                 alt="Foto photobooth"
-                className="absolute top-[2.3%] z-0 h-[90%] w-full object-cover"
+                className="absolute top-1/2 left-0 -translate-y-1/2 z-0 h-[80%] w-full object-cover"
                 style={{ filter: filterStyle }}
               />
             ) : (
