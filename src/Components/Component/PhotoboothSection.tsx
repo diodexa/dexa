@@ -46,6 +46,7 @@ interface PhotoboothSectionProps {
   sectionRef: RefObject<HTMLElement | null>;
 
   switchCamera: () => void;
+  cameraFacing: "user" | "environment";
 }
 
 export default function PhotoboothSection({
@@ -71,6 +72,7 @@ export default function PhotoboothSection({
   namaPengantin,
   sectionRef,
   switchCamera,
+  cameraFacing,
 }: PhotoboothSectionProps) {
   const hasWeddingFrame = Boolean(frameSrc?.trim());
   const hasSingleFrame = Boolean(singleFrameSrc?.trim());
@@ -175,7 +177,7 @@ export default function PhotoboothSection({
                   autoPlay
                   playsInline
                   muted
-                  className="absolute inset-0 z-0 h-full w-full object-cover"
+                  className={`absolute inset-0 z-0 h-full w-full object-contain ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
                   style={{ filter: filterStyle }}
                 />
 
@@ -226,7 +228,7 @@ export default function PhotoboothSection({
                   autoPlay
                   playsInline
                   muted
-                  className="absolute top-[2.3%] z-0 h-[90%] w-full object-cover"
+                  className={`absolute inset-0 z-0 h-[90%] w-full object-contain ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
                   style={{ filter: filterStyle }}
                 />
 
@@ -316,7 +318,9 @@ export default function PhotoboothSection({
                         autoPlay
                         playsInline
                         muted
-                        className="absolute inset-0 z-0 h-full w-full object-cover"
+                        className={`absolute inset-0 z-0 h-full w-full object-cover ${
+                          cameraFacing === "user" ? "scale-x-[-1]" : ""
+                        }`}
                         style={{ filter: filterStyle }}
                       />
 

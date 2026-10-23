@@ -937,6 +937,7 @@ export default function GuestPhotobooth() {
             setFrameMode={setFrameMode}
             singleFrameSrc={SINGLE_FRAME_SRC}
             switchCamera={switchCamera}
+            cameraFacing={cameraFacing}
           />
 
           {/* SECTION FORM */}
