@@ -193,7 +193,7 @@ export default function PhotoboothSection({
               <img
                 src={currentPhoto}
                 alt="Foto photobooth"
-                className={`absolute inset-0 z-0 h-full w-full object-cover ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
+                className={`absolute inset-0 z-0 h-full w-full object-cover ${cameraFacing === "user" ? "" : "scale-x-[-1]"}`}
                 style={{ filter: filterStyle }}
               />
             ) : (
@@ -244,7 +244,7 @@ export default function PhotoboothSection({
               <img
                 src={currentPhoto}
                 alt="Foto photobooth"
-                className={`absolute top-1/2 left-0 -translate-y-1/2 z-0 h-[80%] w-full object-cover ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
+                className={`absolute top-1/2 left-0 -translate-y-1/2 z-0 h-[80%] w-full object-cover ${cameraFacing === "user" ? "" : "scale-x-[-1]"}`}
                 style={{ filter: filterStyle }}
               />
             ) : (
@@ -336,7 +336,7 @@ export default function PhotoboothSection({
                     <img
                       src={photos[index]}
                       alt={`Foto ${index + 1}`}
-                      className={`h-full w-full object-cover ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
+                      className={`h-full w-full object-cover ${cameraFacing === "user" ? "" : "scale-x-[-1]"}`}
                       style={{ filter: filterStyle }}
                     />
                   ) : (
