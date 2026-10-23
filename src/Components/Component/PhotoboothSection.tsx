@@ -184,7 +184,7 @@ export default function PhotoboothSection({
                   onClick={switchCamera}
                   className="absolute top-4 right-4 z-10 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md"
                 >
-                  <i className="fa-solid fa-camera-rotate mr-2" />
+                  <i className="fa-solid fa-camera-rotate" />
                 </button>
               </div>
             ) : currentPhoto ? (
@@ -226,16 +226,16 @@ export default function PhotoboothSection({
                   autoPlay
                   playsInline
                   muted
-                  className="absolute inset-0 z-0 h-full w-full object-cover"
+                  className="absolute top-[2.3%] z-0 h-[90%] w-full object-cover"
                   style={{ filter: filterStyle }}
                 />
 
                 <button
                   type="button"
                   onClick={switchCamera}
-                  className="absolute top-4 right-4 z-10 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md"
+                  className="absolute top-40 right-20 z-99 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md"
                 >
-                  <i className="fa-solid fa-camera-rotate mr-2" />
+                  <i className="fa-solid fa-camera-rotate" />
                 </button>
               </div>
             ) : currentPhoto ? (
@@ -325,7 +325,7 @@ export default function PhotoboothSection({
                         onClick={switchCamera}
                         className="absolute top-4 right-4 z-10 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md"
                       >
-                        <i className="fa-solid fa-camera-rotate mr-2" />
+                        <i className="fa-solid fa-camera-rotate" />
                       </button>
                     </div>
                   ) : photos[index] ? (
