@@ -175,14 +175,14 @@ export default function PhotoboothSection({
                   autoPlay
                   playsInline
                   muted
-                  className="absolute inset-0 z-0 h-full w-full scale-x-[-1] object-cover"
+                  className="absolute inset-0 z-0 h-full w-full object-cover"
                   style={{ filter: filterStyle }}
                 />
 
                 <button
                   type="button"
                   onClick={switchCamera}
-                  className="absolute bottom-4 right-4 z-10 rounded-full bg-white/90 px-4 py-2 text-sm shadow"
+                  className="absolute top-4 right-4 z-10 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md"
                 >
                   <i className="fa-solid fa-camera-rotate mr-2" />
                 </button>
@@ -226,14 +226,14 @@ export default function PhotoboothSection({
                   autoPlay
                   playsInline
                   muted
-                  className="absolute inset-0 z-0 h-full w-full scale-x-[-1] object-cover"
+                  className="absolute inset-0 z-0 h-full w-full object-cover"
                   style={{ filter: filterStyle }}
                 />
 
                 <button
                   type="button"
                   onClick={switchCamera}
-                  className="absolute bottom-4 right-4 z-10 rounded-full bg-white/90 px-4 py-2 text-sm shadow"
+                  className="absolute top-4 right-4 z-10 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md"
                 >
                   <i className="fa-solid fa-camera-rotate mr-2" />
                 </button>
@@ -316,14 +316,14 @@ export default function PhotoboothSection({
                         autoPlay
                         playsInline
                         muted
-                        className="absolute inset-0 z-0 h-full w-full scale-x-[-1] object-cover"
+                        className="absolute inset-0 z-0 h-full w-full object-cover"
                         style={{ filter: filterStyle }}
                       />
 
                       <button
                         type="button"
                         onClick={switchCamera}
-                        className="absolute bottom-4 right-4 z-10 rounded-full bg-white/90 px-4 py-2 text-sm shadow"
+                        className="absolute top-4 right-4 z-10 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md"
                       >
                         <i className="fa-solid fa-camera-rotate mr-2" />
                       </button>
