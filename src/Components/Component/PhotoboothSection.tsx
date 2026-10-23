@@ -45,7 +45,6 @@ interface PhotoboothSectionProps {
   namaPengantin: string;
   sectionRef: RefObject<HTMLElement | null>;
 
-  cameraFacing: "user" | "environment";
   switchCamera: () => void;
 }
 
@@ -71,7 +70,6 @@ export default function PhotoboothSection({
   setFrameMode,
   namaPengantin,
   sectionRef,
-  cameraFacing,
   switchCamera,
 }: PhotoboothSectionProps) {
   const hasWeddingFrame = Boolean(frameSrc?.trim());
@@ -187,7 +185,6 @@ export default function PhotoboothSection({
                   className="absolute bottom-4 right-4 z-10 rounded-full bg-white/90 px-4 py-2 text-sm shadow"
                 >
                   <i className="fa-solid fa-camera-rotate mr-2" />
-                  {cameraFacing === "user" ? "Kamera Belakang" : "Kamera Depan"}
                 </button>
               </div>
             ) : currentPhoto ? (
@@ -239,7 +236,6 @@ export default function PhotoboothSection({
                   className="absolute bottom-4 right-4 z-10 rounded-full bg-white/90 px-4 py-2 text-sm shadow"
                 >
                   <i className="fa-solid fa-camera-rotate mr-2" />
-                  {cameraFacing === "user" ? "Kamera Belakang" : "Kamera Depan"}
                 </button>
               </div>
             ) : currentPhoto ? (
@@ -320,7 +316,7 @@ export default function PhotoboothSection({
                         autoPlay
                         playsInline
                         muted
-                        className="absolute  z-0 h-full w-full scale-x-[-1] object-cover"
+                        className="absolute inset-0 z-0 h-full w-full scale-x-[-1] object-cover"
                         style={{ filter: filterStyle }}
                       />
 
@@ -330,7 +326,6 @@ export default function PhotoboothSection({
                         className="absolute bottom-4 right-4 z-10 rounded-full bg-white/90 px-4 py-2 text-sm shadow"
                       >
                         <i className="fa-solid fa-camera-rotate mr-2" />
-                        {cameraFacing === "user" ? "Kamera Belakang" : "Kamera Depan"}
                       </button>
                     </div>
                   ) : photos[index] ? (

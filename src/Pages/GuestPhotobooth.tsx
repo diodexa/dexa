@@ -353,10 +353,52 @@ export default function GuestPhotobooth() {
     }
   }
 
-  const switchCamera = () => {
-    setCameraFacing((current) =>
-      current === "user" ? "environment" : "user"
-    );
+  const switchCamera = async () => {
+    const nextFacing =
+      cameraFacing === "user" ? "environment" : "user";
+
+    try {
+      setCameraError("");
+
+      // Hentikan stream kamera yang sedang aktif.
+      cameraStreamRef.current?.getTracks().forEach((track) => {
+        track.stop();
+      });
+
+      cameraStreamRef.current = null;
+
+      // Buka kamera sesuai pilihan baru.
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: { exact: nextFacing },
+          width: { ideal: 1280 },
+          height: { ideal: 1600 },
+        },
+        audio: false,
+      });
+
+      cameraStreamRef.current = stream;
+      setCameraFacing(nextFacing);
+
+      // Pasang stream baru ke elemen video.
+      const video = videoRef.current;
+
+      if (video) {
+        video.srcObject = stream;
+        await video.play();
+      }
+    } catch (error) {
+      const err = error as DOMException;
+
+      setCameraError(
+        err.name === "OverconstrainedError" ||
+        err.name === "NotFoundError"
+          ? "Kamera yang dipilih tidak tersedia di perangkat ini."
+          : `Gagal mengganti kamera: ${
+              err.message || "Silakan coba lagi."
+            }`
+      );
+    }
   };
 
   function stopAudioVisualizer() {
@@ -894,7 +936,6 @@ export default function GuestPhotobooth() {
             frameMode={effectiveFrameMode}
             setFrameMode={setFrameMode}
             singleFrameSrc={SINGLE_FRAME_SRC}
-            cameraFacing = {cameraFacing}
             switchCamera={switchCamera}
           />
 
