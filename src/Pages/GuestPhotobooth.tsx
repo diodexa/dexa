@@ -725,8 +725,11 @@ export default function GuestPhotobooth() {
           throw new Error("Gagal memproses foto.");
         }
 
-        ctx.translate(canvas.width, 0);
-        ctx.scale(-1, 1);
+        if (cameraFacing === "environment") {
+          ctx.translate(canvas.width, 0);
+          ctx.scale(-1, 1);
+        }
+        
         ctx.drawImage(img, 0, 0);
 
         return loadImage(canvas.toDataURL("image/jpeg", 0.9));
