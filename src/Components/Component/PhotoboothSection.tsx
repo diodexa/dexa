@@ -171,21 +171,25 @@ export default function PhotoboothSection({
         {effectiveMode === "none" && (
           <>
             {cameraOpen ? (
-              <video
-                ref={videoRef}
-                autoPlay
-                playsInline
-                muted
-                className="absolute inset-0 z-0 h-full w-full scale-x-[-1] object-cover"
-                style={{ filter: filterStyle }}>
-                  <button
-                    type="button"
-                    onClick={switchCamera}
-                    className="rounded-full bg-white/90 px-4 py-2 text-sm shadow">
-                    <i className="fa-solid fa-camera-rotate mr-2" />
-                    {cameraFacing === "user" ? "Kamera Belakang" : "Kamera Depan"}
-                  </button>
-                </video>
+              <div className="absolute inset-0">
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  playsInline
+                  muted
+                  className="absolute inset-0 z-0 h-full w-full scale-x-[-1] object-cover"
+                  style={{ filter: filterStyle }}
+                />
+
+                <button
+                  type="button"
+                  onClick={switchCamera}
+                  className="absolute bottom-4 right-4 z-10 rounded-full bg-white/90 px-4 py-2 text-sm shadow"
+                >
+                  <i className="fa-solid fa-camera-rotate mr-2" />
+                  {cameraFacing === "user" ? "Kamera Belakang" : "Kamera Depan"}
+                </button>
+              </div>
             ) : currentPhoto ? (
               <img
                 src={currentPhoto}
@@ -219,21 +223,25 @@ export default function PhotoboothSection({
         {effectiveMode === "single" && (
           <>
             {cameraOpen ? (
-              <video
-                ref={videoRef}
-                autoPlay
-                playsInline
-                muted
-                className="absolute top-[2.3%] z-0 h-[90%] w-full scale-x-[-1] object-cover"
-                style={{ filter: filterStyle }}>
-                  <button
-                    type="button"
-                    onClick={switchCamera}
-                    className="rounded-full bg-white/90 px-4 py-2 text-sm shadow">
-                    <i className="fa-solid fa-camera-rotate mr-2" />
-                    {cameraFacing === "user" ? "Kamera Belakang" : "Kamera Depan"}
-                  </button>
-                </video>
+              <div className="absolute inset-0">
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  playsInline
+                  muted
+                  className="absolute inset-0 z-0 h-full w-full scale-x-[-1] object-cover"
+                  style={{ filter: filterStyle }}
+                />
+
+                <button
+                  type="button"
+                  onClick={switchCamera}
+                  className="absolute bottom-4 right-4 z-10 rounded-full bg-white/90 px-4 py-2 text-sm shadow"
+                >
+                  <i className="fa-solid fa-camera-rotate mr-2" />
+                  {cameraFacing === "user" ? "Kamera Belakang" : "Kamera Depan"}
+                </button>
+              </div>
             ) : currentPhoto ? (
               <img
                 src={currentPhoto}
@@ -306,22 +314,25 @@ export default function PhotoboothSection({
                   }}
                 >
                   {cameraOpen && isActive ? (
-                    <video
-                      ref={videoRef}
-                      autoPlay
-                      playsInline
-                      muted
-                      className="h-full w-full scale-x-[-1] object-cover"
-                      style={{ filter: filterStyle }}
-                    >
+                    <div className="absolute inset-0">
+                      <video
+                        ref={videoRef}
+                        autoPlay
+                        playsInline
+                        muted
+                        className="absolute  z-0 h-full w-full scale-x-[-1] object-cover"
+                        style={{ filter: filterStyle }}
+                      />
+
                       <button
                         type="button"
                         onClick={switchCamera}
-                        className="rounded-full bg-white/90 px-4 py-2 text-sm shadow">
+                        className="absolute bottom-4 right-4 z-10 rounded-full bg-white/90 px-4 py-2 text-sm shadow"
+                      >
                         <i className="fa-solid fa-camera-rotate mr-2" />
                         {cameraFacing === "user" ? "Kamera Belakang" : "Kamera Depan"}
                       </button>
-                    </video>
+                    </div>
                   ) : photos[index] ? (
                     <img
                       src={photos[index]}
