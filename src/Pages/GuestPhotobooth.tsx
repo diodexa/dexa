@@ -712,7 +712,25 @@ export default function GuestPhotobooth() {
       photoMode === 1 ? SINGLE_FRAME_SRC : WEDDING_FRAME_SRC;
 
     const images = await Promise.all(
-      requiredPhotos.map((photo) => loadImage(photo))
+      requiredPhotos.map(async (photo) => {
+        const img = await loadImage(photo);
+
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        const ctx = canvas.getContext("2d");
+
+        if (!ctx) {
+          throw new Error("Gagal memproses foto.");
+        }
+
+        ctx.translate(canvas.width, 0);
+        ctx.scale(-1, 1);
+        ctx.drawImage(img, 0, 0);
+
+        return loadImage(canvas.toDataURL("image/jpeg", 0.9));
+      })
     );
 
     const frameImg = frameSrc ? await loadImage(frameSrc) : null;
