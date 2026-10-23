@@ -44,6 +44,9 @@ interface PhotoboothSectionProps {
 
   namaPengantin: string;
   sectionRef: RefObject<HTMLElement | null>;
+
+  cameraFacing: "user" | "environment";
+  switchCamera: () => void;
 }
 
 export default function PhotoboothSection({
@@ -68,6 +71,8 @@ export default function PhotoboothSection({
   setFrameMode,
   namaPengantin,
   sectionRef,
+  cameraFacing,
+  switchCamera,
 }: PhotoboothSectionProps) {
   const hasWeddingFrame = Boolean(frameSrc?.trim());
   const hasSingleFrame = Boolean(singleFrameSrc?.trim());
@@ -172,8 +177,15 @@ export default function PhotoboothSection({
                 playsInline
                 muted
                 className="absolute inset-0 z-0 h-full w-full scale-x-[-1] object-cover"
-                style={{ filter: filterStyle }}
-              />
+                style={{ filter: filterStyle }}>
+                  <button
+                    type="button"
+                    onClick={switchCamera}
+                    className="rounded-full bg-white/90 px-4 py-2 text-sm shadow">
+                    <i className="fa-solid fa-camera-rotate mr-2" />
+                    {cameraFacing === "user" ? "Kamera Belakang" : "Kamera Depan"}
+                  </button>
+                </video>
             ) : currentPhoto ? (
               <img
                 src={currentPhoto}
@@ -213,8 +225,15 @@ export default function PhotoboothSection({
                 playsInline
                 muted
                 className="absolute top-[2.3%] z-0 h-[90%] w-full scale-x-[-1] object-cover"
-                style={{ filter: filterStyle }}
-              />
+                style={{ filter: filterStyle }}>
+                  <button
+                    type="button"
+                    onClick={switchCamera}
+                    className="rounded-full bg-white/90 px-4 py-2 text-sm shadow">
+                    <i className="fa-solid fa-camera-rotate mr-2" />
+                    {cameraFacing === "user" ? "Kamera Belakang" : "Kamera Depan"}
+                  </button>
+                </video>
             ) : currentPhoto ? (
               <img
                 src={currentPhoto}
@@ -294,7 +313,15 @@ export default function PhotoboothSection({
                       muted
                       className="h-full w-full scale-x-[-1] object-cover"
                       style={{ filter: filterStyle }}
-                    />
+                    >
+                      <button
+                        type="button"
+                        onClick={switchCamera}
+                        className="rounded-full bg-white/90 px-4 py-2 text-sm shadow">
+                        <i className="fa-solid fa-camera-rotate mr-2" />
+                        {cameraFacing === "user" ? "Kamera Belakang" : "Kamera Depan"}
+                      </button>
+                    </video>
                   ) : photos[index] ? (
                     <img
                       src={photos[index]}

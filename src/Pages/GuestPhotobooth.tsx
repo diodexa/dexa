@@ -123,6 +123,7 @@ export default function GuestPhotobooth() {
 
   const [cameraOpen, setCameraOpen] = useState(false);
   const [cameraError, setCameraError] = useState("");
+  const [cameraFacing, setCameraFacing] = useState<"user" | "environment">("user");
   const [showFloatingActions, setShowFloatingActions] = useState(false);
 
   const fileRef = useRef<HTMLInputElement>(null);
@@ -211,7 +212,7 @@ export default function GuestPhotobooth() {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
-          facingMode: "user",
+          facingMode: { ideal: cameraFacing },
           width: { ideal: 1280 },
           height: { ideal: 1600 },
         },
@@ -351,6 +352,12 @@ export default function GuestPhotobooth() {
       );
     }
   }
+
+  const switchCamera = () => {
+    setCameraFacing((current) =>
+      current === "user" ? "environment" : "user"
+    );
+  };
 
   function stopAudioVisualizer() {
     if (animationRef.current !== null) {
@@ -887,6 +894,8 @@ export default function GuestPhotobooth() {
             frameMode={effectiveFrameMode}
             setFrameMode={setFrameMode}
             singleFrameSrc={SINGLE_FRAME_SRC}
+            cameraFacing = {cameraFacing}
+            switchCamera={switchCamera}
           />
 
           {/* SECTION FORM */}
