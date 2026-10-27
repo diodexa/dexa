@@ -52,6 +52,7 @@ async function loadPhotoFromServer(
 }
 
 
+
 async function createStoryCollage(
   key: string,
   items: Memory[],
@@ -62,16 +63,13 @@ async function createStoryCollage(
   canvas.height = 1920;
 
   const context = canvas.getContext("2d");
+  if (!context) throw new Error("Canvas tidak dapat dibuat.");
 
-  if (!context) {
-    throw new Error("Canvas tidak dapat dibuat.");
-  }
-
-  const ctx: CanvasRenderingContext2D = context;
+  const ctx = context;
   const W = canvas.width;
   const H = canvas.height;
 
-  // Background dasar
+  // Background
   ctx.fillStyle = "#EDE5D9";
   ctx.fillRect(0, 0, W, H);
 
@@ -93,99 +91,52 @@ async function createStoryCollage(
         key,
         photoItems[i].fotoFileId
       );
-
       photos.push(img);
       onProgress?.(photos.length, total);
     } catch (error) {
       console.error(`Foto ke-${i + 1} gagal dimuat:`, error);
-
       const detail =
         error instanceof Error ? error.message : String(error);
-
       throw new Error(`Foto ke-${i + 1} gagal dimuat: ${detail}`);
     }
   }
 
-  // Acak urutan foto supaya susunannya lebih natural
-  for (let i = photos.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [photos[i], photos[j]] = [photos[j], photos[i]];
-  }
+  // Margin kolase
+  const marginX = 36;
+  const marginTop = 100;
+  const marginBottom = 110;
+  const gap = 8;
 
-  // Semakin banyak foto, semakin kecil kartu fotonya
+  const availableW = W - marginX * 2;
+  const availableH = H - marginTop - marginBottom;
+
+  // Tentukan jumlah kolom dan baris
   const columns = Math.max(
     1,
-    Math.ceil(Math.sqrt(total * (W / H)))
+    Math.ceil(Math.sqrt(total * (availableW / availableH)))
   );
   const rows = Math.ceil(total / columns);
 
-  const cellW = W / columns;
-  const cellH = H / rows;
+  const cellW = (availableW - gap * (columns - 1)) / columns;
+  const cellH = (availableH - gap * (rows - 1)) / rows;
 
-  // Posisi setiap foto memenuhi seluruh kanvas.
-  // Foto sedikit = besar, foto banyak = kecil dan rapat.
-  const positions = Array.from(
-    { length: total },
-    (_, index) => index
-  );
+  // Gambar foto dalam grid tanpa Polaroid dan rotasi
+  photos.forEach((img, index) => {
+    const col = index % columns;
+    const row = Math.floor(index / columns);
 
-  // Acak posisi agar tidak terlihat seperti grid biasa
-  for (let i = positions.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [positions[i], positions[j]] = [
-      positions[j],
-      positions[i],
-    ];
-  }
+    const x = marginX + col * (cellW + gap);
+    const y = marginTop + row * (cellH + gap);
 
-  function drawPolaroid(
-    img: HTMLImageElement,
-    x: number,
-    y: number,
-    width: number,
-    height: number,
-    angle: number,
-  ) {
-    ctx.save();
-
-    ctx.translate(x + width / 2, y + height / 2);
-    ctx.rotate((angle * Math.PI) / 180);
-
-    const left = -width / 2;
-    const top = -height / 2;
-
-    // Bayangan lembut
-    ctx.shadowColor = "rgba(36, 29, 22, 0.28)";
-    ctx.shadowBlur = Math.min(20, width * 0.12);
-    ctx.shadowOffsetX = 2;
-    ctx.shadowOffsetY = 5;
-
-    // Kartu foto putih
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillRect(left, top, width, height);
-
-    ctx.shadowColor = "transparent";
-    ctx.shadowBlur = 0;
-    ctx.shadowOffsetX = 0;
-    ctx.shadowOffsetY = 0;
-
-    const padding = Math.max(4, width * 0.045);
-    const bottomSpace = Math.max(10, height * 0.105);
-
-    const photoX = left + padding;
-    const photoY = top + padding;
-    const photoW = width - padding * 2;
-    const photoH = height - padding * 2 - bottomSpace;
-
-    // Crop foto supaya seluruh slot terisi
     const imageRatio = img.width / img.height;
-    const slotRatio = photoW / photoH;
+    const slotRatio = cellW / cellH;
 
     let sx = 0;
     let sy = 0;
     let sw = img.width;
     let sh = img.height;
 
+    // Crop foto agar memenuhi kotak tanpa distorsi
     if (imageRatio > slotRatio) {
       sw = img.height * slotRatio;
       sx = (img.width - sw) / 2;
@@ -194,129 +145,23 @@ async function createStoryCollage(
       sy = (img.height - sh) / 2;
     }
 
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(x, y, cellW, cellH);
+    ctx.clip();
     ctx.drawImage(
       img,
       sx,
       sy,
       sw,
       sh,
-      photoX,
-      photoY,
-      photoW,
-      photoH
-    );
-
-    // Detail kecil di bawah foto
-    if (width >= 95) {
-      ctx.fillStyle = "#9A8D7C";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "alphabetic";
-      ctx.font = `${Math.max(7, Math.min(13, width * 0.065))}px Georgia`;
-
-      
-    }
-
-    ctx.restore();
-  }
-
-  // Gambar semua foto dengan ukuran kecil, posisi acak,
-  // dan rotasi yang berbeda-beda.
-  photos.forEach((img, index) => {
-    const cellIndex = positions[index];
-    const col = cellIndex % columns;
-    const row = Math.floor(cellIndex / columns);
-
-    const width = cellW * (1.04 + Math.random() * 0.10);
-    const height = cellH * (1.04 + Math.random() * 0.08);
-
-    // Geser sedikit agar terlihat berserakan
-    const jitterX = (Math.random() - 0.5) * cellW * 0.15;
-    const jitterY = (Math.random() - 0.5) * cellH * 0.15;
-
-    const x = col * cellW + (cellW - width) / 2 + jitterX;
-    const y = row * cellH + (cellH - height) / 2 + jitterY;
-
-    const angle = (Math.random() - 0.5) * 18;
-
-    drawPolaroid(
-      img,
       x,
       y,
-      width,
-      height,
-      angle,  
+      cellW,
+      cellH
     );
+    ctx.restore();
   });
-
-  // Panel transparan di tengah supaya tulisan tetap terbaca,
-  // sementara foto di belakangnya masih sedikit terlihat.
-  // const panelW = 900;
-  // const panelH = 405;
-  // const panelX = (W - panelW) / 2;
-  // const panelY = (H - panelH) / 2;
-
-  // ctx.save();
-  // ctx.fillStyle = "rgba(245, 240, 232, 0.88)";
-  // ctx.fillRect(panelX, panelY, panelW, panelH);
-  // ctx.restore();
-
-  // // Garis dekoratif
-  // ctx.strokeStyle = "#B5A28B";
-  // ctx.lineWidth = 2;
-
-  // ctx.beginPath();
-  // ctx.moveTo(400, 810);
-  // ctx.lineTo(680, 810);
-  // ctx.stroke();
-
-  // // Teks atas
-  // ctx.fillStyle = "#887764";
-  // ctx.textAlign = "center";
-  // ctx.textBaseline = "alphabetic";
-  // ctx.font = "22px Georgia";
-
-  // if ("letterSpacing" in ctx) {
-  //   ctx.letterSpacing = "4px";
-  // }
-  // const idUndangan =
-  // items.find((item) => item.idUndangan)?.idUndangan || "";
-
-  // const photobooth = Photobooths.find(
-  //   (item) => item.idUndangan === idUndangan
-  // );
-
-  // ctx.fillText(
-  //   `${photobooth?.NamaPengantin ?? ""} Wedding`,
-  //   W / 2,
-  //   865
-  // );
-
-  // THANK YOU besar di tengah
-  // ctx.fillStyle = "#40362F";
-
-  // if ("letterSpacing" in ctx) {
-  //   ctx.letterSpacing = "-2px";
-  // }
-
-  // ctx.font = "bold 112px Georgia";
-  // ctx.fillText("THANK", W / 2, 975);
-  // ctx.fillText("YOU", W / 2, 1085);
-
-  // // Kalimat penutup
-  // ctx.fillStyle = "#887764";
-  // ctx.font = "italic 26px Georgia";
-
-  // if ("letterSpacing" in ctx) {
-  //   ctx.letterSpacing = "0px";
-  // }
-
-  // ctx.fillText(
-  //   "for being part of our special day",
-  //   W / 2,
-  //   1140
-  // );
-
-
 
   // Footer
   ctx.fillStyle = "#887764";
@@ -332,6 +177,7 @@ async function createStoryCollage(
 
   return canvas.toDataURL("image/jpeg", 0.92);
 }
+
 
 
 function AudioPlayer({
@@ -890,12 +736,7 @@ export default function PhotoboothDashboard() {
                     : "Bagikan"}
                 </button>
 
-                <p className="mt-3 text-xs leading-5 text-[#858277]">
-                  Tombol ini membuka menu berbagi perangkat jika
-                  didukung. Pilih Instagram jika tersedia, lalu
-                  lanjutkan ke Story di aplikasi Instagram. Gambar
-                  tidak otomatis diunggah ke akun Instagram.
-                </p>
+          
               </div>
             )}
 

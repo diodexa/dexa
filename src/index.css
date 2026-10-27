@@ -190,6 +190,10 @@
     font-family: "ylee";
   src: url("/Fonts/ylee.otf") format("opentype");
 }
+@font-face {
+    font-family: "HearthStone";
+  src: url("/Fonts/HearthStone.otf") format("opentype");
+}
 
 
 
@@ -229,6 +233,9 @@
 }
 .font-LTPerfume{
   font-family: "LTPerfume";
+}
+.font-HearthStone{
+  font-family: "HearthStone";
 }
 
 

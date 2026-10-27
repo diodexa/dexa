@@ -88,6 +88,8 @@ function loadImage(src: string): Promise<HTMLImageElement> {
 }
 
 
+
+
 export default function GuestPhotobooth() {
   const params = new URLSearchParams(window.location.search);
   
@@ -725,11 +727,11 @@ export default function GuestPhotobooth() {
           throw new Error("Gagal memproses foto.");
         }
 
-        if (cameraFacing === "environment") {
+        if (cameraFacing !== "environment") {
           ctx.translate(canvas.width, 0);
           ctx.scale(-1, 1);
         }
-        
+
         ctx.drawImage(img, 0, 0);
 
         return loadImage(canvas.toDataURL("image/jpeg", 0.9));
@@ -1035,6 +1037,12 @@ export default function GuestPhotobooth() {
                     Buka Kamera
                   </button>
 
+                   {/* <button type="button"
+                    onClick={() => fileRef.current?.click()}
+                    className="rounded-lg border border-[#39362f] bg-white px-5 py-3 text-sm text-[#39362f]"
+                  >
+                    Upload Foto
+                  </button> */}
                  
                 </>
               )}

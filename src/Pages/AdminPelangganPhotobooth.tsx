@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import QRCode from "qrcode";
 import { APPS_SCRIPT_URL } from "../Services/PhotoboothService";
+import { Photobooths } from "../Data/Photobooth";
 
 type EventResult = {
   idUndangan: string;
@@ -113,48 +114,85 @@ async function makeQrUrl(url: string): Promise<string> {
 }
 
 // Menggabungkan QR, logo, domain, dan nomor menjadi satu PNG.
-async function makeQrArtwork(guest: GuestResult, number: number) {
+async function makeQrArtwork(guest: GuestResult, number: number, namaAcara: string)  {
   const qrImage = await loadImage(guest.qrUrl);
   const logo = await loadImage("/logo-dio.webp");
-
   const canvas = document.createElement("canvas");
-
   canvas.width = 900;
-  canvas.height = 710;
-
+  canvas.height = 1400;
   const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("Gagal menyiapkan gambar QR.");
 
-  if (!ctx) {
-    throw new Error("Gagal menyiapkan gambar QR.");
-  }
+  // Kartu putih dengan bingkai tipis
+  ctx.fillStyle = "#FFFFFF";
+  ctx.fillRect(0, 0, 900, 1400);
+  ctx.strokeStyle = "#EAE5DD";
+  ctx.lineWidth = 3;
+  ctx.strokeRect(20, 20, 860, 1360);
 
-  // Background tetap transparan.
-  const qrSize = 600;
-  const qrX = (canvas.width - qrSize) / 2;
+  // Judul dekoratif
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillStyle = "#171717";
+  ctx.font = " 100px Georgia, serif";
+  ctx.fillText("Capture", 450, 190);
+  ctx.font = " 88px Georgia, serif";
+  ctx.fillText("the Love", 450, 290);
 
-  ctx.drawImage(qrImage, qrX, 0, qrSize, qrSize);
+  // Garis dekoratif
+  ctx.strokeStyle = "#171717";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(175, 235);
+  ctx.quadraticCurveTo(300, 270, 340, 220);
+  ctx.moveTo(560, 310);
+  ctx.quadraticCurveTo(650, 350, 725, 310);
+  ctx.stroke();
 
-  // Logo di tengah QR.
-  const logoSize = 105;
+  // QR asli tetap dapat dipindai
+  const qrSize = 490;
+  const qrX = (900 - qrSize) / 2;
+  const qrY = 390;
+  ctx.drawImage(qrImage, qrX, qrY, qrSize, qrSize);
 
+  // Logo di tengah QR
+  const logoSize = 82;
+  ctx.fillStyle = "#FFFFFF";
+  ctx.fillRect(409, qrY + qrSize / 2 - 46, 82, 92);
   ctx.drawImage(
     logo,
-    (canvas.width - logoSize) / 2,
-    (qrSize - logoSize) / 2,
+    (900 - logoSize) / 2,
+    qrY + (qrSize - logoSize) / 2,
     logoSize,
     logoSize
   );
 
-  // Domain di bawah QR.
-  ctx.fillStyle = "#000000";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "alphabetic";
-  ctx.font = "500 24px Arial, sans-serif";
-  ctx.fillText("dexa-invitation.com", canvas.width / 2, 650);
+  // Instruksi
+  ctx.fillStyle = "#44413B";
+  ctx.font = "26px Georgia, serif";
+  ctx.fillText("SHARE YOUR PHOTOS WITH US", 450, 950);
+  ctx.font = "25px Georgia, serif";
+  ctx.fillText("SCAN WITH YOUR PHONE", 450, 990);
+  ctx.fillText("AND UPLOAD YOUR MEMORIES", 450, 1028);
 
-  // Nomor sangat kecil di bawah domain.
-  ctx.font = "8px Arial, sans-serif";
-  ctx.fillText(String(number), canvas.width / 2, 680);
+  // Hiasan hati
+  ctx.font = "58px Georgia, serif";
+  ctx.fillText("♡", 450, 1100);
+
+  // Nama acara
+  ctx.font = " 39px Georgia, serif";
+  ctx.fillText(
+    (namaAcara || "Our Wedding").replace(/^photobooth\s*/i, ""),
+    450,
+    1190,
+    760
+  );
+
+  // Domain dan nomor QR
+  ctx.font = "22px Arial, sans-serif";
+  ctx.fillText("dexa-invitation.com", 450, 1260);
+  ctx.font = "16px Arial, sans-serif";
+  ctx.fillText(String(number), 450, 1300);
 
   return canvas.toDataURL("image/png");
 }
@@ -201,6 +239,14 @@ export default function AdminPelangganPhotobooth({
     setError("");
   }, [adminKey]);
 
+  
+  const normalizeId = (value: string) =>
+    value.trim().toLowerCase().replace(/^photobooth/, "photoboth").replace(/\s+/g, "").replace(/[&-]/g, "");
+
+  const idUndangan = selectedEvent?.idUndangan ?? "";
+  const Photobooth = Photobooths.find(
+    (item) => normalizeId(item.idUndangan) === normalizeId(idUndangan)
+  );
   async function loadEvents() {
     if (!adminKey.trim()) {
       setError("Masukkan kunci Admin terlebih dahulu.");
@@ -352,7 +398,7 @@ export default function AdminPelangganPhotobooth({
     index: number
   ) {
     try {
-      const artwork = await makeQrArtwork(guest, index + 1);
+      const artwork = await makeQrArtwork(guest, index + 1, selectedEvent?.idUndangan || "");
       const link = document.createElement("a");
 
       link.href = artwork;
@@ -371,6 +417,9 @@ export default function AdminPelangganPhotobooth({
       );
     }
   }
+  console.log("ID dari Events:", selectedEvent?.idUndangan);
+console.log("Data Photobooths:", Photobooths);
+console.log("Data yang cocok:", Photobooth);
 
   async function downloadAllQr() {
     if (guests.length === 0) return;
@@ -381,7 +430,7 @@ export default function AdminPelangganPhotobooth({
     try {
       // Unduh satu per satu agar penggunaan memori lebih terkendali.
       for (let i = 0; i < guests.length; i++) {
-        const artwork = await makeQrArtwork(guests[i], i + 1);
+        const artwork = await makeQrArtwork(guests[i], i + 1, selectedEvent?.idUndangan || "");
         const link = document.createElement("a");
 
         link.href = artwork;
@@ -443,7 +492,8 @@ export default function AdminPelangganPhotobooth({
       <style>{`
         @media print {
           @page {
-            margin: 8mm;
+            size: A4 portrait;
+            margin: 0mm;
           }
 
           body {
@@ -482,32 +532,44 @@ export default function AdminPelangganPhotobooth({
           #qr-print-area .qr-print-grid {
             display: grid !important;
             grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-            gap: 4mm !important;
+            gap: 0 !important;
             margin: 0 !important;
           }
 
-          #qr-print-area .qr-print-card {
-            min-width: 0 !important;
-            padding: 2mm !important;
-            border: none !important;
-            border-radius: 0 !important;
-            background: transparent !important;
-            box-shadow: none !important;
-            break-inside: avoid !important;
-            page-break-inside: avoid !important;
-          }
 
-          #qr-print-area .qr-artwork {
-            width: 100% !important;
-            max-width: none !important;
-            margin: 0 auto !important;
-          }
+ 
 
-          #qr-print-area .qr-image-wrap {
-            width: 100% !important;
-            height: auto !important;
-            aspect-ratio: 1 / 1 !important;
-          }
+        #qr-print-area .qr-print-card {
+          width: 100% !important;
+          height: auto !important;
+          min-width: 0 !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          box-sizing: border-box !important;
+          border-radius: 0 !important;
+          background: white !important;
+          box-shadow: none !important;
+          overflow: visible !important;
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+        }
+
+        #qr-print-area .qr-artwork {
+          width: 100% !important;
+          height: auto !important;
+          max-width: none !important;
+          margin: 0 !important;
+          padding: 3mm 1mm !important;
+          box-sizing: border-box !important;
+          overflow: visible !important;
+        }
+
+        #qr-print-area .qr-image-wrap {
+          width: 78% !important;
+          height: auto !important;
+          aspect-ratio: 1 / 1 !important;
+        }
+
 
           #qr-print-area .qr-image-wrap > img:first-child {
             width: 100% !important;
@@ -533,6 +595,7 @@ export default function AdminPelangganPhotobooth({
             line-height: 1 !important;
             color: #000 !important;
           }
+        
         }
       `}</style>
 
@@ -792,58 +855,49 @@ export default function AdminPelangganPhotobooth({
               </div>
             </div>
 
-            <div className="qr-print-grid mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="qr-print-grid grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {guests.map((guest, index) => (
                 <article
                   key={guest.slug}
-                  className="qr-print-card rounded-xl border border-[#E9E4DA] p-4"
+                  className="qr-print-card  rounded-xl border border-[#E9E4DA] p-4"
                 >
-                  <div className="qr-artwork mx-auto mt-3 w-full max-w-[190px] text-center">
-                      <p className="qr-domain mt-2 text-sm font-medium tracking-wide text-black uppercase">
-                        Photobooth virtual
-                      </p>
-                    <div
-                      className="qr-image-wrap"
-                      style={{
-                        position: "relative",
-                        width: "100%",
-                        aspectRatio: "1 / 1",
-                      }}>
+                  <div className="qr-artwork relative mx-auto w-full max-w-[250px] overflow-hidden border border-[#EAE5DD] bg-white px-4 pt-6 text-center text-black ">
+                    <p className="qr-card-title  text-xl font-HearthStone leading-tight">
+                      Capture
+                    </p>
+                    <p className="qr-card-title mt-2 font-HearthStone text-lg ">
+                      the Love
+                    </p>
+
+                    <div className="qr-image-wrap relative mx-auto mt-3 aspect-square w-[78%]">
                       <img
                         src={guest.qrUrl}
                         alt={`QR ${index + 1}`}
-                        style={{
-                          display: "block",
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "contain",
-                        }}
+                        className="block h-full w-full object-contain"
                       />
-
                       <img
                         src="/logo-dio.webp"
                         alt="Logo Dexa Invitation"
-                        className="qr-logo"
-                        style={{
-                          position: "absolute",
-                          left: "50%",
-                          top: "50%",
-                          width: "18%",
-                          height: "18%",
-                          transform: "translate(-50%, -50%)",
-                          objectFit: "contain",
-                          display: "block",
-                          maxWidth: "none",
-                        }}
+                        className="qr-logo absolute left-1/2 top-1/2 block h-[18%] w-[18%] -translate-x-1/2 -translate-y-1/2  object-contain"
                       />
                     </div>
 
-                    <p className="qr-domain mt-2 text-[11px] font-medium tracking-wide text-black">
-                      dexa-invitation.com
+                    <p className="mt-2 text-[5px] font-BethanyElingston tracking-[0.2em]">
+                      SHARE YOUR PHOTOS WITH US
                     </p>
+                    <p className=" text-[5px] font-BethanyElingston tracking-[0.2em]">
+                      SCAN WITH YOUR PHONE
+                    </p>
+               
 
-                    <p className="qr-number mt-1 text-[5px] leading-none text-black">
-                      {index + 1}
+                    <p className="mt-3 break-words font-HearthStone  ">
+                      {(selectedEvent?.idUndangan || "Our Wedding").replace(/^photoboth\s*/i, "")}
+                    </p>
+                    <p className="text-[7px] mb-1 mt-2 font-BethanyElingston opacity-75">
+                      {Photobooth?.TanggalAcara || ""}
+                    </p>
+                    <p className="absolute -bottom-1 left-0 right-0  text-center text-[4px] font-BethanyElingston tracking-wide opacity-50">
+                      dexa-invitation.com
                     </p>
                   </div>
 
