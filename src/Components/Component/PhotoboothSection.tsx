@@ -327,7 +327,7 @@ export default function PhotoboothSection({
                       <button
                         type="button"
                         onClick={switchCamera}
-                        className="absolute top-4 right-4 z-10 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md"
+                        className="absolute top-4 right-10 z-10 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md"
                       >
                         <i className="fa-solid fa-camera-rotate text-xl" />
                       </button>

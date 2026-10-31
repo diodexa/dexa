@@ -27,9 +27,9 @@ const FILTERS: Record<Filter, string> = {
 // const hasAnyFrame = hasWeddingFrame || hasSingleFrame;
 
 const PHOTO_SLOTS = [
-  { x: 70, y: 216, width: 700, height: 400 },
-  { x: 70, y: 666, width: 700, height: 400 },
-  { x: 70, y: 1115, width: 700, height: 400 },
+  { x: 70, y: 226, width: 700, height: 450 },
+  { x: 70, y: 660, width: 700, height: 450 },
+  { x: 70, y: 1100, width: 700, height: 450 },
 ] as const;
 
 const FRAME_WIDTH = 830;
@@ -727,10 +727,10 @@ export default function GuestPhotobooth() {
           throw new Error("Gagal memproses foto.");
         }
 
-        if (cameraFacing !== "environment") {
-          ctx.translate(canvas.width, 0);
-          ctx.scale(-1, 1);
-        }
+        // if (cameraFacing !== "environment") {
+        //   ctx.translate(canvas.width, 0);
+        //   ctx.scale(-1, 1);
+        // }
 
         ctx.drawImage(img, 0, 0);
 

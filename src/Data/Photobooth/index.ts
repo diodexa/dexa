@@ -11,8 +11,8 @@ export interface PhotoboothAccount {
 export const Photobooths: PhotoboothAccount[] = [
   {
     idUndangan: "photoboth Trisna & Oci",
-    Frame: "/Frame/FramePutih.png",
-    FrameSingle: "/Frame/FrameSinglePutih.png",
+    Frame: "/Frame/FramePuthi.png",
+    FrameSingle: "/Frame/FrameSinglePuthi.png",
     NamaPengantin: "Oci & Trisna",
     JudulAcara:"THE WEDDING OF",
     TanggalAcara:"28 November 2026",
