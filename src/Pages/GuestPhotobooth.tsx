@@ -27,9 +27,9 @@ const FILTERS: Record<Filter, string> = {
 // const hasAnyFrame = hasWeddingFrame || hasSingleFrame;
 
 const PHOTO_SLOTS = [
-  { x: 137, y: 255, width: 800, height: 400 },
-  { x: 137, y: 684, width: 800, height: 400 },
-  { x: 137, y: 1133, width: 800, height: 400 },
+  { x: 53, y: 107, width: 976, height: 476 },
+  { x: 53, y: 618, width: 976, height: 476 },
+  { x: 53, y: 1128, width: 976, height: 476 },
 ] as const;
 
 const FRAME_WIDTH = 1080;
@@ -773,7 +773,7 @@ export default function GuestPhotobooth() {
       ctx.textBaseline = "alphabetic";
 
       const centerX = FRAME_WIDTH / 2;
-      const SCALE = FRAME_WIDTH / 384;
+      const SCALE = FRAME_WIDTH / 404;
       const textTop = FRAME_HEIGHT * 0.95 - 200;
       const weddingTitleScale = SCALE * 0.41;
 
@@ -785,18 +785,18 @@ export default function GuestPhotobooth() {
       ctx.fillText(
         Photobooth?.JudulAcara ?? "",
         centerX,
-        textTop + 12 * SCALE
+        textTop + 20 * SCALE
       );
 
       ctx.letterSpacing = "0px";
 
 
-      ctx.font = `${36 * SCALE}px  ${Photobooth?.Font}`;
+      ctx.font = `${28 * SCALE}px  ${Photobooth?.Font}`;
 
       ctx.fillText(
         Photobooth?.NamaPengantin ?? "",
         centerX,
-        textTop + 60 * SCALE
+        textTop + 70 * SCALE
       );
 
       ctx.restore();
