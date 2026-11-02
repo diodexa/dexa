@@ -747,14 +747,17 @@ export default function GuestPhotobooth() {
     await document.fonts.load('36px "TypographiTimes"');
 
     const canvas = document.createElement("canvas");
-    canvas.width = FRAME_WIDTH;
-    canvas.height = FRAME_HEIGHT;
+    canvas.width = 1080;
+    canvas.height = 1920;
 
     const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Canvas tidak tersedia");
 
-    if (!ctx) {
-      throw new Error("Gagal membuat foto.");
-    }
+    // Skala seluruh gambar dan koordinat ke ukuran Instagram Story
+    ctx.scale(
+      1080 / FRAME_WIDTH,
+      1920 / FRAME_HEIGHT
+    );
 
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
