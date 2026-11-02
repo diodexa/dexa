@@ -299,6 +299,7 @@ export default function GuestPhotobooth() {
 
       // Membalik foto agar sesuai dengan pratinjau kamera depan.
       ctx.translate(canvas.width, 0);
+      ctx.scale(-1, 1);
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
       const blob = await new Promise<Blob>((resolve, reject) => {
@@ -716,26 +717,7 @@ export default function GuestPhotobooth() {
 
     const images = await Promise.all(
       requiredPhotos.map(async (photo) => {
-        const img = await loadImage(photo);
-
-        const canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-
-        const ctx = canvas.getContext("2d");
-
-        if (!ctx) {
-          throw new Error("Gagal memproses foto.");
-        }
-
-        // if (cameraFacing !== "environment") {
-        //   ctx.translate(canvas.width, 0);
-        //   ctx.scale(-1, 1);
-        // }
-
-        ctx.drawImage(img, 0, 0);
-
-        return loadImage(canvas.toDataURL("image/jpeg", 0.9));
+        return loadImage(photo);
       })
     );
 
