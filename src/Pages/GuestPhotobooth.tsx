@@ -27,13 +27,13 @@ const FILTERS: Record<Filter, string> = {
 // const hasAnyFrame = hasWeddingFrame || hasSingleFrame;
 
 const PHOTO_SLOTS = [
-  { x: 107, y: 226, width: 614, height: 450 },
-  { x: 107, y: 660, width: 614, height: 450 },
-  { x: 107, y: 1100, width: 614, height: 450 },
+  { x: 137, y: 255, width: 800, height: 400 },
+  { x: 137, y: 684, width: 800, height: 400 },
+  { x: 137, y: 1133, width: 800, height: 400 },
 ] as const;
 
-const FRAME_WIDTH = 830;
-const FRAME_HEIGHT = 1894;
+const FRAME_WIDTH = 1080;
+const FRAME_HEIGHT = 1920;
 const MAX_BYTES = 2 * 1024 * 1024;
 
 function drawCover(
