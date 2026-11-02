@@ -216,7 +216,7 @@ export default function GuestPhotobooth() {
         video: {
           facingMode: { ideal: cameraFacing },
           width: { ideal: 1280 },
-          height: { ideal: 1600 },
+          height: { ideal: 720 },
         },
         audio: false,
       });
@@ -374,7 +374,7 @@ export default function GuestPhotobooth() {
         video: {
           facingMode: { exact: nextFacing },
           width: { ideal: 1280 },
-          height: { ideal: 1600 },
+          height: { ideal: 720  },
         },
         audio: false,
       });

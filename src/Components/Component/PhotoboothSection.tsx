@@ -177,7 +177,7 @@ export default function PhotoboothSection({
                   autoPlay
                   playsInline
                   muted
-                  className={`absolute inset-0 z-0 h-full w-full object-cover ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
+                  className={`absolute inset-0 z-0 h-full w-full object-contain ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
                   style={{ filter: filterStyle }}
                 />
 
