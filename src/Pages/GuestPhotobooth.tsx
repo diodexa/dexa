@@ -32,8 +32,8 @@ const PHOTO_SLOTS = [
   { x: 70, y: 1100, width: 700, height: 450 },
 ] as const;
 
-const FRAME_WIDTH = 830;
-const FRAME_HEIGHT = 1894;
+const FRAME_WIDTH = 720;
+const FRAME_HEIGHT = 1280;
 const MAX_BYTES = 2 * 1024 * 1024;
 
 function drawCover(
