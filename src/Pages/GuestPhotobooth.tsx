@@ -27,13 +27,13 @@ const FILTERS: Record<Filter, string> = {
 // const hasAnyFrame = hasWeddingFrame || hasSingleFrame;
 
 const PHOTO_SLOTS = [
-  { x: 70, y: 226, width: 700, height: 450 },
-  { x: 70, y: 660, width: 700, height: 450 },
-  { x: 70, y: 1100, width: 700, height: 450 },
+  { x: 107, y: 226, width: 614, height: 450 },
+  { x: 107, y: 660, width: 614, height: 450 },
+  { x: 107, y: 1100, width: 614, height: 450 },
 ] as const;
 
-const FRAME_WIDTH = 720;
-const FRAME_HEIGHT = 1280;
+const FRAME_WIDTH = 830;
+const FRAME_HEIGHT = 1894;
 const MAX_BYTES = 2 * 1024 * 1024;
 
 function drawCover(
@@ -217,6 +217,7 @@ export default function GuestPhotobooth() {
           facingMode: { ideal: cameraFacing },
           width: { ideal: 1280 },
           height: { ideal: 720 },
+          aspectRatio: { ideal: 16 / 9 },
         },
         audio: false,
       });
@@ -375,6 +376,7 @@ export default function GuestPhotobooth() {
           facingMode: { exact: nextFacing },
           width: { ideal: 1280 },
           height: { ideal: 720  },
+          aspectRatio: { ideal: 16 / 9 },
         },
         audio: false,
       });
