@@ -356,7 +356,7 @@ export default function PhotoboothSection({
                     <img
                       src={photos[index]}
                       alt={`Foto ${index + 1}`}
-                      className={`h-full w-full object-cover ${cameraFacing === "user" ? "" : "scale-x-[-1]"}`}
+                      className={`h-full w-full object-cover  scale-x-[-1]`}
                       style={{ filter: filterStyle }}
                     />
                   ) : (
