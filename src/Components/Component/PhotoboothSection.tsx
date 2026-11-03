@@ -258,7 +258,9 @@ export default function PhotoboothSection({
                 <img
                   src={currentPhoto}
                   alt="Foto photobooth"
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className={`absolute inset-0 h-full w-full object-cover ${
+                    cameraFacing === "user" ? "" : "scale-x-[-1]"
+                  }`}
                   style={{ filter: filterStyle }}
                 />
               ) : (
