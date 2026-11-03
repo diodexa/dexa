@@ -202,6 +202,21 @@ export default function GuestPhotobooth() {
     setCameraOpen(false);
   }
 
+  async function useWidestView(stream: MediaStream) {
+    const track = stream.getVideoTracks()[0];
+    const caps = track?.getCapabilities?.() as any;
+
+    if (caps?.zoom) {
+      try {
+        await track.applyConstraints({
+          advanced: [{ zoom: caps.zoom.min } as any],
+        });
+      } catch {
+        // zoom tidak didukung, abaikan
+      }
+    }
+  }
+
   async function openCamera() {
     setCameraError("");
 
@@ -216,14 +231,15 @@ export default function GuestPhotobooth() {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
           facingMode: { ideal: cameraFacing },
-          width: { ideal: 1280 },
-          height: { ideal: 720 },
+          width: { ideal: 1920  },
+          height: { ideal: 1080 },
           aspectRatio: { ideal: 16 / 9 },
         },
         audio: false,
       });
 
       cameraStreamRef.current = stream;
+      await useWidestView(stream);
       setCameraOpen(true);
     } catch (error) {
       const err = error as DOMException;
@@ -376,14 +392,15 @@ export default function GuestPhotobooth() {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
           facingMode: { exact: nextFacing },
-          width: { ideal: 1280 },
-          height: { ideal: 720  },
+          width: { ideal: 1920 },
+          height: { ideal: 1080  },
           aspectRatio: { ideal: 16 / 9 },
         },
         audio: false,
       });
 
       cameraStreamRef.current = stream;
+      await useWidestView(stream);
       setCameraFacing(nextFacing);
 
       // Pasang stream baru ke elemen video.
