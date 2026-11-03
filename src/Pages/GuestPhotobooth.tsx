@@ -31,6 +31,7 @@ const PHOTO_SLOTS = [
   { x: 53, y: 618, width: 976, height: 476 },
   { x: 53, y: 1128, width: 976, height: 476 },
 ] as const;
+const SINGLE_SLOT = { x: 130, y: 198, width: 810, height: 1342 } as const;
 
 const FRAME_WIDTH = 1080;
 const FRAME_HEIGHT = 1920;
@@ -298,8 +299,10 @@ export default function GuestPhotobooth() {
       }
 
       // Membalik foto agar sesuai dengan pratinjau kamera depan.
-      ctx.translate(canvas.width, 0);
-      ctx.scale(-1, 1);
+      if (cameraFacing === "user") {
+        ctx.translate(canvas.width, 0);
+        ctx.scale(-1, 1);
+      }
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
       const blob = await new Promise<Blob>((resolve, reject) => {
@@ -716,29 +719,7 @@ export default function GuestPhotobooth() {
       photoMode === 1 ? SINGLE_FRAME_SRC : WEDDING_FRAME_SRC;
 
     const images = await Promise.all(
-      requiredPhotos.map(async (photo) => {
-        const img = await loadImage(photo);
-
-        const canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-
-        const ctx = canvas.getContext("2d");
-
-        if (!ctx) {
-          throw new Error("Gagal memproses foto.");
-        }
-
-        // Pembalikan hanya untuk hasil kamera belakang.
-        if (cameraFacing === "environment") {
-          ctx.translate(canvas.width, 0);
-          ctx.scale(-1, 1);
-        }
-
-        ctx.drawImage(img, 0, 0);
-
-        return loadImage(canvas.toDataURL("image/jpeg", 0.9));
-      })
+      requiredPhotos.map((photo) => loadImage(photo))
     );
 
     const frameImg = frameSrc ? await loadImage(frameSrc) : null;
@@ -764,12 +745,12 @@ export default function GuestPhotobooth() {
       drawCover(
         ctx,
         images[0],
-        0,
-        40,
-        FRAME_WIDTH,
-        FRAME_HEIGHT - 80,
+        SINGLE_SLOT.x,
+        SINGLE_SLOT.y,
+        SINGLE_SLOT.width,
+        SINGLE_SLOT.height,
         FILTERS[filter]
-      );
+      )
     } else {
       PHOTO_SLOTS.forEach((slot, index) => {
         drawCover(
@@ -805,7 +786,7 @@ export default function GuestPhotobooth() {
       ctx.fillText(
         Photobooth?.JudulAcara ?? "",
         centerX,
-        textTop + 20 * SCALE
+        textTop + 30 * SCALE
       );
 
       ctx.letterSpacing = "0px";

@@ -223,20 +223,14 @@ export default function PhotoboothSection({
           <>
             {cameraOpen ? (
               <div className="absolute inset-0">
-                <video
-                  ref={videoRef}
-                  autoPlay
-                  playsInline
-                  muted
-                  className={`absolute top-1/2 left-0 -translate-y-1/2 z-0 h-[80%] w-full object-cover ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
-                  style={{ filter: filterStyle }}
-                />
+                <video ref={videoRef}
+                  autoPlay  playsInline muted
+                  className={`absolute top-74 left-11 -translate-y-1/2 z-0 h-[69.5%] w-[75%] object-cover ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
+                  style={{ filter: filterStyle }}/>
 
-                <button
-                  type="button"
+                <button type="button"
                   onClick={switchCamera}
-                  className="absolute top-26 right-13 z-99 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md"
-                >
+                  className="absolute top-26 right-13 z-99 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md">
                   <i className="fa-solid fa-camera-rotate text-xl" />
                 </button>
               </div>
@@ -244,7 +238,7 @@ export default function PhotoboothSection({
               <img
                 src={currentPhoto}
                 alt="Foto photobooth"
-                className={`absolute top-1/2 left-0 -translate-y-1/2 z-0 h-[80%] w-full object-cover ${cameraFacing === "user" ? "" : "scale-x-[-1]"}`}
+                className={`absolute top-74 left-11 -translate-y-1/2 z-0 h-[69.5%] w-[75%] object-cover ${cameraFacing === "user" ? "" : "scale-x-[-1]"}`}
                 style={{ filter: filterStyle }}
               />
             ) : (

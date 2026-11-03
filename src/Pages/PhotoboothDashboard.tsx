@@ -53,130 +53,201 @@ async function loadPhotoFromServer(
 
 
 
-async function createStoryCollage(
+
+
+
+async function createStoryCollagePages(
   key: string,
   items: Memory[],
   onProgress?: (loaded: number, total: number) => void
-): Promise<string> {
-  const canvas = document.createElement("canvas");
-  canvas.width = 1080;
-  canvas.height = 1920;
+): Promise<string[]> {
+  const W = 1080;
+  const H = 1920;
 
-  const context = canvas.getContext("2d");
-  if (!context) throw new Error("Canvas tidak dapat dibuat.");
-
-  const ctx = context;
-  const W = canvas.width;
-  const H = canvas.height;
-
-  // Background
-  ctx.fillStyle = "#EDE5D9";
-  ctx.fillRect(0, 0, W, H);
-
-  // Ambil foto yang tersedia
   const photoItems = items.filter((item) => item.fotoFileId);
-  const photos: HTMLImageElement[] = [];
-  const total = photoItems.length;
 
-  if (total === 0) {
+  if (photoItems.length === 0) {
     throw new Error("Belum ada foto untuk dibuat kolase.");
   }
 
+  const total = photoItems.length;
+  const photos: HTMLImageElement[] = [];
+
   onProgress?.(0, total);
 
-  // Muat foto satu per satu agar progres akurat
   for (let i = 0; i < total; i++) {
-    try {
-      const img = await loadPhotoFromServer(
-        key,
-        photoItems[i].fotoFileId
-      );
-      photos.push(img);
-      onProgress?.(photos.length, total);
-    } catch (error) {
-      console.error(`Foto ke-${i + 1} gagal dimuat:`, error);
-      const detail =
-        error instanceof Error ? error.message : String(error);
-      throw new Error(`Foto ke-${i + 1} gagal dimuat: ${detail}`);
-    }
+    const img = await loadPhotoFromServer(
+      key,
+      photoItems[i].fotoFileId
+    );
+
+    photos.push(img);
+    onProgress?.(i + 1, total);
   }
 
-  // Margin kolase
-  const marginX = 36;
-  const marginTop = 100;
-  const marginBottom = 110;
-  const gap = 8;
+  // Warna editorial
+  const background = "#FFFFFF";
+  const ink = "#39352F";
+  const muted = "#888888";
 
-  const availableW = W - marginX * 2;
-  const availableH = H - marginTop - marginBottom;
+  function createPage(): {
+    canvas: HTMLCanvasElement;
+    ctx: CanvasRenderingContext2D;
+  } {
+    const canvas = document.createElement("canvas");
+    canvas.width = W;
+    canvas.height = H;
 
-  // Tentukan jumlah kolom dan baris
-  const columns = Math.max(
-    1,
-    Math.ceil(Math.sqrt(total * (availableW / availableH)))
-  );
-  const rows = Math.ceil(total / columns);
+    const context = canvas.getContext("2d");
 
-  const cellW = (availableW - gap * (columns - 1)) / columns;
-  const cellH = (availableH - gap * (rows - 1)) / rows;
-
-  // Gambar foto dalam grid tanpa Polaroid dan rotasi
-  photos.forEach((img, index) => {
-    const col = index % columns;
-    const row = Math.floor(index / columns);
-
-    const x = marginX + col * (cellW + gap);
-    const y = marginTop + row * (cellH + gap);
-
-    const imageRatio = img.width / img.height;
-    const slotRatio = cellW / cellH;
-
-    let sx = 0;
-    let sy = 0;
-    let sw = img.width;
-    let sh = img.height;
-
-    // Crop foto agar memenuhi kotak tanpa distorsi
-    if (imageRatio > slotRatio) {
-      sw = img.height * slotRatio;
-      sx = (img.width - sw) / 2;
-    } else {
-      sh = img.width / slotRatio;
-      sy = (img.height - sh) / 2;
+    if (!context) {
+      throw new Error("Canvas tidak dapat dibuat.");
     }
 
-    ctx.save();
-    ctx.beginPath();
-    ctx.rect(x, y, cellW, cellH);
-    ctx.clip();
+    const ctx = context;
+    ctx.fillStyle = background;
+    ctx.fillRect(0, 0, W, H);
+
+    return { canvas, ctx };
+  }
+
+  function text(
+    ctx: CanvasRenderingContext2D,
+    value: string,
+    x: number,
+    y: number,
+    font: string,
+    color = ink,
+    align: CanvasTextAlign = "left"
+  ) {
+    ctx.font = font;
+    ctx.fillStyle = color;
+    ctx.textAlign = align;
+    ctx.textBaseline = "middle";
+    ctx.fillText(value, x, y);
+  }
+
+
+  // Foto utuh tanpa crop atau distorsi.
+  function drawPhoto(
+    ctx: CanvasRenderingContext2D,
+    img: HTMLImageElement,
+    x: number,
+    y: number,
+    width: number,
+    height: number
+  ) {
+    const scale = Math.min(
+      width / img.width,
+      height / img.height
+    );
+
+    const drawWidth = img.width * scale;
+    const drawHeight = img.height * scale;
+
+    const drawX = x + (width - drawWidth) / 2;
+    const drawY = y + (height - drawHeight) / 2;
+
+    // Latar putih untuk area kosong jika rasio berbeda.
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillRect(x, y, width, height);
+
     ctx.drawImage(
       img,
-      sx,
-      sy,
-      sw,
-      sh,
-      x,
-      y,
-      cellW,
-      cellH
+      drawX,
+      drawY,
+      drawWidth,
+      drawHeight
     );
-    ctx.restore();
-  });
-
-  // Footer
-  ctx.fillStyle = "#887764";
-  ctx.font = "20px Georgia";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "alphabetic";
-
-  if ("letterSpacing" in ctx) {
-    ctx.letterSpacing = "4px";
   }
 
-  ctx.fillText("dexa-invitation.com", W / 2, 1870);
+  const pages: string[] = [];
 
-  return canvas.toDataURL("image/jpeg", 0.92);
+  // Layout 16 foto dalam satu halaman (4 kolom x 4 baris).
+  const photosPerPage = 16;
+
+  const photoWidth = 220;
+  const photoHeight = 350;
+
+  const gapX = 20;
+  const gapY = 20;
+
+  // const startX = 70;
+  const startY = 300;
+
+  // Setiap halaman berisi maksimal dua foto.
+  
+// Maksimal 4 foto per halaman.
+  for (let i = 0; i < photos.length; i += photosPerPage) {
+    const { canvas, ctx } = createPage();
+    const pagePhotos = photos.slice(i, i + photosPerPage);
+
+    // HEADER
+    text(
+      ctx,
+      "DEXA INVITATION",
+      75,
+      85,
+      "500 17px Georgia",
+      muted
+    );
+
+
+
+
+
+    pagePhotos.forEach((photo, index) => {
+      const row = Math.floor(index / 4);
+      const col = index % 4;
+
+      // Menghitung jumlah foto pada baris terakhir.
+      const firstIndexInRow = row * 4;
+      const photosInRow = Math.min(
+        4,
+        pagePhotos.length - firstIndexInRow
+      );
+
+      // Membuat setiap baris berada di tengah.
+      const rowWidth =
+        photosInRow * photoWidth +
+        (photosInRow - 1) * gapX;
+
+      const rowStartX = (W - rowWidth) / 2;
+
+      const x = rowStartX + col * (photoWidth + gapX);
+      const y = startY + row * (photoHeight + gapY);
+
+      drawPhoto(
+        ctx,
+        photo,
+        x,
+        y,
+        photoWidth,
+        photoHeight
+      );
+
+      // Nomor foto.
+      text(
+        ctx,
+        String(i + index + 1).padStart(2, "0"),
+        x + photoWidth,
+        y + photoHeight - 8,
+        "16px Arial",
+        muted,
+        "right"
+      );
+    });
+
+ 
+    pages.push(canvas.toDataURL("image/jpeg", 0.92));
+  }
+
+
+  return pages;
 }
+
+
+
 
 
 
@@ -190,6 +261,7 @@ function AudioPlayer({
   const [src, setSrc] = useState("");
   const [gagal, setGagal] = useState(false);
   const [pesanError, setPesanError] = useState("");
+  
 
   useEffect(() => {
     let active = true;
@@ -293,14 +365,15 @@ export default function PhotoboothDashboard() {
   const [selected, setSelected] = useState<Memory | null>(null);
   const [search, setSearch] = useState("");
 
-  const [storyUrl, setStoryUrl] = useState("");
   const [storyLoading, setStoryLoading] = useState(false);
   const [storyError, setStoryError] = useState("");
   const [sharing, setSharing] = useState(false);
 
-  // State progres pembuatan kolase.
+  // State progres dan halaman kolase.
   const [storyProgress, setStoryProgress] = useState(0);
   const [storyTotal, setStoryTotal] = useState(0);
+  const [collagePages, setCollagePages] = useState<string[]>([]);
+  const [activeCollagePage, setActiveCollagePage] = useState(0);
 
   useEffect(() => {
     if (!key) {
@@ -371,6 +444,7 @@ export default function PhotoboothDashboard() {
         });
   };
 
+  
   async function handleCreateStory() {
     if (!key) {
       setStoryError("Kunci akses galeri tidak ditemukan.");
@@ -379,7 +453,8 @@ export default function PhotoboothDashboard() {
 
     setStoryLoading(true);
     setStoryError("");
-    setStoryUrl("");
+    setCollagePages([]);
+    setActiveCollagePage(0);
     setStoryProgress(0);
 
     const photoItems = memories.filter(
@@ -389,8 +464,7 @@ export default function PhotoboothDashboard() {
     setStoryTotal(photoItems.length);
 
     try {
-      // Menggunakan seluruh foto, bukan hanya hasil pencarian.
-      const url = await createStoryCollage(
+      const pages = await createStoryCollagePages(
         key,
         memories,
         (loaded, total) => {
@@ -399,22 +473,27 @@ export default function PhotoboothDashboard() {
         }
       );
 
-      setStoryUrl(url);
+      setCollagePages(pages);
+      setActiveCollagePage(0);
     } catch (err) {
       console.error("Gagal membuat kolase:", err);
 
       setStoryError(
         err instanceof Error
           ? err.message
-          : "Gagal membuat kolase Instagram Story."
+          : "Gagal membuat album wedding."
       );
     } finally {
       setStoryLoading(false);
     }
   }
 
+
+  
   async function handleShareStory() {
-    if (!storyUrl || sharing) return;
+    const currentPage = collagePages[activeCollagePage];
+
+    if (!currentPage || sharing) return;
 
     setStoryError("");
 
@@ -423,7 +502,7 @@ export default function PhotoboothDashboard() {
       typeof navigator.canShare !== "function"
     ) {
       setStoryError(
-        "Browser ini belum mendukung berbagi gambar. Coba buka galeri melalui browser di ponsel yang mendukung fitur berbagi file."
+        "Browser ini belum mendukung berbagi gambar."
       );
       return;
     }
@@ -431,7 +510,7 @@ export default function PhotoboothDashboard() {
     setSharing(true);
 
     try {
-      const response = await fetch(storyUrl);
+      const response = await fetch(currentPage);
 
       if (!response.ok) {
         throw new Error("Gambar kolase gagal disiapkan.");
@@ -441,21 +520,21 @@ export default function PhotoboothDashboard() {
 
       const file = new File(
         [blob],
-        "wedding-memories-story.jpg",
+        `wedding-memories-page-${activeCollagePage + 1}.jpg`,
         { type: "image/jpeg" }
       );
 
       if (!navigator.canShare({ files: [file] })) {
         setStoryError(
-          "Perangkat atau browser ini tidak mendukung berbagi gambar. Coba gunakan browser lain di ponsel."
+          "Perangkat atau browser ini tidak mendukung berbagi gambar."
         );
         return;
       }
 
       await navigator.share({
         files: [file],
-        title: "Wedding Memories",
-        text: "Thank you for being part of our special day!",
+        title: "The Wedding Journal",
+        text: `Wedding Memories - Page ${activeCollagePage + 1}`,
       });
     } catch (err) {
       if (err instanceof Error && err.name === "AbortError") {
@@ -467,12 +546,13 @@ export default function PhotoboothDashboard() {
       setStoryError(
         err instanceof Error
           ? err.message
-          : "Gagal membuka menu berbagi. Silakan coba lagi."
+          : "Gagal membuka menu berbagi."
       );
     } finally {
       setSharing(false);
     }
   }
+
 
   function handlePrintPhoto(photoUrl: string) {
     const printWindow = window.open("", "_blank");
@@ -700,17 +780,27 @@ export default function PhotoboothDashboard() {
               </div>
             )}
 
-            {storyUrl && (
+            
+            {collagePages.length > 0 && (
               <div className="mb-8 rounded-2xl bg-white p-4 sm:p-6">
-                <div className="mb-4 flex items-center justify-between gap-3">
-                  <h4 className="font-serif text-xl">
-                    Preview
-                  </h4>
+
+                {/* Header preview */}
+                <div className="mb-5 flex items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs tracking-[0.2em] text-[#858B76]">
+                      DEXA INVITATION
+                    </p>
+
+                    <h4 className="mt-1 font-serif text-xl">
+                      The Wedding Journal
+                    </h4>
+                  </div>
 
                   <button
                     type="button"
                     onClick={() => {
-                      setStoryUrl("");
+                      setCollagePages([]);
+                      setActiveCollagePage(0);
                       setStoryError("");
                     }}
                     className="rounded-full bg-[#F1EFE8] px-3 py-2 text-sm"
@@ -719,26 +809,72 @@ export default function PhotoboothDashboard() {
                   </button>
                 </div>
 
-                <img
-                  src={storyUrl}
-                  alt="Kolase Wedding Memories"
-                  className="mx-auto max-h-[65vh] rounded-xl object-contain"
-                />
+                {/* Nomor halaman */}
+                <div className="mb-3 flex items-center justify-between">
+                  <p className="text-sm text-[#858277]">
+                    Halaman {activeCollagePage + 1}
+                  </p>
 
+                  <p className="text-sm font-medium text-[#788269]">
+                    {collagePages.length} halaman
+                  </p>
+                </div>
+
+                {/* Gambar halaman aktif */}
+                <div className="flex justify-center rounded-xl bg-[#F5F2EB] p-2">
+                  <img
+                    src={collagePages[activeCollagePage]}
+                    alt={`Wedding Journal halaman ${activeCollagePage + 1}`}
+                    className="max-h-[65vh] w-auto max-w-full object-contain"
+                  />
+                </div>
+
+                {/* Navigasi halaman */}
+                <div className="mt-5 flex items-center justify-center gap-4">
+                  <button
+                    type="button"
+                    disabled={activeCollagePage === 0}
+                    onClick={() =>
+                      setActiveCollagePage((page) => page - 1)
+                    }
+                    className="rounded-full border border-[#E5E0D6] px-5 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-30"
+                  >
+                    ← Previous
+                  </button>
+
+                  <span className="min-w-[55px] text-center text-sm text-[#858277]">
+                    {activeCollagePage + 1} / {collagePages.length}
+                  </span>
+
+                  <button
+                    type="button"
+                    disabled={
+                      activeCollagePage === collagePages.length - 1
+                    }
+                    onClick={() =>
+                      setActiveCollagePage((page) => page + 1)
+                    }
+                    className="rounded-full border border-[#E5E0D6] px-5 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-30"
+                  >
+                    Next →
+                  </button>
+                </div>
+
+                {/* Bagikan halaman aktif */}
                 <button
                   type="button"
                   onClick={handleShareStory}
                   disabled={sharing}
-                  className="mt-4 w-full rounded-xl bg-[#788269] px-4 py-3 text-sm font-medium text-white transition hover:bg-[#626D55] disabled:cursor-not-allowed disabled:opacity-50"
+                  className="mt-5 w-full rounded-xl bg-[#788269] px-4 py-3 text-sm font-medium text-white transition hover:bg-[#626D55] disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {sharing
                     ? "Menyiapkan berbagi..."
-                    : "Bagikan"}
+                    : `Bagikan Halaman ${activeCollagePage + 1}`}
                 </button>
 
-          
               </div>
             )}
+
 
             {filtered.length === 0 ? (
               <div className="rounded-2xl bg-white p-12 text-center text-sm text-[#858277]">
