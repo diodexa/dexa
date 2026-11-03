@@ -299,11 +299,10 @@ export default function GuestPhotobooth() {
       }
 
       // Membalik foto agar sesuai dengan pratinjau kamera depan.
-      if (cameraFacing === "user") {
-        ctx.translate(canvas.width, 0);
-        ctx.scale(-1, 1);
-      }
+      ctx.translate(canvas.width, 0);
+      ctx.scale(-1, 1);
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+     
 
       const blob = await new Promise<Blob>((resolve, reject) => {
         canvas.toBlob(
@@ -945,6 +944,7 @@ export default function GuestPhotobooth() {
             singleFrameSrc={SINGLE_FRAME_SRC}
             switchCamera={switchCamera}
             cameraFacing={cameraFacing}
+            singleSlot={SINGLE_SLOT}
           />
 
           {/* SECTION FORM */}

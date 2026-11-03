@@ -47,6 +47,8 @@ interface PhotoboothSectionProps {
 
   switchCamera: () => void;
   cameraFacing: "user" | "environment";
+
+  singleSlot: PhotoSlot;
 }
 
 export default function PhotoboothSection({
@@ -73,6 +75,7 @@ export default function PhotoboothSection({
   sectionRef,
   switchCamera,
   cameraFacing,
+  singleSlot,
 }: PhotoboothSectionProps) {
   const hasWeddingFrame = Boolean(frameSrc?.trim());
   const hasSingleFrame = Boolean(singleFrameSrc?.trim());
@@ -221,47 +224,65 @@ export default function PhotoboothSection({
         {/* Mode satu foto */}
         {effectiveMode === "single" && (
           <>
-            {cameraOpen ? (
-              <div className="absolute inset-0">
-                <video ref={videoRef}
-                  autoPlay  playsInline muted
-                  className={`absolute top-74 left-11 -translate-y-1/2 z-0 h-[69.5%] w-[75%] object-cover ${cameraFacing === "user" ? "scale-x-[-1]" : ""}`}
-                  style={{ filter: filterStyle }}/>
+            <div
+              className="absolute z-0 overflow-hidden"
+              style={{
+                left: `${(singleSlot.x / frameWidth) * 100}%`,
+                top: `${(singleSlot.y / frameHeight) * 100}%`,
+                width: `${(singleSlot.width / frameWidth) * 100}%`,
+                height: `${(singleSlot.height / frameHeight) * 100}%`,
+              }}
+            >
+              {cameraOpen ? (
+                <>
+                  <video
+                    ref={videoRef}
+                    autoPlay
+                    playsInline
+                    muted
+                    className={`absolute inset-0 h-full w-full object-cover ${
+                      cameraFacing === "user" ? "scale-x-[-1]" : ""
+                    }`}
+                    style={{ filter: filterStyle }}
+                  />
 
-                <button type="button"
-                  onClick={switchCamera}
-                  className="absolute top-26 right-13 z-99 rounded-full border border-white/20 bg-black/20 p-2 text-sm text-white shadow backdrop-blur-md">
-                  <i className="fa-solid fa-camera-rotate text-xl" />
-                </button>
-              </div>
-            ) : currentPhoto ? (
-              <img
-                src={currentPhoto}
-                alt="Foto photobooth"
-                className={`absolute top-74 left-11 -translate-y-1/2 z-0 h-[69.5%] w-[75%] object-cover ${cameraFacing === "user" ? "" : "scale-x-[-1]"}`}
-                style={{ filter: filterStyle }}
-              />
-            ) : (
-              <div className="absolute inset-x-0 top-[2.3%] z-0 flex h-[90%] flex-col items-center justify-center gap-3 px-5 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/70 text-[#8b887c]">
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-8 w-8"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
+                  <button
+                    type="button"
+                    onClick={switchCamera}
+                    className="absolute right-[3%] top-[7%] z-10 rounded-full border border-white/20 bg-black/20 p-2 text-white shadow backdrop-blur-md"
                   >
-                    <rect x="3" y="5" width="18" height="14" rx="2" />
-                    <circle cx="12" cy="12" r="3" />
-                    <path d="M8 5l1.5-2h5L16 5" />
-                  </svg>
-                </div>
+                    <i className="fa-solid fa-camera-rotate text-xl" />
+                  </button>
+                </>
+              ) : currentPhoto ? (
+                <img
+                  src={currentPhoto}
+                  alt="Foto photobooth"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  style={{ filter: filterStyle }}
+                />
+              ) : (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-5 text-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/70 text-[#8b887c]">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-8 w-8"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    >
+                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M8 5l1.5-2h5L16 5" />
+                    </svg>
+                  </div>
 
-                <p className="text-sm font-medium text-[#625e53]">
-                  Foto kamu akan tampil di sini
-                </p>
-              </div>
-            )}
+                  <p className="text-sm font-medium text-[#625e53]">
+                    Foto kamu akan tampil di sini
+                  </p>
+                </div>
+              )}
+            </div>
 
             <img
               src={singleFrameSrc}
@@ -272,11 +293,14 @@ export default function PhotoboothSection({
             {/* Teks pengantin di atas frame */}
             {photoTitle && (
               <div className="pointer-events-none absolute bottom-[4%] left-1/2 z-20 w-[90%] -translate-x-1/2 px-3 text-center text-[#39362f]">
-                <p className="text-[clamp(8px,2.4vw,16px)]  uppercase tracking-[0.5em]">
+                <p className="text-[clamp(8px,2.4vw,16px)] uppercase tracking-[0.5em]">
                   {selectedPhotobooth?.JudulAcara}
                 </p>
 
-                <p className={`mt-2 font-${selectedPhotobooth?.Font} text-[clamp(20px,7vw,25px)] leading-tight`}>
+                <p
+                  className="mt-2 text-[clamp(20px,7vw,25px)] leading-tight"
+                  style={{ fontFamily: selectedPhotobooth?.Font }}
+                >
                   {photoTitle}
                 </p>
               </div>
