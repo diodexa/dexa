@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import QRCode from "qrcode";
 import { APPS_SCRIPT_URL } from "../Services/PhotoboothService";
 import { Photobooths } from "../Data/Photobooth";
+import { toPng } from "html-to-image";
 
 type EventResult = {
   idUndangan: string;
@@ -114,87 +115,26 @@ async function makeQrUrl(url: string): Promise<string> {
 }
 
 // Menggabungkan QR, logo, domain, dan nomor menjadi satu PNG.
-async function makeQrArtwork(guest: GuestResult, number: number, namaAcara: string)  {
-  const qrImage = await loadImage(guest.qrUrl);
-  const logo = await loadImage("/logo-dio.webp");
-  const canvas = document.createElement("canvas");
-  canvas.width = 900;
-  canvas.height = 1400;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) throw new Error("Gagal menyiapkan gambar QR.");
+// Mengambil gambar langsung dari elemen HTML QR.
+async function makeQrArtwork(element: HTMLElement): Promise<string> {
+  // Tunggu semua font selesai dimuat.
+  await document.fonts.ready;
 
-  // Kartu putih dengan bingkai tipis
-  ctx.fillStyle = "#FFFFFF";
-  ctx.fillRect(0, 0, 900, 1400);
-  ctx.strokeStyle = "#EAE5DD";
-  ctx.lineWidth = 3;
-  ctx.strokeRect(20, 20, 860, 1360);
+  // Pastikan seluruh gambar di dalam QR sudah dimuat.
+  const images = Array.from(element.querySelectorAll("img"));
 
-  // Judul dekoratif
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillStyle = "#171717";
-  ctx.font = " 100px Georgia, serif";
-  ctx.fillText("Capture", 450, 190);
-  ctx.font = " 88px Georgia, serif";
-  ctx.fillText("the Love", 450, 290);
-
-  // Garis dekoratif
-  ctx.strokeStyle = "#171717";
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.moveTo(175, 235);
-  ctx.quadraticCurveTo(300, 270, 340, 220);
-  ctx.moveTo(560, 310);
-  ctx.quadraticCurveTo(650, 350, 725, 310);
-  ctx.stroke();
-
-  // QR asli tetap dapat dipindai
-  const qrSize = 490;
-  const qrX = (900 - qrSize) / 2;
-  const qrY = 390;
-  ctx.drawImage(qrImage, qrX, qrY, qrSize, qrSize);
-
-  // Logo di tengah QR
-  const logoSize = 82;
-  ctx.fillStyle = "#FFFFFF";
-  ctx.fillRect(409, qrY + qrSize / 2 - 46, 82, 92);
-  ctx.drawImage(
-    logo,
-    (900 - logoSize) / 2,
-    qrY + (qrSize - logoSize) / 2,
-    logoSize,
-    logoSize
+  await Promise.all(
+    images.map((img) =>
+      img.decode().catch(() => undefined)
+    )
   );
 
-  // Instruksi
-  ctx.fillStyle = "#44413B";
-  ctx.font = "26px Georgia, serif";
-  ctx.fillText("SHARE YOUR PHOTOS WITH US", 450, 950);
-  ctx.font = "25px Georgia, serif";
-  ctx.fillText("SCAN WITH YOUR PHONE", 450, 990);
-  ctx.fillText("AND UPLOAD YOUR MEMORIES", 450, 1028);
-
-  // Hiasan hati
-  ctx.font = "58px Georgia, serif";
-  ctx.fillText("♡", 450, 1100);
-
-  // Nama acara
-  ctx.font = " 39px Georgia, serif";
-  ctx.fillText(
-    (namaAcara || "Our Wedding").replace(/^photobooth\s*/i, ""),
-    450,
-    1190,
-    760
-  );
-
-  // Domain dan nomor QR
-  ctx.font = "22px Arial, sans-serif";
-  ctx.fillText("dexa-invitation.com", 450, 1260);
-  ctx.font = "16px Arial, sans-serif";
-  ctx.fillText(String(number), 450, 1300);
-
-  return canvas.toDataURL("image/png");
+  // Konversi HTML langsung menjadi PNG.
+  return await toPng(element, {
+    pixelRatio: 3,
+    cacheBust: true,
+    backgroundColor: "#FFFFFF",
+  });
 }
 
 function safeFileName(value: string) {
@@ -393,73 +333,87 @@ export default function AdminPelangganPhotobooth({
     }
   }
 
-  async function downloadQr(
-    guest: GuestResult,
-    index: number
-  ) {
-    try {
-      const artwork = await makeQrArtwork(guest, index + 1, selectedEvent?.idUndangan || "");
-      const link = document.createElement("a");
+  async function downloadQr(index: number) {
 
-      link.href = artwork;
-      link.download = `QR-${safeFileName(
-        selectedEvent?.idUndangan || ""
-      )}-${index + 1}.png`;
+  try {
+    const element = document.getElementById(
+      `qr-artwork-${index}`
+    );
 
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Gagal mengunduh gambar QR."
-      );
+    if (!element) {
+      throw new Error("Elemen QR tidak ditemukan.");
     }
+
+    const artwork = await makeQrArtwork(element);
+
+    const link = document.createElement("a");
+
+    link.href = artwork;
+    link.download = `QR-${safeFileName(
+      selectedEvent?.idUndangan || ""
+    )}-${index + 1}.png`;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+  } catch (err) {
+    setError(
+      err instanceof Error
+        ? err.message
+        : "Gagal mengunduh gambar QR."
+    );
   }
+}
   console.log("ID dari Events:", selectedEvent?.idUndangan);
 console.log("Data Photobooths:", Photobooths);
 console.log("Data yang cocok:", Photobooth);
 
   async function downloadAllQr() {
-    if (guests.length === 0) return;
+  if (guests.length === 0) return;
 
-    setError("");
-    setNotice("Sedang menyiapkan gambar QR...");
+  setError("");
+  setNotice("Sedang menyiapkan gambar QR...");
 
-    try {
-      // Unduh satu per satu agar penggunaan memori lebih terkendali.
-      for (let i = 0; i < guests.length; i++) {
-        const artwork = await makeQrArtwork(guests[i], i + 1, selectedEvent?.idUndangan || "");
-        const link = document.createElement("a");
+  try {
+    // Unduh satu per satu agar penggunaan memori lebih terkendali.
+    for (let i = 0; i < guests.length; i++) {
+      const element = document.getElementById(`qr-artwork-${i}`);
 
-        link.href = artwork;
-        link.download = `QR-${safeFileName(
-          selectedEvent?.idUndangan || ""
-        )}-${i + 1}.png`;
-
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-
-        // Beri kesempatan browser memproses setiap unduhan.
-        await new Promise<void>((resolve) =>
-          window.setTimeout(resolve, 150)
-        );
+      if (!element) {
+        throw new Error(`Elemen QR ${i + 1} tidak ditemukan.`);
       }
 
-      setNotice(
-        `${guests.length} gambar QR selesai disiapkan. Browser mungkin meminta izin untuk beberapa unduhan.`
-      );
-    } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Gagal menyiapkan unduhan QR."
+      const artwork = await makeQrArtwork(element);
+
+      const link = document.createElement("a");
+
+      link.href = artwork;
+      link.download = `QR-${safeFileName(
+        selectedEvent?.idUndangan || ""
+      )}-${i + 1}.png`;
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      // Beri kesempatan browser memproses setiap unduhan.
+      await new Promise<void>((resolve) =>
+        window.setTimeout(resolve, 150)
       );
     }
-  }
 
+    setNotice(
+      `${guests.length} gambar QR selesai disiapkan. Browser mungkin meminta izin untuk beberapa unduhan.`
+    );
+  } catch (err) {
+    setError(
+      err instanceof Error
+        ? err.message
+        : "Gagal menyiapkan unduhan QR."
+    );
+  }
+}
   function downloadAllLinks() {
     const content = guests
       .map(
@@ -861,7 +815,8 @@ console.log("Data yang cocok:", Photobooth);
                   key={guest.slug}
                   className="qr-print-card  rounded-xl border border-[#E9E4DA] p-4"
                 >
-                  <div className="qr-artwork relative mx-auto w-full max-w-[250px] overflow-hidden border border-[#EAE5DD] bg-white px-4 pt-6 text-center text-black ">
+                  <div id={`qr-artwork-${index}`}
+                  className="qr-artwork relative mx-auto w-full max-w-[250px] overflow-hidden border border-[#EAE5DD] bg-white px-4 pt-6 text-center text-black">
                     <p className="qr-card-title  text-xl font-HearthStone leading-tight">
                       Capture
                     </p>
@@ -882,10 +837,10 @@ console.log("Data yang cocok:", Photobooth);
                       />
                     </div>
 
-                    <p className="mt-2 text-[5px] font-BethanyElingston tracking-[0.2em]">
+                    <p className="mt-2 text-[5px] font-Euphorigenic tracking-[0.2em]">
                       SHARE YOUR PHOTOS WITH US
                     </p>
-                    <p className=" text-[5px] font-BethanyElingston tracking-[0.2em]">
+                    <p className=" text-[5px] font-Euphorigenic tracking-[0.2em]">
                       SCAN WITH YOUR PHONE
                     </p>
                
@@ -893,10 +848,10 @@ console.log("Data yang cocok:", Photobooth);
                     <p className="mt-3 break-words font-HearthStone  ">
                       {(selectedEvent?.idUndangan || "Our Wedding").replace(/^photoboth\s*/i, "")}
                     </p>
-                    <p className="text-[7px] mb-1 mt-2 font-BethanyElingston opacity-75">
+                    <p className="text-[7px] mb-1 mt-2 font-Euphorigenic opacity-75">
                       {Photobooth?.TanggalAcara || ""}
                     </p>
-                    <p className="absolute -bottom-1 left-0 right-0  text-center text-[4px] font-BethanyElingston tracking-wide opacity-50">
+                    <p className="absolute -bottom-1 left-0 right-0  text-center text-[4px] font-Euphorigenic tracking-wide opacity-50">
                       dexa-invitation.com
                     </p>
                   </div>
@@ -924,7 +879,7 @@ console.log("Data yang cocok:", Photobooth);
 
                     <button
                       type="button"
-                      onClick={() => void downloadQr(guest, index)}
+                      onClick={() => void downloadQr(index)}
                       className="rounded-lg bg-[#788269] px-2 py-2 text-xs font-medium text-white"
                     >
                       Unduh QR

@@ -68,12 +68,12 @@ export const ContohPlayful: Invitation = {
   ],
 
    sticker :[
-    "/Gallery/ContohGrupChat/galeryfoto/sticker/1.webp",
-    "/Gallery/ContohGrupChat/galeryfoto/sticker/2.webp",
-    "/Gallery/ContohGrupChat/galeryfoto/sticker/3.webp",
-    "/Gallery/ContohGrupChat/galeryfoto/sticker/4.webp",
-    "/Gallery/ContohGrupChat/galeryfoto/sticker/5.gif",
-    "/Gallery/ContohGrupChat/galeryfoto/sticker/6.gif",
+    "/Gallery/sticker/1.webp",
+    "/Gallery/sticker/2.webp",
+    "/Gallery/sticker/3.webp",
+    "/Gallery/sticker/4.webp",
+    "/Gallery/sticker/5.gif",
+    "/Gallery/sticker/6.gif",
   ],
 
   WeddingGift: {

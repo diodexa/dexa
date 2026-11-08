@@ -67,7 +67,7 @@ const WeddingGift = ({ data,animate }: Props) => {
                 const bank = rekening.bank?.toUpperCase() ?? "";
                 const logo = GiftLogo[bank];
                 return (
-                    <div key={index} className="relative overflow-hidden rounded-2xl border p-5" style={{ background: `${data.theme?.warna2}40`, borderColor: `${data.theme?.contrasfont}15`, color: data.theme?.ContrasBackgroundColor, backdropFilter: "blur(10px)" }}>
+                    <div key={index} className="relative overflow-hidden rounded-2xl border p-5 backdrop-blur-lg" style={{ background: `${data.theme?.warna2}40`, borderColor: `${data.theme?.contrasfont}15`, color: data.theme?.ContrasBackgroundColor }}>
                     <span className="absolute -right-3 -top-7 text-8xl opacity-5" style={{ color: data.theme?.warna3 }}>{index + 1}</span>
                     <div className="relative z-10 flex items-center justify-between">
                         {logo ? <img src={logo} alt={rekening.bank} className="h-7 w-auto object-contain" style={{ filter: "drop-shadow(0 0 2px white)" }} /> : <p className="text-xs font-bold">{rekening.bank}</p>}

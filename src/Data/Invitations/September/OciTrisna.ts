@@ -19,8 +19,8 @@ export const OciTrisna: Invitation = {
   BapakpengantinPria : "Bapak Sonny Wirahma Soemantri",
   IbupengantinPria : "Ibu (Purn) AKP. Waode Nurbahana",
 
-  FotoBride: "/Gallery/ContohSunFlower/Wanita.webp",
-  FotoGroom: "/Gallery/ContohSunFlower/Pria.webp",
+  FotoBride: "/Gallery/OciTrisna/Wanita.webp",
+  FotoGroom: "/Gallery/OciTrisna/Pria.webp",
   
   FormatWaktu: "WIB",
   
@@ -38,15 +38,18 @@ export const OciTrisna: Invitation = {
   // note: `*dresscode putih krem untuk cowok 
   //  putih hitam untuk cewek` ,
 
-  coverImage: "/Gallery/ContohSunFlower/4.webp",
+  coverImage: "/Gallery/OciTrisna/4.webp",
   
   gallery: [
-    "/Gallery/ContohSunFlower/1.webp",
-    "/Gallery/ContohSunFlower/2.webp",
-    "/Gallery/ContohSunFlower/3.webp",
-    "/Gallery/ContohSunFlower/4.webp",
-    "/Gallery/ContohSunFlower/5.webp",
-
+    "/Gallery/OciTrisna/1.webp",
+    "/Gallery/OciTrisna/2.webp",
+    "/Gallery/OciTrisna/3.webp",
+    "/Gallery/OciTrisna/4.webp",
+    "/Gallery/OciTrisna/5.webp",
+    "/Gallery/OciTrisna/6.webp",
+    "/Gallery/OciTrisna/7.webp",
+    "/Gallery/OciTrisna/8.webp",
+    "/Gallery/OciTrisna/9.webp",
    
     
   ],
@@ -72,11 +75,11 @@ export const OciTrisna: Invitation = {
       },
     ],
 
-    alamat: {
-      penerima: "Trisna",
-      noHp: "081234567890",
-      alamat: "Jl. Contoh No. 123, kelurahan Yogya Tenggara Timur Barat, kecamatan Yogya, kota Yogyakarta",
-    },
+    // alamat: {
+    //   penerima: "Trisna",
+    //   noHp: "081234567890",
+    //   alamat: "Jl. Contoh No. 123, kelurahan Yogya Tenggara Timur Barat, kecamatan Yogya, kota Yogyakarta",
+    // },
   },
   
   Salam: "Assalamualaikum wr wb",
@@ -98,6 +101,15 @@ export const OciTrisna: Invitation = {
     {Head : "​28 November 2026 - Awal Perjalanan Baru",
     Story : "Momen indah di mana kami mengikat janji suci, memulai babak baru sebagai pasangan suami istri."},
     ],
+
+  sticker :[
+    "/Gallery/sticker/OciTrisna2.webp",
+    "/Gallery/sticker/OciTrisna1.webp",
+    "/Gallery/sticker/OciTrisna3.webp",
+    "/Gallery/sticker/5.gif",
+    "/Gallery/sticker/6.gif",
+    "/Gallery/sticker/5.webp",
+  ],
 
     sections : [
     { id: "ayat", scrollY: 203 },
