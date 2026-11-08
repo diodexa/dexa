@@ -41,7 +41,6 @@ export const OciTrisna: Invitation = {
   coverImage: "/Gallery/OciTrisna/4.webp",
   
   gallery: [
-    "/Gallery/OciTrisna/1.webp",
     "/Gallery/OciTrisna/2.webp",
     "/Gallery/OciTrisna/3.webp",
     "/Gallery/OciTrisna/4.webp",
