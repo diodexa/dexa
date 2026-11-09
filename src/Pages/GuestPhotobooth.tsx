@@ -541,7 +541,7 @@ export default function GuestPhotobooth() {
         photoMode === 1
           ? "Foto berhasil dipilih! Kamu bisa meninjau hasilnya."
           : `Foto ${shot + 1} berhasil dipilih${
-              shot < 1 ? `. Lanjutkan ke foto ${shot + 2}.` : "."
+              shot < 1 ? `. Lanjutkan ke foto ${shot + 2}.` : "." 
             }`
       );
     } catch {
