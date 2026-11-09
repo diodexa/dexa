@@ -1,7 +1,7 @@
 import { type RefObject } from "react";
 import { Photobooths } from "../../Data/Photobooth";
 
-export type FrameMode = "none" | "single" | "triple";
+export type FrameMode = "none" | "single" | "double";
 
 interface PhotoSlot {
   x: number;
@@ -87,15 +87,15 @@ export default function PhotoboothSection({
     ? "none"
     : frameMode === "single" && hasSingleFrame
       ? "single"
-      : frameMode === "triple" && hasWeddingFrame
-        ? "triple"
+      : frameMode === "double" && hasWeddingFrame
+        ? "double"
         : hasSingleFrame
           ? "single"
-          : "triple";
+          : "double";
 
-  const isTriple = effectiveMode === "triple";
+  const isdouble = effectiveMode === "double";
   const isSingle = effectiveMode === "single";
-  const currentPhotoIndex = isTriple ? activeShot : 0;
+  const currentPhotoIndex = isdouble ? activeShot : 0;
   const currentPhoto = photos[currentPhotoIndex] || "";
   
   const selectedPhotobooth = Photobooths.find(
@@ -150,17 +150,17 @@ export default function PhotoboothSection({
           <button
             type="button"
             onClick={() => {
-              setFrameMode("triple");
+              setFrameMode("double");
               setActiveShot(0);
             }}
             disabled={busy || cameraOpen}
             className={`rounded-xl border px-4 py-3 text-sm transition ${
-              effectiveMode === "triple"
+              effectiveMode === "double"
                 ? "border-[#39362f] bg-[#39362f] text-white"
                 : "border-[#d9d2c5] bg-white text-[#625e53] hover:bg-[#f9f7f2]"
             } disabled:opacity-50`}
           >
-            3 Foto
+            2 Foto
           </button>
         </div>
       )}
@@ -308,7 +308,7 @@ export default function PhotoboothSection({
         )}
 
         {/* Mode tiga foto */}
-        {effectiveMode === "triple" && (
+        {effectiveMode === "double" && (
           <>
             {photoSlots.map((slot, index) => {
               const isActive = activeShot === index;
@@ -415,8 +415,8 @@ export default function PhotoboothSection({
      
 
       <p className="mt-3 text-center text-xs text-[#8b887c]">
-        {isTriple
-          ? `Foto ${activeShot + 1} dari 3`
+        {isdouble
+          ? `Foto ${activeShot + 1} dari 2`
           : isSingle
             ? "Mode satu foto"
             : "Mode satu foto tanpa frame"}

@@ -15,7 +15,7 @@ interface PhotoboothFormSectionProps {
   recording: boolean;
   cameraOpen: boolean;
   photos: string[];
-  photoMode: 1 | 3;
+  photoMode: 1 | 2;
   downloadPhoto: () => void | Promise<void>;
   submit: () => void | Promise<void>;
   children?: React.ReactNode;

@@ -11,7 +11,7 @@ import { toJpeg } from "html-to-image";
 
 
 type Filter = "Original" | "Warm" | "Soft" | "B&W";
-type FrameMode = "none" | "single" | "triple";
+type FrameMode = "none" | "single" | "double";
 
 const FILTERS: Record<Filter, string> = {
   Original: "none",
@@ -28,9 +28,9 @@ const FILTERS: Record<Filter, string> = {
 // const hasAnyFrame = hasWeddingFrame || hasSingleFrame;
 
 const PHOTO_SLOTS = [
-  { x: 53, y: 107, width: 976, height: 476 },
-  { x: 53, y: 618, width: 976, height: 476 },
-  { x: 53, y: 1128, width: 976, height: 476 },
+  { x: 29, y: 83, width: 1022, height: 746 },
+  { x: 29, y: 854, width: 1022, height: 746 },
+ 
 ] as const;
 const SINGLE_SLOT = { x: 130, y: 198, width: 810, height: 1342 } as const;
 
@@ -112,7 +112,7 @@ export default function GuestPhotobooth() {
 
   const [nama, setNama] = useState("");
   const [ucapan, setUcapan] = useState("");
-  const [photos, setPhotos] = useState<string[]>(["", "", ""]);
+  const [photos, setPhotos] = useState<string[]>(["", ""]);
   const [activeShot, setActiveShot] = useState(0);
   const [filter, setFilter] = useState<Filter>("Original");
 
@@ -148,7 +148,7 @@ export default function GuestPhotobooth() {
 
   // Mode awal mengikuti frame yang tersedia.
   const [frameMode, setFrameMode] = useState<FrameMode>(
-    hasWeddingFrame ? "triple" : hasSingleFrame ? "single" : "none"
+    hasWeddingFrame ? "double" : hasSingleFrame ? "single" : "none"
   );
 
   // Pastikan mode yang dipilih memang memiliki frame.
@@ -156,15 +156,15 @@ export default function GuestPhotobooth() {
     ? "none"
     : frameMode === "single" && hasSingleFrame
       ? "single"
-      : frameMode === "triple" && hasWeddingFrame
-        ? "triple"
+      : frameMode === "double" && hasWeddingFrame
+        ? "double"
         : hasSingleFrame
           ? "single"
-          : "triple";
+          : "double";
 
   // Mode foto selalu mengikuti pilihan frame.
-  const photoMode: 1 | 3 =
-    effectiveFrameMode === "triple" ? 3 : 1;
+  const photoMode: 1 | 2 =
+    effectiveFrameMode === "double" ? 2 : 1;
 
   function showNotice(message: string, error = false) {
     setNotice(message);
@@ -357,8 +357,8 @@ export default function GuestPhotobooth() {
         return;
       }
 
-      // Mode tiga foto: lanjut ke slot berikutnya.
-      if (shot < 2) {
+      // Mode dua foto: lanjut ke slot berikutnya.
+      if (shot < 1) {
         setActiveShot(shot + 1);
         showNotice(
           `Foto ${shot + 1} berhasil diambil! Lanjutkan ke foto ${shot + 2}.`
@@ -366,7 +366,7 @@ export default function GuestPhotobooth() {
       } else {
         closeCamera();
         showNotice(
-          "Tiga foto berhasil diambil! Kamu bisa meninjau hasilnya."
+          "Dua foto berhasil diambil! Kamu bisa meninjau hasilnya."
         );
       }
     } catch (error) {
@@ -533,7 +533,7 @@ export default function GuestPhotobooth() {
 
       setFilter("Original");
 
-      if (photoMode === 3 && shot < 2) {
+      if (photoMode === 2 && shot < 1) {
         setActiveShot(shot + 1);
       }
 
@@ -541,7 +541,7 @@ export default function GuestPhotobooth() {
         photoMode === 1
           ? "Foto berhasil dipilih! Kamu bisa meninjau hasilnya."
           : `Foto ${shot + 1} berhasil dipilih${
-              shot < 2 ? `. Lanjutkan ke foto ${shot + 2}.` : "."
+              shot < 1 ? `. Lanjutkan ke foto ${shot + 2}.` : "."
             }`
       );
     } catch {
@@ -711,7 +711,7 @@ export default function GuestPhotobooth() {
       throw new Error(
         photoMode === 1
           ? "Ambil atau pilih satu foto terlebih dahulu."
-          : "Ambil atau pilih ketiga foto terlebih dahulu."
+          : "Ambil atau pilih kedua foto terlebih dahulu."
       );
     }
 
@@ -780,7 +780,7 @@ export default function GuestPhotobooth() {
       showNotice(
         photoMode === 1
           ? "Ambil atau pilih satu foto terlebih dahulu."
-          : "Ambil atau pilih ketiga foto terlebih dahulu.",
+          : "Ambil atau pilih kedua foto terlebih dahulu.",
         true
       );
       return;
@@ -836,14 +836,14 @@ export default function GuestPhotobooth() {
   }
 
   function resetPhotos() {
-    setPhotos(["", "", ""]);
+    setPhotos(["", ""]);
     setActiveShot(0);
     setCameraError("");
 
     showNotice(
       photoMode === 1
         ? "Foto dikosongkan. Silakan ambil atau pilih foto kembali."
-        : "Ketiga kotak foto dikosongkan. Mulai dari foto pertama."
+        : "kedua kotak foto dikosongkan. Mulai dari foto pertama."
     );
   }
 
@@ -945,7 +945,7 @@ export default function GuestPhotobooth() {
                   >
                     {photoMode === 1
                       ? "Jepret Foto"
-                      : `Jepret Foto ${activeShot + 1}/3`}
+                      : `Jepret Foto ${activeShot + 1}/2`}
                   </button>
 
                   <button
