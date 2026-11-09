@@ -6,6 +6,7 @@ import PhotoboothFormSection from "../Components/Component/PhotoboothFormSection
 import AudioSection from "../Components/Component/AudioSection";
 import PhotoboothSection from "../Components/Component/PhotoboothSection";
 import { Photobooths } from "../Data/Photobooth";
+import { toJpeg } from "html-to-image";
 
 
 
@@ -37,36 +38,36 @@ const FRAME_WIDTH = 1080;
 const FRAME_HEIGHT = 1920;
 const MAX_BYTES = 2 * 1024 * 1024;
 
-function drawCover(
-  ctx: CanvasRenderingContext2D,
-  img: HTMLImageElement,
-  x: number,
-  y: number,
-  width: number,
-  height: number,
-  filter: string
-) {
-  const scale = Math.max(width / img.width, height / img.height);
-  const cropWidth = width / scale;
-  const cropHeight = height / scale;
-  const sx = (img.width - cropWidth) / 2;
-  const sy = (img.height - cropHeight) / 2;
+// function drawCover(
+//   ctx: CanvasRenderingContext2D,
+//   img: HTMLImageElement,
+//   x: number,
+//   y: number,
+//   width: number,
+//   height: number,
+//   filter: string
+// ) {
+//   const scale = Math.max(width / img.width, height / img.height);
+//   const cropWidth = width / scale;
+//   const cropHeight = height / scale;
+//   const sx = (img.width - cropWidth) / 2;
+//   const sy = (img.height - cropHeight) / 2;
 
-  ctx.save();
-  ctx.filter = filter;
-  ctx.drawImage(
-    img,
-    sx,
-    sy,
-    cropWidth,
-    cropHeight,
-    x,
-    y,
-    width,
-    height
-  );
-  ctx.restore();
-}
+//   ctx.save();
+//   ctx.filter = filter;
+//   ctx.drawImage(
+//     img,
+//     sx,
+//     sy,
+//     cropWidth,
+//     cropHeight,
+//     x,
+//     y,
+//     width,
+//     height
+//   );
+//   ctx.restore();
+// }
 
 function readFile(file: Blob): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -78,15 +79,15 @@ function readFile(file: Blob): Promise<string> {
   });
 }
 
-function loadImage(src: string): Promise<HTMLImageElement> {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
+// function loadImage(src: string): Promise<HTMLImageElement> {
+//   return new Promise((resolve, reject) => {
+//     const img = new Image();
 
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error("Gagal memuat foto."));
-    img.src = src;
-  });
-}
+//     img.onload = () => resolve(img);
+//     img.onerror = () => reject(new Error("Gagal memuat foto."));
+//     img.src = src;
+//   });
+// }
 
 
 
@@ -143,6 +144,7 @@ export default function GuestPhotobooth() {
   const photoboothSectionRef = useRef<HTMLElement | null>(null);
   const formSectionRef = useRef<HTMLDivElement | null>(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const previewRef = useRef<HTMLDivElement | null>(null);
 
   // Mode awal mengikuti frame yang tersedia.
   const [frameMode, setFrameMode] = useState<FrameMode>(
@@ -519,28 +521,8 @@ export default function GuestPhotobooth() {
     }
 
     try {
-      const original = await loadImage(await readFile(file));
+      const chosen = await readFile(file);
 
-      const scale = Math.min(
-        1,
-        1600 / Math.max(original.width, original.height)
-      );
-
-      const canvas = document.createElement("canvas");
-      canvas.width = Math.round(original.width * scale);
-      canvas.height = Math.round(original.height * scale);
-
-      const ctx = canvas.getContext("2d");
-
-      if (!ctx) {
-        throw new Error("Browser tidak mendukung pengolahan foto.");
-      }
-
-      ctx.drawImage(original, 0, 0, canvas.width, canvas.height);
-
-      const chosen = canvas.toDataURL("image/jpeg", 0.88);
-
-      // Mode satu foto selalu masuk ke slot pertama.
       const shot = photoMode === 1 ? 0 : activeShot;
 
       setPhotos((current) =>
@@ -733,95 +715,39 @@ export default function GuestPhotobooth() {
       );
     }
 
-    const frameSrc =
-      photoMode === 1 ? SINGLE_FRAME_SRC : WEDDING_FRAME_SRC;
+    const element = previewRef.current;
 
-    const images = await Promise.all(
-      requiredPhotos.map((photo) => loadImage(photo))
-    );
-
-    const frameImg = frameSrc ? await loadImage(frameSrc) : null;
-
-    await document.fonts.load('12px "Euphorigenic"');
-    await document.fonts.load(`36px ${Photobooth?.Font}`);
-    await document.fonts.load('36px "TypographiTimes"');
-
-    const canvas = document.createElement("canvas");
-    canvas.width = FRAME_WIDTH;
-    canvas.height = FRAME_HEIGHT;
-
-    const ctx = canvas.getContext("2d");
-
-    if (!ctx) {
-      throw new Error("Gagal membuat foto.");
+    if (!element) {
+      throw new Error("Preview photobooth tidak ditemukan.");
     }
 
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
-    if (photoMode === 1) {
+    try {
+      // Tunggu seluruh font selesai dimuat.
+      await document.fonts.ready;
 
-      drawCover(
-        ctx,
-        images[0],
-        SINGLE_SLOT.x,
-        SINGLE_SLOT.y,
-        SINGLE_SLOT.width,
-        SINGLE_SLOT.height,
-        FILTERS[filter]
-      )
-    } else {
-      PHOTO_SLOTS.forEach((slot, index) => {
-        drawCover(
-          ctx,
-          images[index],
-          slot.x,
-          slot.y,
-          slot.width,
-          slot.height,
-          FILTERS[filter]
-        );
-      });
-    }
-
-    if (frameImg) {
-      ctx.drawImage(frameImg, 0, 0, FRAME_WIDTH, FRAME_HEIGHT);
-
-      ctx.save();
-      ctx.fillStyle = "#39362f";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "alphabetic";
-
-      const centerX = FRAME_WIDTH / 2;
-      const SCALE = FRAME_WIDTH / 404;
-      const textTop = FRAME_HEIGHT * 0.95 - 200;
-      const weddingTitleScale = SCALE * 0.41;
-
-      ctx.font = `${30 * weddingTitleScale}px "TypographiTimes"`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "alphabetic";
-      ctx.letterSpacing = `10px`;
-
-      ctx.fillText(
-        Photobooth?.JudulAcara ?? "",
-        centerX,
-        textTop + 30 * SCALE
+      // Tunggu gambar foto dan frame selesai dimuat.
+      const images = Array.from(
+        element.querySelectorAll("img")
       );
 
-      ctx.letterSpacing = "0px";
-
-
-      ctx.font = `${28 * SCALE}px  ${Photobooth?.Font}`;
-
-      ctx.fillText(
-        Photobooth?.NamaPengantin ?? "",
-        centerX,
-        textTop + 70 * SCALE
+      await Promise.all(
+        images.map((img) =>
+          img.decode().catch(() => undefined)
+        )
       );
 
-      ctx.restore();
-    }
+      // Ambil gambar langsung dari HTML preview.
+     const elementWidth = element.getBoundingClientRect().width;
 
-    return canvas.toDataURL("image/jpeg", 0.9);
+    return await toJpeg(element, {
+      quality: 0.9,
+      pixelRatio: FRAME_WIDTH / elementWidth,
+      cacheBust: true,
+      backgroundColor: "#ffffff",
+    });
+    } catch {
+      throw new Error("Gagal membuat gambar photobooth.");
+    }
   }
 
   async function downloadPhoto() {
@@ -964,6 +890,7 @@ export default function GuestPhotobooth() {
             switchCamera={switchCamera}
             cameraFacing={cameraFacing}
             singleSlot={SINGLE_SLOT}
+            previewRef={previewRef}
           />
 
           {/* SECTION FORM */}

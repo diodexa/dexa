@@ -49,6 +49,7 @@ interface PhotoboothSectionProps {
   cameraFacing: "user" | "environment";
 
   singleSlot: PhotoSlot;
+  previewRef: RefObject<HTMLDivElement | null>;
 }
 
 export default function PhotoboothSection({
@@ -76,6 +77,7 @@ export default function PhotoboothSection({
   switchCamera,
   cameraFacing,
   singleSlot,
+  previewRef
 }: PhotoboothSectionProps) {
   const hasWeddingFrame = Boolean(frameSrc?.trim());
   const hasSingleFrame = Boolean(singleFrameSrc?.trim());
@@ -164,7 +166,7 @@ export default function PhotoboothSection({
       )}
 
       {/* Pratinjau foto: ukuran dan rasio frame tetap. */}
-      <div
+      <div ref={previewRef}
         className="relative isolate w-full overflow-hidden rounded-sm"
         style={{
           aspectRatio: `${frameWidth} / ${frameHeight}`,
@@ -292,15 +294,12 @@ export default function PhotoboothSection({
 
             {/* Teks pengantin di atas frame */}
             {photoTitle && (
-              <div className="pointer-events-none absolute bottom-[4%] left-1/2 z-20 w-[90%] -translate-x-1/2 px-3 text-center text-[#39362f]">
-                <p className="text-[clamp(8px,2.4vw,16px)] uppercase tracking-[0.5em]">
+              <div className="pointer-events-none absolute bottom-[5%] left-1/2 z-20 w-[90%] -translate-x-1/2 px-3 text-center text-[#39362f]">
+                <p className="text-[clamp(8px,2.4vw,16px)] uppercase tracking-[0.4em]">
                   {selectedPhotobooth?.JudulAcara}
                 </p>
 
-                <p
-                  className="mt-2 text-[clamp(20px,7vw,25px)] leading-tight"
-                  style={{ fontFamily: selectedPhotobooth?.Font }}
-                >
+                <p className={`mt-2 font-${selectedPhotobooth?.Font} text-[clamp(20px,7vw,44px)] leading-tight  `}>
                   {photoTitle}
                 </p>
               </div>
