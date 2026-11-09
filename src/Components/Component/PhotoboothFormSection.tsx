@@ -6,6 +6,7 @@ interface PhotoboothFormSectionProps {
   setNama: (value: string) => void;
   ucapan: string;
   setUcapan: (value: string) => void;
+  hasVoiceMessage: boolean;
   filter: Filter;
   setFilter: (value: Filter) => void;
   filters: Record<Filter, string>;
@@ -26,6 +27,7 @@ export default function PhotoboothFormSection({
   setNama,
   ucapan,
   setUcapan,
+  hasVoiceMessage,
   filter,
   setFilter,
   filters,
@@ -40,6 +42,7 @@ export default function PhotoboothFormSection({
   submit,
   children,
 }: PhotoboothFormSectionProps) {
+  const hasMessage = ucapan.trim().length > 0 || hasVoiceMessage;
   return (
     <section className="space-y-5 rounded-3xl border border-[#e8e2d7] bg-white p-5 shadow-sm sm:p-6">
       <div>
@@ -108,7 +111,7 @@ export default function PhotoboothFormSection({
         <button
           type="button"
           onClick={() => void downloadPhoto()}
-          disabled={ photos.slice(0, photoMode).some((item) => !item) ||busy ||cameraOpen}
+          disabled={ photos.slice(0, photoMode).some((item) => !item) ||busy ||cameraOpen ||!hasMessage }
           className="rounded-xl border border-[#d9d2c5] px-3 py-3 text-sm font-medium disabled:opacity-40"
         >
           Unduh Foto
@@ -118,6 +121,7 @@ export default function PhotoboothFormSection({
           type="button"
           onClick={() => void submit()}
           disabled={
+            !hasMessage ||
             busy ||
             recording ||
             cameraOpen ||

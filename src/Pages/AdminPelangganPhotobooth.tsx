@@ -837,21 +837,21 @@ console.log("Data yang cocok:", Photobooth);
                       />
                     </div>
 
-                    <p className="mt-2 text-[5px] font-Euphorigenic tracking-[0.2em]">
-                      SHARE YOUR PHOTOS WITH US
+                    <p className="mt-2 text-[9px] uppercase font-TypographiTimes tracking-[0.2em]">
+                      scan untuk Kirim Ucapanmu 
                     </p>
-                    <p className=" text-[5px] font-Euphorigenic tracking-[0.2em]">
+                    {/* <p className=" text-[7px] font-TypographiTimes tracking-[0.2em]">
                       SCAN WITH YOUR PHONE
-                    </p>
+                    </p> */}
                
 
                     <p className="mt-3 break-words font-HearthStone  ">
                       {(selectedEvent?.idUndangan || "Our Wedding").replace(/^photoboth\s*/i, "")}
                     </p>
-                    <p className="text-[7px] mb-1 mt-2 font-Euphorigenic opacity-75">
+                    <p className="text-[8px] mb-1 mt-2 font-TypographiTimes opacity-75">
                       {Photobooth?.TanggalAcara || ""}
                     </p>
-                    <p className="absolute -bottom-1 left-0 right-0  text-center text-[4px] font-Euphorigenic tracking-wide opacity-50">
+                    <p className="absolute -bottom-1 left-0 right-0  text-center text-[5px] font-TypographiTimes tracking-wide opacity-50">
                       dexa-invitation.com
                     </p>
                   </div>

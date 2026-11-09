@@ -120,6 +120,7 @@ export default function GuestPhotobooth() {
   const [recording, setRecording] = useState(false);
   const [seconds, setSeconds] = useState(0);
   const [audioLevel, setAudioLevel] = useState(0);
+  
 
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState("");
@@ -912,6 +913,7 @@ export default function GuestPhotobooth() {
               downloadPhoto={downloadPhoto}
               photoMode={photoMode}
               submit={submit}
+              hasVoiceMessage={Boolean(audio)}
             >
               <AudioSection
                 audio={audio}
