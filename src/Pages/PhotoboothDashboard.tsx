@@ -364,6 +364,7 @@ export default function PhotoboothDashboard() {
   const [error, setError] = useState("");
   const [selected, setSelected] = useState<Memory | null>(null);
   const [search, setSearch] = useState("");
+  const [voiceFilter, setVoiceFilter] = useState<"all" | "with" | "without">("all");
 
   const [storyLoading, setStoryLoading] = useState(false);
   const [storyError, setStoryError] = useState("");
@@ -420,15 +421,21 @@ export default function PhotoboothDashboard() {
     };
   }, [key]);
 
-  const filtered = useMemo(
-    () =>
-      memories.filter((item) =>
-        `${item.nama} ${item.ucapan}`
-          .toLowerCase()
-          .includes(search.toLowerCase())
-      ),
-    [memories, search]
-  );
+  const filtered = useMemo(() =>
+    memories.filter((item) => {
+      const matchSearch = `${item.nama} ${item.ucapan}`
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
+      const matchVoice =
+        voiceFilter === "all" ||
+        (voiceFilter === "with" && Boolean(item.audioFileId)) ||
+        (voiceFilter === "without" && !item.audioFileId);
+
+      return matchSearch && matchVoice;
+    }),
+  [memories, search, voiceFilter]
+);
 
   const dateLabel = (value: string) => {
     if (!value) return "Tanggal tidak tersedia";
@@ -727,6 +734,24 @@ export default function PhotoboothDashboard() {
                 placeholder="Cari nama atau ucapan..."
                 className="w-full rounded-xl border border-[#E5E0D6] bg-white px-4 py-3 text-sm outline-none focus:border-[#929A81] sm:max-w-xs"
               />
+              <div className="flex flex-wrap gap-2">
+              {[{ value: "all", label: "Semua Tamu" },
+                { value: "with", label: "Dengan Pesan Suara" },
+                { value: "without", label: "Tanpa Pesan Suara" },].map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => setVoiceFilter(option.value as typeof voiceFilter)}
+                  className={`rounded-full border px-4 py-2 text-xs transition ${
+                    voiceFilter === option.value
+                      ? "border-[#788269] bg-[#788269] text-white"
+                      : "border-[#E5E0D6] bg-white text-[#625e53]"
+                  }`}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
             </div>
 
             {storyError && (
