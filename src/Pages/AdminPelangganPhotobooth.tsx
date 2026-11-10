@@ -837,8 +837,8 @@ console.log("Data yang cocok:", Photobooth);
                       />
                     </div>
 
-                    <p className="mt-2 text-[9px] uppercase font-TypographiTimes tracking-[0.2em]">
-                      scan untuk Kirim Ucapanmu 
+                    <p className="mt-2 mb-2 text-[9px] uppercase font-TypographiTimes tracking-[0.2em] ">
+                      scan untuk <br/> Kirim Ucapanmu 
                     </p>
                     {/* <p className=" text-[7px] font-TypographiTimes tracking-[0.2em]">
                       SCAN WITH YOUR PHONE
@@ -846,7 +846,7 @@ console.log("Data yang cocok:", Photobooth);
                
 
                     <p className="mt-3 break-words font-HearthStone  ">
-                      {(selectedEvent?.idUndangan || "Our Wedding").replace(/^photoboth\s*/i, "")}
+                      {(Photobooth?.NamaPengantin || "Our Wedding").replace(/^photoboth\s*/i, "")}
                     </p>
                     <p className="text-[8px] mb-1 mt-2 font-TypographiTimes opacity-75">
                       {Photobooth?.TanggalAcara || ""}
